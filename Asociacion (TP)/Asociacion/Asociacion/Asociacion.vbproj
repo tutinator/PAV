@@ -72,6 +72,9 @@
     <Import Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Clases\TextBoxv01.vb">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Formularios\frm_ABMCodPos.Designer.vb">
       <DependentUpon>frm_ABMCodPos.vb</DependentUpon>
     </Compile>
@@ -145,7 +148,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Clases\" />
     <Folder Include="Otros\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
