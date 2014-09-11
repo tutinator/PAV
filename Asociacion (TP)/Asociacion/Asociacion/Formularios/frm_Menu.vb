@@ -16,4 +16,13 @@
     End Sub
 
    
+    Private Sub frm_Menu_FormClosing(ByVal sender As System.Object, ByVal e As System.Windows.Forms.FormClosingEventArgs) Handles MyBase.FormClosing
+        If MessageBox.Show("¿Está seguro que desea salir?", "Atención", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) = Windows.Forms.DialogResult.No Then
+            e.Cancel() = True
+        End If
+    End Sub
+
+    Private Sub CodigosPostalesToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CodigosPostalesToolStripMenuItem.Click
+        frm_ABMCodPos.Show()
+    End Sub
 End Class

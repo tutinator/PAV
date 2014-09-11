@@ -41,13 +41,10 @@ Partial Class frm_Menu
         Me.ConsultasToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.PosicionesDeCompetenciaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ProfeToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
-        Me.ToolStripStatusLabel1 = New System.Windows.Forms.ToolStripStatusLabel()
-        Me.lbl_hora = New System.Windows.Forms.ToolStripStatusLabel()
-        Me.ListadoNadadoresPorProfesorToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ProfesoresPorClubToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.NadadoresPorProfesorToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.NadadoresPorClubToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ListadoNadadoresPorProfesorToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.TiemposDeUnNadadorToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.InscriptosATorneoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.EstadisticasReportesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -59,7 +56,10 @@ Partial Class frm_Menu
         Me.RankingsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.NadadoresPorVictoriasToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ClubesPorVictoriasToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
+        Me.ToolStripStatusLabel1 = New System.Windows.Forms.ToolStripStatusLabel()
         Me.ToolStripStatusLabel3 = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.lbl_hora = New System.Windows.Forms.ToolStripStatusLabel()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.MenuStrip1.SuspendLayout()
         Me.StatusStrip1.SuspendLayout()
@@ -182,34 +182,6 @@ Partial Class frm_Menu
         Me.ProfeToolStripMenuItem.Size = New System.Drawing.Size(220, 22)
         Me.ProfeToolStripMenuItem.Text = "Listados"
         '
-        'StatusStrip1
-        '
-        Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripStatusLabel1, Me.ToolStripStatusLabel3, Me.lbl_hora})
-        Me.StatusStrip1.Location = New System.Drawing.Point(0, 376)
-        Me.StatusStrip1.Name = "StatusStrip1"
-        Me.StatusStrip1.Size = New System.Drawing.Size(647, 22)
-        Me.StatusStrip1.TabIndex = 1
-        Me.StatusStrip1.Text = "StatusStrip1"
-        '
-        'ToolStripStatusLabel1
-        '
-        Me.ToolStripStatusLabel1.Name = "ToolStripStatusLabel1"
-        Me.ToolStripStatusLabel1.Size = New System.Drawing.Size(192, 17)
-        Me.ToolStripStatusLabel1.Text = "Asociación Cordobesa de Natación"
-        '
-        'lbl_hora
-        '
-        Me.lbl_hora.Name = "lbl_hora"
-        Me.lbl_hora.Size = New System.Drawing.Size(49, 17)
-        Me.lbl_hora.Text = "lbl_hora"
-        Me.lbl_hora.TextDirection = System.Windows.Forms.ToolStripTextDirection.Horizontal
-        '
-        'ListadoNadadoresPorProfesorToolStripMenuItem
-        '
-        Me.ListadoNadadoresPorProfesorToolStripMenuItem.Name = "ListadoNadadoresPorProfesorToolStripMenuItem"
-        Me.ListadoNadadoresPorProfesorToolStripMenuItem.Size = New System.Drawing.Size(220, 22)
-        Me.ListadoNadadoresPorProfesorToolStripMenuItem.Text = "Mejores Nadadores"
-        '
         'ProfesoresPorClubToolStripMenuItem
         '
         Me.ProfesoresPorClubToolStripMenuItem.Name = "ProfesoresPorClubToolStripMenuItem"
@@ -227,6 +199,12 @@ Partial Class frm_Menu
         Me.NadadoresPorClubToolStripMenuItem.Name = "NadadoresPorClubToolStripMenuItem"
         Me.NadadoresPorClubToolStripMenuItem.Size = New System.Drawing.Size(199, 22)
         Me.NadadoresPorClubToolStripMenuItem.Text = "Nadadores por Club"
+        '
+        'ListadoNadadoresPorProfesorToolStripMenuItem
+        '
+        Me.ListadoNadadoresPorProfesorToolStripMenuItem.Name = "ListadoNadadoresPorProfesorToolStripMenuItem"
+        Me.ListadoNadadoresPorProfesorToolStripMenuItem.Size = New System.Drawing.Size(220, 22)
+        Me.ListadoNadadoresPorProfesorToolStripMenuItem.Text = "Mejores Nadadores"
         '
         'TiemposDeUnNadadorToolStripMenuItem
         '
@@ -297,12 +275,34 @@ Partial Class frm_Menu
         Me.ClubesPorVictoriasToolStripMenuItem.Size = New System.Drawing.Size(199, 22)
         Me.ClubesPorVictoriasToolStripMenuItem.Text = "Clubes por victorias"
         '
+        'StatusStrip1
+        '
+        Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripStatusLabel1, Me.ToolStripStatusLabel3, Me.lbl_hora})
+        Me.StatusStrip1.Location = New System.Drawing.Point(0, 376)
+        Me.StatusStrip1.Name = "StatusStrip1"
+        Me.StatusStrip1.Size = New System.Drawing.Size(647, 22)
+        Me.StatusStrip1.TabIndex = 1
+        Me.StatusStrip1.Text = "StatusStrip1"
+        '
+        'ToolStripStatusLabel1
+        '
+        Me.ToolStripStatusLabel1.Name = "ToolStripStatusLabel1"
+        Me.ToolStripStatusLabel1.Size = New System.Drawing.Size(192, 17)
+        Me.ToolStripStatusLabel1.Text = "Asociación Cordobesa de Natación"
+        '
         'ToolStripStatusLabel3
         '
         Me.ToolStripStatusLabel3.AutoSize = False
         Me.ToolStripStatusLabel3.Name = "ToolStripStatusLabel3"
         Me.ToolStripStatusLabel3.Size = New System.Drawing.Size(380, 17)
         Me.ToolStripStatusLabel3.Text = " "
+        '
+        'lbl_hora
+        '
+        Me.lbl_hora.Name = "lbl_hora"
+        Me.lbl_hora.Size = New System.Drawing.Size(49, 17)
+        Me.lbl_hora.Text = "lbl_hora"
+        Me.lbl_hora.TextDirection = System.Windows.Forms.ToolStripTextDirection.Horizontal
         '
         'PictureBox1
         '

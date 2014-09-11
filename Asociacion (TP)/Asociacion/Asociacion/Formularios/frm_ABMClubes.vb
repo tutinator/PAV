@@ -7,12 +7,20 @@
     End Sub
 
 
+    Private Sub limpiarCampos()
+
+        For Each objeto As System.Windows.Forms.Control In Me.Controls
+            If TypeOf objeto Is TextBox Then
+                objeto.Text = ""
+            End If
+        Next
+
+    End Sub
+
+
+
     Private Sub cambiarEntradas(ByVal x As Boolean)
-        txt_codClub.Text = ""
-        txt_nombre.Text = ""
-        txt_calle.Text = ""
-        txt_telefono.Text = ""
-        txt_nroCalle.Text = ""
+        limpiarCampos()
         txt_codClub.Enabled = x
         txt_calle.Enabled = x
         txt_nombre.Enabled = x
@@ -30,11 +38,10 @@
     End Sub
 
 
-    Private Sub frm_ABMclubes_FormClosing(ByVal sender As System.Object, ByVal e As System.Windows.Forms.FormClosingEventArgs) Handles MyBase.FormClosing
-        If MessageBox.Show("Seguro...", "Saliendo", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) = Windows.Forms.DialogResult.No Then
-            e.Cancel() = True
-        End If
-    End Sub
+
+
+
+    'Comandos
 
     Private Sub cmd_guardar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmd_guardar.Click
         cambiarBotones(False)
@@ -53,6 +60,7 @@
     Private Sub cmd_nuevo_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmd_nuevo.Click
         cambiarBotones(True)
         cambiarEntradas(True)
+        txt_nombre.Focus()
     End Sub
 
     Private Sub cmd_buscar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmd_buscar.Click
@@ -61,5 +69,40 @@
         txt_nombre.Enabled = True
         txt_codClub.Enabled = True
 
+    End Sub
+
+
+    'Validaciones
+
+    Private Sub txt_nroCalle_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txt_nroCalle.KeyPress
+        Select Case Asc(e.KeyChar)
+            Case 4, 24, 4, 19, 127, 13, 9, 15, 14
+                Exit Sub
+        End Select
+        If IsNumeric(e.KeyChar) = False Then
+            MsgBox("Ingrese un número", vbCritical, "Importante")
+            e.KeyChar = ""
+        End If
+    End Sub
+
+    Private Sub txt_telefono_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txt_telefono.KeyPress
+        Select Case Asc(e.KeyChar)
+            Case 4, 24, 4, 19, 127, 13, 9, 15, 14
+                Exit Sub
+        End Select
+        If IsNumeric(e.KeyChar) = False Then
+            MsgBox("Ingrese un número", vbCritical, "Importante")
+            e.KeyChar = ""
+        End If
+    End Sub
+
+
+
+    'Closing
+
+    Private Sub frm_ABMclubes_FormClosing(ByVal sender As System.Object, ByVal e As System.Windows.Forms.FormClosingEventArgs) Handles MyBase.FormClosing
+        If MessageBox.Show("¿Está seguro que desea salir?", "Atención", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) = Windows.Forms.DialogResult.No Then
+            e.Cancel() = True
+        End If
     End Sub
 End Class

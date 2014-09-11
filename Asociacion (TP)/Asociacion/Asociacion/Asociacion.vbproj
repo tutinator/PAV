@@ -72,10 +72,16 @@
     <Import Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Formularios\frm_ABMnadadores.designer.vb">
-      <DependentUpon>frm_ABMnadadores.vb</DependentUpon>
+    <Compile Include="Formularios\frm_ABMCodPos.Designer.vb">
+      <DependentUpon>frm_ABMCodPos.vb</DependentUpon>
     </Compile>
-    <Compile Include="Formularios\frm_ABMnadadores.vb">
+    <Compile Include="Formularios\frm_ABMCodPos.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frm_ABMNadadores.designer.vb">
+      <DependentUpon>frm_ABMNadadores.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frm_ABMNadadores.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Formularios\frm_Menu.vb">
@@ -108,8 +114,11 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Formularios\frm_ABMnadadores.resx">
-      <DependentUpon>frm_ABMnadadores.vb</DependentUpon>
+    <EmbeddedResource Include="Formularios\frm_ABMCodPos.resx">
+      <DependentUpon>frm_ABMCodPos.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frm_ABMNadadores.resx">
+      <DependentUpon>frm_ABMNadadores.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\frm_Menu.resx">
       <DependentUpon>frm_Menu.vb</DependentUpon>

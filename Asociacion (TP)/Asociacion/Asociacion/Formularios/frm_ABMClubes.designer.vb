@@ -241,7 +241,7 @@ Partial Class frm_ABMclubes
         Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.GroupBox1)
         Me.Name = "frm_ABMclubes"
-        Me.Text = "ABMClubes"
+        Me.Text = "Gestión de Clubes"
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
         Me.GroupBox2.ResumeLayout(False)
