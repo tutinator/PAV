@@ -165,7 +165,7 @@ Public Class TextBoxv01
         End Set
     End Property
     Public Sub New()
-        Me.BorderStyle = Windows.Forms.BorderStyle.FixedSingle
+        Me.BorderStyle = Windows.Forms.BorderStyle.Fixed3D
         Me.tooltip.SetToolTip(Me, Me.mensajetooltip)
         Me.Margin = New Padding(1)
     End Sub
