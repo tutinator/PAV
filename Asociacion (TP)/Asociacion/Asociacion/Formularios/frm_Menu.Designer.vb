@@ -61,9 +61,6 @@ Partial Class frm_Menu
         Me.ToolStripStatusLabel3 = New System.Windows.Forms.ToolStripStatusLabel()
         Me.lbl_hora = New System.Windows.Forms.ToolStripStatusLabel()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
-        Me.DfefToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.DfsdToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.SdfToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip1.SuspendLayout()
         Me.StatusStrip1.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -71,7 +68,7 @@ Partial Class frm_Menu
         '
         'MenuStrip1
         '
-        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.GestionarToolStripMenuItem, Me.VerToolStripMenuItem, Me.ConsultasToolStripMenuItem, Me.EstadisticasReportesToolStripMenuItem, Me.DfefToolStripMenuItem})
+        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.GestionarToolStripMenuItem, Me.VerToolStripMenuItem, Me.ConsultasToolStripMenuItem, Me.EstadisticasReportesToolStripMenuItem})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
         Me.MenuStrip1.Size = New System.Drawing.Size(647, 24)
@@ -316,25 +313,6 @@ Partial Class frm_Menu
         Me.PictureBox1.TabIndex = 2
         Me.PictureBox1.TabStop = False
         '
-        'DfefToolStripMenuItem
-        '
-        Me.DfefToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.DfsdToolStripMenuItem, Me.SdfToolStripMenuItem})
-        Me.DfefToolStripMenuItem.Name = "DfefToolStripMenuItem"
-        Me.DfefToolStripMenuItem.Size = New System.Drawing.Size(40, 20)
-        Me.DfefToolStripMenuItem.Text = "dfef"
-        '
-        'DfsdToolStripMenuItem
-        '
-        Me.DfsdToolStripMenuItem.Name = "DfsdToolStripMenuItem"
-        Me.DfsdToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
-        Me.DfsdToolStripMenuItem.Text = "dfsd"
-        '
-        'SdfToolStripMenuItem
-        '
-        Me.SdfToolStripMenuItem.Name = "SdfToolStripMenuItem"
-        Me.SdfToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
-        Me.SdfToolStripMenuItem.Text = "sdf"
-        '
         'frm_Menu
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -396,8 +374,5 @@ Partial Class frm_Menu
     Friend WithEvents ClubesPorVictoriasToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ToolStripStatusLabel3 As System.Windows.Forms.ToolStripStatusLabel
     Friend WithEvents PictureBox1 As System.Windows.Forms.PictureBox
-    Friend WithEvents DfefToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents DfsdToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents SdfToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
 
 End Class

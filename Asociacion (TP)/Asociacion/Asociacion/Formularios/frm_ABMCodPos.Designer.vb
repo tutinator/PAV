@@ -22,18 +22,20 @@ Partial Class frm_ABMCodPos
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Me.lbl_nombre = New System.Windows.Forms.Label()
         Me.cmd_salir = New System.Windows.Forms.Button()
         Me.cmd_buscar = New System.Windows.Forms.Button()
-        Me.cmd_eliminar = New System.Windows.Forms.Button()
-        Me.cmd_guardar = New System.Windows.Forms.Button()
-        Me.txt_codPos = New System.Windows.Forms.TextBox()
         Me.lbl_codPos = New System.Windows.Forms.Label()
         Me.txt_nombre = New System.Windows.Forms.TextBox()
-        Me.cmd_nuevo = New System.Windows.Forms.Button()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.dgv_codPos = New System.Windows.Forms.DataGridView()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.cmd_cancelar = New System.Windows.Forms.Button()
+        Me.cmd_eliminar = New System.Windows.Forms.Button()
+        Me.cmd_guardar = New System.Windows.Forms.Button()
+        Me.cmd_nuevo = New System.Windows.Forms.Button()
+        Me.txt_codPos = New Asociacion.TextBoxv01()
         Me.GroupBox2.SuspendLayout()
         CType(Me.dgv_codPos, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
@@ -42,54 +44,29 @@ Partial Class frm_ABMCodPos
         'lbl_nombre
         '
         Me.lbl_nombre.AutoSize = True
-        Me.lbl_nombre.Location = New System.Drawing.Point(45, 56)
+        Me.lbl_nombre.Location = New System.Drawing.Point(6, 59)
         Me.lbl_nombre.Name = "lbl_nombre"
-        Me.lbl_nombre.Size = New System.Drawing.Size(44, 13)
+        Me.lbl_nombre.Size = New System.Drawing.Size(83, 13)
         Me.lbl_nombre.TabIndex = 6
-        Me.lbl_nombre.Text = "Nombre"
+        Me.lbl_nombre.Text = "Nombre de área"
         '
         'cmd_salir
         '
-        Me.cmd_salir.Location = New System.Drawing.Point(485, 290)
+        Me.cmd_salir.Image = Global.Asociacion.My.Resources.Resources.salir
+        Me.cmd_salir.Location = New System.Drawing.Point(495, 290)
         Me.cmd_salir.Name = "cmd_salir"
         Me.cmd_salir.Size = New System.Drawing.Size(50, 50)
-        Me.cmd_salir.TabIndex = 16
-        Me.cmd_salir.Text = "Salir"
+        Me.cmd_salir.TabIndex = 6
         Me.cmd_salir.UseVisualStyleBackColor = True
         '
         'cmd_buscar
         '
-        Me.cmd_buscar.Location = New System.Drawing.Point(235, 290)
+        Me.cmd_buscar.Image = Global.Asociacion.My.Resources.Resources.buscar
+        Me.cmd_buscar.Location = New System.Drawing.Point(273, 290)
         Me.cmd_buscar.Name = "cmd_buscar"
         Me.cmd_buscar.Size = New System.Drawing.Size(50, 50)
-        Me.cmd_buscar.TabIndex = 17
-        Me.cmd_buscar.Text = "Buscar"
+        Me.cmd_buscar.TabIndex = 5
         Me.cmd_buscar.UseVisualStyleBackColor = True
-        '
-        'cmd_eliminar
-        '
-        Me.cmd_eliminar.Location = New System.Drawing.Point(134, 290)
-        Me.cmd_eliminar.Name = "cmd_eliminar"
-        Me.cmd_eliminar.Size = New System.Drawing.Size(50, 50)
-        Me.cmd_eliminar.TabIndex = 18
-        Me.cmd_eliminar.Text = "Eliminar"
-        Me.cmd_eliminar.UseVisualStyleBackColor = True
-        '
-        'cmd_guardar
-        '
-        Me.cmd_guardar.Location = New System.Drawing.Point(78, 290)
-        Me.cmd_guardar.Name = "cmd_guardar"
-        Me.cmd_guardar.Size = New System.Drawing.Size(50, 50)
-        Me.cmd_guardar.TabIndex = 19
-        Me.cmd_guardar.Text = "Guardar"
-        Me.cmd_guardar.UseVisualStyleBackColor = True
-        '
-        'txt_codPos
-        '
-        Me.txt_codPos.Location = New System.Drawing.Point(95, 30)
-        Me.txt_codPos.Name = "txt_codPos"
-        Me.txt_codPos.Size = New System.Drawing.Size(137, 20)
-        Me.txt_codPos.TabIndex = 10
         '
         'lbl_codPos
         '
@@ -105,62 +82,114 @@ Partial Class frm_ABMCodPos
         Me.txt_nombre.Location = New System.Drawing.Point(95, 56)
         Me.txt_nombre.Name = "txt_nombre"
         Me.txt_nombre.Size = New System.Drawing.Size(137, 20)
-        Me.txt_nombre.TabIndex = 10
-        '
-        'cmd_nuevo
-        '
-        Me.cmd_nuevo.Location = New System.Drawing.Point(22, 290)
-        Me.cmd_nuevo.Name = "cmd_nuevo"
-        Me.cmd_nuevo.Size = New System.Drawing.Size(50, 50)
-        Me.cmd_nuevo.TabIndex = 20
-        Me.cmd_nuevo.Text = "Crear"
-        Me.cmd_nuevo.UseVisualStyleBackColor = True
+        Me.txt_nombre.TabIndex = 1
         '
         'GroupBox2
         '
         Me.GroupBox2.Controls.Add(Me.dgv_codPos)
         Me.GroupBox2.Location = New System.Drawing.Point(273, 12)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(262, 255)
-        Me.GroupBox2.TabIndex = 15
+        Me.GroupBox2.Size = New System.Drawing.Size(277, 255)
+        Me.GroupBox2.TabIndex = 7
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Códigos Postales registrados"
         '
         'dgv_codPos
         '
         Me.dgv_codPos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgv_codPos.Location = New System.Drawing.Point(11, 19)
+        Me.dgv_codPos.Location = New System.Drawing.Point(6, 19)
         Me.dgv_codPos.Name = "dgv_codPos"
-        Me.dgv_codPos.Size = New System.Drawing.Size(240, 216)
+        Me.dgv_codPos.Size = New System.Drawing.Size(265, 230)
         Me.dgv_codPos.TabIndex = 2
         '
         'GroupBox1
         '
-        Me.GroupBox1.Controls.Add(Me.txt_codPos)
         Me.GroupBox1.Controls.Add(Me.txt_nombre)
+        Me.GroupBox1.Controls.Add(Me.txt_codPos)
         Me.GroupBox1.Controls.Add(Me.lbl_codPos)
         Me.GroupBox1.Controls.Add(Me.lbl_nombre)
         Me.GroupBox1.Location = New System.Drawing.Point(12, 12)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(255, 84)
-        Me.GroupBox1.TabIndex = 14
+        Me.GroupBox1.Size = New System.Drawing.Size(255, 94)
+        Me.GroupBox1.TabIndex = 0
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Código Postal"
+        '
+        'cmd_cancelar
+        '
+        Me.cmd_cancelar.Image = Global.Asociacion.My.Resources.Resources.cancel
+        Me.cmd_cancelar.Location = New System.Drawing.Point(190, 290)
+        Me.cmd_cancelar.Name = "cmd_cancelar"
+        Me.cmd_cancelar.Size = New System.Drawing.Size(50, 50)
+        Me.cmd_cancelar.TabIndex = 4
+        Me.cmd_cancelar.UseVisualStyleBackColor = True
+        '
+        'cmd_eliminar
+        '
+        Me.cmd_eliminar.Image = Global.Asociacion.My.Resources.Resources.delete
+        Me.cmd_eliminar.Location = New System.Drawing.Point(134, 290)
+        Me.cmd_eliminar.Name = "cmd_eliminar"
+        Me.cmd_eliminar.Size = New System.Drawing.Size(50, 50)
+        Me.cmd_eliminar.TabIndex = 3
+        Me.cmd_eliminar.UseVisualStyleBackColor = True
+        '
+        'cmd_guardar
+        '
+        Me.cmd_guardar.Image = Global.Asociacion.My.Resources.Resources.save
+        Me.cmd_guardar.Location = New System.Drawing.Point(78, 290)
+        Me.cmd_guardar.Name = "cmd_guardar"
+        Me.cmd_guardar.Size = New System.Drawing.Size(50, 50)
+        Me.cmd_guardar.TabIndex = 2
+        Me.cmd_guardar.UseVisualStyleBackColor = True
+        '
+        'cmd_nuevo
+        '
+        Me.cmd_nuevo.Image = Global.Asociacion.My.Resources.Resources.add
+        Me.cmd_nuevo.Location = New System.Drawing.Point(22, 290)
+        Me.cmd_nuevo.Name = "cmd_nuevo"
+        Me.cmd_nuevo.Size = New System.Drawing.Size(50, 50)
+        Me.cmd_nuevo.TabIndex = 1
+        Me.cmd_nuevo.UseVisualStyleBackColor = True
+        '
+        'txt_codPos
+        '
+        Me.txt_codPos._BDdato = False
+        Me.txt_codPos._BDnombreCampoTabla = ""
+        Me.txt_codPos._BDvalor = ""
+        Me.txt_codPos._descriptor_del_contenido = ""
+        Me.txt_codPos._Gest_AnchoTexto = 0
+        Me.txt_codPos._Gest_decimales = 0
+        Me.txt_codPos._Gest_enteros = "0"
+        Me.txt_codPos._Gest_mensajeError = ""
+        Me.txt_codPos._Gest_mensajetooltips = "cambie el mensaje tip"
+        Me.txt_codPos._Gest_ReadOnly = False
+        Me.txt_codPos._Gest_TextoNegrita = False
+        Me.txt_codPos._Gest_tipo_dato = Asociacion.TextBoxv01.t_dato.texto
+        Me.txt_codPos._Gest_validar = True
+        Me.txt_codPos.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!)
+        Me.txt_codPos.Location = New System.Drawing.Point(95, 30)
+        Me.txt_codPos.Margin = New System.Windows.Forms.Padding(1)
+        Me.txt_codPos.Mask = "0000"
+        Me.txt_codPos.Name = "txt_codPos"
+        Me.txt_codPos.Size = New System.Drawing.Size(34, 20)
+        Me.txt_codPos.TabIndex = 0
+        Me.txt_codPos.ValidatingType = GetType(String)
         '
         'frm_ABMCodPos
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(550, 356)
+        Me.ClientSize = New System.Drawing.Size(557, 356)
         Me.Controls.Add(Me.cmd_salir)
         Me.Controls.Add(Me.cmd_buscar)
+        Me.Controls.Add(Me.cmd_cancelar)
         Me.Controls.Add(Me.cmd_eliminar)
         Me.Controls.Add(Me.cmd_guardar)
         Me.Controls.Add(Me.cmd_nuevo)
         Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.GroupBox1)
         Me.Name = "frm_ABMCodPos"
-        Me.Text = "frm_ABMCodPos"
+        Me.Text = "Gestión de Códigos Postales"
         Me.GroupBox2.ResumeLayout(False)
         CType(Me.dgv_codPos, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox1.ResumeLayout(False)
@@ -173,11 +202,12 @@ Partial Class frm_ABMCodPos
     Friend WithEvents cmd_buscar As System.Windows.Forms.Button
     Friend WithEvents cmd_eliminar As System.Windows.Forms.Button
     Friend WithEvents cmd_guardar As System.Windows.Forms.Button
-    Friend WithEvents txt_codPos As System.Windows.Forms.TextBox
     Friend WithEvents lbl_codPos As System.Windows.Forms.Label
     Friend WithEvents txt_nombre As System.Windows.Forms.TextBox
     Friend WithEvents cmd_nuevo As System.Windows.Forms.Button
     Friend WithEvents GroupBox2 As System.Windows.Forms.GroupBox
     Friend WithEvents dgv_codPos As System.Windows.Forms.DataGridView
     Friend WithEvents GroupBox1 As System.Windows.Forms.GroupBox
+    Friend WithEvents cmd_cancelar As System.Windows.Forms.Button
+    Friend WithEvents txt_codPos As Asociacion.TextBoxv01
 End Class

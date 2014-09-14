@@ -145,6 +145,12 @@ Public Class frm_ABMclubes
     End Sub
 
 
+    Private Sub cmd_nuevoCP_Click(sender As Object, e As EventArgs) Handles cmd_nuevoCP.Click
+        frm_ABMCodPos.Show()
+
+        'Agregar funcionalidad para que al crearse el cp nuevo, se muestre en el cbo de cp
+
+    End Sub
 
 
     'Closing
@@ -156,9 +162,6 @@ Public Class frm_ABMclubes
     End Sub
 
 
-    Private Sub cmd_nuevoCP_Click(sender As Object, e As EventArgs) Handles cmd_nuevoCP.Click
-        frm_ABMCodPos.Show()
-    End Sub
 
 
 End Class

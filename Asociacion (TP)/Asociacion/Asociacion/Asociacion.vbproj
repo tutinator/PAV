@@ -147,8 +147,25 @@
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Otros\" />
+    <Content Include="Otros\add.png" />
+    <Content Include="Otros\cancel.png" />
+    <Content Include="Otros\delete.png" />
+    <Content Include="Otros\done.png" />
+    <Content Include="Otros\edit.png" />
+    <Content Include="Otros\fileadd.png" />
+    <Content Include="Otros\save.png" />
+    <None Include="Resources\salir.png" />
+    <None Include="Resources\buscar.png" />
+    <None Include="Resources\atras.png" />
+    <None Include="Resources\save.png" />
+    <None Include="Resources\fileadd.png" />
+    <None Include="Resources\edit.png" />
+    <None Include="Resources\done.png" />
+    <None Include="Resources\delete.png" />
+    <None Include="Resources\cancel.png" />
+    <None Include="Resources\add.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
