@@ -1,13 +1,24 @@
 ﻿Public Class frm_ABMCodPos
 
+    Dim string_conexion As String = "Data Source=.\SQLEXPRESS;AttachDbFilename=""C:\Agus\GitHub\PAV\Asociacion (TP)\Asociacion\Asociacion\Otros\BD\natacion.mdf"";Integrated Security=True;Connect Timeout=30;User Instance=True"
     Private Sub frm_ABMCodPos_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         Me.inicio()
     End Sub
+    Dim accion As estado = estado.insertar
+    Enum estado
+        insertar
+        modificar
+    End Enum
+    Enum termino
+        aprobado
+        rechazado
+    End Enum
 
 
     'Subrutinas
 
     Private Sub inicio()
+        cargar_grilla()
         cambiarBotones(False)
         cambiarEntradas(False)
         Me.cmd_nuevo.Enabled = True
@@ -52,13 +63,51 @@
         cmd_cancelar.Enabled = x
     End Sub
 
+    Private Sub cargar_grilla()
+
+        Dim conexion As New Data.SqlClient.SqlConnection
+        conexion.ConnectionString = string_conexion
+        conexion.Open()
+        Dim tabla As New Data.DataTable
+        Dim cmd As New Data.SqlClient.SqlCommand
+        cmd.Connection = conexion
+        Dim consulta As String = ""
+        consulta = "SELECT codPos AS Codigo, nombre AS Nombre FROM CodPostales"
+        cmd.CommandType = CommandType.Text
+        cmd.CommandText = consulta
+        tabla.Load(cmd.ExecuteReader())
+
+        grid_codPos.DataSource = tabla
+        conexion.Close()
+
+    End Sub
+
+    Private Function insertar() As termino
+        Dim conexion As New Data.SqlClient.SqlConnection
+        conexion.ConnectionString = string_conexion
+        conexion.Open()
+
+        Dim cmd As New Data.SqlClient.SqlCommand
+        cmd.Connection = conexion
+        Dim consulta As String = ""
+        consulta = "INSERT into CodPostales (codPos,nombre) values ('" & Me.txt_codPos.Text & "'"
+        consulta &= ",'" & Me.txt_nombre.Text & "')"
+
+        cmd.CommandType = CommandType.Text
+        cmd.CommandText = consulta
+        cmd.ExecuteNonQuery()
+        conexion.Close()
+
+        Return termino.aprobado
+    End Function
 
     'Comandos
 
     Private Sub cmd_guardar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmd_guardar.Click
         If validarCampos() = True Then
-            Me.inicio()
+            Me.insertar()
             MessageBox.Show("Código postal cargado con éxito", "Operación completa")
+            Me.inicio()
         End If
     End Sub
 
@@ -96,16 +145,29 @@
         If txt_nombre.Text <> "" And txt_codPos.Text <> "" Then
             MsgBox("Ingrese sólo un criterio de búsqueda", MsgBoxStyle.Critical, "Importante")
             txt_codPos.Focus()
-            ' cmd_buscar.Enabled = True
         End If
 
         If txt_codPos.Text = "" Then
             If txt_nombre.Text = "" Then
                 MsgBox("Ingrese un dato para buscar", MsgBoxStyle.Critical, "Importante")
                 txt_codPos.Focus()
-                ' cmd_buscar.Enabled = True
             Else
-                'busqueda por nombre
+                Dim conexion As New Data.SqlClient.SqlConnection
+                conexion.ConnectionString = string_conexion
+                conexion.Open()
+                Dim tabla As New Data.DataTable
+                Dim cmd As New Data.SqlClient.SqlCommand
+                cmd.Connection = conexion
+                Dim consulta As String = ""
+                consulta = "SELECT codPos AS Codigo, nombre AS Nombre " &
+                            "FROM(CodPostales) " &
+                            "WHERE (nombre = " & Me.txt_nombre.Text & ")"
+                cmd.CommandType = CommandType.Text
+                cmd.CommandText = consulta
+                tabla.Load(cmd.ExecuteReader())
+
+                grid_codPos.DataSource = tabla
+                conexion.Close()
 
                 ' cmd_buscar.Enabled = True
 

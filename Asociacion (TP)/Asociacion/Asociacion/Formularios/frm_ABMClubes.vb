@@ -2,6 +2,7 @@
 
 Public Class frm_ABMclubes
 
+
     Private Sub frm_ABMClubes_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         Me.inicio()
     End Sub
@@ -73,6 +74,8 @@ Public Class frm_ABMclubes
         cmd_cancelar.Enabled = x
         cmd_nuevoCP.Enabled = x
     End Sub
+
+    
 
 
     'Comandos
@@ -146,7 +149,7 @@ Public Class frm_ABMclubes
 
 
     Private Sub cmd_nuevoCP_Click(sender As Object, e As EventArgs) Handles cmd_nuevoCP.Click
-        frm_ABMCodPos.Show()
+        frm_ABMCodPos.ShowDialog()
 
         'Agregar funcionalidad para que al crearse el cp nuevo, se muestre en el cbo de cp
 

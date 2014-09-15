@@ -38,7 +38,7 @@ Partial Class frm_ABMclubes
         Me.Label1 = New System.Windows.Forms.Label()
         Me.lbl_nombre = New System.Windows.Forms.Label()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
-        Me.DataGridView1 = New System.Windows.Forms.DataGridView()
+        Me.grid_clubes = New System.Windows.Forms.DataGridView()
         Me.cmd_salir = New System.Windows.Forms.Button()
         Me.cmd_buscar = New System.Windows.Forms.Button()
         Me.cmd_eliminar = New System.Windows.Forms.Button()
@@ -47,7 +47,7 @@ Partial Class frm_ABMclubes
         Me.cmd_cancelar = New System.Windows.Forms.Button()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.grid_clubes, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'GroupBox1
@@ -231,7 +231,7 @@ Partial Class frm_ABMclubes
         '
         'GroupBox2
         '
-        Me.GroupBox2.Controls.Add(Me.DataGridView1)
+        Me.GroupBox2.Controls.Add(Me.grid_clubes)
         Me.GroupBox2.Location = New System.Drawing.Point(265, 13)
         Me.GroupBox2.Name = "GroupBox2"
         Me.GroupBox2.Size = New System.Drawing.Size(262, 255)
@@ -239,13 +239,13 @@ Partial Class frm_ABMclubes
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Clubes registrados"
         '
-        'DataGridView1
+        'grid_clubes
         '
-        Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Location = New System.Drawing.Point(11, 19)
-        Me.DataGridView1.Name = "DataGridView1"
-        Me.DataGridView1.Size = New System.Drawing.Size(240, 216)
-        Me.DataGridView1.TabIndex = 0
+        Me.grid_clubes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.grid_clubes.Location = New System.Drawing.Point(11, 19)
+        Me.grid_clubes.Name = "grid_clubes"
+        Me.grid_clubes.Size = New System.Drawing.Size(240, 216)
+        Me.grid_clubes.TabIndex = 0
         '
         'cmd_salir
         '
@@ -319,7 +319,7 @@ Partial Class frm_ABMclubes
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
         Me.GroupBox2.ResumeLayout(False)
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.grid_clubes, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -332,7 +332,7 @@ Partial Class frm_ABMclubes
     Friend WithEvents lbl_nombre As System.Windows.Forms.Label
     Friend WithEvents GroupBox2 As System.Windows.Forms.GroupBox
     Friend WithEvents Label2 As System.Windows.Forms.Label
-    Friend WithEvents DataGridView1 As System.Windows.Forms.DataGridView
+    Friend WithEvents grid_clubes As System.Windows.Forms.DataGridView
     Friend WithEvents cmd_salir As System.Windows.Forms.Button
     Friend WithEvents cmd_buscar As System.Windows.Forms.Button
     Friend WithEvents cmd_eliminar As System.Windows.Forms.Button
