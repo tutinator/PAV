@@ -10,8 +10,8 @@ Public Class frm_ABMclubes
     'Subrutinas
 
     Private Sub inicio()
-        cambiarBotones(False)
         cambiarEntradas(False)
+        cambiarBotones(False)
         Me.cmd_nuevo.Enabled = True
         Me.cmd_buscar.Enabled = True
         Me.cmd_salir.Enabled = True
@@ -83,7 +83,7 @@ Public Class frm_ABMclubes
     Private Sub cmd_guardar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmd_guardar.Click
         If validarCampos() = True Then
             Me.inicio()
-            MessageBox.Show("Club cargado con éxito", "Operación completa")
+            MessageBox.Show("Club guardado con éxito", "Operación completa")
         End If
     End Sub
 
@@ -154,6 +154,8 @@ Public Class frm_ABMclubes
         'Agregar funcionalidad para que al crearse el cp nuevo, se muestre en el cbo de cp
 
     End Sub
+
+
 
 
     'Closing

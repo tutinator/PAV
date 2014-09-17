@@ -1,6 +1,7 @@
 ﻿Public Class frm_ABMCodPos
 
-    Dim string_conexion As String = "Data Source=.\SQLEXPRESS;AttachDbFilename=""C:\Agus\GitHub\PAV\Asociacion (TP)\Asociacion\Asociacion\Otros\BD\natacion.mdf"";Integrated Security=True;Connect Timeout=30;User Instance=True"
+    Dim string_conexion As String = "Data Source=.\SQLEXPRESS;AttachDbFilename=""C:\Users\Franco\Documents\FACU\2014\Economia\PAV\PAV\Asociacion (TP)\Asociacion\Asociacion\Otros\BD\natacion.mdf"";Integrated Security=True;Connect Timeout=30;User Instance=True"
+    '"Data Source=.\SQLEXPRESS;AttachDbFilename=""C:\Agus\GitHub\PAV\Asociacion (TP)\Asociacion\Asociacion\Otros\BD\natacion.mdf"";Integrated Security=True;Connect Timeout=30;User Instance=True"
     Private Sub frm_ABMCodPos_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         Me.inicio()
     End Sub
