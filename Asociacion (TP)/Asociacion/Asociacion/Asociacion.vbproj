@@ -87,6 +87,7 @@
     <Import Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Clases\accesoBD.vb" />
     <Compile Include="Clases\TextBoxv01.vb">
       <SubType>Component</SubType>
     </Compile>

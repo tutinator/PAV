@@ -1,19 +1,24 @@
 ﻿Public Class frm_ABMCodPos
 
-    Dim string_conexion As String = "Data Source=.\SQLEXPRESS;AttachDbFilename=""C:\Users\Franco\Documents\FACU\2014\Economia\PAV\PAV\Asociacion (TP)\Asociacion\Asociacion\Otros\BD\natacion.mdf"";Integrated Security=True;Connect Timeout=30;User Instance=True"
-    '"Data Source=.\SQLEXPRESS;AttachDbFilename=""C:\Agus\GitHub\PAV\Asociacion (TP)\Asociacion\Asociacion\Otros\BD\natacion.mdf"";Integrated Security=True;Connect Timeout=30;User Instance=True"
-    Private Sub frm_ABMCodPos_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        Me.inicio()
-    End Sub
+    Dim string_conexion As String = "Data Source=.\SQLEXPRESS;AttachDbFilename=""C:\Agus\GitHub\PAV\Asociacion (TP)\Asociacion\Asociacion\Otros\BD\natacion.mdf"";Integrated Security=True;Connect Timeout=30;User Instance=True"
+    Dim acceso As New accesoBD
+    '"Data Source=.\SQLEXPRESS;AttachDbFilename=""C:\Users\Franco\Documents\FACU\2014\Economia\PAV\PAV\Asociacion (TP)\Asociacion\Asociacion\Otros\BD\natacion.mdf"";Integrated Security=True;Connect Timeout=30;User Instance=True"
     Dim accion As estado = estado.insertar
+
     Enum estado
         insertar
         modificar
     End Enum
+
     Enum termino
         aprobado
         rechazado
     End Enum
+
+    Private Sub frm_ABMCodPos_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        Me.inicio()
+    End Sub
+    
 
 
     'Subrutinas
@@ -31,7 +36,6 @@
     Private Sub limpiarCampos()
         txt_codPos.Text = ""
         txt_nombre.Text = ""
-        
     End Sub
 
     Private Function validarCampos()
@@ -124,22 +128,23 @@
     End Function
 
     Private Function insertar() As termino
-        Dim conexion As New Data.SqlClient.SqlConnection
-        conexion.ConnectionString = string_conexion
-        conexion.Open()
+        ' Dim conexion As New Data.SqlClient.SqlConnection
+        'conexion.ConnectionString = string_conexion
+        ' conexion.Open()
+        ' Dim cmd As New Data.SqlClient.SqlCommand
+        ' cmd.Connection = conexion
+        'cmd.CommandType = CommandType.Text
+        'cmd.CommandText = consulta
+        ' cmd.ExecuteNonQuery()
+        'conexion.Close()
 
-        Dim cmd As New Data.SqlClient.SqlCommand
-        cmd.Connection = conexion
+
         Dim consulta As String = ""
         consulta = "INSERT into CodPostales (codPos,nombre) values ('" & Me.txt_codPos.Text & "'"
         consulta &= ",'" & Me.txt_nombre.Text & "')"
-
-        cmd.CommandType = CommandType.Text
-        cmd.CommandText = consulta
-        cmd.ExecuteNonQuery()
-        conexion.Close()
-
+        acceso.ejecutarNonConsulta(consulta)
         Return termino.aprobado
+
     End Function
 
     Private Function validar_existencia() As termino
@@ -318,4 +323,5 @@
         Me.accion = estado.modificar
         conexion.Close()
     End Sub
+
 End Class

@@ -48,17 +48,17 @@ Partial Class frm_ABMnadadores
         Me.cmd_salir = New System.Windows.Forms.Button()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.txt_nroCalle = New Asociacion.TextBoxv01()
+        Me.txt_codNadador = New Asociacion.TextBoxv01()
         Me.txt_nroDoc = New Asociacion.TextBoxv01()
         Me.cmd_nuevoProfe = New System.Windows.Forms.Button()
         Me.cmd_nuevoCP = New System.Windows.Forms.Button()
         Me.cmb_profesor = New System.Windows.Forms.ComboBox()
         Me.cmb_codPos = New System.Windows.Forms.ComboBox()
         Me.lbl_profesor = New System.Windows.Forms.Label()
+        Me.lbl_codNadador = New System.Windows.Forms.Label()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.grid_nadadores = New System.Windows.Forms.DataGridView()
         Me.cmd_eliminar = New System.Windows.Forms.Button()
-        Me.lbl_codNadador = New System.Windows.Forms.Label()
-        Me.txt_codNadador = New Asociacion.TextBoxv01()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         CType(Me.grid_nadadores, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -69,18 +69,18 @@ Partial Class frm_ABMnadadores
         Me.lbl_nombre.AutoSize = True
         Me.lbl_nombre.Location = New System.Drawing.Point(77, 97)
         Me.lbl_nombre.Name = "lbl_nombre"
-        Me.lbl_nombre.Size = New System.Drawing.Size(57, 13)
+        Me.lbl_nombre.Size = New System.Drawing.Size(48, 13)
         Me.lbl_nombre.TabIndex = 0
-        Me.lbl_nombre.Text = "Nombre (*)"
+        Me.lbl_nombre.Text = "Nombre*"
         '
         'lbl_apellido
         '
         Me.lbl_apellido.AutoSize = True
         Me.lbl_apellido.Location = New System.Drawing.Point(77, 65)
         Me.lbl_apellido.Name = "lbl_apellido"
-        Me.lbl_apellido.Size = New System.Drawing.Size(57, 13)
+        Me.lbl_apellido.Size = New System.Drawing.Size(48, 13)
         Me.lbl_apellido.TabIndex = 1
-        Me.lbl_apellido.Text = "Apellido (*)"
+        Me.lbl_apellido.Text = "Apellido*"
         '
         'txt_nombre
         '
@@ -109,9 +109,9 @@ Partial Class frm_ABMnadadores
         Me.lbl_tipoDoc.AutoSize = True
         Me.lbl_tipoDoc.Location = New System.Drawing.Point(22, 161)
         Me.lbl_tipoDoc.Name = "lbl_tipoDoc"
-        Me.lbl_tipoDoc.Size = New System.Drawing.Size(112, 13)
+        Me.lbl_tipoDoc.Size = New System.Drawing.Size(103, 13)
         Me.lbl_tipoDoc.TabIndex = 0
-        Me.lbl_tipoDoc.Text = "Tipo de documento (*)"
+        Me.lbl_tipoDoc.Text = "Tipo de documento*"
         '
         'lbl_email
         '
@@ -134,9 +134,9 @@ Partial Class frm_ABMnadadores
         Me.lbl_sexo.AutoSize = True
         Me.lbl_sexo.Location = New System.Drawing.Point(53, 266)
         Me.lbl_sexo.Name = "lbl_sexo"
-        Me.lbl_sexo.Size = New System.Drawing.Size(44, 13)
+        Me.lbl_sexo.Size = New System.Drawing.Size(35, 13)
         Me.lbl_sexo.TabIndex = 0
-        Me.lbl_sexo.Text = "Sexo (*)"
+        Me.lbl_sexo.Text = "Sexo*"
         '
         'opt_masculino
         '
@@ -165,9 +165,9 @@ Partial Class frm_ABMnadadores
         Me.Label1.AutoSize = True
         Me.Label1.Location = New System.Drawing.Point(6, 193)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(128, 13)
+        Me.Label1.Size = New System.Drawing.Size(119, 13)
         Me.Label1.TabIndex = 0
-        Me.Label1.Text = "Número de documento (*)"
+        Me.Label1.Text = "Número de documento*"
         '
         'Label2
         '
@@ -325,6 +325,30 @@ Partial Class frm_ABMnadadores
         Me.txt_nroCalle.TabIndex = 10
         Me.txt_nroCalle.ValidatingType = GetType(Integer)
         '
+        'txt_codNadador
+        '
+        Me.txt_codNadador._BDdato = False
+        Me.txt_codNadador._BDnombreCampoTabla = ""
+        Me.txt_codNadador._BDvalor = ""
+        Me.txt_codNadador._descriptor_del_contenido = ""
+        Me.txt_codNadador._Gest_AnchoTexto = 0
+        Me.txt_codNadador._Gest_decimales = 0
+        Me.txt_codNadador._Gest_enteros = "0"
+        Me.txt_codNadador._Gest_mensajeError = ""
+        Me.txt_codNadador._Gest_mensajetooltips = "cambie el mensaje tip"
+        Me.txt_codNadador._Gest_ReadOnly = False
+        Me.txt_codNadador._Gest_TextoNegrita = False
+        Me.txt_codNadador._Gest_tipo_dato = Asociacion.TextBoxv01.t_dato.texto
+        Me.txt_codNadador._Gest_validar = True
+        Me.txt_codNadador.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!)
+        Me.txt_codNadador.Location = New System.Drawing.Point(140, 29)
+        Me.txt_codNadador.Margin = New System.Windows.Forms.Padding(1)
+        Me.txt_codNadador.Mask = "999999"
+        Me.txt_codNadador.Name = "txt_codNadador"
+        Me.txt_codNadador.Size = New System.Drawing.Size(53, 20)
+        Me.txt_codNadador.TabIndex = 0
+        Me.txt_codNadador.ValidatingType = GetType(String)
+        '
         'txt_nroDoc
         '
         Me.txt_nroDoc._BDdato = False
@@ -392,6 +416,15 @@ Partial Class frm_ABMnadadores
         Me.lbl_profesor.TabIndex = 0
         Me.lbl_profesor.Text = "Profesor"
         '
+        'lbl_codNadador
+        '
+        Me.lbl_codNadador.AutoSize = True
+        Me.lbl_codNadador.Location = New System.Drawing.Point(50, 32)
+        Me.lbl_codNadador.Name = "lbl_codNadador"
+        Me.lbl_codNadador.Size = New System.Drawing.Size(84, 13)
+        Me.lbl_codNadador.TabIndex = 1
+        Me.lbl_codNadador.Text = "Código Nadador"
+        '
         'GroupBox2
         '
         Me.GroupBox2.Controls.Add(Me.grid_nadadores)
@@ -418,38 +451,6 @@ Partial Class frm_ABMnadadores
         Me.cmd_eliminar.Size = New System.Drawing.Size(50, 50)
         Me.cmd_eliminar.TabIndex = 2
         Me.cmd_eliminar.UseVisualStyleBackColor = True
-        '
-        'lbl_codNadador
-        '
-        Me.lbl_codNadador.AutoSize = True
-        Me.lbl_codNadador.Location = New System.Drawing.Point(50, 32)
-        Me.lbl_codNadador.Name = "lbl_codNadador"
-        Me.lbl_codNadador.Size = New System.Drawing.Size(84, 13)
-        Me.lbl_codNadador.TabIndex = 1
-        Me.lbl_codNadador.Text = "Código Nadador"
-        '
-        'txt_codNadador
-        '
-        Me.txt_codNadador._BDdato = False
-        Me.txt_codNadador._BDnombreCampoTabla = ""
-        Me.txt_codNadador._BDvalor = ""
-        Me.txt_codNadador._descriptor_del_contenido = ""
-        Me.txt_codNadador._Gest_AnchoTexto = 0
-        Me.txt_codNadador._Gest_decimales = 0
-        Me.txt_codNadador._Gest_enteros = "0"
-        Me.txt_codNadador._Gest_mensajeError = ""
-        Me.txt_codNadador._Gest_mensajetooltips = "cambie el mensaje tip"
-        Me.txt_codNadador._Gest_ReadOnly = False
-        Me.txt_codNadador._Gest_TextoNegrita = False
-        Me.txt_codNadador._Gest_tipo_dato = Asociacion.TextBoxv01.t_dato.texto
-        Me.txt_codNadador._Gest_validar = True
-        Me.txt_codNadador.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!)
-        Me.txt_codNadador.Location = New System.Drawing.Point(140, 29)
-        Me.txt_codNadador.Margin = New System.Windows.Forms.Padding(1)
-        Me.txt_codNadador.Mask = "999999"
-        Me.txt_codNadador.Name = "txt_codNadador"
-        Me.txt_codNadador.Size = New System.Drawing.Size(53, 20)
-        Me.txt_codNadador.TabIndex = 0
         '
         'frm_ABMnadadores
         '

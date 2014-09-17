@@ -2,6 +2,18 @@
 
 Public Class frm_ABMclubes
 
+    Dim acceso As New accesoBD
+    Dim accion As estado = estado.insertar
+
+    Enum estado
+        insertar
+        modificar
+    End Enum
+
+    Enum termino
+        aprobado
+        rechazado
+    End Enum
 
     Private Sub frm_ABMClubes_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         Me.inicio()
@@ -10,11 +22,14 @@ Public Class frm_ABMclubes
     'Subrutinas
 
     Private Sub inicio()
+        cargar_grilla()
         cambiarEntradas(False)
         cambiarBotones(False)
+        cargar_combos()
         Me.cmd_nuevo.Enabled = True
         Me.cmd_buscar.Enabled = True
         Me.cmd_salir.Enabled = True
+        Me.txt_codClub.Focus()
     End Sub
 
     Private Sub limpiarCampos()
@@ -75,9 +90,60 @@ Public Class frm_ABMclubes
         cmd_nuevoCP.Enabled = x
     End Sub
 
-    
+    Private Function leo_tabla(ByRef _tabla) As DataTable
+        Dim consulta As String = ""
+        consulta = "SELECT * FROM " & _tabla
+        Return acceso.ejecutar(consulta)
+    End Function
 
+    Private Sub cargar_grilla()
 
+        Dim consulta As String = ""
+        consulta = "SELECT Clubes.codClub AS Codigo, Clubes.nombre AS Nombre, Clubes.calle AS Calle, Clubes.numero AS Numero, Clubes.telefono AS Telefono, "
+        consulta &= "CodPostales.nombre AS [Codigo Postal] "
+        consulta &= "FROM Clubes INNER JOIN CodPostales ON Clubes.codPos = CodPostales.codPos"
+
+        grid_clubes.DataSource = acceso.ejecutar(consulta)
+
+    End Sub
+
+    Private Sub cargar_combo(ByRef combo As ComboBox, ByVal nombre_tabla As DataTable, ByVal pk As String, ByVal descrip As String)
+
+        combo.DataSource = nombre_tabla
+        combo.ValueMember = pk
+        combo.DisplayMember = descrip
+
+    End Sub
+
+    Private Sub cargar_combos()
+        cargar_combo(cmb_codPos, leo_tabla("CodPostales"), "codPos", "codPos")
+    End Sub
+
+    Private Function modificar() As termino
+
+        Dim consulta As String = ""
+        consulta = "UPDATE Clubes SET nombre = '" & Me.txt_nombre.Text & "', "
+        consulta &= "calle = '" & Me.txt_calle.Text & "', "
+        consulta &= "numero = " & Me.txt_nroCalle.Text & ", "
+        consulta &= "telefono = " & Me.txt_telefono.Text & ", "
+        consulta &= "telefono = " & Me.txt_telefono.Text & " "
+        consulta &= "WHERE codClub = " & Me.txt_codClub.Text
+
+        acceso.ejecutarNonConsulta(consulta)
+
+        Return termino.aprobado
+
+    End Function
+
+    Private Function insertar() As termino
+
+        Dim consulta As String = ""
+        consulta = "INSERT into Clubes "
+        consulta &= "values ('" & Me.txt_codClub.Text & "', '" & Me.txt_nombre.Text & "')"
+        acceso.ejecutarNonConsulta(consulta)
+        Return termino.aprobado
+
+    End Function
     'Comandos
 
     Private Sub cmd_guardar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmd_guardar.Click
@@ -169,4 +235,14 @@ Public Class frm_ABMclubes
 
 
 
+    Private Sub cmb_codPos_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmb_codPos.SelectedIndexChanged
+        Dim consulta As String = ""
+        consulta = "SELECT nombre FROM CodPostales WHERE codPos = " & cmb_codPos.SelectedValue.ToString
+        Dim tabla As Data.DataTable
+
+        tabla = acceso.ejecutar(consulta)
+
+        lbl_codPos.Text = tabla.Rows(0)("nombre").ToString
+
+    End Sub
 End Class
