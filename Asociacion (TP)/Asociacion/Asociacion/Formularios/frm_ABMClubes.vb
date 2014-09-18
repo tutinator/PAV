@@ -139,17 +139,50 @@ Public Class frm_ABMclubes
 
         Dim consulta As String = ""
         consulta = "INSERT into Clubes "
-        consulta &= "values ('" & Me.txt_codClub.Text & "', '" & Me.txt_nombre.Text & "')"
+        consulta &= "values ('" & Me.txt_codClub.Text & "', '" & Me.txt_nombre.Text & "', "
+        consulta &= "'" & Me.txt_calle.Text & "', " & Me.txt_nroCalle.Text & ", "
+        consulta &= Me.txt_telefono.Text & ", " & Me.cmb_codPos.SelectedValue.ToString & ")"
+
         acceso.ejecutarNonConsulta(consulta)
         Return termino.aprobado
 
     End Function
+
+    Private Function validar_existencia() As termino
+       
+        Dim consulta As String = ""
+        Dim tabla As Data.DataTable
+
+        consulta = "select * from Clubes where codClub = " & Me.txt_codClub.Text
+        tabla = acceso.ejecutar(consulta)
+
+        
+        If tabla.Rows.Count() = 1 Then
+            Return termino.rechazado
+        Else
+            Return termino.aprobado
+        End If
+    End Function
     'Comandos
 
     Private Sub cmd_guardar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmd_guardar.Click
+        
         If validarCampos() = True Then
+            If Me.accion = estado.insertar Then
+                If validar_existencia() = termino.aprobado Then
+                    Me.insertar()
+                    MessageBox.Show("Nuevo Club cargado con éxito", "Operación completa")
+
+                Else : MessageBox.Show("El Club que intenta guardar ya está registrado", "Error")
+
+
+
+                End If
+            Else : Me.modificar()
+                MessageBox.Show("Club modificado con éxito", "Operación completa")
+            End If
+
             Me.inicio()
-            MessageBox.Show("Club guardado con éxito", "Operación completa")
         End If
     End Sub
 
@@ -236,13 +269,13 @@ Public Class frm_ABMclubes
 
 
     Private Sub cmb_codPos_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmb_codPos.SelectedIndexChanged
-        Dim consulta As String = ""
-        consulta = "SELECT nombre FROM CodPostales WHERE codPos = " & cmb_codPos.SelectedValue.ToString
-        Dim tabla As Data.DataTable
+        ' Dim consulta As String = ""
+        'consulta = "SELECT nombre FROM CodPostales WHERE codPos = " & cmb_codPos.SelectedValue.ToString
+        'Dim tabla As Data.DataTable
 
-        tabla = acceso.ejecutar(consulta)
+        'tabla = acceso.ejecutar(consulta)
 
-        lbl_codPos.Text = tabla.Rows(0)("nombre").ToString
+        '        lbl_codPos.Text = tabla.Rows(0)("nombre").ToString
 
     End Sub
 End Class
