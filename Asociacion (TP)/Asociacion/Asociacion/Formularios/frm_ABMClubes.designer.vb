@@ -24,6 +24,7 @@ Partial Class frm_ABMclubes
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.lbl_codPos = New System.Windows.Forms.Label()
         Me.cmd_nuevoCP = New System.Windows.Forms.Button()
         Me.cmb_codPos = New System.Windows.Forms.ComboBox()
         Me.txt_calle = New System.Windows.Forms.TextBox()
@@ -45,7 +46,6 @@ Partial Class frm_ABMclubes
         Me.txt_telefono = New Asociacion.TextBoxv01()
         Me.txt_nroCalle = New Asociacion.TextBoxv01()
         Me.txt_codClub = New Asociacion.TextBoxv01()
-        Me.lbl_codPos = New System.Windows.Forms.Label()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         CType(Me.grid_clubes, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -74,6 +74,14 @@ Partial Class frm_ABMclubes
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Club"
         '
+        'lbl_codPos
+        '
+        Me.lbl_codPos.AutoSize = True
+        Me.lbl_codPos.Location = New System.Drawing.Point(489, 53)
+        Me.lbl_codPos.Name = "lbl_codPos"
+        Me.lbl_codPos.Size = New System.Drawing.Size(0, 13)
+        Me.lbl_codPos.TabIndex = 8
+        '
         'cmd_nuevoCP
         '
         Me.cmd_nuevoCP.Location = New System.Drawing.Point(587, 26)
@@ -85,7 +93,9 @@ Partial Class frm_ABMclubes
         '
         'cmb_codPos
         '
-        Me.cmb_codPos.FormattingEnabled = True
+        Me.cmb_codPos.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend
+        Me.cmb_codPos.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
+        Me.cmb_codPos.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cmb_codPos.Location = New System.Drawing.Point(492, 26)
         Me.cmb_codPos.Name = "cmb_codPos"
         Me.cmb_codPos.Size = New System.Drawing.Size(89, 21)
@@ -302,14 +312,6 @@ Partial Class frm_ABMclubes
         Me.txt_codClub.Size = New System.Drawing.Size(42, 20)
         Me.txt_codClub.TabIndex = 0
         Me.txt_codClub.ValidatingType = GetType(Integer)
-        '
-        'lbl_codPos
-        '
-        Me.lbl_codPos.AutoSize = True
-        Me.lbl_codPos.Location = New System.Drawing.Point(489, 53)
-        Me.lbl_codPos.Name = "lbl_codPos"
-        Me.lbl_codPos.Size = New System.Drawing.Size(0, 13)
-        Me.lbl_codPos.TabIndex = 8
         '
         'frm_ABMclubes
         '

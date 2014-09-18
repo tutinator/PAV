@@ -237,7 +237,7 @@
 
         cambiarBotones(False)
         Me.cmd_cancelar.Enabled = True
-        cmd_buscar.Enabled = True
+        Me.cmd_buscar.Enabled = True
 
 
         If txt_nombre.Text <> "" And txt_codPos.Text <> "" Then
@@ -250,40 +250,23 @@
                     MsgBox("Ingrese un dato para buscar", MsgBoxStyle.Critical, "Importante")
                     txt_codPos.Focus()
                 Else
-                    Dim conexion As New Data.SqlClient.SqlConnection
-                    Dim cmd As New Data.SqlClient.SqlCommand
+                    
                     Dim consulta As String = ""
                     Dim dt As New Data.DataTable
-                    conexion.ConnectionString = Me.string_conexion
-                    conexion.Open()
-                    consulta = "SELECT * FROM CodPostales WHERE nombre = '" & Me.txt_nombre.Text & "'"
-                    cmd.CommandType = CommandType.Text
-                    cmd.CommandText = consulta
-                    cmd.Connection = conexion
+                    
+                    consulta = "SELECT * FROM CodPostales WHERE nombre LIKE '%" & Me.txt_nombre.Text & "%'"
+                    
+                    dt = acceso.ejecutar(consulta)
 
-                    dt.Load(cmd.ExecuteReader())
                     grid_codPos.DataSource = dt
-                    conexion.Close()
-
-
                 End If
             Else
-                Dim conexion As New Data.SqlClient.SqlConnection
-                Dim cmd As New Data.SqlClient.SqlCommand
+                
                 Dim consulta As String = ""
                 Dim dt As New Data.DataTable
-                conexion.ConnectionString = Me.string_conexion
-                conexion.Open()
                 consulta = "SELECT * FROM CodPostales WHERE codPos = '" & Me.txt_codPos.Text & "'"
-                cmd.CommandType = CommandType.Text
-                cmd.CommandText = consulta
-                cmd.Connection = conexion
-
-                dt.Load(cmd.ExecuteReader())
+                dt = acceso.ejecutar(consulta)
                 grid_codPos.DataSource = dt
-                conexion.Close()
-
-
             End If
 
         End If
@@ -298,17 +281,14 @@
 
         'Dim codigoSeleccionado As String = grid_codPos.SelectedRows.Item(0).ToString()
         Dim codigoSeleccionado As String = Me.grid_codPos.CurrentRow.Cells(0).Value
-        Dim conexion As New Data.SqlClient.SqlConnection
-        conexion.ConnectionString = string_conexion
-        conexion.Open()
+        
         Dim tabla As New Data.DataTable
-        Dim cmd As New Data.SqlClient.SqlCommand
-        cmd.Connection = conexion
+        
         Dim consulta As String = ""
         consulta = "SELECT * FROM CodPostales WHERE codPos = " & codigoSeleccionado
-        cmd.CommandType = CommandType.Text
-        cmd.CommandText = consulta
-        tabla.Load(cmd.ExecuteReader())
+
+        
+        tabla = acceso.ejecutar(consulta)
 
         Me.txt_codPos.Text = tabla.Rows(0)("codPos")
         Me.txt_nombre.Text = tabla.Rows(0)("nombre")
@@ -321,7 +301,7 @@
         txt_nombre.Focus()
 
         Me.accion = estado.modificar
-        conexion.Close()
+
     End Sub
 
 End Class
