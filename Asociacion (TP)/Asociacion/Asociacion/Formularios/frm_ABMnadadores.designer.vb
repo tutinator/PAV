@@ -47,13 +47,16 @@ Partial Class frm_ABMnadadores
         Me.cmd_buscar = New System.Windows.Forms.Button()
         Me.cmd_salir = New System.Windows.Forms.Button()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.cmd_nuevoClub = New System.Windows.Forms.Button()
         Me.txt_nroCalle = New Asociacion.TextBoxv01()
         Me.txt_codNadador = New Asociacion.TextBoxv01()
         Me.txt_nroDoc = New Asociacion.TextBoxv01()
         Me.cmd_nuevoProfe = New System.Windows.Forms.Button()
         Me.cmd_nuevoCP = New System.Windows.Forms.Button()
+        Me.cmb_club = New System.Windows.Forms.ComboBox()
         Me.cmb_profesor = New System.Windows.Forms.ComboBox()
         Me.cmb_codPos = New System.Windows.Forms.ComboBox()
+        Me.lbl_club = New System.Windows.Forms.Label()
         Me.lbl_profesor = New System.Windows.Forms.Label()
         Me.lbl_codNadador = New System.Windows.Forms.Label()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
@@ -98,6 +101,7 @@ Partial Class frm_ABMnadadores
         '
         'cmb_tipoDoc
         '
+        Me.cmb_tipoDoc.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cmb_tipoDoc.FormattingEnabled = True
         Me.cmb_tipoDoc.Location = New System.Drawing.Point(140, 158)
         Me.cmb_tipoDoc.Name = "cmb_tipoDoc"
@@ -223,7 +227,7 @@ Partial Class frm_ABMnadadores
         'cmd_nuevo
         '
         Me.cmd_nuevo.Image = Global.Asociacion.My.Resources.Resources.add
-        Me.cmd_nuevo.Location = New System.Drawing.Point(13, 484)
+        Me.cmd_nuevo.Location = New System.Drawing.Point(13, 523)
         Me.cmd_nuevo.Name = "cmd_nuevo"
         Me.cmd_nuevo.Size = New System.Drawing.Size(50, 50)
         Me.cmd_nuevo.TabIndex = 8
@@ -232,7 +236,7 @@ Partial Class frm_ABMnadadores
         'cmd_guardar
         '
         Me.cmd_guardar.Image = Global.Asociacion.My.Resources.Resources.save
-        Me.cmd_guardar.Location = New System.Drawing.Point(69, 484)
+        Me.cmd_guardar.Location = New System.Drawing.Point(69, 523)
         Me.cmd_guardar.Name = "cmd_guardar"
         Me.cmd_guardar.Size = New System.Drawing.Size(50, 50)
         Me.cmd_guardar.TabIndex = 1
@@ -241,7 +245,7 @@ Partial Class frm_ABMnadadores
         'cmd_cancelar
         '
         Me.cmd_cancelar.Image = Global.Asociacion.My.Resources.Resources.cancel
-        Me.cmd_cancelar.Location = New System.Drawing.Point(181, 484)
+        Me.cmd_cancelar.Location = New System.Drawing.Point(181, 523)
         Me.cmd_cancelar.Name = "cmd_cancelar"
         Me.cmd_cancelar.Size = New System.Drawing.Size(50, 50)
         Me.cmd_cancelar.TabIndex = 3
@@ -250,7 +254,7 @@ Partial Class frm_ABMnadadores
         'cmd_buscar
         '
         Me.cmd_buscar.Image = Global.Asociacion.My.Resources.Resources.buscar
-        Me.cmd_buscar.Location = New System.Drawing.Point(333, 484)
+        Me.cmd_buscar.Location = New System.Drawing.Point(333, 523)
         Me.cmd_buscar.Name = "cmd_buscar"
         Me.cmd_buscar.Size = New System.Drawing.Size(50, 50)
         Me.cmd_buscar.TabIndex = 4
@@ -259,7 +263,7 @@ Partial Class frm_ABMnadadores
         'cmd_salir
         '
         Me.cmd_salir.Image = Global.Asociacion.My.Resources.Resources.salir
-        Me.cmd_salir.Location = New System.Drawing.Point(604, 484)
+        Me.cmd_salir.Location = New System.Drawing.Point(604, 523)
         Me.cmd_salir.Name = "cmd_salir"
         Me.cmd_salir.Size = New System.Drawing.Size(50, 50)
         Me.cmd_salir.TabIndex = 5
@@ -267,17 +271,20 @@ Partial Class frm_ABMnadadores
         '
         'GroupBox1
         '
+        Me.GroupBox1.Controls.Add(Me.cmd_nuevoClub)
         Me.GroupBox1.Controls.Add(Me.txt_nroCalle)
         Me.GroupBox1.Controls.Add(Me.txt_codNadador)
         Me.GroupBox1.Controls.Add(Me.txt_nroDoc)
         Me.GroupBox1.Controls.Add(Me.cmd_nuevoProfe)
         Me.GroupBox1.Controls.Add(Me.cmd_nuevoCP)
+        Me.GroupBox1.Controls.Add(Me.cmb_club)
         Me.GroupBox1.Controls.Add(Me.cmb_profesor)
         Me.GroupBox1.Controls.Add(Me.cmb_codPos)
         Me.GroupBox1.Controls.Add(Me.opt_femenino)
         Me.GroupBox1.Controls.Add(Me.msk_fechaNacimiento)
         Me.GroupBox1.Controls.Add(Me.opt_masculino)
         Me.GroupBox1.Controls.Add(Me.lbl_sexo)
+        Me.GroupBox1.Controls.Add(Me.lbl_club)
         Me.GroupBox1.Controls.Add(Me.lbl_profesor)
         Me.GroupBox1.Controls.Add(Me.lbl_numero)
         Me.GroupBox1.Controls.Add(Me.lbl_codPostal)
@@ -296,10 +303,19 @@ Partial Class frm_ABMnadadores
         Me.GroupBox1.Controls.Add(Me.Label2)
         Me.GroupBox1.Location = New System.Drawing.Point(13, 12)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(309, 466)
+        Me.GroupBox1.Size = New System.Drawing.Size(309, 505)
         Me.GroupBox1.TabIndex = 0
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Nadador"
+        '
+        'cmd_nuevoClub
+        '
+        Me.cmd_nuevoClub.Location = New System.Drawing.Point(209, 474)
+        Me.cmd_nuevoClub.Name = "cmd_nuevoClub"
+        Me.cmd_nuevoClub.Size = New System.Drawing.Size(75, 23)
+        Me.cmd_nuevoClub.TabIndex = 15
+        Me.cmd_nuevoClub.Text = "Nuevo Club"
+        Me.cmd_nuevoClub.UseVisualStyleBackColor = True
         '
         'txt_nroCalle
         '
@@ -345,7 +361,7 @@ Partial Class frm_ABMnadadores
         Me.txt_codNadador.Margin = New System.Windows.Forms.Padding(1)
         Me.txt_codNadador.Mask = "999999"
         Me.txt_codNadador.Name = "txt_codNadador"
-        Me.txt_codNadador.Size = New System.Drawing.Size(53, 20)
+        Me.txt_codNadador.Size = New System.Drawing.Size(43, 20)
         Me.txt_codNadador.TabIndex = 0
         Me.txt_codNadador.ValidatingType = GetType(String)
         '
@@ -391,8 +407,18 @@ Partial Class frm_ABMnadadores
         Me.cmd_nuevoCP.Text = "Nuevo CP"
         Me.cmd_nuevoCP.UseVisualStyleBackColor = True
         '
+        'cmb_club
+        '
+        Me.cmb_club.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cmb_club.FormattingEnabled = True
+        Me.cmb_club.Location = New System.Drawing.Point(140, 446)
+        Me.cmb_club.Name = "cmb_club"
+        Me.cmb_club.Size = New System.Drawing.Size(145, 21)
+        Me.cmb_club.TabIndex = 13
+        '
         'cmb_profesor
         '
+        Me.cmb_profesor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cmb_profesor.FormattingEnabled = True
         Me.cmb_profesor.Location = New System.Drawing.Point(140, 391)
         Me.cmb_profesor.Name = "cmb_profesor"
@@ -401,11 +427,21 @@ Partial Class frm_ABMnadadores
         '
         'cmb_codPos
         '
+        Me.cmb_codPos.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cmb_codPos.FormattingEnabled = True
         Me.cmb_codPos.Location = New System.Drawing.Point(140, 364)
         Me.cmb_codPos.Name = "cmb_codPos"
         Me.cmb_codPos.Size = New System.Drawing.Size(53, 21)
         Me.cmb_codPos.TabIndex = 11
+        '
+        'lbl_club
+        '
+        Me.lbl_club.AutoSize = True
+        Me.lbl_club.Location = New System.Drawing.Point(97, 449)
+        Me.lbl_club.Name = "lbl_club"
+        Me.lbl_club.Size = New System.Drawing.Size(28, 13)
+        Me.lbl_club.TabIndex = 0
+        Me.lbl_club.Text = "Club"
         '
         'lbl_profesor
         '
@@ -430,7 +466,7 @@ Partial Class frm_ABMnadadores
         Me.GroupBox2.Controls.Add(Me.grid_nadadores)
         Me.GroupBox2.Location = New System.Drawing.Point(328, 12)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(334, 466)
+        Me.GroupBox2.Size = New System.Drawing.Size(334, 505)
         Me.GroupBox2.TabIndex = 5
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Nadadores Registrados"
@@ -440,13 +476,13 @@ Partial Class frm_ABMnadadores
         Me.grid_nadadores.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.grid_nadadores.Location = New System.Drawing.Point(7, 20)
         Me.grid_nadadores.Name = "grid_nadadores"
-        Me.grid_nadadores.Size = New System.Drawing.Size(321, 440)
+        Me.grid_nadadores.Size = New System.Drawing.Size(321, 477)
         Me.grid_nadadores.TabIndex = 0
         '
         'cmd_eliminar
         '
         Me.cmd_eliminar.Image = Global.Asociacion.My.Resources.Resources.delete
-        Me.cmd_eliminar.Location = New System.Drawing.Point(125, 484)
+        Me.cmd_eliminar.Location = New System.Drawing.Point(125, 523)
         Me.cmd_eliminar.Name = "cmd_eliminar"
         Me.cmd_eliminar.Size = New System.Drawing.Size(50, 50)
         Me.cmd_eliminar.TabIndex = 2
@@ -456,7 +492,7 @@ Partial Class frm_ABMnadadores
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(673, 546)
+        Me.ClientSize = New System.Drawing.Size(675, 585)
         Me.Controls.Add(Me.cmd_salir)
         Me.Controls.Add(Me.cmd_buscar)
         Me.Controls.Add(Me.cmd_eliminar)
@@ -510,5 +546,8 @@ Partial Class frm_ABMnadadores
     Friend WithEvents txt_nroCalle As Asociacion.TextBoxv01
     Friend WithEvents txt_codNadador As Asociacion.TextBoxv01
     Friend WithEvents lbl_codNadador As System.Windows.Forms.Label
+    Friend WithEvents cmd_nuevoClub As System.Windows.Forms.Button
+    Friend WithEvents cmb_club As System.Windows.Forms.ComboBox
+    Friend WithEvents lbl_club As System.Windows.Forms.Label
 
 End Class

@@ -1,5 +1,7 @@
 ﻿Public Class frm_ABMnadadores
-    Dim string_conexion As String = "Data Source=.\SQLEXPRESS;AttachDbFilename=""C:\Agus\GitHub\PAV\Asociacion (TP)\Asociacion\Asociacion\Otros\BD\natacion.mdf"";Integrated Security=True;Connect Timeout=30;User Instance=True"
+    Dim string_conexion As String = "Data Source=.\SQLEXPRESS;AttachDbFilename=""C:\Users\Franco\Documents\FACU\2014\Economia\PAV\PAV\Asociacion (TP)\Asociacion\Asociacion\Otros\BD\natacion.mdf"";Integrated Security=True;Connect Timeout=30;User Instance=True"
+
+    '"Data Source=.\SQLEXPRESS;AttachDbFilename=""C:\Agus\GitHub\PAV\Asociacion (TP)\Asociacion\Asociacion\Otros\BD\natacion.mdf"";Integrated Security=True;Connect Timeout=30;User Instance=True"
     Private Sub frm_AMBnadadores_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         inicio()
     End Sub
@@ -36,10 +38,10 @@
         txt_nroCalle.Text = ""
         cmb_codPos.Text = ""
         cmb_profesor.Text = ""
+        cmb_club.Text = ""
     End Sub
 
     Private Function validarCampos()
-        'FALTA VALIDAR FECHA!!! - que no sea despues del día de hoy, ni taan vieja
         If txt_apellido.Text = "" Then
             MsgBox("Apellido no puede estar vacío", MsgBoxStyle.Critical, "Importante")
             txt_apellido.Focus()
@@ -64,6 +66,10 @@
             Return False
         End If
 
+        If (DateValue(msk_fechaNacimiento.Text) > DateValue(Date.Today)) Then
+            MsgBox("La fecha ingresada no es válida", MsgBoxStyle.Critical, "Importante")
+        End If
+
         If Not opt_femenino.Checked And Not opt_masculino.Checked Then
             MsgBox("El sexo del nadador debe ser seleccionado", MsgBoxStyle.Critical, "Importante")
         End If
@@ -80,6 +86,7 @@
         txt_nroCalle.Enabled = x
         cmb_codPos.Enabled = x
         cmb_profesor.Enabled = x
+        cmb_club.Enabled = x
         opt_femenino.Enabled = x
         opt_masculino.Enabled = x
     End Sub
@@ -93,6 +100,7 @@
         cmd_cancelar.Enabled = x
         cmd_nuevoCP.Enabled = x
         cmd_nuevoProfe.Enabled = x
+        cmd_nuevoClub.Enabled = x
     End Sub
 
     'Valida que solo ingresen letras
@@ -115,6 +123,14 @@
         If KeyAscii = 0 Then
             e.Handled = True
         End If
+    End Sub
+
+    Private Sub cargar_combo(ByRef combo As ComboBox, ByVal nombre_tabla As DataTable, ByVal pk As String, ByVal descrip As String)
+
+        combo.DataSource = nombre_tabla
+        combo.ValueMember = pk
+        combo.DisplayMember = descrip
+
     End Sub
 
     'CODIGO ACCESO A BD
@@ -146,7 +162,11 @@
         Dim cmd As New Data.SqlClient.SqlCommand
         cmd.Connection = conexion
         Dim consulta As String = ""
-        consulta = "SELECT codNad AS Codigo, apellido AS Apellido, nombre AS Nombre, numero AS Documento FROM Nadadores"
+        consulta = "SELECT codNad AS Codigo, apellido AS Apellido, nombre AS Nombre, nroDoc AS Documento, "
+        consulta &= "fechaNac As Fecha Nacimient, tipoDoc As Tipo Documento, nroDoc As Número Documento, calle As Calle "
+        consulta &= "numero As Número, codPos As Código postal, Profesores.apellido as Apellido Profesor, Profesores.nombre as Nombre Profesor, "
+        consulta &= "Clubes.nombre AS  Nombre Club FROM Nadadores INNER JOIN Profesores ON Nadadores.codProfe = Profesores.codProfe "
+        consulta &= " INNER(Join) Clubes ON Nadadores.codClub = Clubes.codClub"
         cmd.CommandType = CommandType.Text
         cmd.CommandText = consulta
         tabla.Load(cmd.ExecuteReader())
@@ -165,7 +185,7 @@
         conexion.Open()
         cmd.Connection = conexion
 
-        'consulta = "UPDATE Nadadores SET nombre = '" & Me.txt_nombre.Text & "' WHERE codPos = " & txt_codPos.Text
+        consulta = "UPDATE Nadadores SET nombre = '" & Me.txt_nombre.Text & "' WHERE codNad = " & txt_codNadador.Text
         cmd.CommandType = CommandType.Text
         cmd.CommandText = consulta
         cmd.ExecuteNonQuery()
@@ -176,7 +196,6 @@
     End Function
 
     Private Function insertar() As termino
-        'GENERAR UN CODIGO PARA EL NADADOR
         Dim conexion As New Data.SqlClient.SqlConnection
         conexion.ConnectionString = string_conexion
         conexion.Open()
@@ -186,9 +205,11 @@
         Dim consulta As String = ""
 
         'HAY QUE ARREGLAR LA BASE DE DATOS
-        'consulta = "INSERT into Nadadores (codNad,apellido,nombre,fechaNacimiento,) values ('" & Me.txt_codNadador.Text & "'"
-        'consulta &= ",'" & Me.txt_nombre.Text & "')"
-
+        consulta = "INSERT into Nadadores Values (" & Me.txt_codNadador.Text & ",'" & Me.txt_apellido.Text & "',"
+        consulta &= "'" & Me.txt_nombre.Text & "'," & DateValue(msk_fechaNacimiento.Text) & "," & Me.cmb_tipoDoc.ValueMember & ","
+        consulta &= "'" & Me.txt_nroDoc.Text & "','" & Me.txt_calle.Text & "'," & Me.txt_nroCalle.Text & ","
+        consulta &= "" & Me.cmb_codPos.SelectedValue & "," & Me.cmb_profesor.ValueMember & "," & Me.cmb_club.ValueMember & ","
+        consulta &= "'" & Me.txt_email.Text & "')"
         cmd.CommandType = CommandType.Text
         cmd.CommandText = consulta
         cmd.ExecuteNonQuery()
@@ -299,9 +320,10 @@
         Me.cmd_cancelar.Enabled = True
         Me.cmd_buscar.Enabled = True
 
+        
 
         'Hay que agregar el codNadador como criterio!!
-        If txt_apellido.Text <> "" And txt_nroDoc.Text <> "" Or txt_nombre.Text <> "" Then
+        If txt_apellido.Text <> "" And txt_nroDoc.Text <> "" Or txt_nombre.Text <> "" Or txt_codNadador.Text <> "" Then
             MsgBox("Ingrese sólo un criterio de búsqueda", MsgBoxStyle.Critical, "Importante")
             txt_apellido.Focus()
             cmd_buscar.Enabled = True
@@ -312,22 +334,24 @@
             txt_apellido.Focus()
         End If
 
-        'If txt_codClub.Text = "" Then
-        '    If txt_nombre.Text = "" Then
-        '        MsgBox("Ingrese un dato para buscar", MsgBoxStyle.Critical, "Importante")
-        '        txt_codClub.Focus()
-        '        cmd_buscar.Enabled = True
-        '    Else
-        '        'busqueda por nombre
-
-        '        cmd_buscar.Enabled = True
-
-        '    End If
-        'Else
-        '    'busqueda por codigo
-        '    cmd_buscar.Enabled = True
-
-        'End If
+        If txt_codNadador.Text = "" Then
+            If txt_apellido.Text = "" Then
+                If txt_nombre.Text = "" Then
+                    If txt_nroDoc.Text = "" Then
+                        MsgBox("Ingrese un dato para buscar", MsgBoxStyle.Critical, "Importante")
+                        txt_codNadador.Focus()
+                    Else
+                        'busqueda por numero doc (tener en cuenta el tipo doc)
+                    End If
+                Else
+                    'busqueda por nombre
+                End If
+            Else
+                'busqueda por apellido
+            End If
+        Else
+            'busqueda por codigo de nadador
+        End If
     End Sub
 
     Private Sub cmd_nuevoCP_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmd_nuevoCP.Click
@@ -377,4 +401,5 @@
         Me.accion = estado.modificar
         conexion.Close()
     End Sub
+
 End Class
