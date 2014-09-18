@@ -27,7 +27,7 @@ Partial Class frm_Menu
         Me.GestionarToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.NadadoresToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ClubesAfiliadosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.NadadoresToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ProfesoresToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.EspecialidadesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.TorneosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.CompetenciasToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -77,7 +77,7 @@ Partial Class frm_Menu
         '
         'GestionarToolStripMenuItem
         '
-        Me.GestionarToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.NadadoresToolStripMenuItem, Me.ClubesAfiliadosToolStripMenuItem, Me.NadadoresToolStripMenuItem1, Me.EspecialidadesToolStripMenuItem, Me.TorneosToolStripMenuItem, Me.CompetenciasToolStripMenuItem, Me.OtrosToolStripMenuItem})
+        Me.GestionarToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.NadadoresToolStripMenuItem, Me.ClubesAfiliadosToolStripMenuItem, Me.ProfesoresToolStripMenuItem1, Me.EspecialidadesToolStripMenuItem, Me.TorneosToolStripMenuItem, Me.CompetenciasToolStripMenuItem, Me.OtrosToolStripMenuItem})
         Me.GestionarToolStripMenuItem.Name = "GestionarToolStripMenuItem"
         Me.GestionarToolStripMenuItem.Size = New System.Drawing.Size(59, 20)
         Me.GestionarToolStripMenuItem.Text = "Gestión"
@@ -94,11 +94,11 @@ Partial Class frm_Menu
         Me.ClubesAfiliadosToolStripMenuItem.Size = New System.Drawing.Size(159, 22)
         Me.ClubesAfiliadosToolStripMenuItem.Text = "Clubes Afiliados"
         '
-        'NadadoresToolStripMenuItem1
+        'ProfesoresToolStripMenuItem1
         '
-        Me.NadadoresToolStripMenuItem1.Name = "NadadoresToolStripMenuItem1"
-        Me.NadadoresToolStripMenuItem1.Size = New System.Drawing.Size(159, 22)
-        Me.NadadoresToolStripMenuItem1.Text = "Nadadores"
+        Me.ProfesoresToolStripMenuItem1.Name = "ProfesoresToolStripMenuItem1"
+        Me.ProfesoresToolStripMenuItem1.Size = New System.Drawing.Size(159, 22)
+        Me.ProfesoresToolStripMenuItem1.Text = "Profesores"
         '
         'EspecialidadesToolStripMenuItem
         '
@@ -341,7 +341,7 @@ Partial Class frm_Menu
     Friend WithEvents VerToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents NadadoresToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ClubesAfiliadosToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents NadadoresToolStripMenuItem1 As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents ProfesoresToolStripMenuItem1 As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents EspecialidadesToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents TorneosToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents CompetenciasToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem

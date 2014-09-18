@@ -25,4 +25,8 @@
     Private Sub CodigosPostalesToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CodigosPostalesToolStripMenuItem.Click
         frm_ABMCodPos.Show()
     End Sub
+
+    Private Sub ProfesoresToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles ProfesoresToolStripMenuItem1.Click
+        frm_ABMProfesores.Show()
+    End Sub
 End Class
