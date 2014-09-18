@@ -44,16 +44,16 @@ Partial Class frm_ABMProfesores
         Me.txt_nombre_profesor = New System.Windows.Forms.TextBox()
         Me.gbo_profesores_registrados = New System.Windows.Forms.GroupBox()
         Me.lbo_profesores = New System.Windows.Forms.ListBox()
+        Me.txt_nroDoc_profesor = New Asociacion.TextBoxv01()
+        Me.txt_codProfesor = New Asociacion.TextBoxv01()
+        Me.txt_telefono_profesor = New Asociacion.TextBoxv01()
+        Me.txt_nroCalle_profesor = New Asociacion.TextBoxv01()
         Me.cmd_salir = New System.Windows.Forms.Button()
         Me.cmd_buscar = New System.Windows.Forms.Button()
         Me.cmd_cancelar = New System.Windows.Forms.Button()
         Me.cmd_eliminar = New System.Windows.Forms.Button()
         Me.cmd_guardar = New System.Windows.Forms.Button()
         Me.cmd_nuevo = New System.Windows.Forms.Button()
-        Me.txt_nroDoc_profesor = New Asociacion.TextBoxv01()
-        Me.txt_codProfesor = New Asociacion.TextBoxv01()
-        Me.txt_telefono_profesor = New Asociacion.TextBoxv01()
-        Me.txt_nroCalle_profesor = New Asociacion.TextBoxv01()
         Me.gbo_profesor.SuspendLayout()
         Me.gbo_profesores_registrados.SuspendLayout()
         Me.SuspendLayout()
@@ -61,7 +61,7 @@ Partial Class frm_ABMProfesores
         'lbl_sexo_profesor
         '
         Me.lbl_sexo_profesor.AutoSize = True
-        Me.lbl_sexo_profesor.Location = New System.Drawing.Point(87, 170)
+        Me.lbl_sexo_profesor.Location = New System.Drawing.Point(405, 25)
         Me.lbl_sexo_profesor.Name = "lbl_sexo_profesor"
         Me.lbl_sexo_profesor.Size = New System.Drawing.Size(35, 13)
         Me.lbl_sexo_profesor.TabIndex = 14
@@ -93,14 +93,14 @@ Partial Class frm_ABMProfesores
         Me.gbo_profesor.Controls.Add(Me.lbl_sexo_profesor)
         Me.gbo_profesor.Location = New System.Drawing.Point(9, 12)
         Me.gbo_profesor.Name = "gbo_profesor"
-        Me.gbo_profesor.Size = New System.Drawing.Size(297, 318)
+        Me.gbo_profesor.Size = New System.Drawing.Size(778, 171)
         Me.gbo_profesor.TabIndex = 0
         Me.gbo_profesor.TabStop = False
         Me.gbo_profesor.Text = "Profesor"
         '
         'cmd_nuevoCP
         '
-        Me.cmd_nuevoCP.Location = New System.Drawing.Point(217, 253)
+        Me.cmd_nuevoCP.Location = New System.Drawing.Point(535, 108)
         Me.cmd_nuevoCP.Name = "cmd_nuevoCP"
         Me.cmd_nuevoCP.Size = New System.Drawing.Size(64, 21)
         Me.cmd_nuevoCP.TabIndex = 10
@@ -110,14 +110,14 @@ Partial Class frm_ABMProfesores
         'cmb_codPos_profesor
         '
         Me.cmb_codPos_profesor.FormattingEnabled = True
-        Me.cmb_codPos_profesor.Location = New System.Drawing.Point(122, 254)
+        Me.cmb_codPos_profesor.Location = New System.Drawing.Point(440, 109)
         Me.cmb_codPos_profesor.Name = "cmb_codPos_profesor"
         Me.cmb_codPos_profesor.Size = New System.Drawing.Size(89, 21)
         Me.cmb_codPos_profesor.TabIndex = 9
         '
         'txt_calle_profesor
         '
-        Me.txt_calle_profesor.Location = New System.Drawing.Point(122, 196)
+        Me.txt_calle_profesor.Location = New System.Drawing.Point(440, 51)
         Me.txt_calle_profesor.Name = "txt_calle_profesor"
         Me.txt_calle_profesor.Size = New System.Drawing.Size(145, 20)
         Me.txt_calle_profesor.TabIndex = 7
@@ -125,7 +125,7 @@ Partial Class frm_ABMProfesores
         'lbl_tel_profesor
         '
         Me.lbl_tel_profesor.AutoSize = True
-        Me.lbl_tel_profesor.Location = New System.Drawing.Point(69, 286)
+        Me.lbl_tel_profesor.Location = New System.Drawing.Point(387, 141)
         Me.lbl_tel_profesor.Name = "lbl_tel_profesor"
         Me.lbl_tel_profesor.Size = New System.Drawing.Size(49, 13)
         Me.lbl_tel_profesor.TabIndex = 34
@@ -134,7 +134,7 @@ Partial Class frm_ABMProfesores
         'lbl_codPostal_profesor
         '
         Me.lbl_codPostal_profesor.AutoSize = True
-        Me.lbl_codPostal_profesor.Location = New System.Drawing.Point(47, 257)
+        Me.lbl_codPostal_profesor.Location = New System.Drawing.Point(365, 112)
         Me.lbl_codPostal_profesor.Name = "lbl_codPostal_profesor"
         Me.lbl_codPostal_profesor.Size = New System.Drawing.Size(71, 13)
         Me.lbl_codPostal_profesor.TabIndex = 35
@@ -143,7 +143,7 @@ Partial Class frm_ABMProfesores
         'lbl_numero_profesor
         '
         Me.lbl_numero_profesor.AutoSize = True
-        Me.lbl_numero_profesor.Location = New System.Drawing.Point(74, 228)
+        Me.lbl_numero_profesor.Location = New System.Drawing.Point(392, 83)
         Me.lbl_numero_profesor.Name = "lbl_numero_profesor"
         Me.lbl_numero_profesor.Size = New System.Drawing.Size(44, 13)
         Me.lbl_numero_profesor.TabIndex = 37
@@ -152,7 +152,7 @@ Partial Class frm_ABMProfesores
         'lbl_calle_profesor
         '
         Me.lbl_calle_profesor.AutoSize = True
-        Me.lbl_calle_profesor.Location = New System.Drawing.Point(88, 199)
+        Me.lbl_calle_profesor.Location = New System.Drawing.Point(406, 54)
         Me.lbl_calle_profesor.Name = "lbl_calle_profesor"
         Me.lbl_calle_profesor.Size = New System.Drawing.Size(34, 13)
         Me.lbl_calle_profesor.TabIndex = 39
@@ -169,7 +169,7 @@ Partial Class frm_ABMProfesores
         'opt_masculino_profesor
         '
         Me.opt_masculino_profesor.AutoSize = True
-        Me.opt_masculino_profesor.Location = New System.Drawing.Point(122, 168)
+        Me.opt_masculino_profesor.Location = New System.Drawing.Point(440, 23)
         Me.opt_masculino_profesor.Name = "opt_masculino_profesor"
         Me.opt_masculino_profesor.Size = New System.Drawing.Size(73, 17)
         Me.opt_masculino_profesor.TabIndex = 5
@@ -180,7 +180,7 @@ Partial Class frm_ABMProfesores
         'opt_femenino_profesor
         '
         Me.opt_femenino_profesor.AutoSize = True
-        Me.opt_femenino_profesor.Location = New System.Drawing.Point(201, 168)
+        Me.opt_femenino_profesor.Location = New System.Drawing.Point(519, 23)
         Me.opt_femenino_profesor.Name = "opt_femenino_profesor"
         Me.opt_femenino_profesor.Size = New System.Drawing.Size(71, 17)
         Me.opt_femenino_profesor.TabIndex = 6
@@ -250,9 +250,9 @@ Partial Class frm_ABMProfesores
         'gbo_profesores_registrados
         '
         Me.gbo_profesores_registrados.Controls.Add(Me.lbo_profesores)
-        Me.gbo_profesores_registrados.Location = New System.Drawing.Point(312, 12)
+        Me.gbo_profesores_registrados.Location = New System.Drawing.Point(9, 189)
         Me.gbo_profesores_registrados.Name = "gbo_profesores_registrados"
-        Me.gbo_profesores_registrados.Size = New System.Drawing.Size(264, 318)
+        Me.gbo_profesores_registrados.Size = New System.Drawing.Size(778, 248)
         Me.gbo_profesores_registrados.TabIndex = 7
         Me.gbo_profesores_registrados.TabStop = False
         Me.gbo_profesores_registrados.Text = "Profesores Registrados"
@@ -262,62 +262,8 @@ Partial Class frm_ABMProfesores
         Me.lbo_profesores.FormattingEnabled = True
         Me.lbo_profesores.Location = New System.Drawing.Point(6, 22)
         Me.lbo_profesores.Name = "lbo_profesores"
-        Me.lbo_profesores.Size = New System.Drawing.Size(252, 290)
+        Me.lbo_profesores.Size = New System.Drawing.Size(766, 212)
         Me.lbo_profesores.TabIndex = 0
-        '
-        'cmd_salir
-        '
-        Me.cmd_salir.Image = Global.Asociacion.My.Resources.Resources.salir
-        Me.cmd_salir.Location = New System.Drawing.Point(526, 351)
-        Me.cmd_salir.Name = "cmd_salir"
-        Me.cmd_salir.Size = New System.Drawing.Size(50, 50)
-        Me.cmd_salir.TabIndex = 6
-        Me.cmd_salir.UseVisualStyleBackColor = True
-        '
-        'cmd_buscar
-        '
-        Me.cmd_buscar.Image = Global.Asociacion.My.Resources.Resources.buscar
-        Me.cmd_buscar.Location = New System.Drawing.Point(256, 351)
-        Me.cmd_buscar.Name = "cmd_buscar"
-        Me.cmd_buscar.Size = New System.Drawing.Size(50, 50)
-        Me.cmd_buscar.TabIndex = 5
-        Me.cmd_buscar.UseVisualStyleBackColor = True
-        '
-        'cmd_cancelar
-        '
-        Me.cmd_cancelar.Image = Global.Asociacion.My.Resources.Resources.cancel
-        Me.cmd_cancelar.Location = New System.Drawing.Point(177, 351)
-        Me.cmd_cancelar.Name = "cmd_cancelar"
-        Me.cmd_cancelar.Size = New System.Drawing.Size(50, 50)
-        Me.cmd_cancelar.TabIndex = 4
-        Me.cmd_cancelar.UseVisualStyleBackColor = True
-        '
-        'cmd_eliminar
-        '
-        Me.cmd_eliminar.Image = Global.Asociacion.My.Resources.Resources.delete
-        Me.cmd_eliminar.Location = New System.Drawing.Point(121, 351)
-        Me.cmd_eliminar.Name = "cmd_eliminar"
-        Me.cmd_eliminar.Size = New System.Drawing.Size(50, 50)
-        Me.cmd_eliminar.TabIndex = 3
-        Me.cmd_eliminar.UseVisualStyleBackColor = True
-        '
-        'cmd_guardar
-        '
-        Me.cmd_guardar.Image = Global.Asociacion.My.Resources.Resources.save
-        Me.cmd_guardar.Location = New System.Drawing.Point(65, 351)
-        Me.cmd_guardar.Name = "cmd_guardar"
-        Me.cmd_guardar.Size = New System.Drawing.Size(50, 50)
-        Me.cmd_guardar.TabIndex = 2
-        Me.cmd_guardar.UseVisualStyleBackColor = True
-        '
-        'cmd_nuevo
-        '
-        Me.cmd_nuevo.Image = Global.Asociacion.My.Resources.Resources.add
-        Me.cmd_nuevo.Location = New System.Drawing.Point(9, 351)
-        Me.cmd_nuevo.Name = "cmd_nuevo"
-        Me.cmd_nuevo.Size = New System.Drawing.Size(50, 50)
-        Me.cmd_nuevo.TabIndex = 1
-        Me.cmd_nuevo.UseVisualStyleBackColor = True
         '
         'txt_nroDoc_profesor
         '
@@ -383,7 +329,7 @@ Partial Class frm_ABMProfesores
         Me.txt_telefono_profesor._Gest_tipo_dato = Asociacion.TextBoxv01.t_dato.texto
         Me.txt_telefono_profesor._Gest_validar = True
         Me.txt_telefono_profesor.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!)
-        Me.txt_telefono_profesor.Location = New System.Drawing.Point(122, 283)
+        Me.txt_telefono_profesor.Location = New System.Drawing.Point(440, 138)
         Me.txt_telefono_profesor.Margin = New System.Windows.Forms.Padding(1)
         Me.txt_telefono_profesor.Mask = "99999999999999"
         Me.txt_telefono_profesor.Name = "txt_telefono_profesor"
@@ -407,7 +353,7 @@ Partial Class frm_ABMProfesores
         Me.txt_nroCalle_profesor._Gest_tipo_dato = Asociacion.TextBoxv01.t_dato.texto
         Me.txt_nroCalle_profesor._Gest_validar = True
         Me.txt_nroCalle_profesor.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!)
-        Me.txt_nroCalle_profesor.Location = New System.Drawing.Point(122, 225)
+        Me.txt_nroCalle_profesor.Location = New System.Drawing.Point(440, 80)
         Me.txt_nroCalle_profesor.Margin = New System.Windows.Forms.Padding(1)
         Me.txt_nroCalle_profesor.Mask = "99999"
         Me.txt_nroCalle_profesor.Name = "txt_nroCalle_profesor"
@@ -415,11 +361,65 @@ Partial Class frm_ABMProfesores
         Me.txt_nroCalle_profesor.TabIndex = 8
         Me.txt_nroCalle_profesor.ValidatingType = GetType(Integer)
         '
+        'cmd_salir
+        '
+        Me.cmd_salir.Image = Global.Asociacion.My.Resources.Resources.salir
+        Me.cmd_salir.Location = New System.Drawing.Point(737, 443)
+        Me.cmd_salir.Name = "cmd_salir"
+        Me.cmd_salir.Size = New System.Drawing.Size(50, 50)
+        Me.cmd_salir.TabIndex = 6
+        Me.cmd_salir.UseVisualStyleBackColor = True
+        '
+        'cmd_buscar
+        '
+        Me.cmd_buscar.Image = Global.Asociacion.My.Resources.Resources.buscar
+        Me.cmd_buscar.Location = New System.Drawing.Point(278, 443)
+        Me.cmd_buscar.Name = "cmd_buscar"
+        Me.cmd_buscar.Size = New System.Drawing.Size(50, 50)
+        Me.cmd_buscar.TabIndex = 5
+        Me.cmd_buscar.UseVisualStyleBackColor = True
+        '
+        'cmd_cancelar
+        '
+        Me.cmd_cancelar.Image = Global.Asociacion.My.Resources.Resources.cancel
+        Me.cmd_cancelar.Location = New System.Drawing.Point(177, 443)
+        Me.cmd_cancelar.Name = "cmd_cancelar"
+        Me.cmd_cancelar.Size = New System.Drawing.Size(50, 50)
+        Me.cmd_cancelar.TabIndex = 4
+        Me.cmd_cancelar.UseVisualStyleBackColor = True
+        '
+        'cmd_eliminar
+        '
+        Me.cmd_eliminar.Image = Global.Asociacion.My.Resources.Resources.delete
+        Me.cmd_eliminar.Location = New System.Drawing.Point(121, 443)
+        Me.cmd_eliminar.Name = "cmd_eliminar"
+        Me.cmd_eliminar.Size = New System.Drawing.Size(50, 50)
+        Me.cmd_eliminar.TabIndex = 3
+        Me.cmd_eliminar.UseVisualStyleBackColor = True
+        '
+        'cmd_guardar
+        '
+        Me.cmd_guardar.Image = Global.Asociacion.My.Resources.Resources.save
+        Me.cmd_guardar.Location = New System.Drawing.Point(65, 443)
+        Me.cmd_guardar.Name = "cmd_guardar"
+        Me.cmd_guardar.Size = New System.Drawing.Size(50, 50)
+        Me.cmd_guardar.TabIndex = 2
+        Me.cmd_guardar.UseVisualStyleBackColor = True
+        '
+        'cmd_nuevo
+        '
+        Me.cmd_nuevo.Image = Global.Asociacion.My.Resources.Resources.add
+        Me.cmd_nuevo.Location = New System.Drawing.Point(9, 443)
+        Me.cmd_nuevo.Name = "cmd_nuevo"
+        Me.cmd_nuevo.Size = New System.Drawing.Size(50, 50)
+        Me.cmd_nuevo.TabIndex = 1
+        Me.cmd_nuevo.UseVisualStyleBackColor = True
+        '
         'frm_ABMProfesores
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(588, 412)
+        Me.ClientSize = New System.Drawing.Size(799, 505)
         Me.Controls.Add(Me.cmd_salir)
         Me.Controls.Add(Me.cmd_buscar)
         Me.Controls.Add(Me.cmd_cancelar)
