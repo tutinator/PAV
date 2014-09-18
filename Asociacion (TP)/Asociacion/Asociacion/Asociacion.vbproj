@@ -109,6 +109,12 @@
     <Compile Include="Formularios\frm_ABMProfesores.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Formularios\frm_ABMTorneo.Designer.vb">
+      <DependentUpon>frm_ABMTorneo.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frm_ABMTorneo.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Formularios\frm_Menu.vb">
       <SubType>Form</SubType>
     </Compile>
@@ -152,6 +158,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\frm_ABMProfesores.resx">
       <DependentUpon>frm_ABMProfesores.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frm_ABMTorneo.resx">
+      <DependentUpon>frm_ABMTorneo.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\frm_Menu.resx">
       <DependentUpon>frm_Menu.vb</DependentUpon>

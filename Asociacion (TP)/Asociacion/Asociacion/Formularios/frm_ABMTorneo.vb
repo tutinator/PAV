@@ -315,7 +315,7 @@
         Me.inicio()
     End Sub
 
-    Private Sub grid_codTorneo_CellMouseDoubleClick(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellMouseEventArgs) Handles grid_codPos.CellMouseDoubleClick
+    Private Sub grid_codTorneo_CellMouseDoubleClick(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellMouseEventArgs) Handles grid_codTorneo.CellMouseDoubleClick
 
         'Dim codigoSeleccionado As String = grid_codPos.SelectedRows.Item(0).ToString()
         Dim codigoSeleccionado As String = Me.grid_codTorneo.CurrentRow.Cells(0).Value
