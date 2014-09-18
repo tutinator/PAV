@@ -37,4 +37,8 @@
     Private Sub TiposDeDocumentoToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TiposDeDocumentoToolStripMenuItem.Click
         frm_ABMTipoDocumento.Show()
     End Sub
+
+    Private Sub TorneosToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TorneosToolStripMenuItem.Click
+        frm_ABMTorneo.Show()
+    End Sub
 End Class
