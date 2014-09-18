@@ -174,6 +174,10 @@ Public Class frm_ABMclubes
         Return termino.aprobado
     End Function
 
+    Private Sub cmb_codPos_DropDown(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmb_codPos.DropDown
+        cargar_combo(cmb_codPos, leo_tabla("CodPostales"), "codPos", "codPos")
+    End Sub
+
     'Comandos
 
     Private Sub cmd_guardar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmd_guardar.Click
@@ -249,7 +253,6 @@ Public Class frm_ABMclubes
                     Dim dt As New Data.DataTable
                     consulta = "SELECT * FROM Clubes WHERE nombre LIKE '%" & Me.txt_nombre.Text & "%'"
                     dt = acceso.ejecutar(consulta)
-
                     grid_clubes.DataSource = dt
                 End If
             Else
@@ -311,11 +314,5 @@ Public Class frm_ABMclubes
         End If
     End Sub
 
-
-
-
     
-    Private Sub cmb_codPos_DropDown(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmb_codPos.DropDown
-        cargar_combo(cmb_codPos, leo_tabla("CodPostales"), "codPos", "codPos")
-    End Sub
 End Class

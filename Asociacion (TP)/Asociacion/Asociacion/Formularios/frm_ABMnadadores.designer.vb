@@ -184,6 +184,7 @@ Partial Class frm_ABMnadadores
         '
         'msk_fechaNacimiento
         '
+        Me.msk_fechaNacimiento.Enabled = False
         Me.msk_fechaNacimiento.Location = New System.Drawing.Point(140, 126)
         Me.msk_fechaNacimiento.Mask = "00/00/0000"
         Me.msk_fechaNacimiento.Name = "msk_fechaNacimiento"
@@ -464,9 +465,9 @@ Partial Class frm_ABMnadadores
         'GroupBox2
         '
         Me.GroupBox2.Controls.Add(Me.grid_nadadores)
-        Me.GroupBox2.Location = New System.Drawing.Point(328, 12)
+        Me.GroupBox2.Location = New System.Drawing.Point(333, 12)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(334, 505)
+        Me.GroupBox2.Size = New System.Drawing.Size(329, 505)
         Me.GroupBox2.TabIndex = 5
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Nadadores Registrados"
@@ -474,9 +475,9 @@ Partial Class frm_ABMnadadores
         'grid_nadadores
         '
         Me.grid_nadadores.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.grid_nadadores.Location = New System.Drawing.Point(7, 20)
+        Me.grid_nadadores.Location = New System.Drawing.Point(6, 20)
         Me.grid_nadadores.Name = "grid_nadadores"
-        Me.grid_nadadores.Size = New System.Drawing.Size(321, 477)
+        Me.grid_nadadores.Size = New System.Drawing.Size(322, 477)
         Me.grid_nadadores.TabIndex = 0
         '
         'cmd_eliminar
