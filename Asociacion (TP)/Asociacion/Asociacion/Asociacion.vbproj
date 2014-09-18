@@ -91,10 +91,22 @@
     <Compile Include="Clases\TextBoxv01.vb">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Formularios\frm_AMBTipoDocumento.Designer.vb">
+      <DependentUpon>frm_AMBTipoDocumento.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frm_AMBTipoDocumento.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Formularios\frm_ABMCodPos.Designer.vb">
       <DependentUpon>frm_ABMCodPos.vb</DependentUpon>
     </Compile>
     <Compile Include="Formularios\frm_ABMCodPos.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frm_ABMEspecialidades.Designer.vb">
+      <DependentUpon>frm_ABMEspecialidades.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frm_ABMEspecialidades.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Formularios\frm_ABMNadadores.designer.vb">
@@ -150,8 +162,14 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Formularios\frm_AMBTipoDocumento.resx">
+      <DependentUpon>frm_AMBTipoDocumento.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\frm_ABMCodPos.resx">
       <DependentUpon>frm_ABMCodPos.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frm_ABMEspecialidades.resx">
+      <DependentUpon>frm_ABMEspecialidades.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\frm_ABMNadadores.resx">
       <DependentUpon>frm_ABMNadadores.vb</DependentUpon>

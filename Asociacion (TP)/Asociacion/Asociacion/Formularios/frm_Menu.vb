@@ -29,4 +29,12 @@
     Private Sub ProfesoresToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles ProfesoresToolStripMenuItem1.Click
         frm_ABMProfesores.Show()
     End Sub
+
+    Private Sub EspecialidadesToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles EspecialidadesToolStripMenuItem.Click
+        frm_ABMEspecialidades.Show()
+    End Sub
+
+    Private Sub TiposDeDocumentoToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TiposDeDocumentoToolStripMenuItem.Click
+        frm_ABMTipoDocumento.Show()
+    End Sub
 End Class
