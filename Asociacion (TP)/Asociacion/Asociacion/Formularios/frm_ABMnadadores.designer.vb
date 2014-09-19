@@ -70,7 +70,7 @@ Partial Class frm_ABMnadadores
         'lbl_nombre
         '
         Me.lbl_nombre.AutoSize = True
-        Me.lbl_nombre.Location = New System.Drawing.Point(77, 97)
+        Me.lbl_nombre.Location = New System.Drawing.Point(86, 97)
         Me.lbl_nombre.Name = "lbl_nombre"
         Me.lbl_nombre.Size = New System.Drawing.Size(48, 13)
         Me.lbl_nombre.TabIndex = 0
@@ -79,7 +79,7 @@ Partial Class frm_ABMnadadores
         'lbl_apellido
         '
         Me.lbl_apellido.AutoSize = True
-        Me.lbl_apellido.Location = New System.Drawing.Point(77, 65)
+        Me.lbl_apellido.Location = New System.Drawing.Point(86, 65)
         Me.lbl_apellido.Name = "lbl_apellido"
         Me.lbl_apellido.Size = New System.Drawing.Size(48, 13)
         Me.lbl_apellido.TabIndex = 1
@@ -103,7 +103,7 @@ Partial Class frm_ABMnadadores
         '
         Me.cmb_tipoDoc.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cmb_tipoDoc.FormattingEnabled = True
-        Me.cmb_tipoDoc.Location = New System.Drawing.Point(140, 158)
+        Me.cmb_tipoDoc.Location = New System.Drawing.Point(140, 126)
         Me.cmb_tipoDoc.Name = "cmb_tipoDoc"
         Me.cmb_tipoDoc.Size = New System.Drawing.Size(125, 21)
         Me.cmb_tipoDoc.TabIndex = 4
@@ -111,7 +111,7 @@ Partial Class frm_ABMnadadores
         'lbl_tipoDoc
         '
         Me.lbl_tipoDoc.AutoSize = True
-        Me.lbl_tipoDoc.Location = New System.Drawing.Point(22, 161)
+        Me.lbl_tipoDoc.Location = New System.Drawing.Point(31, 129)
         Me.lbl_tipoDoc.Name = "lbl_tipoDoc"
         Me.lbl_tipoDoc.Size = New System.Drawing.Size(103, 13)
         Me.lbl_tipoDoc.TabIndex = 0
@@ -120,7 +120,7 @@ Partial Class frm_ABMnadadores
         'lbl_email
         '
         Me.lbl_email.AutoSize = True
-        Me.lbl_email.Location = New System.Drawing.Point(40, 225)
+        Me.lbl_email.Location = New System.Drawing.Point(40, 199)
         Me.lbl_email.Name = "lbl_email"
         Me.lbl_email.Size = New System.Drawing.Size(94, 13)
         Me.lbl_email.TabIndex = 0
@@ -128,7 +128,7 @@ Partial Class frm_ABMnadadores
         '
         'txt_email
         '
-        Me.txt_email.Location = New System.Drawing.Point(140, 223)
+        Me.txt_email.Location = New System.Drawing.Point(140, 192)
         Me.txt_email.Name = "txt_email"
         Me.txt_email.Size = New System.Drawing.Size(145, 20)
         Me.txt_email.TabIndex = 6
@@ -136,7 +136,7 @@ Partial Class frm_ABMnadadores
         'lbl_sexo
         '
         Me.lbl_sexo.AutoSize = True
-        Me.lbl_sexo.Location = New System.Drawing.Point(53, 266)
+        Me.lbl_sexo.Location = New System.Drawing.Point(63, 232)
         Me.lbl_sexo.Name = "lbl_sexo"
         Me.lbl_sexo.Size = New System.Drawing.Size(35, 13)
         Me.lbl_sexo.TabIndex = 0
@@ -145,7 +145,7 @@ Partial Class frm_ABMnadadores
         'opt_masculino
         '
         Me.opt_masculino.AutoSize = True
-        Me.opt_masculino.Location = New System.Drawing.Point(107, 264)
+        Me.opt_masculino.Location = New System.Drawing.Point(117, 230)
         Me.opt_masculino.Name = "opt_masculino"
         Me.opt_masculino.Size = New System.Drawing.Size(73, 17)
         Me.opt_masculino.TabIndex = 7
@@ -156,7 +156,7 @@ Partial Class frm_ABMnadadores
         'opt_femenino
         '
         Me.opt_femenino.AutoSize = True
-        Me.opt_femenino.Location = New System.Drawing.Point(201, 264)
+        Me.opt_femenino.Location = New System.Drawing.Point(211, 230)
         Me.opt_femenino.Name = "opt_femenino"
         Me.opt_femenino.Size = New System.Drawing.Size(71, 17)
         Me.opt_femenino.TabIndex = 8
@@ -167,7 +167,7 @@ Partial Class frm_ABMnadadores
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(6, 193)
+        Me.Label1.Location = New System.Drawing.Point(15, 167)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(119, 13)
         Me.Label1.TabIndex = 0
@@ -181,6 +181,7 @@ Partial Class frm_ABMnadadores
         Me.Label2.Size = New System.Drawing.Size(106, 13)
         Me.Label2.TabIndex = 0
         Me.Label2.Text = "Fecha de nacimiento"
+        Me.Label2.Visible = False
         '
         'msk_fechaNacimiento
         '
@@ -190,11 +191,12 @@ Partial Class frm_ABMnadadores
         Me.msk_fechaNacimiento.Name = "msk_fechaNacimiento"
         Me.msk_fechaNacimiento.Size = New System.Drawing.Size(77, 20)
         Me.msk_fechaNacimiento.TabIndex = 3
+        Me.msk_fechaNacimiento.Visible = False
         '
         'lbl_calle
         '
         Me.lbl_calle.AutoSize = True
-        Me.lbl_calle.Location = New System.Drawing.Point(104, 308)
+        Me.lbl_calle.Location = New System.Drawing.Point(403, 32)
         Me.lbl_calle.Name = "lbl_calle"
         Me.lbl_calle.Size = New System.Drawing.Size(30, 13)
         Me.lbl_calle.TabIndex = 0
@@ -203,7 +205,7 @@ Partial Class frm_ABMnadadores
         'lbl_numero
         '
         Me.lbl_numero.AutoSize = True
-        Me.lbl_numero.Location = New System.Drawing.Point(90, 336)
+        Me.lbl_numero.Location = New System.Drawing.Point(389, 60)
         Me.lbl_numero.Name = "lbl_numero"
         Me.lbl_numero.Size = New System.Drawing.Size(44, 13)
         Me.lbl_numero.TabIndex = 0
@@ -212,7 +214,7 @@ Partial Class frm_ABMnadadores
         'lbl_codPostal
         '
         Me.lbl_codPostal.AutoSize = True
-        Me.lbl_codPostal.Location = New System.Drawing.Point(63, 369)
+        Me.lbl_codPostal.Location = New System.Drawing.Point(362, 93)
         Me.lbl_codPostal.Name = "lbl_codPostal"
         Me.lbl_codPostal.Size = New System.Drawing.Size(71, 13)
         Me.lbl_codPostal.TabIndex = 0
@@ -220,9 +222,9 @@ Partial Class frm_ABMnadadores
         '
         'txt_calle
         '
-        Me.txt_calle.Location = New System.Drawing.Point(140, 308)
+        Me.txt_calle.Location = New System.Drawing.Point(439, 32)
         Me.txt_calle.Name = "txt_calle"
-        Me.txt_calle.Size = New System.Drawing.Size(145, 20)
+        Me.txt_calle.Size = New System.Drawing.Size(183, 20)
         Me.txt_calle.TabIndex = 9
         '
         'cmd_nuevo
@@ -282,7 +284,6 @@ Partial Class frm_ABMnadadores
         Me.GroupBox1.Controls.Add(Me.cmb_profesor)
         Me.GroupBox1.Controls.Add(Me.cmb_codPos)
         Me.GroupBox1.Controls.Add(Me.opt_femenino)
-        Me.GroupBox1.Controls.Add(Me.msk_fechaNacimiento)
         Me.GroupBox1.Controls.Add(Me.opt_masculino)
         Me.GroupBox1.Controls.Add(Me.lbl_sexo)
         Me.GroupBox1.Controls.Add(Me.lbl_club)
@@ -301,17 +302,18 @@ Partial Class frm_ABMnadadores
         Me.GroupBox1.Controls.Add(Me.txt_nombre)
         Me.GroupBox1.Controls.Add(Me.lbl_tipoDoc)
         Me.GroupBox1.Controls.Add(Me.Label1)
+        Me.GroupBox1.Controls.Add(Me.msk_fechaNacimiento)
         Me.GroupBox1.Controls.Add(Me.Label2)
         Me.GroupBox1.Location = New System.Drawing.Point(13, 12)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(309, 505)
+        Me.GroupBox1.Size = New System.Drawing.Size(641, 262)
         Me.GroupBox1.TabIndex = 0
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Nadador"
         '
         'cmd_nuevoClub
         '
-        Me.cmd_nuevoClub.Location = New System.Drawing.Point(209, 474)
+        Me.cmd_nuevoClub.Location = New System.Drawing.Point(508, 198)
         Me.cmd_nuevoClub.Name = "cmd_nuevoClub"
         Me.cmd_nuevoClub.Size = New System.Drawing.Size(75, 23)
         Me.cmd_nuevoClub.TabIndex = 15
@@ -334,11 +336,11 @@ Partial Class frm_ABMnadadores
         Me.txt_nroCalle._Gest_tipo_dato = Asociacion.TextBoxv01.t_dato.texto
         Me.txt_nroCalle._Gest_validar = True
         Me.txt_nroCalle.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!)
-        Me.txt_nroCalle.Location = New System.Drawing.Point(140, 333)
+        Me.txt_nroCalle.Location = New System.Drawing.Point(439, 57)
         Me.txt_nroCalle.Margin = New System.Windows.Forms.Padding(1)
         Me.txt_nroCalle.Mask = "99999"
         Me.txt_nroCalle.Name = "txt_nroCalle"
-        Me.txt_nroCalle.Size = New System.Drawing.Size(43, 20)
+        Me.txt_nroCalle.Size = New System.Drawing.Size(38, 20)
         Me.txt_nroCalle.TabIndex = 10
         Me.txt_nroCalle.ValidatingType = GetType(Integer)
         '
@@ -382,7 +384,7 @@ Partial Class frm_ABMnadadores
         Me.txt_nroDoc._Gest_tipo_dato = Asociacion.TextBoxv01.t_dato.texto
         Me.txt_nroDoc._Gest_validar = True
         Me.txt_nroDoc.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!)
-        Me.txt_nroDoc.Location = New System.Drawing.Point(140, 191)
+        Me.txt_nroDoc.Location = New System.Drawing.Point(140, 164)
         Me.txt_nroDoc.Margin = New System.Windows.Forms.Padding(1)
         Me.txt_nroDoc.Mask = "999999999"
         Me.txt_nroDoc.Name = "txt_nroDoc"
@@ -392,7 +394,7 @@ Partial Class frm_ABMnadadores
         '
         'cmd_nuevoProfe
         '
-        Me.cmd_nuevoProfe.Location = New System.Drawing.Point(190, 418)
+        Me.cmd_nuevoProfe.Location = New System.Drawing.Point(489, 142)
         Me.cmd_nuevoProfe.Name = "cmd_nuevoProfe"
         Me.cmd_nuevoProfe.Size = New System.Drawing.Size(95, 22)
         Me.cmd_nuevoProfe.TabIndex = 14
@@ -401,7 +403,7 @@ Partial Class frm_ABMnadadores
         '
         'cmd_nuevoCP
         '
-        Me.cmd_nuevoCP.Location = New System.Drawing.Point(199, 364)
+        Me.cmd_nuevoCP.Location = New System.Drawing.Point(498, 88)
         Me.cmd_nuevoCP.Name = "cmd_nuevoCP"
         Me.cmd_nuevoCP.Size = New System.Drawing.Size(66, 23)
         Me.cmd_nuevoCP.TabIndex = 12
@@ -412,7 +414,7 @@ Partial Class frm_ABMnadadores
         '
         Me.cmb_club.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cmb_club.FormattingEnabled = True
-        Me.cmb_club.Location = New System.Drawing.Point(140, 446)
+        Me.cmb_club.Location = New System.Drawing.Point(439, 170)
         Me.cmb_club.Name = "cmb_club"
         Me.cmb_club.Size = New System.Drawing.Size(145, 21)
         Me.cmb_club.TabIndex = 13
@@ -421,7 +423,7 @@ Partial Class frm_ABMnadadores
         '
         Me.cmb_profesor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cmb_profesor.FormattingEnabled = True
-        Me.cmb_profesor.Location = New System.Drawing.Point(140, 391)
+        Me.cmb_profesor.Location = New System.Drawing.Point(439, 115)
         Me.cmb_profesor.Name = "cmb_profesor"
         Me.cmb_profesor.Size = New System.Drawing.Size(145, 21)
         Me.cmb_profesor.TabIndex = 13
@@ -430,7 +432,7 @@ Partial Class frm_ABMnadadores
         '
         Me.cmb_codPos.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cmb_codPos.FormattingEnabled = True
-        Me.cmb_codPos.Location = New System.Drawing.Point(140, 364)
+        Me.cmb_codPos.Location = New System.Drawing.Point(439, 88)
         Me.cmb_codPos.Name = "cmb_codPos"
         Me.cmb_codPos.Size = New System.Drawing.Size(53, 21)
         Me.cmb_codPos.TabIndex = 11
@@ -438,7 +440,7 @@ Partial Class frm_ABMnadadores
         'lbl_club
         '
         Me.lbl_club.AutoSize = True
-        Me.lbl_club.Location = New System.Drawing.Point(97, 449)
+        Me.lbl_club.Location = New System.Drawing.Point(396, 173)
         Me.lbl_club.Name = "lbl_club"
         Me.lbl_club.Size = New System.Drawing.Size(28, 13)
         Me.lbl_club.TabIndex = 0
@@ -447,7 +449,7 @@ Partial Class frm_ABMnadadores
         'lbl_profesor
         '
         Me.lbl_profesor.AutoSize = True
-        Me.lbl_profesor.Location = New System.Drawing.Point(88, 399)
+        Me.lbl_profesor.Location = New System.Drawing.Point(387, 123)
         Me.lbl_profesor.Name = "lbl_profesor"
         Me.lbl_profesor.Size = New System.Drawing.Size(46, 13)
         Me.lbl_profesor.TabIndex = 0
@@ -465,19 +467,22 @@ Partial Class frm_ABMnadadores
         'GroupBox2
         '
         Me.GroupBox2.Controls.Add(Me.grid_nadadores)
-        Me.GroupBox2.Location = New System.Drawing.Point(333, 12)
+        Me.GroupBox2.Location = New System.Drawing.Point(13, 280)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(329, 505)
+        Me.GroupBox2.Size = New System.Drawing.Size(641, 237)
         Me.GroupBox2.TabIndex = 5
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Nadadores Registrados"
         '
         'grid_nadadores
         '
+        Me.grid_nadadores.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+                    Or System.Windows.Forms.AnchorStyles.Left) _
+                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.grid_nadadores.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.grid_nadadores.Location = New System.Drawing.Point(6, 20)
+        Me.grid_nadadores.Location = New System.Drawing.Point(6, 18)
         Me.grid_nadadores.Name = "grid_nadadores"
-        Me.grid_nadadores.Size = New System.Drawing.Size(322, 477)
+        Me.grid_nadadores.Size = New System.Drawing.Size(627, 211)
         Me.grid_nadadores.TabIndex = 0
         '
         'cmd_eliminar
@@ -493,7 +498,7 @@ Partial Class frm_ABMnadadores
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(675, 585)
+        Me.ClientSize = New System.Drawing.Size(670, 580)
         Me.Controls.Add(Me.cmd_salir)
         Me.Controls.Add(Me.cmd_buscar)
         Me.Controls.Add(Me.cmd_eliminar)

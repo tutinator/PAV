@@ -71,9 +71,9 @@
         'MsgBox("La fecha ingresada no es válida", MsgBoxStyle.Critical, "Importante")
         'End If
 
-        If Not opt_femenino.Checked And Not opt_masculino.Checked Then
-            MsgBox("El sexo del nadador debe ser seleccionado", MsgBoxStyle.Critical, "Importante")
-        End If
+        ' If Not opt_femenino.Checked And Not opt_masculino.Checked Then
+        'MsgBox("El sexo del nadador debe ser seleccionado", MsgBoxStyle.Critical, "Importante")
+        'End If
 
         Return True
     End Function
@@ -89,8 +89,8 @@
         cmb_codPos.Enabled = x
         cmb_profesor.Enabled = x
         cmb_club.Enabled = x
-        opt_femenino.Enabled = x
-        opt_masculino.Enabled = x
+        'opt_femenino.Enabled = x
+        'opt_masculino.Enabled = x
     End Sub
 
     Private Sub cambiarBotones(ByVal x As Boolean)
@@ -135,11 +135,11 @@
         consulta &= "Nadadores.email AS Email "
         consulta &= "FROM Clubes INNER JOIN "
         consulta &= "CodPostales ON Clubes.codPos = CodPostales.codPos INNER JOIN "
-        consulta &= "Nadadores ON Clubes.codClub = Nadadores.codClub AND CodPostales.codPos = Nadadores.codPos INNER JOIN "
-        consulta &= "Profesores ON CodPostales.codPos = Profesores.codPos AND Nadadores.codProfe = Profesores.codProfe INNER JOIN "
-        consulta &= "TiposDoc ON Nadadores.tipoDoc = TiposDoc.tipoDoc AND Profesores.tipoDoc = TiposDoc.tipoDoc"
+        consulta &= "Nadadores ON Clubes.codClub = Nadadores.codClub INNER JOIN "
+        consulta &= "Profesores ON Nadadores.codProfe = Profesores.codProfe INNER JOIN "
+        consulta &= "TiposDoc ON Nadadores.tipoDoc = TiposDoc.tipoDoc "
 
-        consulta = "SELECT codNad AS Codigo, apellido AS Apellido, nombre AS Nombre, tipoDoc AS TipoDoc, nroDoc AS NumeroDoc, calle AS Calle, numero AS Numero, codPos AS CodPostal, codProfe AS CodProfe, codClub AS CodClub, email AS Email FROM Nadadores"
+        'consulta = "SELECT codNad AS Codigo, apellido AS Apellido, nombre AS Nombre, tipoDoc AS TipoDoc, nroDoc AS NumeroDoc, calle AS Calle, numero AS Numero, codPos AS CodPostal, codProfe AS CodProfe, codClub AS CodClub, email AS Email FROM Nadadores"
         grid_nadadores.DataSource = acceso.ejecutar(consulta)
 
     End Sub
@@ -272,6 +272,8 @@
         'txt_codNadador.Enabled = False
         cmd_nuevoCP.Enabled = True
         cmd_nuevoProfe.Enabled = True
+        cmd_nuevoClub.Enabled = True
+
         Me.cmd_cancelar.Enabled = True
         Me.cmd_guardar.Enabled = True
         txt_codNadador.Focus()

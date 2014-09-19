@@ -101,11 +101,10 @@ Partial Class frm_ABMTorneo
         Me.txt_codTorneo.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!)
         Me.txt_codTorneo.Location = New System.Drawing.Point(102, 30)
         Me.txt_codTorneo.Margin = New System.Windows.Forms.Padding(1)
-        Me.txt_codTorneo.Mask = "0000"
+        Me.txt_codTorneo.Mask = "9999"
         Me.txt_codTorneo.Name = "txt_codTorneo"
         Me.txt_codTorneo.Size = New System.Drawing.Size(34, 20)
         Me.txt_codTorneo.TabIndex = 0
-        Me.txt_codTorneo.ValidatingType = GetType(String)
         '
         'lbl_codTorneo
         '

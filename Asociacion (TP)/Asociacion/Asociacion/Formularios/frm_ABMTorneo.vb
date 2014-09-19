@@ -69,63 +69,20 @@
         cmd_cancelar.Enabled = x
     End Sub
 
-    Private Function ejecuto_sql(ByVal consulta_sql As String) As Data.DataTable
-        Dim conexion As New Data.OleDb.OleDbConnection
-        Dim cmd As New Data.OleDb.OleDbCommand
-        Dim tabla As New Data.DataTable
-
-        conexion.ConnectionString = Me.string_conexion
-        conexion.Open()
-        cmd.Connection = conexion
-        cmd.CommandType = CommandType.Text
-        cmd.CommandText = consulta_sql
-
-        tabla.Load(cmd.ExecuteReader())
-
-        conexion.Close()
-
-        Return tabla
-
-    End Function
 
     Private Sub cargar_grilla()
-
-        Dim conexion As New Data.SqlClient.SqlConnection
-        conexion.ConnectionString = string_conexion
-        conexion.Open()
-        Dim tabla As New Data.DataTable
-        Dim cmd As New Data.SqlClient.SqlCommand
-        cmd.Connection = conexion
         Dim consulta As String = ""
+        consulta = "SELECT codTorneo AS Codigo, descripcion AS Nombre "
+        consulta &= "FROM Torneos"
 
-        'CAMBIAR ESTA CONSULTAR POR LA QUE CORRESPONDE A TORNEO (NO ME FUNCA LA BD A MI)
-        consulta = "SELECT codPos AS Codigo, nombre AS Area FROM CodPostales"
-        cmd.CommandType = CommandType.Text
-        cmd.CommandText = consulta
-        tabla.Load(cmd.ExecuteReader())
-
-        grid_codTorneo.DataSource = tabla
-        conexion.Close()
+        grid_codTorneo.DataSource = acceso.ejecutar(consulta)
     End Sub
 
     Private Function modificar() As termino
 
-        Dim consulta As String = ""
-        Dim cmd As New Data.SqlClient.SqlCommand
-        Dim conexion As New Data.SqlClient.SqlConnection
-
-        conexion.ConnectionString = string_conexion
-        conexion.Open()
-        cmd.Connection = conexion
-
-        'CAMBIAR ESTA CONSULTAR POR LA QUE CORRESPONDE A TORNEO (NO ME FUNCA LA BD A MI)
-
-        consulta = "UPDATE CodPostales SET nombre = '" & Me.txt_nombre.Text & "' WHERE codPos = " & txt_codTorneo.Text
-        cmd.CommandType = CommandType.Text
-        cmd.CommandText = consulta
-        cmd.ExecuteNonQuery()
-        conexion.Close()
-
+       Dim consulta As String = ""
+        consulta = "UPDATE Torneos SET descripcion = '" & Me.txt_nombre.Text & "' WHERE codTorneo = " & txt_codTorneo.Text
+        acceso.ejecutarNonConsulta(consulta)
         Return termino.aprobado
 
     End Function
@@ -148,7 +105,7 @@
         'CAMBIAR ESTA CONSULTAR POR LA QUE CORRESPONDE A TORNEO (NO ME FUNCA LA BD A MI)
 
         Dim consulta As String = ""
-        consulta = "INSERT into CodPostales (codPos,nombre) values ('" & Me.txt_codTorneo.Text & "'"
+        consulta = "INSERT into Torneos (codTorneo, descripcion) values ('" & Me.txt_codTorneo.Text & "'"
         consulta &= ",'" & Me.txt_nombre.Text & "')"
         acceso.ejecutarNonConsulta(consulta)
         Return termino.aprobado
@@ -156,23 +113,11 @@
     End Function
 
     Private Function validar_existencia() As termino
-        Dim conexion As New Data.SqlClient.SqlConnection
-        Dim cmd As New Data.SqlClient.SqlCommand
         Dim consulta As String = ""
-        Dim dt As New Data.DataTable
-        conexion.ConnectionString = Me.string_conexion
-        conexion.Open()
-
-        'CAMBIAR ESTA CONSULTAR POR LA QUE CORRESPONDE A TORNEO (NO ME FUNCA LA BD A MI)
-
-        consulta = "select * from CodPostales where codPos = " & Me.txt_codTorneo.Text
-        cmd.CommandType = CommandType.Text
-        cmd.CommandText = consulta
-        cmd.Connection = conexion
-
-        dt.Load(cmd.ExecuteReader())
-        conexion.Close()
-        If dt.Rows.Count() = 1 Then
+        Dim tabla As Data.DataTable
+        consulta = "select * from Torneos where codTorneo = " & Me.txt_codTorneo.Text
+        tabla = acceso.ejecutar(consulta)
+        If tabla.Rows.Count() = 1 Then
             Return termino.rechazado
         Else
             Return termino.aprobado
@@ -180,22 +125,8 @@
     End Function
 
     Private Function delete() As termino
-
-        Dim conexion As New Data.SqlClient.SqlConnection
-        Dim cmd As New Data.SqlClient.SqlCommand
-        'Dim Variable As Integer = grid_cod_post.Item(0, grid_cod_post.CurrentRow.Index).Value
-        conexion.ConnectionString = Me.string_conexion
-        conexion.Open()
-        cmd.Connection = conexion
-        cmd.CommandType = CommandType.Text
-
-        'CAMBIAR ESTA CONSULTAR POR LA QUE CORRESPONDE A TORNEO (NO ME FUNCA LA BD A MI)
-
-
-        cmd.CommandText = "DELETE FROM CodPostales WHERE codPos = " & Me.txt_codTorneo.Text
-        cmd.ExecuteNonQuery()
-        conexion.Close()
-
+        Dim consulta As String = "DELETE FROM Torneos WHERE codTorneo = " & Me.txt_codTorneo.Text
+        acceso.ejecutarNonConsulta(consulta)
         Return termino.aprobado
     End Function
 
@@ -265,44 +196,19 @@
                     MsgBox("Ingrese un dato para buscar", MsgBoxStyle.Critical, "Importante")
                     txt_codTorneo.Focus()
                 Else
-                    Dim conexion As New Data.SqlClient.SqlConnection
-                    Dim cmd As New Data.SqlClient.SqlCommand
                     Dim consulta As String = ""
                     Dim dt As New Data.DataTable
-                    conexion.ConnectionString = Me.string_conexion
-                    conexion.Open()
-
-                    'CAMBIAR ESTA CONSULTAR POR LA QUE CORRESPONDE A TORNEO (NO ME FUNCA LA BD A MI)
-
-                    consulta = "SELECT * FROM CodPostales WHERE nombre = '" & Me.txt_nombre.Text & "'"
-                    cmd.CommandType = CommandType.Text
-                    cmd.CommandText = consulta
-                    cmd.Connection = conexion
-
-                    dt.Load(cmd.ExecuteReader())
+                    consulta = "SELECT * FROM Torneos WHERE descripcion LIKE '%" & Me.txt_nombre.Text & "%'"
+                    dt = acceso.ejecutar(consulta)
                     grid_codTorneo.DataSource = dt
-                    conexion.Close()
-
 
                 End If
             Else
-                Dim conexion As New Data.SqlClient.SqlConnection
-                Dim cmd As New Data.SqlClient.SqlCommand
                 Dim consulta As String = ""
                 Dim dt As New Data.DataTable
-                conexion.ConnectionString = Me.string_conexion
-                conexion.Open()
-
-                'CAMBIAR ESTA CONSULTAR POR LA QUE CORRESPONDE A TORNEO (NO ME FUNCA LA BD A MI)
-
-                consulta = "SELECT * FROM CodPostales WHERE codPos = '" & Me.txt_codTorneo.Text & "'"
-                cmd.CommandType = CommandType.Text
-                cmd.CommandText = consulta
-                cmd.Connection = conexion
-
-                dt.Load(cmd.ExecuteReader())
+                consulta = "SELECT * FROM Torneos WHERE codTorneo = '" & Me.txt_codTorneo.Text & "'"
+                dt = acceso.ejecutar(consulta)
                 grid_codTorneo.DataSource = dt
-                conexion.Close()
 
 
             End If
@@ -317,27 +223,19 @@
 
     Private Sub grid_codTorneo_CellMouseDoubleClick(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellMouseEventArgs) Handles grid_codTorneo.CellMouseDoubleClick
 
-        'Dim codigoSeleccionado As String = grid_codPos.SelectedRows.Item(0).ToString()
+
         Dim codigoSeleccionado As String = Me.grid_codTorneo.CurrentRow.Cells(0).Value
-        Dim conexion As New Data.SqlClient.SqlConnection
-        conexion.ConnectionString = string_conexion
-        conexion.Open()
+
         Dim tabla As New Data.DataTable
-        Dim cmd As New Data.SqlClient.SqlCommand
-        cmd.Connection = conexion
+
         Dim consulta As String = ""
+        consulta = "SELECT * FROM Torneos WHERE codTorneo = " & codigoSeleccionado
 
-        'CAMBIAR ESTA CONSULTAR POR LA QUE CORRESPONDE A TORNEO (NO ME FUNCA LA BD A MI)
 
-        consulta = "SELECT * FROM CodPostales WHERE codPos = " & codigoSeleccionado
-        cmd.CommandType = CommandType.Text
-        cmd.CommandText = consulta
-        tabla.Load(cmd.ExecuteReader())
+        tabla = acceso.ejecutar(consulta)
 
-        'CAMBIAR ESTA CONSULTAR POR LA QUE CORRESPONDE A TORNEO (NO ME FUNCA LA BD A MI)
-
-        Me.txt_codTorneo.Text = tabla.Rows(0)("codPos")
-        Me.txt_nombre.Text = tabla.Rows(0)("nombre")
+        Me.txt_codTorneo.Text = tabla.Rows(0)("codTorneo")
+        Me.txt_nombre.Text = tabla.Rows(0)("descripcion")
 
         cambiarBotones(False)
         Me.cmd_cancelar.Enabled = True
@@ -347,7 +245,6 @@
         txt_nombre.Focus()
 
         Me.accion = estado.modificar
-        conexion.Close()
     End Sub
 
 

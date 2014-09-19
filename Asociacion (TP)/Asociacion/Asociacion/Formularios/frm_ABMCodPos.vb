@@ -90,39 +90,15 @@
     End Function
 
     Private Sub cargar_grilla()
-
-        Dim conexion As New Data.SqlClient.SqlConnection
-        conexion.ConnectionString = string_conexion
-        conexion.Open()
-        Dim tabla As New Data.DataTable
-        Dim cmd As New Data.SqlClient.SqlCommand
-        cmd.Connection = conexion
         Dim consulta As String = ""
         consulta = "SELECT codPos AS Codigo, nombre AS Area FROM CodPostales"
-        cmd.CommandType = CommandType.Text
-        cmd.CommandText = consulta
-        tabla.Load(cmd.ExecuteReader())
-
-        grid_codPos.DataSource = tabla
-        conexion.Close()
+        grid_codPos.DataSource = acceso.ejecutar(consulta)
     End Sub
 
     Private Function modificar() As termino
-
         Dim consulta As String = ""
-        Dim cmd As New Data.SqlClient.SqlCommand
-        Dim conexion As New Data.SqlClient.SqlConnection
-
-        conexion.ConnectionString = string_conexion
-        conexion.Open()
-        cmd.Connection = conexion
-
         consulta = "UPDATE CodPostales SET nombre = '" & Me.txt_nombre.Text & "' WHERE codPos = " & txt_codPos.Text
-        cmd.CommandType = CommandType.Text
-        cmd.CommandText = consulta
-        cmd.ExecuteNonQuery()
-        conexion.Close()
-
+        acceso.ejecutarNonConsulta(consulta)
         Return termino.aprobado
 
     End Function
@@ -148,20 +124,11 @@
     End Function
 
     Private Function validar_existencia() As termino
-        Dim conexion As New Data.SqlClient.SqlConnection
-        Dim cmd As New Data.SqlClient.SqlCommand
         Dim consulta As String = ""
-        Dim dt As New Data.DataTable
-        conexion.ConnectionString = Me.string_conexion
-        conexion.Open()
+        Dim tabla As Data.DataTable
         consulta = "select * from CodPostales where codPos = " & Me.txt_codPos.Text
-        cmd.CommandType = CommandType.Text
-        cmd.CommandText = consulta
-        cmd.Connection = conexion
-
-        dt.Load(cmd.ExecuteReader())
-        conexion.Close()
-        If dt.Rows.Count() = 1 Then
+        tabla = acceso.ejecutar(consulta)
+        If tabla.Rows.Count() = 1 Then
             Return termino.rechazado
         Else
             Return termino.aprobado
@@ -169,18 +136,8 @@
     End Function
 
     Private Function delete() As termino
-
-        Dim conexion As New Data.SqlClient.SqlConnection
-        Dim cmd As New Data.SqlClient.SqlCommand
-        'Dim Variable As Integer = grid_cod_post.Item(0, grid_cod_post.CurrentRow.Index).Value
-        conexion.ConnectionString = Me.string_conexion
-        conexion.Open()
-        cmd.Connection = conexion
-        cmd.CommandType = CommandType.Text
-        cmd.CommandText = "DELETE FROM CodPostales WHERE codPos = " & Me.txt_codPos.Text
-        cmd.ExecuteNonQuery()
-        conexion.Close()
-
+        Dim consulta As String = "DELETE FROM CodPostales WHERE codPos = " & Me.txt_codPos.Text
+        acceso.ejecutarNonConsulta(consulta)
         Return termino.aprobado
     End Function
 
