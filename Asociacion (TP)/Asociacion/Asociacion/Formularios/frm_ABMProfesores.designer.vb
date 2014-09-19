@@ -47,15 +47,16 @@ Partial Class frm_ABMProfesores
         Me.txt_apellido_profesor = New System.Windows.Forms.TextBox()
         Me.txt_nombre_profesor = New System.Windows.Forms.TextBox()
         Me.gbo_profesores_registrados = New System.Windows.Forms.GroupBox()
-        Me.grid_profesores = New System.Windows.Forms.ListBox()
         Me.cmd_salir = New System.Windows.Forms.Button()
         Me.cmd_buscar = New System.Windows.Forms.Button()
         Me.cmd_cancelar = New System.Windows.Forms.Button()
         Me.cmd_eliminar = New System.Windows.Forms.Button()
         Me.cmd_guardar = New System.Windows.Forms.Button()
         Me.cmd_nuevo = New System.Windows.Forms.Button()
+        Me.grid_profesores = New System.Windows.Forms.DataGridView()
         Me.gbo_profesor.SuspendLayout()
         Me.gbo_profesores_registrados.SuspendLayout()
+        CType(Me.grid_profesores, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'lbl_sexo_profesor
@@ -353,21 +354,13 @@ Partial Class frm_ABMProfesores
         Me.gbo_profesores_registrados.TabStop = False
         Me.gbo_profesores_registrados.Text = "Profesores Registrados"
         '
-        'grid_profesores
-        '
-        Me.grid_profesores.FormattingEnabled = True
-        Me.grid_profesores.Location = New System.Drawing.Point(6, 22)
-        Me.grid_profesores.Name = "grid_profesores"
-        Me.grid_profesores.Size = New System.Drawing.Size(766, 212)
-        Me.grid_profesores.TabIndex = 0
-        '
         'cmd_salir
         '
         Me.cmd_salir.Image = Global.Asociacion.My.Resources.Resources.salir
         Me.cmd_salir.Location = New System.Drawing.Point(737, 443)
         Me.cmd_salir.Name = "cmd_salir"
         Me.cmd_salir.Size = New System.Drawing.Size(50, 50)
-        Me.cmd_salir.TabIndex = 6
+        Me.cmd_salir.TabIndex = 5
         Me.cmd_salir.UseVisualStyleBackColor = True
         '
         'cmd_buscar
@@ -376,7 +369,7 @@ Partial Class frm_ABMProfesores
         Me.cmd_buscar.Location = New System.Drawing.Point(278, 443)
         Me.cmd_buscar.Name = "cmd_buscar"
         Me.cmd_buscar.Size = New System.Drawing.Size(50, 50)
-        Me.cmd_buscar.TabIndex = 5
+        Me.cmd_buscar.TabIndex = 4
         Me.cmd_buscar.UseVisualStyleBackColor = True
         '
         'cmd_cancelar
@@ -385,7 +378,7 @@ Partial Class frm_ABMProfesores
         Me.cmd_cancelar.Location = New System.Drawing.Point(177, 443)
         Me.cmd_cancelar.Name = "cmd_cancelar"
         Me.cmd_cancelar.Size = New System.Drawing.Size(50, 50)
-        Me.cmd_cancelar.TabIndex = 4
+        Me.cmd_cancelar.TabIndex = 3
         Me.cmd_cancelar.UseVisualStyleBackColor = True
         '
         'cmd_eliminar
@@ -394,7 +387,7 @@ Partial Class frm_ABMProfesores
         Me.cmd_eliminar.Location = New System.Drawing.Point(121, 443)
         Me.cmd_eliminar.Name = "cmd_eliminar"
         Me.cmd_eliminar.Size = New System.Drawing.Size(50, 50)
-        Me.cmd_eliminar.TabIndex = 3
+        Me.cmd_eliminar.TabIndex = 2
         Me.cmd_eliminar.UseVisualStyleBackColor = True
         '
         'cmd_guardar
@@ -403,7 +396,7 @@ Partial Class frm_ABMProfesores
         Me.cmd_guardar.Location = New System.Drawing.Point(65, 443)
         Me.cmd_guardar.Name = "cmd_guardar"
         Me.cmd_guardar.Size = New System.Drawing.Size(50, 50)
-        Me.cmd_guardar.TabIndex = 2
+        Me.cmd_guardar.TabIndex = 1
         Me.cmd_guardar.UseVisualStyleBackColor = True
         '
         'cmd_nuevo
@@ -412,8 +405,16 @@ Partial Class frm_ABMProfesores
         Me.cmd_nuevo.Location = New System.Drawing.Point(9, 443)
         Me.cmd_nuevo.Name = "cmd_nuevo"
         Me.cmd_nuevo.Size = New System.Drawing.Size(50, 50)
-        Me.cmd_nuevo.TabIndex = 1
+        Me.cmd_nuevo.TabIndex = 0
         Me.cmd_nuevo.UseVisualStyleBackColor = True
+        '
+        'grid_profesores
+        '
+        Me.grid_profesores.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.grid_profesores.Location = New System.Drawing.Point(6, 20)
+        Me.grid_profesores.Name = "grid_profesores"
+        Me.grid_profesores.Size = New System.Drawing.Size(766, 222)
+        Me.grid_profesores.TabIndex = 0
         '
         'frm_ABMProfesores
         '
@@ -433,6 +434,7 @@ Partial Class frm_ABMProfesores
         Me.gbo_profesor.ResumeLayout(False)
         Me.gbo_profesor.PerformLayout()
         Me.gbo_profesores_registrados.ResumeLayout(False)
+        CType(Me.grid_profesores, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -449,7 +451,6 @@ Partial Class frm_ABMProfesores
     Friend WithEvents cmb_tipoDoc_profesor As System.Windows.Forms.ComboBox
     Friend WithEvents opt_masculino_profesor As System.Windows.Forms.RadioButton
     Friend WithEvents lbl_codigo_profesor As System.Windows.Forms.Label
-    Friend WithEvents grid_profesores As System.Windows.Forms.ListBox
     Friend WithEvents cmd_nuevoCP As System.Windows.Forms.Button
     Friend WithEvents txt_telefono_profesor As Asociacion.TextBoxv01
     Friend WithEvents txt_nroCalle_profesor As Asociacion.TextBoxv01
@@ -467,4 +468,5 @@ Partial Class frm_ABMProfesores
     Friend WithEvents cmd_guardar As System.Windows.Forms.Button
     Friend WithEvents cmd_nuevo As System.Windows.Forms.Button
     Friend WithEvents txt_nroDoc_profesor As Asociacion.TextBoxv01
+    Friend WithEvents grid_profesores As System.Windows.Forms.DataGridView
 End Class
