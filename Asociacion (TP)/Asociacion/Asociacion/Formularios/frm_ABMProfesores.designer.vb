@@ -25,14 +25,18 @@ Partial Class frm_ABMProfesores
         Me.components = New System.ComponentModel.Container()
         Me.lbl_sexo_profesor = New System.Windows.Forms.Label()
         Me.gbo_profesor = New System.Windows.Forms.GroupBox()
+        Me.txt_nroDoc_profesor = New Asociacion.TextBoxv01()
+        Me.txt_codProfesor = New Asociacion.TextBoxv01()
         Me.cmd_nuevoCP = New System.Windows.Forms.Button()
+        Me.txt_telefono_profesor = New Asociacion.TextBoxv01()
+        Me.txt_nroCalle_profesor = New Asociacion.TextBoxv01()
         Me.cmb_codPos_profesor = New System.Windows.Forms.ComboBox()
         Me.txt_calle_profesor = New System.Windows.Forms.TextBox()
         Me.lbl_tel_profesor = New System.Windows.Forms.Label()
         Me.lbl_codPostal_profesor = New System.Windows.Forms.Label()
         Me.lbl_numero_profesor = New System.Windows.Forms.Label()
         Me.lbl_calle_profesor = New System.Windows.Forms.Label()
-        Me.cbo_tipoDoc_profesor = New System.Windows.Forms.ComboBox()
+        Me.cmb_tipoDoc_profesor = New System.Windows.Forms.ComboBox()
         Me.opt_masculino_profesor = New System.Windows.Forms.RadioButton()
         Me.opt_femenino_profesor = New System.Windows.Forms.RadioButton()
         Me.lbl_nombre_profesor = New System.Windows.Forms.Label()
@@ -43,11 +47,7 @@ Partial Class frm_ABMProfesores
         Me.txt_apellido_profesor = New System.Windows.Forms.TextBox()
         Me.txt_nombre_profesor = New System.Windows.Forms.TextBox()
         Me.gbo_profesores_registrados = New System.Windows.Forms.GroupBox()
-        Me.lbo_profesores = New System.Windows.Forms.ListBox()
-        Me.txt_nroDoc_profesor = New Asociacion.TextBoxv01()
-        Me.txt_codProfesor = New Asociacion.TextBoxv01()
-        Me.txt_telefono_profesor = New Asociacion.TextBoxv01()
-        Me.txt_nroCalle_profesor = New Asociacion.TextBoxv01()
+        Me.grid_profesores = New System.Windows.Forms.ListBox()
         Me.cmd_salir = New System.Windows.Forms.Button()
         Me.cmd_buscar = New System.Windows.Forms.Button()
         Me.cmd_cancelar = New System.Windows.Forms.Button()
@@ -80,7 +80,7 @@ Partial Class frm_ABMProfesores
         Me.gbo_profesor.Controls.Add(Me.lbl_codPostal_profesor)
         Me.gbo_profesor.Controls.Add(Me.lbl_numero_profesor)
         Me.gbo_profesor.Controls.Add(Me.lbl_calle_profesor)
-        Me.gbo_profesor.Controls.Add(Me.cbo_tipoDoc_profesor)
+        Me.gbo_profesor.Controls.Add(Me.cmb_tipoDoc_profesor)
         Me.gbo_profesor.Controls.Add(Me.opt_masculino_profesor)
         Me.gbo_profesor.Controls.Add(Me.opt_femenino_profesor)
         Me.gbo_profesor.Controls.Add(Me.lbl_nombre_profesor)
@@ -98,6 +98,54 @@ Partial Class frm_ABMProfesores
         Me.gbo_profesor.TabStop = False
         Me.gbo_profesor.Text = "Profesor"
         '
+        'txt_nroDoc_profesor
+        '
+        Me.txt_nroDoc_profesor._BDdato = False
+        Me.txt_nroDoc_profesor._BDnombreCampoTabla = ""
+        Me.txt_nroDoc_profesor._BDvalor = ""
+        Me.txt_nroDoc_profesor._descriptor_del_contenido = ""
+        Me.txt_nroDoc_profesor._Gest_AnchoTexto = 0
+        Me.txt_nroDoc_profesor._Gest_decimales = 0
+        Me.txt_nroDoc_profesor._Gest_enteros = "0"
+        Me.txt_nroDoc_profesor._Gest_mensajeError = ""
+        Me.txt_nroDoc_profesor._Gest_mensajetooltips = "cambie el mensaje tip"
+        Me.txt_nroDoc_profesor._Gest_ReadOnly = False
+        Me.txt_nroDoc_profesor._Gest_TextoNegrita = False
+        Me.txt_nroDoc_profesor._Gest_tipo_dato = Asociacion.TextBoxv01.t_dato.texto
+        Me.txt_nroDoc_profesor._Gest_validar = True
+        Me.txt_nroDoc_profesor.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!)
+        Me.txt_nroDoc_profesor.Location = New System.Drawing.Point(122, 138)
+        Me.txt_nroDoc_profesor.Margin = New System.Windows.Forms.Padding(1)
+        Me.txt_nroDoc_profesor.Mask = "99999999"
+        Me.txt_nroDoc_profesor.Name = "txt_nroDoc_profesor"
+        Me.txt_nroDoc_profesor.Size = New System.Drawing.Size(59, 20)
+        Me.txt_nroDoc_profesor.TabIndex = 4
+        Me.txt_nroDoc_profesor.ValidatingType = GetType(String)
+        '
+        'txt_codProfesor
+        '
+        Me.txt_codProfesor._BDdato = False
+        Me.txt_codProfesor._BDnombreCampoTabla = ""
+        Me.txt_codProfesor._BDvalor = ""
+        Me.txt_codProfesor._descriptor_del_contenido = ""
+        Me.txt_codProfesor._Gest_AnchoTexto = 0
+        Me.txt_codProfesor._Gest_decimales = 0
+        Me.txt_codProfesor._Gest_enteros = "0"
+        Me.txt_codProfesor._Gest_mensajeError = ""
+        Me.txt_codProfesor._Gest_mensajetooltips = "cambie el mensaje tip"
+        Me.txt_codProfesor._Gest_ReadOnly = False
+        Me.txt_codProfesor._Gest_TextoNegrita = True
+        Me.txt_codProfesor._Gest_tipo_dato = Asociacion.TextBoxv01.t_dato.texto
+        Me.txt_codProfesor._Gest_validar = True
+        Me.txt_codProfesor.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!, System.Drawing.FontStyle.Bold)
+        Me.txt_codProfesor.Location = New System.Drawing.Point(122, 22)
+        Me.txt_codProfesor.Margin = New System.Windows.Forms.Padding(1)
+        Me.txt_codProfesor.Mask = "99999"
+        Me.txt_codProfesor.Name = "txt_codProfesor"
+        Me.txt_codProfesor.Size = New System.Drawing.Size(42, 20)
+        Me.txt_codProfesor.TabIndex = 0
+        Me.txt_codProfesor.ValidatingType = GetType(Integer)
+        '
         'cmd_nuevoCP
         '
         Me.cmd_nuevoCP.Location = New System.Drawing.Point(535, 108)
@@ -106,6 +154,54 @@ Partial Class frm_ABMProfesores
         Me.cmd_nuevoCP.TabIndex = 10
         Me.cmd_nuevoCP.Text = "Nuevo CP"
         Me.cmd_nuevoCP.UseVisualStyleBackColor = True
+        '
+        'txt_telefono_profesor
+        '
+        Me.txt_telefono_profesor._BDdato = False
+        Me.txt_telefono_profesor._BDnombreCampoTabla = ""
+        Me.txt_telefono_profesor._BDvalor = ""
+        Me.txt_telefono_profesor._descriptor_del_contenido = ""
+        Me.txt_telefono_profesor._Gest_AnchoTexto = 0
+        Me.txt_telefono_profesor._Gest_decimales = 0
+        Me.txt_telefono_profesor._Gest_enteros = "0"
+        Me.txt_telefono_profesor._Gest_mensajeError = ""
+        Me.txt_telefono_profesor._Gest_mensajetooltips = "cambie el mensaje tip"
+        Me.txt_telefono_profesor._Gest_ReadOnly = False
+        Me.txt_telefono_profesor._Gest_TextoNegrita = False
+        Me.txt_telefono_profesor._Gest_tipo_dato = Asociacion.TextBoxv01.t_dato.texto
+        Me.txt_telefono_profesor._Gest_validar = True
+        Me.txt_telefono_profesor.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!)
+        Me.txt_telefono_profesor.Location = New System.Drawing.Point(440, 138)
+        Me.txt_telefono_profesor.Margin = New System.Windows.Forms.Padding(1)
+        Me.txt_telefono_profesor.Mask = "99999999999999"
+        Me.txt_telefono_profesor.Name = "txt_telefono_profesor"
+        Me.txt_telefono_profesor.Size = New System.Drawing.Size(100, 20)
+        Me.txt_telefono_profesor.TabIndex = 11
+        Me.txt_telefono_profesor.ValidatingType = GetType(String)
+        '
+        'txt_nroCalle_profesor
+        '
+        Me.txt_nroCalle_profesor._BDdato = False
+        Me.txt_nroCalle_profesor._BDnombreCampoTabla = ""
+        Me.txt_nroCalle_profesor._BDvalor = ""
+        Me.txt_nroCalle_profesor._descriptor_del_contenido = ""
+        Me.txt_nroCalle_profesor._Gest_AnchoTexto = 0
+        Me.txt_nroCalle_profesor._Gest_decimales = 0
+        Me.txt_nroCalle_profesor._Gest_enteros = "0"
+        Me.txt_nroCalle_profesor._Gest_mensajeError = ""
+        Me.txt_nroCalle_profesor._Gest_mensajetooltips = "cambie el mensaje tip"
+        Me.txt_nroCalle_profesor._Gest_ReadOnly = False
+        Me.txt_nroCalle_profesor._Gest_TextoNegrita = False
+        Me.txt_nroCalle_profesor._Gest_tipo_dato = Asociacion.TextBoxv01.t_dato.texto
+        Me.txt_nroCalle_profesor._Gest_validar = True
+        Me.txt_nroCalle_profesor.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!)
+        Me.txt_nroCalle_profesor.Location = New System.Drawing.Point(440, 80)
+        Me.txt_nroCalle_profesor.Margin = New System.Windows.Forms.Padding(1)
+        Me.txt_nroCalle_profesor.Mask = "99999"
+        Me.txt_nroCalle_profesor.Name = "txt_nroCalle_profesor"
+        Me.txt_nroCalle_profesor.Size = New System.Drawing.Size(42, 20)
+        Me.txt_nroCalle_profesor.TabIndex = 8
+        Me.txt_nroCalle_profesor.ValidatingType = GetType(Integer)
         '
         'cmb_codPos_profesor
         '
@@ -158,13 +254,13 @@ Partial Class frm_ABMProfesores
         Me.lbl_calle_profesor.TabIndex = 39
         Me.lbl_calle_profesor.Text = "Calle*"
         '
-        'cbo_tipoDoc_profesor
+        'cmb_tipoDoc_profesor
         '
-        Me.cbo_tipoDoc_profesor.FormattingEnabled = True
-        Me.cbo_tipoDoc_profesor.Location = New System.Drawing.Point(122, 109)
-        Me.cbo_tipoDoc_profesor.Name = "cbo_tipoDoc_profesor"
-        Me.cbo_tipoDoc_profesor.Size = New System.Drawing.Size(125, 21)
-        Me.cbo_tipoDoc_profesor.TabIndex = 3
+        Me.cmb_tipoDoc_profesor.FormattingEnabled = True
+        Me.cmb_tipoDoc_profesor.Location = New System.Drawing.Point(122, 109)
+        Me.cmb_tipoDoc_profesor.Name = "cmb_tipoDoc_profesor"
+        Me.cmb_tipoDoc_profesor.Size = New System.Drawing.Size(125, 21)
+        Me.cmb_tipoDoc_profesor.TabIndex = 3
         '
         'opt_masculino_profesor
         '
@@ -249,7 +345,7 @@ Partial Class frm_ABMProfesores
         '
         'gbo_profesores_registrados
         '
-        Me.gbo_profesores_registrados.Controls.Add(Me.lbo_profesores)
+        Me.gbo_profesores_registrados.Controls.Add(Me.grid_profesores)
         Me.gbo_profesores_registrados.Location = New System.Drawing.Point(9, 189)
         Me.gbo_profesores_registrados.Name = "gbo_profesores_registrados"
         Me.gbo_profesores_registrados.Size = New System.Drawing.Size(778, 248)
@@ -257,109 +353,13 @@ Partial Class frm_ABMProfesores
         Me.gbo_profesores_registrados.TabStop = False
         Me.gbo_profesores_registrados.Text = "Profesores Registrados"
         '
-        'lbo_profesores
+        'grid_profesores
         '
-        Me.lbo_profesores.FormattingEnabled = True
-        Me.lbo_profesores.Location = New System.Drawing.Point(6, 22)
-        Me.lbo_profesores.Name = "lbo_profesores"
-        Me.lbo_profesores.Size = New System.Drawing.Size(766, 212)
-        Me.lbo_profesores.TabIndex = 0
-        '
-        'txt_nroDoc_profesor
-        '
-        Me.txt_nroDoc_profesor._BDdato = False
-        Me.txt_nroDoc_profesor._BDnombreCampoTabla = ""
-        Me.txt_nroDoc_profesor._BDvalor = ""
-        Me.txt_nroDoc_profesor._descriptor_del_contenido = ""
-        Me.txt_nroDoc_profesor._Gest_AnchoTexto = 0
-        Me.txt_nroDoc_profesor._Gest_decimales = 0
-        Me.txt_nroDoc_profesor._Gest_enteros = "0"
-        Me.txt_nroDoc_profesor._Gest_mensajeError = ""
-        Me.txt_nroDoc_profesor._Gest_mensajetooltips = "cambie el mensaje tip"
-        Me.txt_nroDoc_profesor._Gest_ReadOnly = False
-        Me.txt_nroDoc_profesor._Gest_TextoNegrita = False
-        Me.txt_nroDoc_profesor._Gest_tipo_dato = Asociacion.TextBoxv01.t_dato.texto
-        Me.txt_nroDoc_profesor._Gest_validar = True
-        Me.txt_nroDoc_profesor.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!)
-        Me.txt_nroDoc_profesor.Location = New System.Drawing.Point(122, 138)
-        Me.txt_nroDoc_profesor.Margin = New System.Windows.Forms.Padding(1)
-        Me.txt_nroDoc_profesor.Mask = "99999999"
-        Me.txt_nroDoc_profesor.Name = "txt_nroDoc_profesor"
-        Me.txt_nroDoc_profesor.Size = New System.Drawing.Size(59, 20)
-        Me.txt_nroDoc_profesor.TabIndex = 4
-        Me.txt_nroDoc_profesor.ValidatingType = GetType(String)
-        '
-        'txt_codProfesor
-        '
-        Me.txt_codProfesor._BDdato = False
-        Me.txt_codProfesor._BDnombreCampoTabla = ""
-        Me.txt_codProfesor._BDvalor = ""
-        Me.txt_codProfesor._descriptor_del_contenido = ""
-        Me.txt_codProfesor._Gest_AnchoTexto = 0
-        Me.txt_codProfesor._Gest_decimales = 0
-        Me.txt_codProfesor._Gest_enteros = "0"
-        Me.txt_codProfesor._Gest_mensajeError = ""
-        Me.txt_codProfesor._Gest_mensajetooltips = "cambie el mensaje tip"
-        Me.txt_codProfesor._Gest_ReadOnly = False
-        Me.txt_codProfesor._Gest_TextoNegrita = True
-        Me.txt_codProfesor._Gest_tipo_dato = Asociacion.TextBoxv01.t_dato.texto
-        Me.txt_codProfesor._Gest_validar = True
-        Me.txt_codProfesor.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!, System.Drawing.FontStyle.Bold)
-        Me.txt_codProfesor.Location = New System.Drawing.Point(122, 22)
-        Me.txt_codProfesor.Margin = New System.Windows.Forms.Padding(1)
-        Me.txt_codProfesor.Mask = "99999"
-        Me.txt_codProfesor.Name = "txt_codProfesor"
-        Me.txt_codProfesor.Size = New System.Drawing.Size(42, 20)
-        Me.txt_codProfesor.TabIndex = 0
-        Me.txt_codProfesor.ValidatingType = GetType(Integer)
-        '
-        'txt_telefono_profesor
-        '
-        Me.txt_telefono_profesor._BDdato = False
-        Me.txt_telefono_profesor._BDnombreCampoTabla = ""
-        Me.txt_telefono_profesor._BDvalor = ""
-        Me.txt_telefono_profesor._descriptor_del_contenido = ""
-        Me.txt_telefono_profesor._Gest_AnchoTexto = 0
-        Me.txt_telefono_profesor._Gest_decimales = 0
-        Me.txt_telefono_profesor._Gest_enteros = "0"
-        Me.txt_telefono_profesor._Gest_mensajeError = ""
-        Me.txt_telefono_profesor._Gest_mensajetooltips = "cambie el mensaje tip"
-        Me.txt_telefono_profesor._Gest_ReadOnly = False
-        Me.txt_telefono_profesor._Gest_TextoNegrita = False
-        Me.txt_telefono_profesor._Gest_tipo_dato = Asociacion.TextBoxv01.t_dato.texto
-        Me.txt_telefono_profesor._Gest_validar = True
-        Me.txt_telefono_profesor.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!)
-        Me.txt_telefono_profesor.Location = New System.Drawing.Point(440, 138)
-        Me.txt_telefono_profesor.Margin = New System.Windows.Forms.Padding(1)
-        Me.txt_telefono_profesor.Mask = "99999999999999"
-        Me.txt_telefono_profesor.Name = "txt_telefono_profesor"
-        Me.txt_telefono_profesor.Size = New System.Drawing.Size(100, 20)
-        Me.txt_telefono_profesor.TabIndex = 11
-        Me.txt_telefono_profesor.ValidatingType = GetType(String)
-        '
-        'txt_nroCalle_profesor
-        '
-        Me.txt_nroCalle_profesor._BDdato = False
-        Me.txt_nroCalle_profesor._BDnombreCampoTabla = ""
-        Me.txt_nroCalle_profesor._BDvalor = ""
-        Me.txt_nroCalle_profesor._descriptor_del_contenido = ""
-        Me.txt_nroCalle_profesor._Gest_AnchoTexto = 0
-        Me.txt_nroCalle_profesor._Gest_decimales = 0
-        Me.txt_nroCalle_profesor._Gest_enteros = "0"
-        Me.txt_nroCalle_profesor._Gest_mensajeError = ""
-        Me.txt_nroCalle_profesor._Gest_mensajetooltips = "cambie el mensaje tip"
-        Me.txt_nroCalle_profesor._Gest_ReadOnly = False
-        Me.txt_nroCalle_profesor._Gest_TextoNegrita = False
-        Me.txt_nroCalle_profesor._Gest_tipo_dato = Asociacion.TextBoxv01.t_dato.texto
-        Me.txt_nroCalle_profesor._Gest_validar = True
-        Me.txt_nroCalle_profesor.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!)
-        Me.txt_nroCalle_profesor.Location = New System.Drawing.Point(440, 80)
-        Me.txt_nroCalle_profesor.Margin = New System.Windows.Forms.Padding(1)
-        Me.txt_nroCalle_profesor.Mask = "99999"
-        Me.txt_nroCalle_profesor.Name = "txt_nroCalle_profesor"
-        Me.txt_nroCalle_profesor.Size = New System.Drawing.Size(42, 20)
-        Me.txt_nroCalle_profesor.TabIndex = 8
-        Me.txt_nroCalle_profesor.ValidatingType = GetType(Integer)
+        Me.grid_profesores.FormattingEnabled = True
+        Me.grid_profesores.Location = New System.Drawing.Point(6, 22)
+        Me.grid_profesores.Name = "grid_profesores"
+        Me.grid_profesores.Size = New System.Drawing.Size(766, 212)
+        Me.grid_profesores.TabIndex = 0
         '
         'cmd_salir
         '
@@ -446,10 +446,10 @@ Partial Class frm_ABMProfesores
     Friend WithEvents lbl_apellido_profesor As System.Windows.Forms.Label
     Friend WithEvents txt_nombre_profesor As System.Windows.Forms.TextBox
     Friend WithEvents txt_apellido_profesor As System.Windows.Forms.TextBox
-    Friend WithEvents cbo_tipoDoc_profesor As System.Windows.Forms.ComboBox
+    Friend WithEvents cmb_tipoDoc_profesor As System.Windows.Forms.ComboBox
     Friend WithEvents opt_masculino_profesor As System.Windows.Forms.RadioButton
     Friend WithEvents lbl_codigo_profesor As System.Windows.Forms.Label
-    Friend WithEvents lbo_profesores As System.Windows.Forms.ListBox
+    Friend WithEvents grid_profesores As System.Windows.Forms.ListBox
     Friend WithEvents cmd_nuevoCP As System.Windows.Forms.Button
     Friend WithEvents txt_telefono_profesor As Asociacion.TextBoxv01
     Friend WithEvents txt_nroCalle_profesor As Asociacion.TextBoxv01
