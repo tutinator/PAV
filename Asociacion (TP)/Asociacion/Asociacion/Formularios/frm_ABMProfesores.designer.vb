@@ -47,13 +47,13 @@ Partial Class frm_ABMProfesores
         Me.txt_apellido_profesor = New System.Windows.Forms.TextBox()
         Me.txt_nombre_profesor = New System.Windows.Forms.TextBox()
         Me.gbo_profesores_registrados = New System.Windows.Forms.GroupBox()
+        Me.grid_profesores = New System.Windows.Forms.DataGridView()
         Me.cmd_salir = New System.Windows.Forms.Button()
         Me.cmd_buscar = New System.Windows.Forms.Button()
         Me.cmd_cancelar = New System.Windows.Forms.Button()
         Me.cmd_eliminar = New System.Windows.Forms.Button()
         Me.cmd_guardar = New System.Windows.Forms.Button()
         Me.cmd_nuevo = New System.Windows.Forms.Button()
-        Me.grid_profesores = New System.Windows.Forms.DataGridView()
         Me.gbo_profesor.SuspendLayout()
         Me.gbo_profesores_registrados.SuspendLayout()
         CType(Me.grid_profesores, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -206,6 +206,9 @@ Partial Class frm_ABMProfesores
         '
         'cmb_codPos_profesor
         '
+        Me.cmb_codPos_profesor.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend
+        Me.cmb_codPos_profesor.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
+        Me.cmb_codPos_profesor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cmb_codPos_profesor.FormattingEnabled = True
         Me.cmb_codPos_profesor.Location = New System.Drawing.Point(440, 109)
         Me.cmb_codPos_profesor.Name = "cmb_codPos_profesor"
@@ -257,6 +260,9 @@ Partial Class frm_ABMProfesores
         '
         'cmb_tipoDoc_profesor
         '
+        Me.cmb_tipoDoc_profesor.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend
+        Me.cmb_tipoDoc_profesor.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
+        Me.cmb_tipoDoc_profesor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cmb_tipoDoc_profesor.FormattingEnabled = True
         Me.cmb_tipoDoc_profesor.Location = New System.Drawing.Point(122, 109)
         Me.cmb_tipoDoc_profesor.Name = "cmb_tipoDoc_profesor"
@@ -354,6 +360,14 @@ Partial Class frm_ABMProfesores
         Me.gbo_profesores_registrados.TabStop = False
         Me.gbo_profesores_registrados.Text = "Profesores Registrados"
         '
+        'grid_profesores
+        '
+        Me.grid_profesores.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.grid_profesores.Location = New System.Drawing.Point(6, 20)
+        Me.grid_profesores.Name = "grid_profesores"
+        Me.grid_profesores.Size = New System.Drawing.Size(766, 222)
+        Me.grid_profesores.TabIndex = 0
+        '
         'cmd_salir
         '
         Me.cmd_salir.Image = Global.Asociacion.My.Resources.Resources.salir
@@ -407,14 +421,6 @@ Partial Class frm_ABMProfesores
         Me.cmd_nuevo.Size = New System.Drawing.Size(50, 50)
         Me.cmd_nuevo.TabIndex = 0
         Me.cmd_nuevo.UseVisualStyleBackColor = True
-        '
-        'grid_profesores
-        '
-        Me.grid_profesores.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.grid_profesores.Location = New System.Drawing.Point(6, 20)
-        Me.grid_profesores.Name = "grid_profesores"
-        Me.grid_profesores.Size = New System.Drawing.Size(766, 222)
-        Me.grid_profesores.TabIndex = 0
         '
         'frm_ABMProfesores
         '

@@ -31,10 +31,10 @@
         'REVISAR ESTOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
 
         Dim consulta As String = ""
-        consulta = "SELECT Profesores.codProfe AS Codigo, Profesores.nombre AS Nombre, Profesores.apellido AS Apellido, Profesores.calle AS Calle, Profesores.numero AS Numero, Profesores.telefono AS Telefono, Profesores.nroDoc as Documento"
-        consulta &= "CodPostales.codPos AS [Codigo Postal], CodPostales.nombre AS [Area] "
+        consulta = "SELECT Profesores.codProfe AS Codigo, Profesores.nombre AS Nombre, Profesores.apellido AS Apellido, Profesores.calle AS Calle, Profesores.numero AS Numero, Profesores.telefono AS Telefono, Profesores.nroDoc as Documento, "
+        consulta &= "CodPostales.codPos AS [Codigo Postal], CodPostales.nombre AS [Area], "
         consulta &= "TiposDoc.tipoDoc AS [Tipo], TiposDoc.nombre AS [Nombre] "
-        consulta &= "FROM Profesores INNER JOIN CodPostales ON Clubes.codPos = CodPostales.codPos INNER JOIN TiposDoc ON Profesores.tipoDoc = TiposDoc.tipoDoc"
+        consulta &= "FROM Profesores INNER JOIN CodPostales ON Profesores.codPos = CodPostales.codPos INNER JOIN TiposDoc ON Profesores.tipoDoc = TiposDoc.tipoDoc"
 
         grid_profesores.DataSource = acceso.ejecutar(consulta)
 
@@ -65,10 +65,10 @@
         consulta &= "apellido = '" & Me.txt_apellido_profesor.Text & "', "
         consulta &= "calle = '" & Me.txt_calle_profesor.Text & "', "
         consulta &= "numero = " & Me.txt_nroCalle_profesor.Text & ", "
-        consulta &= "codPos = " & Me.cmb_codPos_profesor.SelectedValue.ToString & " "
-        consulta &= "tipoDoc = " & Me.cmb_tipoDoc_profesor.SelectedValue.ToString & " "
+        consulta &= "codPos = " & Me.cmb_codPos_profesor.SelectedValue & ", "
+        consulta &= "tipoDoc = " & Me.cmb_tipoDoc_profesor.SelectedValue & ", "
         consulta &= "telefono = " & Me.txt_telefono_profesor.Text & ", "
-        consulta &= "nroDoc = " & Me.txt_nroDoc_profesor.Text & ", "
+        consulta &= "nroDoc = " & Me.txt_nroDoc_profesor.Text & " "
         consulta &= "WHERE codProfe = " & Me.txt_codProfesor.Text
 
         acceso.ejecutarNonConsulta(consulta)
@@ -85,7 +85,7 @@
         consulta = "INSERT into Profesores "
         consulta &= "values ('" & Me.txt_codProfesor.Text & "', '" & Me.txt_nombre_profesor.Text & "', '" & Me.txt_apellido_profesor.Text & "', "
         consulta &= "'" & Me.txt_calle_profesor.Text & "', " & Me.txt_nroCalle_profesor.Text & ", "
-        consulta &= Me.cmb_codPos_profesor.SelectedValue & "," & Me.cmb_tipoDoc_profesor.Text & ", " & Me.txt_telefono_profesor.Text & ", " & Me.txt_nroDoc_profesor.Text & ",)"
+        consulta &= Me.cmb_codPos_profesor.SelectedValue & "," & Me.cmb_tipoDoc_profesor.SelectedValue & ", " & Me.txt_telefono_profesor.Text & ", " & Me.txt_nroDoc_profesor.Text & ")"
 
         acceso.ejecutarNonConsulta(consulta)
         Return termino.aprobado
@@ -115,7 +115,7 @@
     End Function
 
     Private Sub cmb_codPos_DropDown(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmb_codPos_profesor.DropDown
-        cargar_combo(cmb_codPos_profesor, leo_tabla("CodProfe"), "codProfe", "codProfe")
+        cargar_combo(cmb_codPos_profesor, leo_tabla("CodPostales"), "codPos", "codPos")
     End Sub
 
 
@@ -127,6 +127,9 @@
         cargar_combos()
         cambiarBotones(False)
         cambiarEntradas(False)
+        txt_apellido_profesor.Enabled = True
+        txt_codProfesor.Enabled = True
+
         Me.cmd_nuevo.Enabled = True
         Me.cmd_buscar.Enabled = True
         Me.cmd_salir.Enabled = True
@@ -193,7 +196,7 @@
 
     Private Sub cambiarEntradas(ByVal x As Boolean)
         limpiarCampos()
-        'txt_codClub.Enabled = x
+        txt_codProfesor.Enabled = x
         'txt_apellido_profesor.Enabled = x
         txt_calle_profesor.Enabled = x
         txt_nombre_profesor.Enabled = x
@@ -298,7 +301,7 @@
             Else
                 Dim consulta As String = ""
                 Dim dt As New Data.DataTable
-                consulta = "SELECT * FROM Profesores WHERE codProfesor = '" & Me.txt_codProfesor.Text & "'"
+                consulta = "SELECT * FROM Profesores WHERE codProfe = '" & Me.txt_codProfesor.Text & "'"
                 dt = acceso.ejecutar(consulta)
                 grid_profesores.DataSource = dt
 
@@ -313,7 +316,7 @@
 
     End Sub
 
-    Private Sub grid_clubes_CellMouseDoubleClick(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellMouseEventArgs) Handles grid_clubes.CellMouseDoubleClick
+    Private Sub grid_profesores_CellMouseDoubleClick(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellMouseEventArgs) Handles grid_profesores.CellMouseDoubleClick
 
         Dim codigoSeleccionado As String = Me.grid_profesores.CurrentRow.Cells(0).Value
 
@@ -331,9 +334,9 @@
         Me.txt_calle_profesor.Text = tabla.Rows(0)("calle")
         Me.txt_nroCalle_profesor.Text = tabla.Rows(0)("numero")
         Me.cmb_codPos_profesor.SelectedValue = tabla.Rows(0)("codPos")
-        Me.cmb_tipoDoc_profesor.Text = tabla.Rows(0)("tipoDoc")
+        Me.cmb_tipoDoc_profesor.SelectedValue = tabla.Rows(0)("tipoDoc")
         Me.txt_telefono_profesor.Text = tabla.Rows(0)("telefono")
-        Me.txt_nroDoc_profesor.Text = tabla.Rows(0)("nroDni")
+        Me.txt_nroDoc_profesor.Text = tabla.Rows(0)("nroDoc")
 
         cambiarBotones(False)
         Me.cmd_cancelar.Enabled = True
