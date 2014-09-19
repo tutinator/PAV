@@ -362,6 +362,7 @@ Partial Class frm_ABMProfesores
         '
         'grid_profesores
         '
+        Me.grid_profesores.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.grid_profesores.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.grid_profesores.Location = New System.Drawing.Point(6, 20)
         Me.grid_profesores.Name = "grid_profesores"

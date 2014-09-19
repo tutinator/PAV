@@ -24,6 +24,8 @@ Partial Class frm_ABMEspecialidades
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.txt_tiempoRecord = New Asociacion.TextBoxv01()
+        Me.txt_codEspe = New Asociacion.TextBoxv01()
         Me.txt_nombre = New System.Windows.Forms.TextBox()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
@@ -36,8 +38,6 @@ Partial Class frm_ABMEspecialidades
         Me.cmd_eliminar = New System.Windows.Forms.Button()
         Me.cmd_guardar = New System.Windows.Forms.Button()
         Me.cmd_nuevo = New System.Windows.Forms.Button()
-        Me.txt_tiempoRecord = New Asociacion.TextBoxv01()
-        Me.txt_codEspe = New Asociacion.TextBoxv01()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         CType(Me.grid_especialidades, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -57,6 +57,54 @@ Partial Class frm_ABMEspecialidades
         Me.GroupBox1.TabIndex = 0
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Especialidad"
+        '
+        'txt_tiempoRecord
+        '
+        Me.txt_tiempoRecord._BDdato = False
+        Me.txt_tiempoRecord._BDnombreCampoTabla = ""
+        Me.txt_tiempoRecord._BDvalor = "  :  :"
+        Me.txt_tiempoRecord._descriptor_del_contenido = ""
+        Me.txt_tiempoRecord._Gest_AnchoTexto = 0
+        Me.txt_tiempoRecord._Gest_decimales = 0
+        Me.txt_tiempoRecord._Gest_enteros = "0"
+        Me.txt_tiempoRecord._Gest_mensajeError = ""
+        Me.txt_tiempoRecord._Gest_mensajetooltips = "cambie el mensaje tip"
+        Me.txt_tiempoRecord._Gest_ReadOnly = False
+        Me.txt_tiempoRecord._Gest_TextoNegrita = False
+        Me.txt_tiempoRecord._Gest_tipo_dato = Asociacion.TextBoxv01.t_dato.texto
+        Me.txt_tiempoRecord._Gest_validar = True
+        Me.txt_tiempoRecord.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!)
+        Me.txt_tiempoRecord.Location = New System.Drawing.Point(114, 88)
+        Me.txt_tiempoRecord.Margin = New System.Windows.Forms.Padding(1)
+        Me.txt_tiempoRecord.Mask = "99:99:99"
+        Me.txt_tiempoRecord.Name = "txt_tiempoRecord"
+        Me.txt_tiempoRecord.Size = New System.Drawing.Size(55, 20)
+        Me.txt_tiempoRecord.TabIndex = 2
+        Me.txt_tiempoRecord.ValidatingType = GetType(String)
+        '
+        'txt_codEspe
+        '
+        Me.txt_codEspe._BDdato = False
+        Me.txt_codEspe._BDnombreCampoTabla = ""
+        Me.txt_codEspe._BDvalor = ""
+        Me.txt_codEspe._descriptor_del_contenido = ""
+        Me.txt_codEspe._Gest_AnchoTexto = 0
+        Me.txt_codEspe._Gest_decimales = 0
+        Me.txt_codEspe._Gest_enteros = "0"
+        Me.txt_codEspe._Gest_mensajeError = ""
+        Me.txt_codEspe._Gest_mensajetooltips = "cambie el mensaje tip"
+        Me.txt_codEspe._Gest_ReadOnly = False
+        Me.txt_codEspe._Gest_TextoNegrita = False
+        Me.txt_codEspe._Gest_tipo_dato = Asociacion.TextBoxv01.t_dato.texto
+        Me.txt_codEspe._Gest_validar = True
+        Me.txt_codEspe.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!)
+        Me.txt_codEspe.Location = New System.Drawing.Point(114, 24)
+        Me.txt_codEspe.Margin = New System.Windows.Forms.Padding(1)
+        Me.txt_codEspe.Mask = "99999"
+        Me.txt_codEspe.Name = "txt_codEspe"
+        Me.txt_codEspe.Size = New System.Drawing.Size(42, 20)
+        Me.txt_codEspe.TabIndex = 0
+        Me.txt_codEspe.ValidatingType = GetType(Integer)
         '
         'txt_nombre
         '
@@ -79,18 +127,18 @@ Partial Class frm_ABMEspecialidades
         Me.Label2.AutoSize = True
         Me.Label2.Location = New System.Drawing.Point(64, 60)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(44, 13)
+        Me.Label2.Size = New System.Drawing.Size(48, 13)
         Me.Label2.TabIndex = 1
-        Me.Label2.Text = "Nombre"
+        Me.Label2.Text = "Nombre*"
         '
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(6, 32)
+        Me.Label1.Location = New System.Drawing.Point(3, 27)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(102, 13)
+        Me.Label1.Size = New System.Drawing.Size(107, 13)
         Me.Label1.TabIndex = 0
-        Me.Label1.Text = "Código especialidad"
+        Me.Label1.Text = "Código Especialidad*"
         '
         'GroupBox2
         '
@@ -104,6 +152,7 @@ Partial Class frm_ABMEspecialidades
         '
         'grid_especialidades
         '
+        Me.grid_especialidades.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.grid_especialidades.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.grid_especialidades.Location = New System.Drawing.Point(7, 20)
         Me.grid_especialidades.Name = "grid_especialidades"
@@ -163,54 +212,6 @@ Partial Class frm_ABMEspecialidades
         Me.cmd_nuevo.Size = New System.Drawing.Size(50, 50)
         Me.cmd_nuevo.TabIndex = 1
         Me.cmd_nuevo.UseVisualStyleBackColor = True
-        '
-        'txt_tiempoRecord
-        '
-        Me.txt_tiempoRecord._BDdato = False
-        Me.txt_tiempoRecord._BDnombreCampoTabla = ""
-        Me.txt_tiempoRecord._BDvalor = "  :  :"
-        Me.txt_tiempoRecord._descriptor_del_contenido = ""
-        Me.txt_tiempoRecord._Gest_AnchoTexto = 0
-        Me.txt_tiempoRecord._Gest_decimales = 0
-        Me.txt_tiempoRecord._Gest_enteros = "0"
-        Me.txt_tiempoRecord._Gest_mensajeError = ""
-        Me.txt_tiempoRecord._Gest_mensajetooltips = "cambie el mensaje tip"
-        Me.txt_tiempoRecord._Gest_ReadOnly = False
-        Me.txt_tiempoRecord._Gest_TextoNegrita = False
-        Me.txt_tiempoRecord._Gest_tipo_dato = Asociacion.TextBoxv01.t_dato.texto
-        Me.txt_tiempoRecord._Gest_validar = True
-        Me.txt_tiempoRecord.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!)
-        Me.txt_tiempoRecord.Location = New System.Drawing.Point(114, 88)
-        Me.txt_tiempoRecord.Margin = New System.Windows.Forms.Padding(1)
-        Me.txt_tiempoRecord.Mask = "99:99:99"
-        Me.txt_tiempoRecord.Name = "txt_tiempoRecord"
-        Me.txt_tiempoRecord.Size = New System.Drawing.Size(55, 20)
-        Me.txt_tiempoRecord.TabIndex = 2
-        Me.txt_tiempoRecord.ValidatingType = GetType(String)
-        '
-        'txt_codEspe
-        '
-        Me.txt_codEspe._BDdato = False
-        Me.txt_codEspe._BDnombreCampoTabla = ""
-        Me.txt_codEspe._BDvalor = ""
-        Me.txt_codEspe._descriptor_del_contenido = ""
-        Me.txt_codEspe._Gest_AnchoTexto = 0
-        Me.txt_codEspe._Gest_decimales = 0
-        Me.txt_codEspe._Gest_enteros = "0"
-        Me.txt_codEspe._Gest_mensajeError = ""
-        Me.txt_codEspe._Gest_mensajetooltips = "cambie el mensaje tip"
-        Me.txt_codEspe._Gest_ReadOnly = False
-        Me.txt_codEspe._Gest_TextoNegrita = False
-        Me.txt_codEspe._Gest_tipo_dato = Asociacion.TextBoxv01.t_dato.texto
-        Me.txt_codEspe._Gest_validar = True
-        Me.txt_codEspe.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!)
-        Me.txt_codEspe.Location = New System.Drawing.Point(114, 24)
-        Me.txt_codEspe.Margin = New System.Windows.Forms.Padding(1)
-        Me.txt_codEspe.Mask = "99999"
-        Me.txt_codEspe.Name = "txt_codEspe"
-        Me.txt_codEspe.Size = New System.Drawing.Size(42, 20)
-        Me.txt_codEspe.TabIndex = 0
-        Me.txt_codEspe.ValidatingType = GetType(Integer)
         '
         'frm_ABMEspecialidades
         '

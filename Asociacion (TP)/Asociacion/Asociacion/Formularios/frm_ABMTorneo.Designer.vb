@@ -105,24 +105,25 @@ Partial Class frm_ABMTorneo
         Me.txt_codTorneo.Name = "txt_codTorneo"
         Me.txt_codTorneo.Size = New System.Drawing.Size(34, 20)
         Me.txt_codTorneo.TabIndex = 0
+        Me.txt_codTorneo.ValidatingType = GetType(String)
         '
         'lbl_codTorneo
         '
         Me.lbl_codTorneo.AutoSize = True
-        Me.lbl_codTorneo.Location = New System.Drawing.Point(6, 33)
+        Me.lbl_codTorneo.Location = New System.Drawing.Point(17, 33)
         Me.lbl_codTorneo.Name = "lbl_codTorneo"
-        Me.lbl_codTorneo.Size = New System.Drawing.Size(92, 13)
+        Me.lbl_codTorneo.Size = New System.Drawing.Size(81, 13)
         Me.lbl_codTorneo.TabIndex = 6
-        Me.lbl_codTorneo.Text = "Código de Torneo"
+        Me.lbl_codTorneo.Text = "Código Torneo*"
         '
         'lbl_nombre
         '
         Me.lbl_nombre.AutoSize = True
         Me.lbl_nombre.Location = New System.Drawing.Point(53, 59)
         Me.lbl_nombre.Name = "lbl_nombre"
-        Me.lbl_nombre.Size = New System.Drawing.Size(44, 13)
+        Me.lbl_nombre.Size = New System.Drawing.Size(48, 13)
         Me.lbl_nombre.TabIndex = 6
-        Me.lbl_nombre.Text = "Nombre"
+        Me.lbl_nombre.Text = "Nombre*"
         '
         'cmd_salir
         '

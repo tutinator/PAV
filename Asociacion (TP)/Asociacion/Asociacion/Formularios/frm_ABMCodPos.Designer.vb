@@ -32,11 +32,11 @@ Partial Class frm_ABMCodPos
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.grid_codPos = New System.Windows.Forms.DataGridView()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.txt_codPos = New Asociacion.TextBoxv01()
         Me.cmd_cancelar = New System.Windows.Forms.Button()
         Me.cmd_eliminar = New System.Windows.Forms.Button()
         Me.cmd_guardar = New System.Windows.Forms.Button()
         Me.cmd_nuevo = New System.Windows.Forms.Button()
-        Me.txt_codPos = New Asociacion.TextBoxv01()
         Me.GroupBox2.SuspendLayout()
         CType(Me.grid_codPos, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
@@ -47,9 +47,9 @@ Partial Class frm_ABMCodPos
         Me.lbl_nombre.AutoSize = True
         Me.lbl_nombre.Location = New System.Drawing.Point(6, 59)
         Me.lbl_nombre.Name = "lbl_nombre"
-        Me.lbl_nombre.Size = New System.Drawing.Size(83, 13)
+        Me.lbl_nombre.Size = New System.Drawing.Size(87, 13)
         Me.lbl_nombre.TabIndex = 6
-        Me.lbl_nombre.Text = "Nombre de área"
+        Me.lbl_nombre.Text = "Nombre de área*"
         '
         'cmd_salir
         '
@@ -74,9 +74,9 @@ Partial Class frm_ABMCodPos
         Me.lbl_codPos.AutoSize = True
         Me.lbl_codPos.Location = New System.Drawing.Point(17, 33)
         Me.lbl_codPos.Name = "lbl_codPos"
-        Me.lbl_codPos.Size = New System.Drawing.Size(72, 13)
+        Me.lbl_codPos.Size = New System.Drawing.Size(76, 13)
         Me.lbl_codPos.TabIndex = 6
-        Me.lbl_codPos.Text = "Código Postal"
+        Me.lbl_codPos.Text = "Código Postal*"
         '
         'txt_nombre
         '
@@ -119,6 +119,30 @@ Partial Class frm_ABMCodPos
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Código Postal"
         '
+        'txt_codPos
+        '
+        Me.txt_codPos._BDdato = False
+        Me.txt_codPos._BDnombreCampoTabla = ""
+        Me.txt_codPos._BDvalor = ""
+        Me.txt_codPos._descriptor_del_contenido = ""
+        Me.txt_codPos._Gest_AnchoTexto = 0
+        Me.txt_codPos._Gest_decimales = 0
+        Me.txt_codPos._Gest_enteros = "0"
+        Me.txt_codPos._Gest_mensajeError = ""
+        Me.txt_codPos._Gest_mensajetooltips = "cambie el mensaje tip"
+        Me.txt_codPos._Gest_ReadOnly = False
+        Me.txt_codPos._Gest_TextoNegrita = False
+        Me.txt_codPos._Gest_tipo_dato = Asociacion.TextBoxv01.t_dato.texto
+        Me.txt_codPos._Gest_validar = True
+        Me.txt_codPos.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!)
+        Me.txt_codPos.Location = New System.Drawing.Point(95, 30)
+        Me.txt_codPos.Margin = New System.Windows.Forms.Padding(1)
+        Me.txt_codPos.Mask = "0000"
+        Me.txt_codPos.Name = "txt_codPos"
+        Me.txt_codPos.Size = New System.Drawing.Size(34, 20)
+        Me.txt_codPos.TabIndex = 0
+        Me.txt_codPos.ValidatingType = GetType(String)
+        '
         'cmd_cancelar
         '
         Me.cmd_cancelar.Image = CType(resources.GetObject("cmd_cancelar.Image"), System.Drawing.Image)
@@ -154,30 +178,6 @@ Partial Class frm_ABMCodPos
         Me.cmd_nuevo.Size = New System.Drawing.Size(50, 50)
         Me.cmd_nuevo.TabIndex = 1
         Me.cmd_nuevo.UseVisualStyleBackColor = True
-        '
-        'txt_codPos
-        '
-        Me.txt_codPos._BDdato = False
-        Me.txt_codPos._BDnombreCampoTabla = ""
-        Me.txt_codPos._BDvalor = ""
-        Me.txt_codPos._descriptor_del_contenido = ""
-        Me.txt_codPos._Gest_AnchoTexto = 0
-        Me.txt_codPos._Gest_decimales = 0
-        Me.txt_codPos._Gest_enteros = "0"
-        Me.txt_codPos._Gest_mensajeError = ""
-        Me.txt_codPos._Gest_mensajetooltips = "cambie el mensaje tip"
-        Me.txt_codPos._Gest_ReadOnly = False
-        Me.txt_codPos._Gest_TextoNegrita = False
-        Me.txt_codPos._Gest_tipo_dato = Asociacion.TextBoxv01.t_dato.texto
-        Me.txt_codPos._Gest_validar = True
-        Me.txt_codPos.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!)
-        Me.txt_codPos.Location = New System.Drawing.Point(95, 30)
-        Me.txt_codPos.Margin = New System.Windows.Forms.Padding(1)
-        Me.txt_codPos.Mask = "0000"
-        Me.txt_codPos.Name = "txt_codPos"
-        Me.txt_codPos.Size = New System.Drawing.Size(34, 20)
-        Me.txt_codPos.TabIndex = 0
-        Me.txt_codPos.ValidatingType = GetType(String)
         '
         'frm_ABMCodPos
         '

@@ -21,6 +21,7 @@
         cambiarBotones(False)
         cambiarEntradas(False)
         cargar_combos()
+        Me.txt_codNadador.Enabled = True
         Me.cmd_nuevo.Enabled = True
         Me.cmd_buscar.Enabled = True
         Me.cmd_salir.Enabled = True
@@ -123,7 +124,7 @@
     Private Sub cargar_combos()
         cargar_combo(cmb_codPos, leo_tabla("CodPostales"), "codPos", "codPos")
         cargar_combo(cmb_club, leo_tabla("Clubes"), "codClub", "nombre")
-        cargar_combo(cmb_profesor, leo_tabla("Profesores"), "codProfe", "nombre")
+        cargar_combo(cmb_profesor, leo_tabla("Profesores"), "codProfe", "apellido")
         cargar_combo(cmb_tipoDoc, leo_tabla("TiposDoc"), "tipoDoc", "nombre")
     End Sub
     Private Sub cargar_grilla()
@@ -133,9 +134,9 @@
         consulta &= "TiposDoc.nombre AS [Tipo Doc], Nadadores.nroDoc AS [Numero Doc], Nadadores.calle AS Calle, Nadadores.numero AS Numero, Nadadores.codPos AS [Cod Postal], "
         consulta &= "CodPostales.nombre AS Area, Profesores.nombre AS [Nombre Profe], Profesores.apellido AS [Apellido Profe], Clubes.nombre AS Club, "
         consulta &= "Nadadores.email AS Email "
-        consulta &= "FROM Clubes INNER JOIN "
-        consulta &= "CodPostales ON Clubes.codPos = CodPostales.codPos INNER JOIN "
-        consulta &= "Nadadores ON Clubes.codClub = Nadadores.codClub INNER JOIN "
+        consulta &= "FROM Nadadores INNER JOIN "
+        consulta &= "CodPostales ON Nadadores.codPos = CodPostales.codPos INNER JOIN "
+        consulta &= "Clubes ON Clubes.codClub = Nadadores.codClub INNER JOIN "
         consulta &= "Profesores ON Nadadores.codProfe = Profesores.codProfe INNER JOIN "
         consulta &= "TiposDoc ON Nadadores.tipoDoc = TiposDoc.tipoDoc "
 
@@ -176,14 +177,14 @@
         Dim consulta As String = ""
         consulta = "UPDATE Nadadores SET nombre = '" & Me.txt_nombre.Text & "', "
         consulta &= "apellido = '" & Me.txt_apellido.Text & "', "
-        consulta &= "tipoDoc = " & Me.cmb_tipoDoc.ValueMember & ", "
+        consulta &= "tipoDoc = " & Me.cmb_tipoDoc.SelectedValue & ", "
         consulta &= "nroDoc = " & Me.txt_nroDoc.Text & ", "
-        consulta &= "calle = " & Me.txt_calle.Text & ", "
+        consulta &= "calle = '" & Me.txt_calle.Text & "', "
         consulta &= "numero = " & Me.txt_nroCalle.Text & ", "
         consulta &= "codPos = " & Me.cmb_codPos.SelectedValue & ", "
-        consulta &= "codProfe = " & Me.cmb_profesor.ValueMember & ", "
-        consulta &= "codClub = " & Me.cmb_club.ValueMember & ", "
-        consulta &= "email = " & Me.txt_email.Text & " "
+        consulta &= "codProfe = " & Me.cmb_profesor.SelectedValue & ", "
+        consulta &= "codClub = " & Me.cmb_club.SelectedValue & ", "
+        consulta &= "email = '" & Me.txt_email.Text & "' "
         consulta &= "WHERE codNad = " & Me.txt_codNadador.Text
 
         acceso.ejecutarNonConsulta(consulta)
@@ -356,7 +357,6 @@
 
     Private Sub cmd_nuevoCP_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmd_nuevoCP.Click
         frm_ABMCodPos.ShowDialog()
-
         'Agregar funcionalidad para que al crearse el cp nuevo, se muestre en el cbo de cp
     End Sub
 
@@ -370,9 +370,11 @@
     End Sub
 
     Private Sub cmb_profesor_DropDown(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmb_profesor.DropDown
-        cargar_combo(cmb_profesor, leo_tabla("Profesores"), "codProfe", "nombre")
+        cargar_combo(cmb_profesor, leo_tabla("Profesores"), "codProfe", "apellido")
     End Sub
-
+    Private Sub cmb_club_DropDown(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmb_club.DropDown
+        cargar_combo(cmb_club, leo_tabla("Clubes"), "codClub", "nombre")
+    End Sub
    
 
 
@@ -419,4 +421,7 @@
         End If
     End Sub
 
+    Private Sub cmd_nuevoClub_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmd_nuevoClub.Click
+        frm_ABMclubes.ShowDialog()
+    End Sub
 End Class

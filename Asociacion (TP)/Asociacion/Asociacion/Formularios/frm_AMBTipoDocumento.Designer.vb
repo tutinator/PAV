@@ -90,18 +90,18 @@ Partial Class frm_ABMTipoDocumento
         Me.Label2.AutoSize = True
         Me.Label2.Location = New System.Drawing.Point(78, 48)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(44, 13)
+        Me.Label2.Size = New System.Drawing.Size(48, 13)
         Me.Label2.TabIndex = 1
-        Me.Label2.Text = "Nombre"
+        Me.Label2.Text = "Nombre*"
         '
         'lbl_codTipoDoc
         '
         Me.lbl_codTipoDoc.AutoSize = True
         Me.lbl_codTipoDoc.Location = New System.Drawing.Point(6, 23)
         Me.lbl_codTipoDoc.Name = "lbl_codTipoDoc"
-        Me.lbl_codTipoDoc.Size = New System.Drawing.Size(116, 13)
+        Me.lbl_codTipoDoc.Size = New System.Drawing.Size(126, 13)
         Me.lbl_codTipoDoc.TabIndex = 0
-        Me.lbl_codTipoDoc.Text = "Código tipo documento"
+        Me.lbl_codTipoDoc.Text = "Código Tipo Documento*"
         '
         'GroupBox2
         '
@@ -115,6 +115,7 @@ Partial Class frm_ABMTipoDocumento
         '
         'grid_tipoDoc
         '
+        Me.grid_tipoDoc.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.grid_tipoDoc.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.grid_tipoDoc.Location = New System.Drawing.Point(7, 20)
         Me.grid_tipoDoc.Name = "grid_tipoDoc"
