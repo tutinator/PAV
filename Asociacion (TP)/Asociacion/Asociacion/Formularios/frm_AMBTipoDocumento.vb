@@ -213,4 +213,30 @@
     Private Sub frm_ABMTipoDocumento_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         Me.inicio()
     End Sub
+
+    Private Sub grid_tipoDoc_CellMouseDoubleClick(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellMouseEventArgs) Handles grid_tipoDoc.CellMouseDoubleClick
+
+        Dim codigoSeleccionado As String = Me.grid_tipoDoc.CurrentRow.Cells(0).Value
+
+        Dim tabla As New Data.DataTable
+
+        Dim consulta As String = ""
+        consulta = "SELECT * FROM TiposDoc WHERE tipoDoc = " & codigoSeleccionado
+
+        cambiarEntradas(True)
+        tabla = acceso.ejecutar(consulta)
+
+        Me.txt_codTipoDoc.Text = tabla.Rows(0)("tipoDoc")
+        Me.txt_nombre.Text = tabla.Rows(0)("nombre")
+
+        cambiarBotones(False)
+        Me.cmd_cancelar.Enabled = True
+        Me.cmd_eliminar.Enabled = True
+        Me.cmd_guardar.Enabled = True
+
+        Me.txt_codTipoDoc.Enabled = False
+        txt_nombre.Focus()
+
+        Me.accion = estado.modificar
+    End Sub
 End Class

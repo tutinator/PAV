@@ -36,7 +36,7 @@
     Private Sub limpiarCampos()
         Me.txt_codEspe.Text = ""
         Me.txt_nombre.Text = ""
-        'Me.txt_tiempoRecord.Text = ""
+        Me.txt_tiempoRecord.Text = ""
     End Sub
 
     Private Function validarCampos()
@@ -60,7 +60,7 @@
         limpiarCampos()
         Me.txt_codEspe.Enabled = x
         Me.txt_nombre.Enabled = x
-        'Me.txt_tiempoRecord.Enabled = x
+        Me.txt_tiempoRecord.Enabled = x
     End Sub
 
     Private Sub cambiarBotones(ByVal x As Boolean)
@@ -82,7 +82,7 @@
     Private Sub cargar_grilla()
 
         Dim consulta As String = ""
-        consulta = "SELECT Especialidades.codEspe AS Codigo, Especialidades.descripcion AS Nombre "
+        consulta = "SELECT Especialidades.codEspe AS Codigo, Especialidades.descripcion AS Nombre, tiempoRecord AS [Tiempo Record] "
         consulta &= "FROM Especialidades"
 
         grid_especialidades.DataSource = acceso.ejecutar(consulta)
@@ -92,8 +92,14 @@
     Private Function modificar() As termino
 
         Dim consulta As String = ""
-        consulta = "UPDATE Especialidades SET nombre = '" & Me.txt_nombre.Text & "' "
-        consulta &= "WHERE codEspe = " & Me.txt_codEspe.Text
+        consulta = "UPDATE Especialidades SET descripcion = '" & Me.txt_nombre.Text & "', tiempoRecord = "
+
+        If txt_tiempoRecord.Text = "  :  :" Then
+            consulta &= "NULL"
+        Else
+            consulta &= "'" & txt_tiempoRecord.Text & "'"
+        End If
+        consulta &= " WHERE codEspe = " & Me.txt_codEspe.Text
         acceso.ejecutarNonConsulta(consulta)
         Return termino.aprobado
 
@@ -102,8 +108,17 @@
     Private Function insertar() As termino
 
         Dim consulta As String = ""
-        consulta = "INSERT into Especialidades (codEspe, descripcion)"
-        consulta &= "values ('" & Me.txt_codEspe.Text & "', '" & Me.txt_nombre.Text & "')"
+        consulta = "INSERT into Especialidades (codEspe, descripcion, tiempoRecord)"
+        consulta &= "values ('" & Me.txt_codEspe.Text & "', '" & Me.txt_nombre.Text & "' "
+
+        If txt_tiempoRecord.Text = "  :  :" Then
+            consulta &= ", NULL)"
+        Else
+            consulta &= ",'"
+            consulta &= txt_tiempoRecord.Text & "')"
+        End If
+
+
         acceso.ejecutarNonConsulta(consulta)
         Return termino.aprobado
 
@@ -216,5 +231,41 @@
 
             End If
         End If
+    End Sub
+
+    
+   
+    
+    Private Sub grid_especialidades_CellMouseDoubleClick(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellMouseEventArgs) Handles grid_especialidades.CellMouseDoubleClick
+
+        Dim codigoSeleccionado As String = Me.grid_especialidades.CurrentRow.Cells(0).Value
+
+        Dim tabla As New Data.DataTable
+
+        Dim consulta As String = ""
+        consulta = "SELECT * FROM Especialidades WHERE codEspe = " & codigoSeleccionado
+
+        cambiarEntradas(True)
+        tabla = acceso.ejecutar(consulta)
+
+        Me.txt_codEspe.Text = tabla.Rows(0)("codEspe")
+        Me.txt_nombre.Text = tabla.Rows(0)("descripcion")
+
+        If IsDBNull(tabla.Rows(0)("tiempoRecord")) Then
+            Me.txt_tiempoRecord.Text = "  :  :"
+        Else
+            Me.txt_tiempoRecord.Text = tabla.Rows(0)("tiempoRecord")
+        End If
+
+        cambiarBotones(False)
+        Me.cmd_cancelar.Enabled = True
+        Me.cmd_eliminar.Enabled = True
+        Me.cmd_guardar.Enabled = True
+
+        Me.txt_codEspe.Enabled = False
+        txt_nombre.Focus()
+
+        Me.accion = estado.modificar
+
     End Sub
 End Class
