@@ -41,4 +41,8 @@
     Private Sub TorneosToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TorneosToolStripMenuItem.Click
         frm_ABMTorneo.Show()
     End Sub
+
+    Private Sub RealizacionDeTorneoToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles RealizacionDeTorneoToolStripMenuItem.Click
+        proc_realizacionTorneo.Show()
+    End Sub
 End Class
