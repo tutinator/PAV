@@ -48,6 +48,9 @@ Partial Class frm_ABMnadadores
         Me.cmd_salir = New System.Windows.Forms.Button()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.cmd_nuevoClub = New System.Windows.Forms.Button()
+        Me.txt_nroCalle = New Asociacion.TextBoxv01()
+        Me.txt_codNadador = New Asociacion.TextBoxv01()
+        Me.txt_nroDoc = New Asociacion.TextBoxv01()
         Me.cmd_nuevoProfe = New System.Windows.Forms.Button()
         Me.cmd_nuevoCP = New System.Windows.Forms.Button()
         Me.cmb_club = New System.Windows.Forms.ComboBox()
@@ -59,9 +62,6 @@ Partial Class frm_ABMnadadores
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.grid_nadadores = New System.Windows.Forms.DataGridView()
         Me.cmd_eliminar = New System.Windows.Forms.Button()
-        Me.txt_nroCalle = New Asociacion.TextBoxv01()
-        Me.txt_codNadador = New Asociacion.TextBoxv01()
-        Me.txt_nroDoc = New Asociacion.TextBoxv01()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         CType(Me.grid_nadadores, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -320,6 +320,78 @@ Partial Class frm_ABMnadadores
         Me.cmd_nuevoClub.Text = "Nuevo Club"
         Me.cmd_nuevoClub.UseVisualStyleBackColor = True
         '
+        'txt_nroCalle
+        '
+        Me.txt_nroCalle._BDdato = False
+        Me.txt_nroCalle._BDnombreCampoTabla = ""
+        Me.txt_nroCalle._BDvalor = ""
+        Me.txt_nroCalle._descriptor_del_contenido = ""
+        Me.txt_nroCalle._Gest_AnchoTexto = 0
+        Me.txt_nroCalle._Gest_decimales = 0
+        Me.txt_nroCalle._Gest_enteros = "0"
+        Me.txt_nroCalle._Gest_mensajeError = ""
+        Me.txt_nroCalle._Gest_mensajetooltips = "cambie el mensaje tip"
+        Me.txt_nroCalle._Gest_ReadOnly = False
+        Me.txt_nroCalle._Gest_TextoNegrita = False
+        Me.txt_nroCalle._Gest_tipo_dato = Asociacion.TextBoxv01.t_dato.texto
+        Me.txt_nroCalle._Gest_validar = True
+        Me.txt_nroCalle.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!)
+        Me.txt_nroCalle.Location = New System.Drawing.Point(467, 57)
+        Me.txt_nroCalle.Margin = New System.Windows.Forms.Padding(1)
+        Me.txt_nroCalle.Mask = "99999"
+        Me.txt_nroCalle.Name = "txt_nroCalle"
+        Me.txt_nroCalle.Size = New System.Drawing.Size(38, 20)
+        Me.txt_nroCalle.TabIndex = 10
+        Me.txt_nroCalle.ValidatingType = GetType(Integer)
+        '
+        'txt_codNadador
+        '
+        Me.txt_codNadador._BDdato = False
+        Me.txt_codNadador._BDnombreCampoTabla = ""
+        Me.txt_codNadador._BDvalor = ""
+        Me.txt_codNadador._descriptor_del_contenido = ""
+        Me.txt_codNadador._Gest_AnchoTexto = 0
+        Me.txt_codNadador._Gest_decimales = 0
+        Me.txt_codNadador._Gest_enteros = "0"
+        Me.txt_codNadador._Gest_mensajeError = ""
+        Me.txt_codNadador._Gest_mensajetooltips = "cambie el mensaje tip"
+        Me.txt_codNadador._Gest_ReadOnly = False
+        Me.txt_codNadador._Gest_TextoNegrita = False
+        Me.txt_codNadador._Gest_tipo_dato = Asociacion.TextBoxv01.t_dato.texto
+        Me.txt_codNadador._Gest_validar = True
+        Me.txt_codNadador.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!)
+        Me.txt_codNadador.Location = New System.Drawing.Point(168, 29)
+        Me.txt_codNadador.Margin = New System.Windows.Forms.Padding(1)
+        Me.txt_codNadador.Mask = "999999"
+        Me.txt_codNadador.Name = "txt_codNadador"
+        Me.txt_codNadador.Size = New System.Drawing.Size(43, 20)
+        Me.txt_codNadador.TabIndex = 0
+        Me.txt_codNadador.ValidatingType = GetType(String)
+        '
+        'txt_nroDoc
+        '
+        Me.txt_nroDoc._BDdato = False
+        Me.txt_nroDoc._BDnombreCampoTabla = ""
+        Me.txt_nroDoc._BDvalor = ""
+        Me.txt_nroDoc._descriptor_del_contenido = ""
+        Me.txt_nroDoc._Gest_AnchoTexto = 0
+        Me.txt_nroDoc._Gest_decimales = 0
+        Me.txt_nroDoc._Gest_enteros = "0"
+        Me.txt_nroDoc._Gest_mensajeError = ""
+        Me.txt_nroDoc._Gest_mensajetooltips = "cambie el mensaje tip"
+        Me.txt_nroDoc._Gest_ReadOnly = False
+        Me.txt_nroDoc._Gest_TextoNegrita = False
+        Me.txt_nroDoc._Gest_tipo_dato = Asociacion.TextBoxv01.t_dato.texto
+        Me.txt_nroDoc._Gest_validar = True
+        Me.txt_nroDoc.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!)
+        Me.txt_nroDoc.Location = New System.Drawing.Point(168, 164)
+        Me.txt_nroDoc.Margin = New System.Windows.Forms.Padding(1)
+        Me.txt_nroDoc.Mask = "999999999"
+        Me.txt_nroDoc.Name = "txt_nroDoc"
+        Me.txt_nroDoc.Size = New System.Drawing.Size(76, 20)
+        Me.txt_nroDoc.TabIndex = 5
+        Me.txt_nroDoc.ValidatingType = GetType(String)
+        '
         'cmd_nuevoProfe
         '
         Me.cmd_nuevoProfe.Location = New System.Drawing.Point(546, 142)
@@ -404,6 +476,8 @@ Partial Class frm_ABMnadadores
         '
         'grid_nadadores
         '
+        Me.grid_nadadores.AllowUserToAddRows = False
+        Me.grid_nadadores.AllowUserToDeleteRows = False
         Me.grid_nadadores.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
                     Or System.Windows.Forms.AnchorStyles.Left) _
                     Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
@@ -411,6 +485,8 @@ Partial Class frm_ABMnadadores
         Me.grid_nadadores.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.grid_nadadores.Location = New System.Drawing.Point(6, 18)
         Me.grid_nadadores.Name = "grid_nadadores"
+        Me.grid_nadadores.ReadOnly = True
+        Me.grid_nadadores.RowHeadersVisible = False
         Me.grid_nadadores.Size = New System.Drawing.Size(732, 211)
         Me.grid_nadadores.TabIndex = 0
         '
@@ -422,78 +498,6 @@ Partial Class frm_ABMnadadores
         Me.cmd_eliminar.Size = New System.Drawing.Size(50, 50)
         Me.cmd_eliminar.TabIndex = 2
         Me.cmd_eliminar.UseVisualStyleBackColor = True
-        '
-        'txt_nroCalle
-        '
-        Me.txt_nroCalle._BDdato = False
-        Me.txt_nroCalle._BDnombreCampoTabla = ""
-        Me.txt_nroCalle._BDvalor = ""
-        Me.txt_nroCalle._descriptor_del_contenido = ""
-        Me.txt_nroCalle._Gest_AnchoTexto = 0
-        Me.txt_nroCalle._Gest_decimales = 0
-        Me.txt_nroCalle._Gest_enteros = "0"
-        Me.txt_nroCalle._Gest_mensajeError = ""
-        Me.txt_nroCalle._Gest_mensajetooltips = "cambie el mensaje tip"
-        Me.txt_nroCalle._Gest_ReadOnly = False
-        Me.txt_nroCalle._Gest_TextoNegrita = False
-        Me.txt_nroCalle._Gest_tipo_dato = Asociacion.TextBoxv01.t_dato.texto
-        Me.txt_nroCalle._Gest_validar = True
-        Me.txt_nroCalle.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!)
-        Me.txt_nroCalle.Location = New System.Drawing.Point(467, 57)
-        Me.txt_nroCalle.Margin = New System.Windows.Forms.Padding(1)
-        Me.txt_nroCalle.Mask = "99999"
-        Me.txt_nroCalle.Name = "txt_nroCalle"
-        Me.txt_nroCalle.Size = New System.Drawing.Size(38, 20)
-        Me.txt_nroCalle.TabIndex = 10
-        Me.txt_nroCalle.ValidatingType = GetType(Integer)
-        '
-        'txt_codNadador
-        '
-        Me.txt_codNadador._BDdato = False
-        Me.txt_codNadador._BDnombreCampoTabla = ""
-        Me.txt_codNadador._BDvalor = ""
-        Me.txt_codNadador._descriptor_del_contenido = ""
-        Me.txt_codNadador._Gest_AnchoTexto = 0
-        Me.txt_codNadador._Gest_decimales = 0
-        Me.txt_codNadador._Gest_enteros = "0"
-        Me.txt_codNadador._Gest_mensajeError = ""
-        Me.txt_codNadador._Gest_mensajetooltips = "cambie el mensaje tip"
-        Me.txt_codNadador._Gest_ReadOnly = False
-        Me.txt_codNadador._Gest_TextoNegrita = False
-        Me.txt_codNadador._Gest_tipo_dato = Asociacion.TextBoxv01.t_dato.texto
-        Me.txt_codNadador._Gest_validar = True
-        Me.txt_codNadador.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!)
-        Me.txt_codNadador.Location = New System.Drawing.Point(168, 29)
-        Me.txt_codNadador.Margin = New System.Windows.Forms.Padding(1)
-        Me.txt_codNadador.Mask = "999999"
-        Me.txt_codNadador.Name = "txt_codNadador"
-        Me.txt_codNadador.Size = New System.Drawing.Size(43, 20)
-        Me.txt_codNadador.TabIndex = 0
-        Me.txt_codNadador.ValidatingType = GetType(String)
-        '
-        'txt_nroDoc
-        '
-        Me.txt_nroDoc._BDdato = False
-        Me.txt_nroDoc._BDnombreCampoTabla = ""
-        Me.txt_nroDoc._BDvalor = ""
-        Me.txt_nroDoc._descriptor_del_contenido = ""
-        Me.txt_nroDoc._Gest_AnchoTexto = 0
-        Me.txt_nroDoc._Gest_decimales = 0
-        Me.txt_nroDoc._Gest_enteros = "0"
-        Me.txt_nroDoc._Gest_mensajeError = ""
-        Me.txt_nroDoc._Gest_mensajetooltips = "cambie el mensaje tip"
-        Me.txt_nroDoc._Gest_ReadOnly = False
-        Me.txt_nroDoc._Gest_TextoNegrita = False
-        Me.txt_nroDoc._Gest_tipo_dato = Asociacion.TextBoxv01.t_dato.texto
-        Me.txt_nroDoc._Gest_validar = True
-        Me.txt_nroDoc.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!)
-        Me.txt_nroDoc.Location = New System.Drawing.Point(168, 164)
-        Me.txt_nroDoc.Margin = New System.Windows.Forms.Padding(1)
-        Me.txt_nroDoc.Mask = "999999999"
-        Me.txt_nroDoc.Name = "txt_nroDoc"
-        Me.txt_nroDoc.Size = New System.Drawing.Size(76, 20)
-        Me.txt_nroDoc.TabIndex = 5
-        Me.txt_nroDoc.ValidatingType = GetType(String)
         '
         'frm_ABMnadadores
         '

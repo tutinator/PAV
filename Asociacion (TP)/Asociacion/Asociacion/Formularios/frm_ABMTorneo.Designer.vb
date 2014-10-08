@@ -54,12 +54,15 @@ Partial Class frm_ABMTorneo
         '
         'grid_codTorneo
         '
+        Me.grid_codTorneo.AllowUserToAddRows = False
+        Me.grid_codTorneo.AllowUserToDeleteRows = False
         Me.grid_codTorneo.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells
         Me.grid_codTorneo.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.grid_codTorneo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.grid_codTorneo.Location = New System.Drawing.Point(6, 19)
         Me.grid_codTorneo.Name = "grid_codTorneo"
         Me.grid_codTorneo.ReadOnly = True
+        Me.grid_codTorneo.RowHeadersVisible = False
         Me.grid_codTorneo.Size = New System.Drawing.Size(283, 230)
         Me.grid_codTorneo.TabIndex = 2
         '

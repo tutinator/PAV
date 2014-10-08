@@ -97,12 +97,15 @@ Partial Class frm_ABMCodPos
         '
         'grid_codPos
         '
+        Me.grid_codPos.AllowUserToAddRows = False
+        Me.grid_codPos.AllowUserToDeleteRows = False
         Me.grid_codPos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells
         Me.grid_codPos.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.grid_codPos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.grid_codPos.Location = New System.Drawing.Point(6, 19)
         Me.grid_codPos.Name = "grid_codPos"
         Me.grid_codPos.ReadOnly = True
+        Me.grid_codPos.RowHeadersVisible = False
         Me.grid_codPos.Size = New System.Drawing.Size(283, 230)
         Me.grid_codPos.TabIndex = 2
         '

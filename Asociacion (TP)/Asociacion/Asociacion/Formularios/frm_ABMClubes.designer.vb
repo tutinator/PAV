@@ -26,9 +26,6 @@ Partial Class frm_ABMclubes
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.lbl_codPos = New System.Windows.Forms.Label()
         Me.cmd_nuevoCP = New System.Windows.Forms.Button()
-        Me.txt_telefono = New Asociacion.TextBoxv01()
-        Me.txt_nroCalle = New Asociacion.TextBoxv01()
-        Me.txt_codClub = New Asociacion.TextBoxv01()
         Me.cmb_codPos = New System.Windows.Forms.ComboBox()
         Me.txt_calle = New System.Windows.Forms.TextBox()
         Me.Label2 = New System.Windows.Forms.Label()
@@ -46,6 +43,9 @@ Partial Class frm_ABMclubes
         Me.cmd_guardar = New System.Windows.Forms.Button()
         Me.cmd_nuevo = New System.Windows.Forms.Button()
         Me.cmd_cancelar = New System.Windows.Forms.Button()
+        Me.txt_telefono = New Asociacion.TextBoxv01()
+        Me.txt_nroCalle = New Asociacion.TextBoxv01()
+        Me.txt_codClub = New Asociacion.TextBoxv01()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         CType(Me.grid_clubes, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -90,78 +90,6 @@ Partial Class frm_ABMclubes
         Me.cmd_nuevoCP.TabIndex = 7
         Me.cmd_nuevoCP.Text = "Nuevo CP"
         Me.cmd_nuevoCP.UseVisualStyleBackColor = True
-        '
-        'txt_telefono
-        '
-        Me.txt_telefono._BDdato = False
-        Me.txt_telefono._BDnombreCampoTabla = ""
-        Me.txt_telefono._BDvalor = ""
-        Me.txt_telefono._descriptor_del_contenido = ""
-        Me.txt_telefono._Gest_AnchoTexto = 0
-        Me.txt_telefono._Gest_decimales = 0
-        Me.txt_telefono._Gest_enteros = "0"
-        Me.txt_telefono._Gest_mensajeError = ""
-        Me.txt_telefono._Gest_mensajetooltips = "cambie el mensaje tip"
-        Me.txt_telefono._Gest_ReadOnly = False
-        Me.txt_telefono._Gest_TextoNegrita = False
-        Me.txt_telefono._Gest_tipo_dato = Asociacion.TextBoxv01.t_dato.texto
-        Me.txt_telefono._Gest_validar = True
-        Me.txt_telefono.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!)
-        Me.txt_telefono.Location = New System.Drawing.Point(492, 74)
-        Me.txt_telefono.Margin = New System.Windows.Forms.Padding(1)
-        Me.txt_telefono.Mask = "99999999999999"
-        Me.txt_telefono.Name = "txt_telefono"
-        Me.txt_telefono.Size = New System.Drawing.Size(100, 20)
-        Me.txt_telefono.TabIndex = 5
-        Me.txt_telefono.ValidatingType = GetType(String)
-        '
-        'txt_nroCalle
-        '
-        Me.txt_nroCalle._BDdato = False
-        Me.txt_nroCalle._BDnombreCampoTabla = ""
-        Me.txt_nroCalle._BDvalor = ""
-        Me.txt_nroCalle._descriptor_del_contenido = ""
-        Me.txt_nroCalle._Gest_AnchoTexto = 0
-        Me.txt_nroCalle._Gest_decimales = 0
-        Me.txt_nroCalle._Gest_enteros = "0"
-        Me.txt_nroCalle._Gest_mensajeError = ""
-        Me.txt_nroCalle._Gest_mensajetooltips = "cambie el mensaje tip"
-        Me.txt_nroCalle._Gest_ReadOnly = False
-        Me.txt_nroCalle._Gest_TextoNegrita = False
-        Me.txt_nroCalle._Gest_tipo_dato = Asociacion.TextBoxv01.t_dato.texto
-        Me.txt_nroCalle._Gest_validar = True
-        Me.txt_nroCalle.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!)
-        Me.txt_nroCalle.Location = New System.Drawing.Point(109, 100)
-        Me.txt_nroCalle.Margin = New System.Windows.Forms.Padding(1)
-        Me.txt_nroCalle.Mask = "99999"
-        Me.txt_nroCalle.Name = "txt_nroCalle"
-        Me.txt_nroCalle.Size = New System.Drawing.Size(42, 20)
-        Me.txt_nroCalle.TabIndex = 3
-        Me.txt_nroCalle.ValidatingType = GetType(Integer)
-        '
-        'txt_codClub
-        '
-        Me.txt_codClub._BDdato = False
-        Me.txt_codClub._BDnombreCampoTabla = ""
-        Me.txt_codClub._BDvalor = ""
-        Me.txt_codClub._descriptor_del_contenido = ""
-        Me.txt_codClub._Gest_AnchoTexto = 0
-        Me.txt_codClub._Gest_decimales = 0
-        Me.txt_codClub._Gest_enteros = "0"
-        Me.txt_codClub._Gest_mensajeError = ""
-        Me.txt_codClub._Gest_mensajetooltips = "cambie el mensaje tip"
-        Me.txt_codClub._Gest_ReadOnly = False
-        Me.txt_codClub._Gest_TextoNegrita = True
-        Me.txt_codClub._Gest_tipo_dato = Asociacion.TextBoxv01.t_dato.texto
-        Me.txt_codClub._Gest_validar = True
-        Me.txt_codClub.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!, System.Drawing.FontStyle.Bold)
-        Me.txt_codClub.Location = New System.Drawing.Point(109, 26)
-        Me.txt_codClub.Margin = New System.Windows.Forms.Padding(1)
-        Me.txt_codClub.Mask = "99999"
-        Me.txt_codClub.Name = "txt_codClub"
-        Me.txt_codClub.Size = New System.Drawing.Size(42, 20)
-        Me.txt_codClub.TabIndex = 0
-        Me.txt_codClub.ValidatingType = GetType(Integer)
         '
         'cmb_codPos
         '
@@ -253,10 +181,14 @@ Partial Class frm_ABMclubes
         '
         'grid_clubes
         '
+        Me.grid_clubes.AllowUserToAddRows = False
+        Me.grid_clubes.AllowUserToDeleteRows = False
         Me.grid_clubes.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.grid_clubes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.grid_clubes.Location = New System.Drawing.Point(6, 19)
         Me.grid_clubes.Name = "grid_clubes"
+        Me.grid_clubes.ReadOnly = True
+        Me.grid_clubes.RowHeadersVisible = False
         Me.grid_clubes.Size = New System.Drawing.Size(688, 273)
         Me.grid_clubes.TabIndex = 0
         '
@@ -313,6 +245,78 @@ Partial Class frm_ABMclubes
         Me.cmd_cancelar.Size = New System.Drawing.Size(50, 50)
         Me.cmd_cancelar.TabIndex = 4
         Me.cmd_cancelar.UseVisualStyleBackColor = True
+        '
+        'txt_telefono
+        '
+        Me.txt_telefono._BDdato = False
+        Me.txt_telefono._BDnombreCampoTabla = ""
+        Me.txt_telefono._BDvalor = ""
+        Me.txt_telefono._descriptor_del_contenido = ""
+        Me.txt_telefono._Gest_AnchoTexto = 0
+        Me.txt_telefono._Gest_decimales = 0
+        Me.txt_telefono._Gest_enteros = "0"
+        Me.txt_telefono._Gest_mensajeError = ""
+        Me.txt_telefono._Gest_mensajetooltips = "cambie el mensaje tip"
+        Me.txt_telefono._Gest_ReadOnly = False
+        Me.txt_telefono._Gest_TextoNegrita = False
+        Me.txt_telefono._Gest_tipo_dato = Asociacion.TextBoxv01.t_dato.texto
+        Me.txt_telefono._Gest_validar = True
+        Me.txt_telefono.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!)
+        Me.txt_telefono.Location = New System.Drawing.Point(492, 74)
+        Me.txt_telefono.Margin = New System.Windows.Forms.Padding(1)
+        Me.txt_telefono.Mask = "99999999999999"
+        Me.txt_telefono.Name = "txt_telefono"
+        Me.txt_telefono.Size = New System.Drawing.Size(100, 20)
+        Me.txt_telefono.TabIndex = 5
+        Me.txt_telefono.ValidatingType = GetType(String)
+        '
+        'txt_nroCalle
+        '
+        Me.txt_nroCalle._BDdato = False
+        Me.txt_nroCalle._BDnombreCampoTabla = ""
+        Me.txt_nroCalle._BDvalor = ""
+        Me.txt_nroCalle._descriptor_del_contenido = ""
+        Me.txt_nroCalle._Gest_AnchoTexto = 0
+        Me.txt_nroCalle._Gest_decimales = 0
+        Me.txt_nroCalle._Gest_enteros = "0"
+        Me.txt_nroCalle._Gest_mensajeError = ""
+        Me.txt_nroCalle._Gest_mensajetooltips = "cambie el mensaje tip"
+        Me.txt_nroCalle._Gest_ReadOnly = False
+        Me.txt_nroCalle._Gest_TextoNegrita = False
+        Me.txt_nroCalle._Gest_tipo_dato = Asociacion.TextBoxv01.t_dato.texto
+        Me.txt_nroCalle._Gest_validar = True
+        Me.txt_nroCalle.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!)
+        Me.txt_nroCalle.Location = New System.Drawing.Point(109, 100)
+        Me.txt_nroCalle.Margin = New System.Windows.Forms.Padding(1)
+        Me.txt_nroCalle.Mask = "99999"
+        Me.txt_nroCalle.Name = "txt_nroCalle"
+        Me.txt_nroCalle.Size = New System.Drawing.Size(42, 20)
+        Me.txt_nroCalle.TabIndex = 3
+        Me.txt_nroCalle.ValidatingType = GetType(Integer)
+        '
+        'txt_codClub
+        '
+        Me.txt_codClub._BDdato = False
+        Me.txt_codClub._BDnombreCampoTabla = ""
+        Me.txt_codClub._BDvalor = ""
+        Me.txt_codClub._descriptor_del_contenido = ""
+        Me.txt_codClub._Gest_AnchoTexto = 0
+        Me.txt_codClub._Gest_decimales = 0
+        Me.txt_codClub._Gest_enteros = "0"
+        Me.txt_codClub._Gest_mensajeError = ""
+        Me.txt_codClub._Gest_mensajetooltips = "cambie el mensaje tip"
+        Me.txt_codClub._Gest_ReadOnly = False
+        Me.txt_codClub._Gest_TextoNegrita = True
+        Me.txt_codClub._Gest_tipo_dato = Asociacion.TextBoxv01.t_dato.texto
+        Me.txt_codClub._Gest_validar = True
+        Me.txt_codClub.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!, System.Drawing.FontStyle.Bold)
+        Me.txt_codClub.Location = New System.Drawing.Point(109, 26)
+        Me.txt_codClub.Margin = New System.Windows.Forms.Padding(1)
+        Me.txt_codClub.Mask = "99999"
+        Me.txt_codClub.Name = "txt_codClub"
+        Me.txt_codClub.Size = New System.Drawing.Size(42, 20)
+        Me.txt_codClub.TabIndex = 0
+        Me.txt_codClub.ValidatingType = GetType(Integer)
         '
         'frm_ABMclubes
         '

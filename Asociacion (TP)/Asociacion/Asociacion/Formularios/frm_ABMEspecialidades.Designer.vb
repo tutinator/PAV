@@ -152,10 +152,14 @@ Partial Class frm_ABMEspecialidades
         '
         'grid_especialidades
         '
+        Me.grid_especialidades.AllowUserToAddRows = False
+        Me.grid_especialidades.AllowUserToDeleteRows = False
         Me.grid_especialidades.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.grid_especialidades.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.grid_especialidades.Location = New System.Drawing.Point(7, 20)
         Me.grid_especialidades.Name = "grid_especialidades"
+        Me.grid_especialidades.ReadOnly = True
+        Me.grid_especialidades.RowHeadersVisible = False
         Me.grid_especialidades.Size = New System.Drawing.Size(368, 269)
         Me.grid_especialidades.TabIndex = 0
         '

@@ -115,10 +115,14 @@ Partial Class frm_ABMTipoDocumento
         '
         'grid_tipoDoc
         '
+        Me.grid_tipoDoc.AllowUserToAddRows = False
+        Me.grid_tipoDoc.AllowUserToDeleteRows = False
         Me.grid_tipoDoc.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.grid_tipoDoc.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.grid_tipoDoc.Location = New System.Drawing.Point(7, 20)
         Me.grid_tipoDoc.Name = "grid_tipoDoc"
+        Me.grid_tipoDoc.ReadOnly = True
+        Me.grid_tipoDoc.RowHeadersVisible = False
         Me.grid_tipoDoc.Size = New System.Drawing.Size(248, 217)
         Me.grid_tipoDoc.TabIndex = 0
         '

@@ -362,10 +362,14 @@ Partial Class frm_ABMProfesores
         '
         'grid_profesores
         '
+        Me.grid_profesores.AllowUserToAddRows = False
+        Me.grid_profesores.AllowUserToDeleteRows = False
         Me.grid_profesores.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.grid_profesores.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.grid_profesores.Location = New System.Drawing.Point(6, 20)
         Me.grid_profesores.Name = "grid_profesores"
+        Me.grid_profesores.ReadOnly = True
+        Me.grid_profesores.RowHeadersVisible = False
         Me.grid_profesores.Size = New System.Drawing.Size(766, 222)
         Me.grid_profesores.TabIndex = 0
         '
