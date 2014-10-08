@@ -1,4 +1,8 @@
-﻿Public Class proc_realizacionTorneo
+﻿Public Class proc_profxclub
+
+    Private Sub proc_profxclub_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Me.inicio()
+    End Sub
 
     Dim acceso As New accesoBD
     Dim accion As estado = estado.insertar
@@ -23,36 +27,33 @@
         Me.cmd_nuevo.Enabled = True
         Me.cmd_buscar.Enabled = True
         Me.cmd_salir.Enabled = True
-        Me.cmb_torneo.Enabled = True
-        Me.txt_año.Enabled = True
-        Me.cmb_clubSede.Enabled = True
-        Me.cmb_torneo.Focus()
+        Me.txt_apellido_profesor.Enabled = True
+        Me.txt_nombre_profesor.Enabled = True
+        Me.txt_codProfesor.Enabled = True
+        Me.txt_codProfesor.Focus()
+
 
     End Sub
 
     Private Sub limpiarCampos()
-        Me.txt_año.Text = ""
-        Me.cmb_torneo.Text = ""
-        Me.cmb_clubSede.Text = ""
+        Me.txt_apellido_profesor.Text = ""
+        Me.txt_nombre_profesor.Text = ""
+        Me.txt_codProfesor.Text = ""
+        Me.cmb_club.Text = ""
+
     End Sub
 
     Private Function validarCampos()
 
-        If cmb_torneo.SelectedValue = "" Then
-            MsgBox("Torneo no puede estar vacío", MsgBoxStyle.Critical, "Importante")
-            cmb_torneo.Focus()
+        If txt_codProfesor.Text = "" Then
+            MsgBox("Debe ingresar un código de profesor", MsgBoxStyle.Critical, "Importante")
+            Me.txt_codProfesor.Focus()
             Return False
         End If
 
-        If txt_año.Text = "" Then
-            MsgBox("Año de torneo no puede estar vacío", MsgBoxStyle.Critical, "Importante")
-            txt_año.Focus()
-            Return False
-        End If
-
-        If cmb_clubSede.SelectedValue = "" Then
-            MsgBox("Club sede no puede estar vacío", MsgBoxStyle.Critical, "Importante")
-            cmb_clubSede.Focus()
+        If cmb_club.SelectedValue = "" Then
+            MsgBox("Debe seleccionarse un club", MsgBoxStyle.Critical, "Importante")
+            cmb_club.Focus()
             Return False
         End If
 
@@ -61,9 +62,10 @@
 
     Private Sub cambiarEntradas(ByVal x As Boolean)
         limpiarCampos()
-        Me.txt_año.Enabled = x
-        Me.cmb_torneo.Enabled = x
-        Me.cmb_clubSede.Enabled = x
+        Me.txt_codProfesor.Enabled = x
+        Me.txt_apellido_profesor.Enabled = x
+        Me.txt_nombre_profesor.Enabled = x
+        Me.cmb_club.SelectedIndex = -1
     End Sub
 
     Private Sub cambiarBotones(ByVal x As Boolean)
@@ -74,7 +76,9 @@
         Me.cmd_salir.Enabled = x
         Me.cmd_cancelar.Enabled = x
         Me.cmd_nuevoClub.Enabled = x
-        Me.cmd_nuevoTorneo.Enabled = x
+        Me.cmd_buscarProf.Enabled = x
+        Me.cmd_nuevoClub.Enabled = x
+        Me.cmd_nuevoProfesor.Enabled = x
     End Sub
 
     'BASE DE DATOS
@@ -104,13 +108,13 @@
 
     Private Sub cargar_combos()
         cargar_combo(cmb_torneo, leo_tabla("Torneos"), "codTorneo", "descripcion")
-        cargar_combo(cmb_clubSede, leo_tabla("Clubes"), "codClub", "nombre")
+        cargar_combo(cmb_club, leo_tabla("Clubes"), "codClub", "nombre")
     End Sub
 
     Private Function modificar() As termino
 
         Dim consulta As String = ""
-        consulta = "UPDATE TorneosXAño SET codClub = " & Me.cmb_clubSede.SelectedItem
+        consulta = "UPDATE TorneosXAño SET codClub = " & Me.cmb_club.SelectedItem
 
         consulta &= " WHERE codTorneo = " & Me.cmb_torneo.SelectedValue & " AND año = " & Me.txt_año.Text
         acceso.ejecutarNonConsulta(consulta)
@@ -164,7 +168,7 @@
 
         Me.cmb_torneo.SelectedValue = tabla.Rows(0)("codTorneo")
         Me.txt_año.Text = tabla.Rows(0)("año")
-        Me.cmb_clubSede.SelectedValue = tabla.Rows(0)("codClub")
+        Me.cmb_club.SelectedValue = tabla.Rows(0)("codClub")
 
         cambiarBotones(False)
         Me.cmd_cancelar.Enabled = True
@@ -201,7 +205,7 @@
         Me.cmd_buscar.Enabled = True
 
         Dim cont As Integer = 0
-        If cmb_clubSede.Text <> "" Then cont = cont + 1
+        If cmb_club.Text <> "" Then cont = cont + 1
         If cmb_torneo.Text <> "" Then cont = cont + 1
         If txt_año.Text <> "" Then cont = cont + 1
 
@@ -217,7 +221,7 @@
             Exit Sub
         End If
 
-        If cmb_clubSede.Text = "" Then
+        If cmb_club.Text = "" Then
             If txt_año.Text = "" Then
                 If cmb_torneo.Text = "" Then
                     MsgBox("Ingrese un dato para buscar", MsgBoxStyle.Critical, "Importante")
@@ -239,7 +243,7 @@
         Else
             Dim consulta As String = ""
             Dim dt As New Data.DataTable
-            consulta = "SELECT * FROM TorneosXAño WHERE codClub = " & Me.cmb_clubSede.SelectedValue
+            consulta = "SELECT * FROM TorneosXAño WHERE codClub = " & Me.cmb_club.SelectedValue
             dt = acceso.ejecutar(consulta)
             grid_realizaciones.DataSource = dt
 
@@ -251,7 +255,7 @@
         Me.inicio()
     End Sub
 
- 
+
     Private Sub cmd_eliminar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmd_eliminar.Click
         If cmb_torneo.Text = "" Then
             MsgBox("No se ha seleccionado ningún torneo", MsgBoxStyle.Critical, "Error")
@@ -284,5 +288,26 @@
             Me.inicio()
         End If
     End Sub
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 End Class
