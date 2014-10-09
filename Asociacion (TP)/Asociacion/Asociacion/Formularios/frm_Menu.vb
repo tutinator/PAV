@@ -45,4 +45,8 @@
     Private Sub RealizacionDeTorneoToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles RealizacionDeTorneoToolStripMenuItem.Click
         proc_realizacionTorneo.Show()
     End Sub
+
+    Private Sub AsignarProfesorAClubToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AsignarProfesorAClubToolStripMenuItem.Click
+        proc_profesxclub.Show()
+    End Sub
 End Class
