@@ -253,7 +253,6 @@
 
         'Me.txt_codTipoDoc.Enabled = False
         'txt_nombre.Focus()
-        ' 
 
         'Me.accion = estado.modificar
     End Sub
