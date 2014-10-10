@@ -140,6 +140,18 @@
     <Compile Include="Formularios\frm_ABMClubes.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Formularios\ABMCompetencias.Designer.vb">
+      <DependentUpon>ABMCompetencias.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\ABMCompetencias.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\proc_inscripcion.Designer.vb">
+      <DependentUpon>proc_inscripcion.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\proc_inscripcion.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Formularios\proc_realizacionTorneo.Designer.vb">
       <DependentUpon>proc_realizacionTorneo.vb</DependentUpon>
     </Compile>
@@ -191,6 +203,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\frm_ABMClubes.resx">
       <DependentUpon>frm_ABMClubes.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\ABMCompetencias.resx">
+      <DependentUpon>ABMCompetencias.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\proc_inscripcion.resx">
+      <DependentUpon>proc_inscripcion.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\proc_realizacionTorneo.resx">
       <DependentUpon>proc_realizacionTorneo.vb</DependentUpon>

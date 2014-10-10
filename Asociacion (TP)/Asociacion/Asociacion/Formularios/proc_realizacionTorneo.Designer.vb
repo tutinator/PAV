@@ -58,25 +58,25 @@ Partial Class proc_realizacionTorneo
         Me.GroupBox1.Controls.Add(Me.lbl_codTorneo)
         Me.GroupBox1.Location = New System.Drawing.Point(12, 12)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(473, 167)
+        Me.GroupBox1.Size = New System.Drawing.Size(473, 119)
         Me.GroupBox1.TabIndex = 0
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Torneo"
         '
         'cmd_nuevoClub
         '
-        Me.cmd_nuevoClub.Location = New System.Drawing.Point(286, 108)
+        Me.cmd_nuevoClub.Location = New System.Drawing.Point(286, 77)
         Me.cmd_nuevoClub.Name = "cmd_nuevoClub"
-        Me.cmd_nuevoClub.Size = New System.Drawing.Size(93, 23)
+        Me.cmd_nuevoClub.Size = New System.Drawing.Size(93, 21)
         Me.cmd_nuevoClub.TabIndex = 4
         Me.cmd_nuevoClub.Text = "Nuevo Club"
         Me.cmd_nuevoClub.UseVisualStyleBackColor = True
         '
         'cmd_nuevoTorneo
         '
-        Me.cmd_nuevoTorneo.Location = New System.Drawing.Point(286, 21)
+        Me.cmd_nuevoTorneo.Location = New System.Drawing.Point(286, 24)
         Me.cmd_nuevoTorneo.Name = "cmd_nuevoTorneo"
-        Me.cmd_nuevoTorneo.Size = New System.Drawing.Size(93, 23)
+        Me.cmd_nuevoTorneo.Size = New System.Drawing.Size(93, 20)
         Me.cmd_nuevoTorneo.TabIndex = 1
         Me.cmd_nuevoTorneo.Text = "Nuevo Torneo"
         Me.cmd_nuevoTorneo.UseVisualStyleBackColor = True
@@ -84,7 +84,7 @@ Partial Class proc_realizacionTorneo
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(20, 108)
+        Me.Label3.Location = New System.Drawing.Point(45, 80)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(54, 13)
         Me.Label3.TabIndex = 10
@@ -92,9 +92,9 @@ Partial Class proc_realizacionTorneo
         '
         'txt_año
         '
-        Me.txt_año.Location = New System.Drawing.Point(105, 67)
+        Me.txt_año.Location = New System.Drawing.Point(105, 51)
         Me.txt_año.Name = "txt_año"
-        Me.txt_año.Size = New System.Drawing.Size(100, 20)
+        Me.txt_año.Size = New System.Drawing.Size(56, 20)
         Me.txt_año.TabIndex = 2
         '
         'Label2
@@ -108,7 +108,7 @@ Partial Class proc_realizacionTorneo
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(17, 70)
+        Me.Label1.Location = New System.Drawing.Point(73, 54)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(26, 13)
         Me.Label1.TabIndex = 8
@@ -116,16 +116,24 @@ Partial Class proc_realizacionTorneo
         '
         'cmb_clubSede
         '
+        Me.cmb_clubSede.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend
+        Me.cmb_clubSede.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
+        Me.cmb_clubSede.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cmb_clubSede.FormattingEnabled = True
-        Me.cmb_clubSede.Location = New System.Drawing.Point(105, 105)
+        Me.cmb_clubSede.Location = New System.Drawing.Point(105, 77)
+        Me.cmb_clubSede.MaxDropDownItems = 20
         Me.cmb_clubSede.Name = "cmb_clubSede"
         Me.cmb_clubSede.Size = New System.Drawing.Size(144, 21)
         Me.cmb_clubSede.TabIndex = 3
         '
         'cmb_torneo
         '
+        Me.cmb_torneo.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend
+        Me.cmb_torneo.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
+        Me.cmb_torneo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cmb_torneo.FormattingEnabled = True
         Me.cmb_torneo.Location = New System.Drawing.Point(105, 24)
+        Me.cmb_torneo.MaxDropDownItems = 20
         Me.cmb_torneo.Name = "cmb_torneo"
         Me.cmb_torneo.Size = New System.Drawing.Size(144, 21)
         Me.cmb_torneo.TabIndex = 0
@@ -133,7 +141,7 @@ Partial Class proc_realizacionTorneo
         'lbl_codTorneo
         '
         Me.lbl_codTorneo.AutoSize = True
-        Me.lbl_codTorneo.Location = New System.Drawing.Point(17, 27)
+        Me.lbl_codTorneo.Location = New System.Drawing.Point(18, 26)
         Me.lbl_codTorneo.Name = "lbl_codTorneo"
         Me.lbl_codTorneo.Size = New System.Drawing.Size(81, 13)
         Me.lbl_codTorneo.TabIndex = 6
@@ -142,7 +150,7 @@ Partial Class proc_realizacionTorneo
         'GroupBox2
         '
         Me.GroupBox2.Controls.Add(Me.grid_realizaciones)
-        Me.GroupBox2.Location = New System.Drawing.Point(12, 185)
+        Me.GroupBox2.Location = New System.Drawing.Point(12, 137)
         Me.GroupBox2.Name = "GroupBox2"
         Me.GroupBox2.Size = New System.Drawing.Size(473, 184)
         Me.GroupBox2.TabIndex = 16
@@ -151,22 +159,25 @@ Partial Class proc_realizacionTorneo
         '
         'grid_realizaciones
         '
+        Me.grid_realizaciones.AllowUserToAddRows = False
+        Me.grid_realizaciones.AllowUserToDeleteRows = False
         Me.grid_realizaciones.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+                    Or System.Windows.Forms.AnchorStyles.Left) _
+                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.grid_realizaciones.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells
         Me.grid_realizaciones.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.grid_realizaciones.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.grid_realizaciones.Location = New System.Drawing.Point(6, 19)
         Me.grid_realizaciones.Name = "grid_realizaciones"
         Me.grid_realizaciones.ReadOnly = True
+        Me.grid_realizaciones.RowHeadersVisible = False
         Me.grid_realizaciones.Size = New System.Drawing.Size(461, 159)
         Me.grid_realizaciones.TabIndex = 2
         '
         'cmd_salir
         '
         Me.cmd_salir.Image = Global.Asociacion.My.Resources.Resources.salir
-        Me.cmd_salir.Location = New System.Drawing.Point(435, 375)
+        Me.cmd_salir.Location = New System.Drawing.Point(435, 327)
         Me.cmd_salir.Name = "cmd_salir"
         Me.cmd_salir.Size = New System.Drawing.Size(50, 50)
         Me.cmd_salir.TabIndex = 6
@@ -175,7 +186,7 @@ Partial Class proc_realizacionTorneo
         'cmd_buscar
         '
         Me.cmd_buscar.Image = Global.Asociacion.My.Resources.Resources.buscar
-        Me.cmd_buscar.Location = New System.Drawing.Point(278, 375)
+        Me.cmd_buscar.Location = New System.Drawing.Point(279, 327)
         Me.cmd_buscar.Name = "cmd_buscar"
         Me.cmd_buscar.Size = New System.Drawing.Size(50, 50)
         Me.cmd_buscar.TabIndex = 5
@@ -184,7 +195,7 @@ Partial Class proc_realizacionTorneo
         'cmd_cancelar
         '
         Me.cmd_cancelar.Image = Global.Asociacion.My.Resources.Resources.cancel
-        Me.cmd_cancelar.Location = New System.Drawing.Point(179, 375)
+        Me.cmd_cancelar.Location = New System.Drawing.Point(180, 327)
         Me.cmd_cancelar.Name = "cmd_cancelar"
         Me.cmd_cancelar.Size = New System.Drawing.Size(50, 50)
         Me.cmd_cancelar.TabIndex = 4
@@ -193,7 +204,7 @@ Partial Class proc_realizacionTorneo
         'cmd_eliminar
         '
         Me.cmd_eliminar.Image = Global.Asociacion.My.Resources.Resources.delete
-        Me.cmd_eliminar.Location = New System.Drawing.Point(123, 375)
+        Me.cmd_eliminar.Location = New System.Drawing.Point(124, 327)
         Me.cmd_eliminar.Name = "cmd_eliminar"
         Me.cmd_eliminar.Size = New System.Drawing.Size(50, 50)
         Me.cmd_eliminar.TabIndex = 3
@@ -202,7 +213,7 @@ Partial Class proc_realizacionTorneo
         'cmd_guardar
         '
         Me.cmd_guardar.Image = Global.Asociacion.My.Resources.Resources.save
-        Me.cmd_guardar.Location = New System.Drawing.Point(67, 375)
+        Me.cmd_guardar.Location = New System.Drawing.Point(68, 327)
         Me.cmd_guardar.Name = "cmd_guardar"
         Me.cmd_guardar.Size = New System.Drawing.Size(50, 50)
         Me.cmd_guardar.TabIndex = 2
@@ -211,7 +222,7 @@ Partial Class proc_realizacionTorneo
         'cmd_nuevo
         '
         Me.cmd_nuevo.Image = Global.Asociacion.My.Resources.Resources.add
-        Me.cmd_nuevo.Location = New System.Drawing.Point(11, 375)
+        Me.cmd_nuevo.Location = New System.Drawing.Point(12, 327)
         Me.cmd_nuevo.Name = "cmd_nuevo"
         Me.cmd_nuevo.Size = New System.Drawing.Size(50, 50)
         Me.cmd_nuevo.TabIndex = 1
@@ -221,7 +232,7 @@ Partial Class proc_realizacionTorneo
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(497, 453)
+        Me.ClientSize = New System.Drawing.Size(492, 389)
         Me.Controls.Add(Me.cmd_salir)
         Me.Controls.Add(Me.cmd_buscar)
         Me.Controls.Add(Me.cmd_cancelar)

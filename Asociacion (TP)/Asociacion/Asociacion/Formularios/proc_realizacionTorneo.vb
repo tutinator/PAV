@@ -23,6 +23,8 @@
         Me.cmd_nuevo.Enabled = True
         Me.cmd_buscar.Enabled = True
         Me.cmd_salir.Enabled = True
+        Me.cmd_nuevoTorneo.Enabled = True
+        Me.cmd_nuevoClub.Enabled = True
         Me.cmb_torneo.Enabled = True
         Me.txt_año.Enabled = True
         Me.cmb_clubSede.Enabled = True
@@ -38,7 +40,7 @@
 
     Private Function validarCampos()
 
-        If cmb_torneo.SelectedValue = "" Then
+        If cmb_torneo.Text = "" Then
             MsgBox("Torneo no puede estar vacío", MsgBoxStyle.Critical, "Importante")
             cmb_torneo.Focus()
             Return False
@@ -50,14 +52,25 @@
             Return False
         End If
 
-        If cmb_clubSede.SelectedValue = "" Then
-            MsgBox("Club sede no puede estar vacío", MsgBoxStyle.Critical, "Importante")
-            cmb_clubSede.Focus()
-            Return False
-        End If
-
         Return True
     End Function
+
+    Function validarSoloNumeros(ByVal KeyAscii As Integer) As Integer
+        KeyAscii = Asc(UCase(Chr(KeyAscii))) 'Transformar letras minusculas a Mayúsculas
+        If InStr("1234567890", Chr(KeyAscii)) = 0 Then
+            validarSoloNumeros = 0
+        Else
+            validarSoloNumeros = KeyAscii
+        End If
+    End Function
+
+    Private Sub txt_año_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txt_año.KeyPress
+        Dim KeyAscii As Short = CShort(Asc(e.KeyChar))
+        KeyAscii = CShort(validarSoloNumeros(KeyAscii))
+        If KeyAscii = 0 Then
+            e.Handled = True
+        End If
+    End Sub
 
     Private Sub cambiarEntradas(ByVal x As Boolean)
         limpiarCampos()
@@ -87,7 +100,9 @@
     Private Sub cargar_grilla()
 
         Dim consulta As String = ""
-        consulta = "SELECT * FROM TorneosXAño"
+        consulta = "SELECT Torneos.descripcion AS Torneo, TorneosXAño.año AS Año, Clubes.nombre AS Sede"
+        consulta &= " FROM TorneosXAño INNER JOIN Torneos ON TorneosXAño.codTorneo = Torneos.codTorneo INNER JOIN"
+        consulta &= " Clubes ON TorneosXAño.codClub = Clubes.codClub"
 
         grid_realizaciones.DataSource = acceso.ejecutar(consulta)
 
@@ -110,8 +125,7 @@
     Private Function modificar() As termino
 
         Dim consulta As String = ""
-        consulta = "UPDATE TorneosXAño SET codClub = " & Me.cmb_clubSede.SelectedItem
-
+        consulta = "UPDATE TorneosXAño SET codClub = " & Me.cmb_clubSede.SelectedValue
         consulta &= " WHERE codTorneo = " & Me.cmb_torneo.SelectedValue & " AND año = " & Me.txt_año.Text
         acceso.ejecutarNonConsulta(consulta)
         Return termino.aprobado
@@ -132,7 +146,7 @@
 
         Dim consulta As String = ""
         Dim tabla As Data.DataTable
-        consulta = "SELECT * FROM TorneosXAño WHERE codTorneo = " & Me.cmb_torneo.SelectedValue & "AND año = " & Me.txt_año.Text
+        consulta = "SELECT * FROM TorneosXAño WHERE codTorneo = " & Me.cmb_torneo.SelectedValue & " AND año = " & Me.txt_año.Text
         tabla = acceso.ejecutar(consulta)
         If tabla.Rows.Count() = 1 Then
             Return termino.rechazado
@@ -147,17 +161,20 @@
         acceso.ejecutarNonConsulta(consulta)
         Return termino.aprobado
     End Function
+
     '----FIN BD
 
     Private Sub grid_realizaciones_CellMouseDoubleClick(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellMouseEventArgs) Handles grid_realizaciones.CellMouseDoubleClick
-
-        Dim codigoSeleccionado As String = Me.grid_realizaciones.CurrentRow.Cells(0).Value
-        Dim añoSeleccionado As String = Me.grid_realizaciones.CurrentRow.Cells(1).Value
+        ' ME DEVUELVE EL NOMBRE DEL TORNEO
+        Dim torneoSeleccionado As String = Me.grid_realizaciones.CurrentRow.Cells(0).Value
+        Dim añoSeleccionado As Integer = Me.grid_realizaciones.CurrentRow.Cells(1).Value
 
         Dim tabla As New Data.DataTable
 
         Dim consulta As String = ""
-        consulta = "SELECT * FROM TorneosXAño WHERE codTorneo = " & codigoSeleccionado & "AND año = " & añoSeleccionado
+        'TENGO QUE SACAR LA TABLA CON LOS NOMBRES DE TORNEO PARA BUSCAR EL "torneoSeleccionado"
+        consulta = "SELECT * FROM TorneosXAño INNER JOIN Torneos ON TorneosXAño.codTorneo = Torneos.codTorneo"
+        consulta &= " WHERE descripcion = '" & torneoSeleccionado & "' AND año = " & añoSeleccionado
 
         cambiarEntradas(True)
         tabla = acceso.ejecutar(consulta)
@@ -186,6 +203,8 @@
         cambiarEntradas(True)
         Me.cmd_cancelar.Enabled = True
         Me.cmd_guardar.Enabled = True
+        Me.cmd_nuevoClub.Enabled = True
+        Me.cmd_nuevoTorneo.Enabled = True
         cmb_torneo.Focus()
         Me.accion = estado.insertar
     End Sub
@@ -225,21 +244,28 @@
                 Else
                     Dim consulta As String = ""
                     Dim dt As New Data.DataTable
-                    consulta = "SELECT * FROM TorneosXAño WHERE codTorneo = " & Me.cmb_torneo.SelectedValue
+                    consulta = "SELECT Torneos.descripcion AS Torneo, TorneosXAño.año AS Año, Clubes.nombre AS Sede"
+                    consulta &= " FROM TorneosXAño INNER JOIN Torneos ON TorneosXAño.codTorneo = Torneos.codTorneo INNER JOIN"
+                    consulta &= " Clubes ON TorneosXAño.codClub = Clubes.codClub WHERE Torneos.descripcion = '" & Me.cmb_torneo.Text & "'"
                     dt = acceso.ejecutar(consulta)
                     grid_realizaciones.DataSource = dt
                 End If
             Else
                 Dim consulta As String = ""
                 Dim dt As New Data.DataTable
-                consulta = "SELECT * FROM TorneosXAño WHERE año LIKE '" & Me.txt_año.Text & "'"
+                consulta = "SELECT Torneos.descripcion AS Torneo, TorneosXAño.año AS Año, Clubes.nombre AS Sede"
+                consulta &= " FROM TorneosXAño INNER JOIN Torneos ON TorneosXAño.codTorneo = Torneos.codTorneo INNER JOIN"
+                consulta &= " Clubes ON TorneosXAño.codClub = Clubes.codClub WHERE año = " & Me.txt_año.Text
                 dt = acceso.ejecutar(consulta)
                 grid_realizaciones.DataSource = dt
             End If
         Else
             Dim consulta As String = ""
             Dim dt As New Data.DataTable
-            consulta = "SELECT * FROM TorneosXAño WHERE codClub = " & Me.cmb_clubSede.SelectedValue
+            consulta = "SELECT Torneos.descripcion AS Torneo, TorneosXAño.año AS Año, Clubes.nombre AS Sede"
+            consulta &= " FROM TorneosXAño INNER JOIN Torneos ON TorneosXAño.codTorneo = Torneos.codTorneo INNER JOIN"
+            consulta &= " Clubes ON TorneosXAño.codClub = Clubes.codClub WHERE Clubes.nombre = '" & Me.cmb_clubSede.Text & "'"
+
             dt = acceso.ejecutar(consulta)
             grid_realizaciones.DataSource = dt
 
@@ -256,7 +282,7 @@
         If cmb_torneo.Text = "" Then
             MsgBox("No se ha seleccionado ningún torneo", MsgBoxStyle.Critical, "Error")
         Else
-            If MessageBox.Show("¿Está seguro que desea eliminar la realización del torneo " & cmb_torneo.SelectedText & " del año " & txt_año.Text & "?", "Atención", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1) = Windows.Forms.DialogResult.OK Then
+            If MessageBox.Show("¿Está seguro que desea eliminar la realización del torneo " & cmb_torneo.Text & " del año " & txt_año.Text & "?", "Atención", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1) = Windows.Forms.DialogResult.OK Then
                 If Me.delete() = termino.aprobado Then
                     MessageBox.Show("Realización del torneo eliminada", "Operación completada")
                     Me.inicio()
@@ -277,7 +303,8 @@
 
 
                 End If
-            Else : Me.modificar()
+            Else
+                Me.modificar()
                 MessageBox.Show("Realización de torneo modificada con éxito", "Operación completa")
             End If
 
@@ -285,4 +312,12 @@
         End If
     End Sub
 
+
+    Private Sub cmd_nuevoTorneo_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmd_nuevoTorneo.Click
+        frm_ABMTorneo.Show()
+    End Sub
+
+    Private Sub cmd_nuevoClub_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmd_nuevoClub.Click
+        frm_ABMTorneo.Show()
+    End Sub
 End Class
