@@ -46,7 +46,7 @@
         proc_realizacionTorneo.Show()
     End Sub
 
-    Private Sub AsignarProfesorAClubToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AsignarProfesorAClubToolStripMenuItem.Click
+    Private Sub ProfesoresPorClubToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ProfesoresPorClubToolStripMenuItem.Click
         proc_profesxclub.Show()
     End Sub
 End Class

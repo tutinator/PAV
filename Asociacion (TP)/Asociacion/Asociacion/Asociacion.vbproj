@@ -140,6 +140,12 @@
     <Compile Include="Formularios\frm_ABMClubes.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Formularios\proc_profesxclub.Designer.vb">
+      <DependentUpon>proc_profesxclub.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\proc_profesxclub.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Formularios\proc_realizacionTorneo.Designer.vb">
       <DependentUpon>proc_realizacionTorneo.vb</DependentUpon>
     </Compile>
@@ -191,6 +197,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\frm_ABMClubes.resx">
       <DependentUpon>frm_ABMClubes.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\proc_profesxclub.resx">
+      <DependentUpon>proc_profesxclub.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\proc_realizacionTorneo.resx">
       <DependentUpon>proc_realizacionTorneo.vb</DependentUpon>
