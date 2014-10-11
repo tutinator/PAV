@@ -150,6 +150,10 @@
       <DependentUpon>proc_inscripcion.vb</DependentUpon>
     </Compile>
     <Compile Include="Formularios\proc_inscripcion.vb">
+    <Compile Include="Formularios\proc_profesxclub.Designer.vb">
+      <DependentUpon>proc_profesxclub.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\proc_profesxclub.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Formularios\proc_realizacionTorneo.Designer.vb">
@@ -209,6 +213,8 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\proc_inscripcion.resx">
       <DependentUpon>proc_inscripcion.vb</DependentUpon>
+    <EmbeddedResource Include="Formularios\proc_profesxclub.resx">
+      <DependentUpon>proc_profesxclub.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\proc_realizacionTorneo.resx">
       <DependentUpon>proc_realizacionTorneo.vb</DependentUpon>
