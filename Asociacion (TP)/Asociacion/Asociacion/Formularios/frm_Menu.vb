@@ -45,4 +45,9 @@
     Private Sub RealizacionDeTorneoToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles RealizacionDeTorneoToolStripMenuItem.Click
         proc_realizacionTorneo.Show()
     End Sub
+
+    Private Sub CompetenciasToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CompetenciasToolStripMenuItem.Click
+        ABMCompetencias.Show()
+
+    End Sub
 End Class
