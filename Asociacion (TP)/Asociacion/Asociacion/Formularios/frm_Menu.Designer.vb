@@ -60,7 +60,6 @@ Partial Class frm_Menu
         Me.ToolStripStatusLabel3 = New System.Windows.Forms.ToolStripStatusLabel()
         Me.lbl_hora = New System.Windows.Forms.ToolStripStatusLabel()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
-        Me.CompetenciasToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip1.SuspendLayout()
         Me.StatusStrip1.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -77,7 +76,7 @@ Partial Class frm_Menu
         '
         'GestionarToolStripMenuItem
         '
-        Me.GestionarToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.NadadoresToolStripMenuItem, Me.ClubesAfiliadosToolStripMenuItem, Me.ProfesoresToolStripMenuItem1, Me.EspecialidadesToolStripMenuItem, Me.TorneosToolStripMenuItem, Me.CompetenciasToolStripMenuItem, Me.OtrosToolStripMenuItem})
+        Me.GestionarToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.NadadoresToolStripMenuItem, Me.ClubesAfiliadosToolStripMenuItem, Me.ProfesoresToolStripMenuItem1, Me.EspecialidadesToolStripMenuItem, Me.TorneosToolStripMenuItem, Me.OtrosToolStripMenuItem})
         Me.GestionarToolStripMenuItem.Name = "GestionarToolStripMenuItem"
         Me.GestionarToolStripMenuItem.Size = New System.Drawing.Size(59, 20)
         Me.GestionarToolStripMenuItem.Text = "Gestión"
@@ -307,12 +306,6 @@ Partial Class frm_Menu
         Me.PictureBox1.TabIndex = 2
         Me.PictureBox1.TabStop = False
         '
-        'CompetenciasToolStripMenuItem
-        '
-        Me.CompetenciasToolStripMenuItem.Name = "CompetenciasToolStripMenuItem"
-        Me.CompetenciasToolStripMenuItem.Size = New System.Drawing.Size(159, 22)
-        Me.CompetenciasToolStripMenuItem.Text = "Competencias"
-        '
         'frm_Menu
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -373,6 +366,5 @@ Partial Class frm_Menu
     Friend WithEvents ClubesPorVictoriasToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ToolStripStatusLabel3 As System.Windows.Forms.ToolStripStatusLabel
     Friend WithEvents PictureBox1 As System.Windows.Forms.PictureBox
-    Friend WithEvents CompetenciasToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
 
 End Class
