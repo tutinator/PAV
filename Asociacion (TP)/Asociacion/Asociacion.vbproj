@@ -152,6 +152,12 @@
     <Compile Include="Procesos\proc_inscripcion.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Procesos\proc_inscripciones.Designer.vb">
+      <DependentUpon>proc_inscripciones.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Procesos\proc_inscripciones.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Procesos\proc_profesxclub.Designer.vb">
       <DependentUpon>proc_profesxclub.vb</DependentUpon>
     </Compile>
@@ -215,6 +221,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Procesos\proc_inscripcion.resx">
       <DependentUpon>proc_inscripcion.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Procesos\proc_inscripciones.resx">
+      <DependentUpon>proc_inscripciones.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Procesos\proc_profesxclub.resx">
       <DependentUpon>proc_profesxclub.vb</DependentUpon>

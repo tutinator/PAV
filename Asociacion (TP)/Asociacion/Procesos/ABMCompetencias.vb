@@ -27,19 +27,20 @@
         Me.cmd_nuevo.Enabled = True
         Me.cmd_buscar.Enabled = True
         Me.cmd_salir.Enabled = True
+        Me.cmd_cancelar.Enabled = True
         Me.cmb_torneo.Enabled = True
         Me.cmb_año.Enabled = True
         Me.cmb_especialidad.Enabled = True
-        Me.txt_fecha.Enabled = True
+        'Me.txt_fecha.Enabled = True
         Me.cmb_torneo.Focus()
-
+        'Me.dtp_fecha.Value = Date.Today
     End Sub
 
     Private Sub limpiarCampos()
         Me.cmb_año.Text = ""
         Me.cmb_torneo.Text = ""
         Me.cmb_especialidad.Text = ""
-        Me.txt_fecha.Text = ""
+        ' Me.txt_fecha.Text = ""
     End Sub
 
     Private Function validarCampos()
@@ -70,7 +71,7 @@
         Me.cmb_año.Enabled = x
         Me.cmb_torneo.Enabled = x
         Me.cmb_especialidad.Enabled = x
-        Me.txt_fecha.Enabled = x
+        'Me.txt_fecha.Enabled = x
     End Sub
 
     Private Sub cambiarBotones(ByVal x As Boolean)
@@ -121,8 +122,9 @@
     Private Function modificar() As termino
 
         Dim consulta As String = ""
-        consulta = "UPDATE Competencias SET codEspe = " & Me.cmb_especialidad.SelectedValue & " fecha = '" & txt_fecha.Text & "'"
-        consulta &= " WHERE codTorneo = " & Me.cmb_torneo.SelectedValue & " AND año = " & Me.cmb_año.SelectedValue
+        consulta = "UPDATE Competencias SET fecha = '" & Me.dtp_fecha.Value & "'"
+        consulta &= " WHERE codTorneo = " & Me.cmb_torneo.SelectedValue & " AND año = " & Me.cmb_año.SelectedValue & ""
+        consulta &= " AND codEspe = " & Me.cmb_especialidad.SelectedValue
         acceso.ejecutarNonConsulta(consulta)
         Return termino.aprobado
 
@@ -132,7 +134,8 @@
 
         Dim consulta As String = ""
         consulta = "INSERT INTO Competencias (codTorneo, año, codEspe, fecha)"
-        consulta &= "VALUES (" & Me.cmb_torneo.SelectedValue & ", " & Me.cmb_año.SelectedValue & ", " & Me.cmb_especialidad.SelectedValue & ", '" & Me.txt_fecha.Text & "')"
+        consulta &= "VALUES (" & Me.cmb_torneo.SelectedValue & ", " & Me.cmb_año.SelectedValue & ", "
+        consulta &= Me.cmb_especialidad.SelectedValue & ", '" & Me.dtp_fecha.Value & "')"
         acceso.ejecutarNonConsulta(consulta)
         Return termino.aprobado
 
@@ -165,25 +168,24 @@
     Private Sub grid_competencias_CellMouseDoubleClick(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellMouseEventArgs) Handles grid_competencias.CellMouseDoubleClick
         Dim torneoSeleccionado As String = Me.grid_competencias.CurrentRow.Cells(0).Value
         Dim añoSeleccionado As Integer = Me.grid_competencias.CurrentRow.Cells(1).Value
-        Dim espeSeleccionada As Integer = Me.grid_competencias.CurrentRow.Cells(2).Value
+        Dim espeSeleccionada As String = Me.grid_competencias.CurrentRow.Cells(2).Value
 
         Dim tabla As New Data.DataTable
 
         Dim consulta As String = ""
-        'TENGO QUE SACAR LA TABLA CON LOS NOMBRES DE TORNEO PARA BUSCAR EL "torneoSeleccionado"
-
+ 
         consulta = "SELECT * FROM Competencias INNER JOIN Torneos ON Competencias.codTorneo = Torneos.codTorneo"
         consulta &= " INNER JOIN Especialidades ON Competencias.codEspe = Especialidades.codEspe"
-        consulta &= " WHERE Torneo.descripcion = '" & torneoSeleccionado & "' AND Competencia.año = " & añoSeleccionado
+        consulta &= " WHERE Torneos.descripcion = '" & torneoSeleccionado & "' AND Competencias.año = " & añoSeleccionado
         consulta &= " AND Especialidades.descripcion = '" & espeSeleccionada & "'"
 
         cambiarEntradas(True)
         tabla = acceso.ejecutar(consulta)
 
-        Me.cmb_torneo.SelectedValue = tabla.Rows(0)("Competencias.codTorneo")
-        Me.cmb_año.SelectedValue = tabla.Rows(0)("Competencias.año")
-        Me.cmb_especialidad.SelectedValue = tabla.Rows(0)("Competencias.codEspe")
-        Me.txt_fecha.Text = tabla.Rows(0)("Competencias.fecha")
+        Me.cmb_torneo.SelectedValue = tabla.Rows(0)("codTorneo")
+        Me.cmb_año.SelectedValue = tabla.Rows(0)("año")
+        Me.cmb_especialidad.SelectedValue = tabla.Rows(0)("codEspe")
+        Me.dtp_fecha.Value = tabla.Rows(0)("fecha")
 
         cambiarBotones(False)
         Me.cmd_cancelar.Enabled = True
@@ -204,99 +206,84 @@
         cmb_torneo.Focus()
         Me.accion = estado.insertar
     End Sub
-    ' HATA ACA LLEGO MI AMOR -----------------------------------------------
-    '-------------- HABRIA QUE VALIDAR SI LA FECHA COINCIDE CON EL AÑO
-    'Private Sub cmd_guardar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmd_guardar.Click
-    '    If validarCampos() = True Then
-    '        If Me.accion = estado.insertar Then
-    '            If validar_existencia() = termino.aprobado Then
-    '                Me.insertar()
-    '                MessageBox.Show("Nueva realización de torneo cargada con éxito", "Operación completa")
-
-    '            Else : MessageBox.Show("La realización de torneo que intenta guardar ya está registrada", "Error")
 
 
+    Private Sub cmd_guardar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmd_guardar.Click
+        If validarCampos() = True Then
+            If Me.accion = estado.insertar Then
+                If validar_existencia() = termino.aprobado Then
+                    Me.insertar()
+                    MessageBox.Show("Nueva competencia cargada con éxito", "Operación completa")
 
-    '            End If
-    '        Else
-    '            Me.modificar()
-    '            MessageBox.Show("Realización de torneo modificada con éxito", "Operación completa")
-    '        End If
+                Else : MessageBox.Show("La competencia que intenta guardar ya está registrada", "Error")
 
-    '        Me.inicio()
-    '    End If
-    'End Sub
 
-    'Private Sub cmd_eliminar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmd_eliminar.Click
-    '    If cmb_torneo.Text = "" Then
-    '        MsgBox("No se ha seleccionado ningún torneo", MsgBoxStyle.Critical, "Error")
-    '    Else
-    '        If MessageBox.Show("¿Está seguro que desea eliminar la realización del torneo " & cmb_torneo.Text & " del año " & txt_año.Text & "?", "Atención", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1) = Windows.Forms.DialogResult.OK Then
-    '            If Me.delete() = termino.aprobado Then
-    '                MessageBox.Show("Realización del torneo eliminada", "Operación completada")
-    '                Me.inicio()
-    '            End If
-    '        End If
-    '    End If
-    'End Sub
 
-    'Private Sub cmd_buscar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmd_buscar.Click
-    '    cambiarBotones(False)
-    '    Me.cmd_cancelar.Enabled = True
-    '    Me.cmd_buscar.Enabled = True
+                End If
+            Else
+                Me.modificar()
+                MessageBox.Show("Competencia modificada con éxito", "Operación completa")
+            End If
 
-    '    Dim cont As Integer = 0
-    '    If cmb_clubSede.Text <> "" Then cont = cont + 1
-    '    If cmb_torneo.Text <> "" Then cont = cont + 1
-    '    If txt_año.Text <> "" Then cont = cont + 1
+            Me.inicio()
+        End If
+    End Sub
 
-    '    If cont = 0 Then
-    '        MsgBox("Ingrese un dato para buscar", MsgBoxStyle.Critical, "Importante")
-    '        cmb_torneo.Focus()
-    '        Exit Sub
-    '    End If
+    Private Sub cmd_eliminar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmd_eliminar.Click
+        If cmb_torneo.Text = "" Or cmb_especialidad.Text = "" Or cmb_año.Text = "" Then
+            MsgBox("No se ha seleccionado una competencia válida", MsgBoxStyle.Critical, "Error")
+        Else
+            If MessageBox.Show("¿Está seguro que desea eliminar la competencia seleccionada?", "Atención", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1) = Windows.Forms.DialogResult.OK Then
+                If Me.delete() = termino.aprobado Then
+                    MessageBox.Show("Compentencia eliminada", "Operación completada")
+                    Me.inicio()
+                End If
+            End If
+        End If
+    End Sub
 
-    '    If cont > 1 Then
-    '        MsgBox("Ingrese sólo un criterio de búsqueda", MsgBoxStyle.Critical, "Importante")
-    '        cmb_torneo.Focus()
-    '        Exit Sub
-    '    End If
+    Private Sub cmd_buscar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmd_buscar.Click
+        cambiarBotones(False)
+        Me.cmd_cancelar.Enabled = True
+        Me.cmd_buscar.Enabled = True
 
-    '    If cmb_clubSede.Text = "" Then
-    '        If txt_año.Text = "" Then
-    '            If cmb_torneo.Text = "" Then
-    '                MsgBox("Ingrese un dato para buscar", MsgBoxStyle.Critical, "Importante")
-    '                cmb_torneo.Focus()
-    '            Else
-    '                Dim consulta As String = ""
-    '                Dim dt As New Data.DataTable
-    '                consulta = "SELECT Torneos.descripcion AS Torneo, TorneosXAño.año AS Año, Clubes.nombre AS Sede"
-    '                consulta &= " FROM TorneosXAño INNER JOIN Torneos ON TorneosXAño.codTorneo = Torneos.codTorneo INNER JOIN"
-    '                consulta &= " Clubes ON TorneosXAño.codClub = Clubes.codClub WHERE Torneos.descripcion = '" & Me.cmb_torneo.Text & "'"
-    '                dt = acceso.ejecutar(consulta)
-    '                grid_realizaciones.DataSource = dt
-    '            End If
-    '        Else
-    '            Dim consulta As String = ""
-    '            Dim dt As New Data.DataTable
-    '            consulta = "SELECT Torneos.descripcion AS Torneo, TorneosXAño.año AS Año, Clubes.nombre AS Sede"
-    '            consulta &= " FROM TorneosXAño INNER JOIN Torneos ON TorneosXAño.codTorneo = Torneos.codTorneo INNER JOIN"
-    '            consulta &= " Clubes ON TorneosXAño.codClub = Clubes.codClub WHERE año = " & Me.txt_año.Text
-    '            dt = acceso.ejecutar(consulta)
-    '            grid_realizaciones.DataSource = dt
-    '        End If
-    '    Else
-    '        Dim consulta As String = ""
-    '        Dim dt As New Data.DataTable
-    '        consulta = "SELECT Torneos.descripcion AS Torneo, TorneosXAño.año AS Año, Clubes.nombre AS Sede"
-    '        consulta &= " FROM TorneosXAño INNER JOIN Torneos ON TorneosXAño.codTorneo = Torneos.codTorneo INNER JOIN"
-    '        consulta &= " Clubes ON TorneosXAño.codClub = Clubes.codClub WHERE Clubes.nombre = '" & Me.cmb_clubSede.Text & "'"
+        Dim cont As Integer = 0
+        If cmb_año.Text <> "" Then cont = cont + 1
+        If cmb_torneo.Text <> "" Then cont = cont + 1
+        If cmb_especialidad.Text <> "" Then cont = cont + 1
 
-    '        dt = acceso.ejecutar(consulta)
-    '        grid_realizaciones.DataSource = dt
+        If cont = 0 Then
+            MsgBox("Ingrese un dato para buscar", MsgBoxStyle.Critical, "Importante")
+            cmb_torneo.Focus()
+            Exit Sub
+        End If
 
-    '    End If
-    'End Sub
+        'If cont > 1 Then
+        'MsgBox("Ingrese sólo un criterio de búsqueda", MsgBoxStyle.Critical, "Importante")
+        'cmb_torneo.Focus()
+        'Exit Sub
+        'End If
+        If cmb_torneo.Text <> "" And cmb_año.Text <> "" Then
+            Dim consulta As String = ""
+            Dim dt As New Data.DataTable
+            consulta = "SELECT Torneos.descripcion AS Torneo, Competencias.año AS Año, Especialidades.descripcion AS Especialidad, Competencias.fecha AS Fecha"
+            consulta &= " FROM Competencias INNER JOIN Especialidades ON Competencias.codEspe = Especialidades.codEspe INNER JOIN"
+            consulta &= " TorneosXAño ON Competencias.codTorneo = TorneosXAño.codTorneo INNER JOIN Torneos ON TorneosXAño.codTorneo = Torneos.codTorneo"
+            consulta &= " WHERE Torneos.descripcion = '" & Me.cmb_torneo.Text & "' AND  Competencias.año = " & Me.cmb_año.Text
+            dt = acceso.ejecutar(consulta)
+            grid_competencias.DataSource = dt
+        ElseIf cmb_especialidad.Text <> "" Then
+            Dim consulta As String = ""
+            Dim dt As New Data.DataTable
+            consulta = "SELECT Torneos.descripcion AS Torneo, Competencias.año AS Año, Especialidades.descripcion AS Especialidad, Competencias.fecha AS Fecha"
+            consulta &= " FROM Competencias INNER JOIN Especialidades ON Competencias.codEspe = Especialidades.codEspe INNER JOIN"
+            consulta &= " TorneosXAño ON Competencias.codTorneo = TorneosXAño.codTorneo INNER JOIN Torneos ON TorneosXAño.codTorneo = Torneos.codTorneo"
+            consulta &= " WHERE Especialidades.descripcion = '" & Me.cmb_especialidad.Text & "'"
+            dt = acceso.ejecutar(consulta)
+            grid_competencias.DataSource = dt
+        End If
+
+    End Sub
 
     Private Sub cmd_cancelar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmd_cancelar.Click
         Me.inicio()
@@ -312,5 +299,25 @@
         consulta = "SELECT * FROM TorneosXAño INNER JOIN Torneos ON TorneosXAño.codTorneo = Torneos.codTorneo WHERE Torneos.descripcion = '" & Me.cmb_torneo.Text & "'"
         tabla = acceso.ejecutar(consulta)
         cargar_combo(cmb_año, tabla, "año", "año")
+    End Sub
+
+
+    Private Sub cmb_año_SelectionChangeCommitted(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmb_año.SelectionChangeCommitted
+        'Dim año = cmb_año.Text.Cast(Of Int32)()
+        'cmb_año.Text.Cast(Of Int32
+        'año = cmb_año.Text
+        'año.Cast(Of Int32)()
+        'If (cmb_año.Text <> "") Then
+        dtp_fecha.MaxDate = "31/12/3000"
+        dtp_fecha.MinDate = "1/1/1754"
+        Dim fechaMin As Date = "01/01/" & cmb_año.Text
+        Dim fechaMax As Date = "31/12/" & cmb_año.Text
+        dtp_fecha.MinDate = fechaMin
+        dtp_fecha.MaxDate = fechaMax
+
+        ' Else : dtp_fecha.MaxDate = ""
+        '    dtp_fecha.MinDate = ""
+        ' End If
+
     End Sub
 End Class

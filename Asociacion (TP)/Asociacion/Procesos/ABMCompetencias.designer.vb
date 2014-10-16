@@ -23,7 +23,7 @@ Partial Class ABMCompetencias
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
-        Me.txt_fecha = New System.Windows.Forms.MaskedTextBox()
+        Me.dtp_fecha = New System.Windows.Forms.DateTimePicker()
         Me.lbl_fecha = New System.Windows.Forms.Label()
         Me.lbl_especialidad = New System.Windows.Forms.Label()
         Me.lbl_año = New System.Windows.Forms.Label()
@@ -46,7 +46,7 @@ Partial Class ABMCompetencias
         '
         'GroupBox3
         '
-        Me.GroupBox3.Controls.Add(Me.txt_fecha)
+        Me.GroupBox3.Controls.Add(Me.dtp_fecha)
         Me.GroupBox3.Controls.Add(Me.lbl_fecha)
         Me.GroupBox3.Controls.Add(Me.lbl_especialidad)
         Me.GroupBox3.Controls.Add(Me.lbl_año)
@@ -61,14 +61,12 @@ Partial Class ABMCompetencias
         Me.GroupBox3.TabStop = False
         Me.GroupBox3.Text = "Competencia"
         '
-        'txt_fecha
+        'dtp_fecha
         '
-        Me.txt_fecha.Location = New System.Drawing.Point(82, 106)
-        Me.txt_fecha.Mask = "00/00/0000"
-        Me.txt_fecha.Name = "txt_fecha"
-        Me.txt_fecha.Size = New System.Drawing.Size(71, 20)
-        Me.txt_fecha.TabIndex = 14
-        Me.txt_fecha.ValidatingType = GetType(Date)
+        Me.dtp_fecha.Location = New System.Drawing.Point(82, 109)
+        Me.dtp_fecha.Name = "dtp_fecha"
+        Me.dtp_fecha.Size = New System.Drawing.Size(200, 20)
+        Me.dtp_fecha.TabIndex = 20
         '
         'lbl_fecha
         '
@@ -237,7 +235,6 @@ Partial Class ABMCompetencias
 
     End Sub
     Friend WithEvents GroupBox3 As System.Windows.Forms.GroupBox
-    Friend WithEvents txt_fecha As System.Windows.Forms.MaskedTextBox
     Friend WithEvents lbl_fecha As System.Windows.Forms.Label
     Friend WithEvents lbl_especialidad As System.Windows.Forms.Label
     Friend WithEvents lbl_año As System.Windows.Forms.Label
@@ -253,4 +250,5 @@ Partial Class ABMCompetencias
     Friend WithEvents cmd_eliminar As System.Windows.Forms.Button
     Friend WithEvents cmd_guardar As System.Windows.Forms.Button
     Friend WithEvents cmd_nuevo As System.Windows.Forms.Button
+    Friend WithEvents dtp_fecha As System.Windows.Forms.DateTimePicker
 End Class
