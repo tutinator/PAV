@@ -6,7 +6,7 @@
             SqlServer
             Oracle
         End Enum
-    Dim CadenaConexion As String = "Data Source=(LocalDB)\v11.0;AttachDbFilename=""C:\Users\Casa\Desktop\BD Natacion v2.0\natacion.mdf"";Integrated Security=True;Connect Timeout=30"
+    Dim CadenaConexion As String = "Data Source=.\SQLEXPRESS;AttachDbFilename=""C:\Agus\GitHub\PAV\Asociacion (TP)\Asociacion\Otros\BD\natacion.mdf"";Integrated Security=True;Connect Timeout=30;User Instance=True"
         Dim conexion As Object
         Dim cmd As Object
         Dim tipoBaseDatos As BaseDatos

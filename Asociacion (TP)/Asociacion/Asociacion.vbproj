@@ -143,6 +143,12 @@
     <Compile Include="Formularios\frm_ABMClubes.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Procesos\Proc_Registro_resultado.Designer.vb">
+      <DependentUpon>Proc_Registro_resultado.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Procesos\Proc_Registro_resultado.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Procesos\proc_regsitrarResultado.Designer.vb">
       <DependentUpon>proc_regsitrarResultado.vb</DependentUpon>
     </Compile>
@@ -230,6 +236,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\frm_ABMClubes.resx">
       <DependentUpon>frm_ABMClubes.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Procesos\Proc_Registro_resultado.resx">
+      <DependentUpon>Proc_Registro_resultado.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Procesos\proc_regsitrarResultado.resx">
       <DependentUpon>proc_regsitrarResultado.vb</DependentUpon>

@@ -59,9 +59,9 @@
             Return False
         End If
 
-        If txt_cod_nad.Text = "" Then
+        If cmb_cod_nad.Text = "" Then
             MsgBox("El código del nadador no puede estar vacío", MsgBoxStyle.Critical, "Importante")
-            txt_cod_nad.Focus()
+
             Return False
         End If
 
@@ -127,7 +127,7 @@
             consulta &= "'" & txt_tiempo.Text & "'"
         End If
         consulta &= " WHERE codTorneo = " & Me.cmb_torneo.SelectedValue & " AND año = " & Me.cmb_año.SelectedValue & ""
-        consulta &= " AND codEspe = " & Me.cmb_especialidad.SelectedValue & " AND codNad = " & Me.txt_cod_nad.Text
+        consulta &= " AND codEspe = " & Me.cmb_especialidad.SelectedValue & " AND codNad = " & Me.cmb_cod_nad.Text
 
         acceso.ejecutarNonConsulta(consulta)
         Return termino.aprobado
@@ -178,6 +178,18 @@
         cargar_combo(cmb_año, tabla, "año", "año")
         cargar_combo(cmb_especialidad, tabla, "codEspe", "descripcion")
     End Sub
+
+
+
+    Private Sub cmb_cod_nad_SelectionChangeCommitted(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmb_cod_nad.SelectionChangeCommitted
+        Dim tabla As New DataTable
+        Dim consulta As String = ""
+        consulta = "SELECT * FROM Nadadores WHERE codNad = " & Me.cmb_cod_nad.Text
+        tabla = acceso.ejecutar(consulta)
+        Me.txt_apellido_nad.Text = tabla.Rows(0)("apellido")
+        Me.txt_nombre_nad.Text = tabla.Rows(0)("nombre")
+    End Sub
+
 
 
     Private Sub cmd_buscarCompetencia_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmd_buscarCompetencia.Click
@@ -248,7 +260,7 @@
 
     '------PARTE NADADOR
 
-    Private Sub cmd_buscar_nad_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmd_buscar_nad.Click
+    Private Sub cmd_buscar_nad_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
 
         If Me.txt_cod_nad.Text <> "" Then
             Dim consulta As String = ""
@@ -297,12 +309,16 @@
         'End If
     End Sub
 
-    Private Sub cmd_guardar_resultado_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmd_guardar_resultado
+    Private Sub cmd_guardar_resultado_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmd_guardar_resultado.Click
         If validarCampos() = True Then
             Me.modificar()
-            MessageBox.Show("Competencia modificada con éxito", "Operación completa")
-            End If
-            Me.inicio()
+            MessageBox.Show("Tiempo registrado con éxito", "Operación completa")
+        End If
+        Me.inicio()
     End Sub
 
+
+    Private Sub cmd_salir_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmd_salir.Click
+        Me.Close()
+    End Sub
 End Class

@@ -40,15 +40,14 @@ Partial Class proc_regsitrarResultado
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.GroupBox4 = New System.Windows.Forms.GroupBox()
+        Me.txt_tiempo = New Asociacion.TextBoxv01()
         Me.txt_apellido_nad = New System.Windows.Forms.TextBox()
         Me.txt_nombre_nad = New System.Windows.Forms.TextBox()
         Me.txt_cod_nad = New Asociacion.TextBoxv01()
-        Me.cmd_cancelar_nad = New System.Windows.Forms.Button()
-        Me.cmd_buscar_nad = New System.Windows.Forms.Button()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.cmb_cod_nad = New System.Windows.Forms.ComboBox()
-        Me.txt_tiempo = New Asociacion.TextBoxv01()
+        Me.cmd_salir = New System.Windows.Forms.Button()
         Me.GroupBox3.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         CType(Me.grid_competencias, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -189,24 +188,22 @@ Partial Class proc_regsitrarResultado
         '
         Me.grid_inscripciones.AllowUserToAddRows = False
         Me.grid_inscripciones.AllowUserToDeleteRows = False
-        Me.grid_inscripciones.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-                    Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.grid_inscripciones.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells
         Me.grid_inscripciones.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.grid_inscripciones.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.grid_inscripciones.Location = New System.Drawing.Point(12, 19)
+        Me.grid_inscripciones.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.grid_inscripciones.Location = New System.Drawing.Point(3, 16)
         Me.grid_inscripciones.Name = "grid_inscripciones"
         Me.grid_inscripciones.ReadOnly = True
         Me.grid_inscripciones.RowHeadersVisible = False
-        Me.grid_inscripciones.Size = New System.Drawing.Size(468, 172)
+        Me.grid_inscripciones.Size = New System.Drawing.Size(480, 178)
         Me.grid_inscripciones.TabIndex = 2
         '
         'cmd_guardar_resultado
         '
         Me.cmd_guardar_resultado.BackgroundImage = Global.Asociacion.My.Resources.Resources.save
         Me.cmd_guardar_resultado.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.cmd_guardar_resultado.Location = New System.Drawing.Point(440, 54)
+        Me.cmd_guardar_resultado.Location = New System.Drawing.Point(312, 54)
         Me.cmd_guardar_resultado.Name = "cmd_guardar_resultado"
         Me.cmd_guardar_resultado.Size = New System.Drawing.Size(40, 38)
         Me.cmd_guardar_resultado.TabIndex = 12
@@ -215,7 +212,7 @@ Partial Class proc_regsitrarResultado
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(366, 18)
+        Me.Label4.Location = New System.Drawing.Point(164, 67)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(42, 13)
         Me.Label4.TabIndex = 10
@@ -224,7 +221,7 @@ Partial Class proc_regsitrarResultado
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(6, 51)
+        Me.Label1.Location = New System.Drawing.Point(128, 20)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(44, 13)
         Me.Label1.TabIndex = 8
@@ -236,8 +233,6 @@ Partial Class proc_regsitrarResultado
         Me.GroupBox4.Controls.Add(Me.txt_apellido_nad)
         Me.GroupBox4.Controls.Add(Me.txt_nombre_nad)
         Me.GroupBox4.Controls.Add(Me.txt_cod_nad)
-        Me.GroupBox4.Controls.Add(Me.cmd_cancelar_nad)
-        Me.GroupBox4.Controls.Add(Me.cmd_buscar_nad)
         Me.GroupBox4.Controls.Add(Me.Label2)
         Me.GroupBox4.Controls.Add(Me.Label3)
         Me.GroupBox4.Controls.Add(Me.Label1)
@@ -251,18 +246,44 @@ Partial Class proc_regsitrarResultado
         Me.GroupBox4.TabStop = False
         Me.GroupBox4.Text = "Nadador"
         '
+        'txt_tiempo
+        '
+        Me.txt_tiempo._BDdato = False
+        Me.txt_tiempo._BDnombreCampoTabla = ""
+        Me.txt_tiempo._BDvalor = "  :  :"
+        Me.txt_tiempo._descriptor_del_contenido = ""
+        Me.txt_tiempo._Gest_AnchoTexto = 0
+        Me.txt_tiempo._Gest_decimales = 0
+        Me.txt_tiempo._Gest_enteros = "0"
+        Me.txt_tiempo._Gest_mensajeError = ""
+        Me.txt_tiempo._Gest_mensajetooltips = "cambie el mensaje tip"
+        Me.txt_tiempo._Gest_ReadOnly = False
+        Me.txt_tiempo._Gest_TextoNegrita = False
+        Me.txt_tiempo._Gest_tipo_dato = Asociacion.TextBoxv01.t_dato.texto
+        Me.txt_tiempo._Gest_validar = True
+        Me.txt_tiempo.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!)
+        Me.txt_tiempo.Location = New System.Drawing.Point(210, 64)
+        Me.txt_tiempo.Margin = New System.Windows.Forms.Padding(1)
+        Me.txt_tiempo.Mask = "99:99:99"
+        Me.txt_tiempo.Name = "txt_tiempo"
+        Me.txt_tiempo.Size = New System.Drawing.Size(55, 20)
+        Me.txt_tiempo.TabIndex = 37
+        Me.txt_tiempo.ValidatingType = GetType(String)
+        '
         'txt_apellido_nad
         '
-        Me.txt_apellido_nad.Location = New System.Drawing.Point(235, 48)
+        Me.txt_apellido_nad.Enabled = False
+        Me.txt_apellido_nad.Location = New System.Drawing.Point(357, 18)
         Me.txt_apellido_nad.Name = "txt_apellido_nad"
-        Me.txt_apellido_nad.Size = New System.Drawing.Size(144, 20)
+        Me.txt_apellido_nad.Size = New System.Drawing.Size(123, 20)
         Me.txt_apellido_nad.TabIndex = 34
         '
         'txt_nombre_nad
         '
-        Me.txt_nombre_nad.Location = New System.Drawing.Point(53, 48)
+        Me.txt_nombre_nad.Enabled = False
+        Me.txt_nombre_nad.Location = New System.Drawing.Point(175, 17)
         Me.txt_nombre_nad.Name = "txt_nombre_nad"
-        Me.txt_nombre_nad.Size = New System.Drawing.Size(128, 20)
+        Me.txt_nombre_nad.Size = New System.Drawing.Size(110, 20)
         Me.txt_nombre_nad.TabIndex = 34
         '
         'txt_cod_nad
@@ -288,30 +309,10 @@ Partial Class proc_regsitrarResultado
         Me.txt_cod_nad.TabIndex = 33
         Me.txt_cod_nad.ValidatingType = GetType(String)
         '
-        'cmd_cancelar_nad
-        '
-        Me.cmd_cancelar_nad.BackgroundImage = Global.Asociacion.My.Resources.Resources.cancel
-        Me.cmd_cancelar_nad.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.cmd_cancelar_nad.Location = New System.Drawing.Point(241, 15)
-        Me.cmd_cancelar_nad.Name = "cmd_cancelar_nad"
-        Me.cmd_cancelar_nad.Size = New System.Drawing.Size(30, 30)
-        Me.cmd_cancelar_nad.TabIndex = 32
-        Me.cmd_cancelar_nad.UseVisualStyleBackColor = True
-        '
-        'cmd_buscar_nad
-        '
-        Me.cmd_buscar_nad.BackgroundImage = Global.Asociacion.My.Resources.Resources.buscar
-        Me.cmd_buscar_nad.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.cmd_buscar_nad.Location = New System.Drawing.Point(190, 15)
-        Me.cmd_buscar_nad.Name = "cmd_buscar_nad"
-        Me.cmd_buscar_nad.Size = New System.Drawing.Size(30, 30)
-        Me.cmd_buscar_nad.TabIndex = 31
-        Me.cmd_buscar_nad.UseVisualStyleBackColor = True
-        '
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(187, 51)
+        Me.Label2.Location = New System.Drawing.Point(309, 21)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(44, 13)
         Me.Label2.TabIndex = 8
@@ -328,6 +329,7 @@ Partial Class proc_regsitrarResultado
         '
         'cmb_cod_nad
         '
+        Me.cmb_cod_nad.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cmb_cod_nad.FormattingEnabled = True
         Me.cmb_cod_nad.Location = New System.Drawing.Point(53, 15)
         Me.cmb_cod_nad.Name = "cmb_cod_nad"
@@ -335,39 +337,26 @@ Partial Class proc_regsitrarResultado
         Me.cmb_cod_nad.TabIndex = 35
         Me.cmb_cod_nad.Visible = False
         '
-        'txt_tiempo
+        'cmd_salir
         '
-        Me.txt_tiempo._BDdato = False
-        Me.txt_tiempo._BDnombreCampoTabla = ""
-        Me.txt_tiempo._BDvalor = "  :  :"
-        Me.txt_tiempo._descriptor_del_contenido = ""
-        Me.txt_tiempo._Gest_AnchoTexto = 0
-        Me.txt_tiempo._Gest_decimales = 0
-        Me.txt_tiempo._Gest_enteros = "0"
-        Me.txt_tiempo._Gest_mensajeError = ""
-        Me.txt_tiempo._Gest_mensajetooltips = "cambie el mensaje tip"
-        Me.txt_tiempo._Gest_ReadOnly = False
-        Me.txt_tiempo._Gest_TextoNegrita = False
-        Me.txt_tiempo._Gest_tipo_dato = Asociacion.TextBoxv01.t_dato.texto
-        Me.txt_tiempo._Gest_validar = True
-        Me.txt_tiempo.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!)
-        Me.txt_tiempo.Location = New System.Drawing.Point(412, 15)
-        Me.txt_tiempo.Margin = New System.Windows.Forms.Padding(1)
-        Me.txt_tiempo.Mask = "99:99:99"
-        Me.txt_tiempo.Name = "txt_tiempo"
-        Me.txt_tiempo.Size = New System.Drawing.Size(55, 20)
-        Me.txt_tiempo.TabIndex = 37
-        Me.txt_tiempo.ValidatingType = GetType(String)
+        Me.cmd_salir.BackgroundImage = Global.Asociacion.My.Resources.Resources.salir
+        Me.cmd_salir.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.cmd_salir.Location = New System.Drawing.Point(458, 571)
+        Me.cmd_salir.Name = "cmd_salir"
+        Me.cmd_salir.Size = New System.Drawing.Size(40, 38)
+        Me.cmd_salir.TabIndex = 12
+        Me.cmd_salir.UseVisualStyleBackColor = True
         '
         'proc_regsitrarResultado
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(505, 576)
+        Me.ClientSize = New System.Drawing.Size(508, 621)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.GroupBox4)
         Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.GroupBox3)
+        Me.Controls.Add(Me.cmd_salir)
         Me.Name = "proc_regsitrarResultado"
         Me.Text = "Regsitrar Resultado Competencia"
         Me.GroupBox3.ResumeLayout(False)
@@ -401,10 +390,9 @@ Partial Class proc_regsitrarResultado
     Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents Label3 As System.Windows.Forms.Label
     Friend WithEvents txt_cod_nad As Asociacion.TextBoxv01
-    Friend WithEvents cmd_cancelar_nad As System.Windows.Forms.Button
-    Friend WithEvents cmd_buscar_nad As System.Windows.Forms.Button
     Friend WithEvents txt_apellido_nad As System.Windows.Forms.TextBox
     Friend WithEvents txt_nombre_nad As System.Windows.Forms.TextBox
     Friend WithEvents cmb_cod_nad As System.Windows.Forms.ComboBox
     Friend WithEvents txt_tiempo As Asociacion.TextBoxv01
+    Friend WithEvents cmd_salir As System.Windows.Forms.Button
 End Class
