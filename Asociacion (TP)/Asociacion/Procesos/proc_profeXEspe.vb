@@ -216,7 +216,7 @@
         tabla = acceso.ejecutar(consulta)
 
         If tabla.Rows.Count > 0 Then
-            consulta = "INSERT INTO ProfeXEspe (codNad, codEspe) "
+            consulta = "INSERT INTO ProfeXEspe (codProfe, codEspe) "
             consulta &= "VALUES (" & Me.txt_id.Text & ", " & Me.lista_especialidades.SelectedValue & ")"
             tabla = acceso.ejecutar(consulta)
             Me.cargar_listas()
