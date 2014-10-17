@@ -153,52 +153,121 @@
     '----FIN BD
 
 
+    '-------------------------------------------------------------------------
+
+
+    Private Function leo_tabla_Nad(ByRef _tabla, ByVal pk) As DataTable
+
+        Dim consulta As String = ""
+        consulta = "SELECT * FROM Nadadores WHERE Nadadores.codNad = " & pk
+        Return acceso.ejecutar(consulta)
+
+
+    End Function
+
+
+
+
     Private Sub cmd_buscar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmd_buscar_apellido.Click, cmd_buscar_id.Click
 
         cambiarBotones(True)
 
         Dim cont As Integer = 0
         If txt_id.Text <> "" Then cont = cont + 1
+        If txt_apellido.Text <> "" Then cont = cont + 1
 
         'If txt_apellido.Text <> "" Then cont = cont + 1
 
         If cont = 0 Then
-            MsgBox("Ingrese un dato para buscar", MsgBoxStyle.Critical, "Importante")
+            MsgBox("Ingrese un criterio para buscar", MsgBoxStyle.Critical, "Importante")
             txt_id.Focus()
             Exit Sub
         End If
 
-        'If cont > 1 Then
-        'MsgBox("Ingrese sólo un criterio de búsqueda", MsgBoxStyle.Critical, "Importante")
-        'cmb_torneo.Focus()
-        'Exit Sub
-        'End If
+        If cont > 1 Then
+            MsgBox("Ingrese sólo un criterio de búsqueda", MsgBoxStyle.Critical, "Importante")
+            Me.limpiarCampos()
+            txt_id.Focus()
+            Exit Sub
+        End If
 
-        If txt_id.Text <> "" And txt_apellido.Text <> "" Then
-            Dim consulta As String = ""
-            Dim dt As New Data.DataTable
-            consulta = "SELECT Torneos.descripcion AS Torneo, Competencias.año AS Año, Especialidades.descripcion AS Especialidad, Competencias.fecha AS Fecha"
-            consulta &= " FROM Competencias INNER JOIN Especialidades ON Competencias.codEspe = Especialidades.codEspe INNER JOIN"
-            consulta &= " TorneosXAño ON Competencias.codTorneo = TorneosXAño.codTorneo INNER JOIN Torneos ON TorneosXAño.codTorneo = Torneos.codTorneo"
-            consulta &= " WHERE Torneos.descripcion = '" & Me.cmb_torneo.Text & "' AND  Competencias.año = " & Me.cmb_año.Text
-            dt = acceso.ejecutar(consulta)
-            grid_competencias.DataSource = dt
-        ElseIf cmb_especialidad.Text <> "" Then
-            Dim consulta As String = ""
-            Dim dt As New Data.DataTable
-            consulta = "SELECT Torneos.descripcion AS Torneo, Competencias.año AS Año, Especialidades.descripcion AS Especialidad, Competencias.fecha AS Fecha"
-            consulta &= " FROM Competencias INNER JOIN Especialidades ON Competencias.codEspe = Especialidades.codEspe INNER JOIN"
-            consulta &= " TorneosXAño ON Competencias.codTorneo = TorneosXAño.codTorneo INNER JOIN Torneos ON TorneosXAño.codTorneo = Torneos.codTorneo"
-            consulta &= " WHERE Especialidades.descripcion = '" & Me.cmb_especialidad.Text & "'"
-            dt = acceso.ejecutar(consulta)
-            grid_competencias.DataSource = dt
+
+
+
+
+        If txt_id.Text <> "" Then
+
+            Dim tabla As New Data.DataTable
+
+
+            'Continuar aca
+
+            tabla = Me.leo_tabla("Nadadores")
+
+            If tabla.Rows.Count > 0 Then
+                Me.txt_id.Text = tabla.Rows(0)("codNad")
+                Me._txt_precio.Text = tabla.Rows(0)("precio")
+            Else
+                MsgBox("No existe ese código de articulos", MsgBoxStyle.Critical, "Importante")
+            End If
+
+
+
+
+
+
+
+
+            'ElseIf cmb_especialidad.Text <> "" Then
+            '    Dim consulta As String = ""
+            '    Dim dt As New Data.DataTable
+            '    consulta = "SELECT Torneos.descripcion AS Torneo, Competencias.año AS Año, Especialidades.descripcion AS Especialidad, Competencias.fecha AS Fecha"
+            '    consulta &= " FROM Competencias INNER JOIN Especialidades ON Competencias.codEspe = Especialidades.codEspe INNER JOIN"
+            '    consulta &= " TorneosXAño ON Competencias.codTorneo = TorneosXAño.codTorneo INNER JOIN Torneos ON TorneosXAño.codTorneo = Torneos.codTorneo"
+            '    consulta &= " WHERE Especialidades.descripcion = '" & Me.cmb_especialidad.Text & "'"
+            '    dt = acceso.ejecutar(consulta)
+            '    grid_competencias.DataSource = dt
         End If
 
     End Sub
 
-    Private Sub cmd_cancelar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmd_cancelar.Click
-        Me.inicio()
+
+
+
+
+
+
+
+    Private Sub _cmd_buscar_articulo_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles _cmd_buscar_articulo.Click
+
+
+        If Me._txt_id_articulo.Text = "" Then
+            MsgBox("El Código del articulo esta vacio", MsgBoxStyle.Critical, "Importante")
+            Exit Sub
+        End If
+
+        Dim tabla As New Data.DataTable
+        Me._acceso._tabla = "t_articulos"
+        tabla = Me._acceso.leo_tabla("id_articulo = " & Me._txt_id_articulo.Text.Trim())
+
+        If tabla.Rows.Count > 0 Then
+            Me._txt_articulo.Text = tabla.Rows(0)("n_articulo")
+            Me._txt_precio.Text = tabla.Rows(0)("precio")
+        Else
+            MsgBox("No existe ese código de articulos", MsgBoxStyle.Critical, "Importante")
+        End If
+
     End Sub
+
+
+
+
+
+
+
+
+
+
 
     Private Sub cmd_salir_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmd_salir.Click
         Me.Close()
