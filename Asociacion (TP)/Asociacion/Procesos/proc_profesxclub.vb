@@ -41,7 +41,7 @@
         Me.txt_codProfe.Text = ""
     End Sub
 
-    Private Sub txt_codProfe_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txt_codProfe.KeyPress
+    Private Sub txt_codProfe_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs)
         Dim KeyAscii As Short = CShort(Asc(e.KeyChar))
         KeyAscii = CShort(validarSoloNumeros(KeyAscii))
         If KeyAscii = 0 Then
@@ -270,5 +270,9 @@
 
     Private Sub cmd_cancelar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmd_cancelar.Click
         Me.inicio()
+    End Sub
+
+    Private Sub GroupBox1_Enter(sender As Object, e As EventArgs) Handles GroupBox1.Enter
+
     End Sub
 End Class
