@@ -25,13 +25,10 @@
 
     Private Sub inicio()
 
-        cargar_grilla()
-        Me.cargar_combos()
         cambiarEntradas(True)
-        Me.txt_nombre.Enabled = False
+        Me.txt_nombre.Enabled = True
         cambiarBotones(False)
         Me.cmd_buscar_id.Enabled = True
-        Me.cmd_buscar_apellido.Enabled = True
         Me.cmd_salir.Enabled = True
         Me.txt_id.Focus()
 
@@ -59,13 +56,12 @@
         limpiarCampos()
         Me.txt_id.Enabled = x
         Me.txt_apellido.Enabled = x
-        Me.txt_nombre.Enabled = x
+        '  Me.txt_nombre.Enabled = x
 
     End Sub
 
     Private Sub cambiarBotones(ByVal x As Boolean)
         Me.cmd_buscar_id.Enabled = x
-        Me.cmd_buscar_apellido.Enabled = x
         Me.cmd_agregar.Enabled = x
         Me.cmd_desagregar.Enabled = x
         Me.cmd_salir.Enabled = x
@@ -107,48 +103,23 @@
 
     'End Sub
 
-    Private Function modificar() As termino
 
-        Dim consulta As String = ""
-        consulta = "UPDATE Competencias SET fecha = '" & Me.dtp_fecha.Value & "'"
-        consulta &= " WHERE codTorneo = " & Me.cmb_torneo.SelectedValue & " AND año = " & Me.cmb_año.SelectedValue & ""
-        consulta &= " AND codEspe = " & Me.cmb_especialidad.SelectedValue
-        acceso.ejecutarNonConsulta(consulta)
-        Return termino.aprobado
 
-    End Function
+    'Private Function validar_existencia() As termino
 
-    Private Function insertar() As termino
+    '    Dim consulta As String = ""
+    '    Dim tabla As Data.DataTable
+    '    consulta = "SELECT * FROM Competencias WHERE codTorneo = " & Me.cmb_torneo.SelectedValue & " AND año = " & Me.cmb_año.SelectedValue
+    '    consulta &= " AND codEspe = " & Me.cmb_especialidad.SelectedValue
+    '    tabla = acceso.ejecutar(consulta)
+    '    If tabla.Rows.Count() = 1 Then
+    '        Return termino.rechazado
+    '    Else
+    '        Return termino.aprobado
+    '    End If
+    'End Function
 
-        Dim consulta As String = ""
-        consulta = "INSERT INTO Competencias (codTorneo, año, codEspe, fecha)"
-        consulta &= "VALUES (" & Me.cmb_torneo.SelectedValue & ", " & Me.cmb_año.SelectedValue & ", "
-        consulta &= Me.cmb_especialidad.SelectedValue & ", '" & Me.dtp_fecha.Value & "')"
-        acceso.ejecutarNonConsulta(consulta)
-        Return termino.aprobado
-
-    End Function
-
-    Private Function validar_existencia() As termino
-
-        Dim consulta As String = ""
-        Dim tabla As Data.DataTable
-        consulta = "SELECT * FROM Competencias WHERE codTorneo = " & Me.cmb_torneo.SelectedValue & " AND año = " & Me.cmb_año.SelectedValue
-        consulta &= " AND codEspe = " & Me.cmb_especialidad.SelectedValue
-        tabla = acceso.ejecutar(consulta)
-        If tabla.Rows.Count() = 1 Then
-            Return termino.rechazado
-        Else
-            Return termino.aprobado
-        End If
-    End Function
-
-    Private Function delete() As termino
-        Dim consulta As String = "DELETE FROM Competencias WHERE codTorneo = " & Me.cmb_torneo.SelectedValue
-        consulta &= " AND año = " & Me.cmb_año.SelectedValue & " AND codEspe = " & Me.cmb_especialidad.SelectedValue
-        acceso.ejecutarNonConsulta(consulta)
-        Return termino.aprobado
-    End Function
+   
 
     '----FIN BD
 
@@ -156,7 +127,7 @@
     '-------------------------------------------------------------------------
 
 
-    Private Function leo_tabla_Nad(ByRef _tabla, ByVal pk) As DataTable
+    Private Function leo_tabla_Nad(ByVal pk) As DataTable
 
         Dim consulta As String = ""
         consulta = "SELECT * FROM Nadadores WHERE Nadadores.codNad = " & pk
@@ -167,8 +138,8 @@
 
 
 
-
-    Private Sub cmd_buscar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmd_buscar_apellido.Click, cmd_buscar_id.Click
+    'REVISAR ESTE METODO NO SE QUE ONDA
+    Private Sub cmd_buscar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmd_buscar_id.Click
 
         cambiarBotones(True)
 
@@ -192,114 +163,32 @@
         End If
 
 
-
-
-
         If txt_id.Text <> "" Then
 
             Dim tabla As New Data.DataTable
 
-
-            'Continuar aca
-
-            tabla = Me.leo_tabla("Nadadores")
+            tabla = Me.leo_tabla_Nad(Me.txt_id.Text)
 
             If tabla.Rows.Count > 0 Then
+
                 Me.txt_id.Text = tabla.Rows(0)("codNad")
-                Me._txt_precio.Text = tabla.Rows(0)("precio")
+                Me.txt_apellido.Text = tabla.Rows(0)("apellido")
+                Me.txt_nombre.Text = tabla.Rows(0)("nombre")
+
             Else
-                MsgBox("No existe ese código de articulos", MsgBoxStyle.Critical, "Importante")
+                MsgBox("No existe ese nadador", MsgBoxStyle.Critical, "Importante")
+                Me.limpiarCampos()
+
             End If
 
-
-
-
-
-
-
-
-            'ElseIf cmb_especialidad.Text <> "" Then
-            '    Dim consulta As String = ""
-            '    Dim dt As New Data.DataTable
-            '    consulta = "SELECT Torneos.descripcion AS Torneo, Competencias.año AS Año, Especialidades.descripcion AS Especialidad, Competencias.fecha AS Fecha"
-            '    consulta &= " FROM Competencias INNER JOIN Especialidades ON Competencias.codEspe = Especialidades.codEspe INNER JOIN"
-            '    consulta &= " TorneosXAño ON Competencias.codTorneo = TorneosXAño.codTorneo INNER JOIN Torneos ON TorneosXAño.codTorneo = Torneos.codTorneo"
-            '    consulta &= " WHERE Especialidades.descripcion = '" & Me.cmb_especialidad.Text & "'"
-            '    dt = acceso.ejecutar(consulta)
-            '    grid_competencias.DataSource = dt
         End If
 
     End Sub
-
-
-
-
-
-
-
-
-    Private Sub _cmd_buscar_articulo_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles _cmd_buscar_articulo.Click
-
-
-        If Me._txt_id_articulo.Text = "" Then
-            MsgBox("El Código del articulo esta vacio", MsgBoxStyle.Critical, "Importante")
-            Exit Sub
-        End If
-
-        Dim tabla As New Data.DataTable
-        Me._acceso._tabla = "t_articulos"
-        tabla = Me._acceso.leo_tabla("id_articulo = " & Me._txt_id_articulo.Text.Trim())
-
-        If tabla.Rows.Count > 0 Then
-            Me._txt_articulo.Text = tabla.Rows(0)("n_articulo")
-            Me._txt_precio.Text = tabla.Rows(0)("precio")
-        Else
-            MsgBox("No existe ese código de articulos", MsgBoxStyle.Critical, "Importante")
-        End If
-
-    End Sub
-
-
-
-
-
-
-
-
-
-
 
     Private Sub cmd_salir_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmd_salir.Click
         Me.Close()
     End Sub
 
-    Private Sub cmb_torneo_SelectedValueChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmb_torneo.SelectedValueChanged
-        Dim tabla As New DataTable
-        Dim consulta As String = ""
-        consulta = "SELECT * FROM TorneosXAño INNER JOIN Torneos ON TorneosXAño.codTorneo = Torneos.codTorneo WHERE Torneos.descripcion = '" & Me.cmb_torneo.Text & "'"
-        tabla = acceso.ejecutar(consulta)
-        cargar_combo(cmb_año, tabla, "año", "año")
-    End Sub
-
-
-    Private Sub cmb_año_SelectionChangeCommitted(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmb_año.SelectionChangeCommitted
-        'Dim año = cmb_año.Text.Cast(Of Int32)()
-        'cmb_año.Text.Cast(Of Int32
-        'año = cmb_año.Text
-        'año.Cast(Of Int32)()
-        'If (cmb_año.Text <> "") Then
-        dtp_fecha.MaxDate = "31/12/3000"
-        dtp_fecha.MinDate = "1/1/1754"
-        Dim fechaMin As Date = "01/01/" & cmb_año.Text
-        Dim fechaMax As Date = "31/12/" & cmb_año.Text
-        dtp_fecha.MinDate = fechaMin
-        dtp_fecha.MaxDate = fechaMax
-
-        ' Else : dtp_fecha.MaxDate = ""
-        '    dtp_fecha.MinDate = ""
-        ' End If
-
-    End Sub
 
 
 End Class

@@ -57,5 +57,9 @@
     Private Sub InscripcionACompetenciaToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles InscripcionACompetenciaToolStripMenuItem.Click
         proc_inscripciones.Show()
     End Sub
+
+    Private Sub NadadoresPorEspecialidadToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles NadadoresPorEspecialidadToolStripMenuItem.Click
+        proc_nadadoresXEspe.Show()
+    End Sub
 End Class
 

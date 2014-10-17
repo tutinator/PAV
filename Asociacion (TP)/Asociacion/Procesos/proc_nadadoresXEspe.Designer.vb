@@ -29,7 +29,6 @@ Partial Class proc_nadadoresXEspe
         Me.lista_especialidades = New System.Windows.Forms.ListBox()
         Me.lista_esp_nadador = New System.Windows.Forms.ListBox()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.cmd_buscar_apellido = New System.Windows.Forms.Button()
         Me.cmd_buscar_id = New System.Windows.Forms.Button()
         Me.txt_id = New System.Windows.Forms.MaskedTextBox()
         Me.txt_nombre = New System.Windows.Forms.TextBox()
@@ -95,7 +94,6 @@ Partial Class proc_nadadoresXEspe
         '
         'GroupBox1
         '
-        Me.GroupBox1.Controls.Add(Me.cmd_buscar_apellido)
         Me.GroupBox1.Controls.Add(Me.cmd_buscar_id)
         Me.GroupBox1.Controls.Add(Me.txt_id)
         Me.GroupBox1.Controls.Add(Me.txt_nombre)
@@ -109,16 +107,6 @@ Partial Class proc_nadadoresXEspe
         Me.GroupBox1.TabIndex = 19
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Nadador"
-        '
-        'cmd_buscar_apellido
-        '
-        Me.cmd_buscar_apellido.BackgroundImage = Global.Asociacion.My.Resources.Resources.buscar
-        Me.cmd_buscar_apellido.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.cmd_buscar_apellido.Location = New System.Drawing.Point(322, 45)
-        Me.cmd_buscar_apellido.Name = "cmd_buscar_apellido"
-        Me.cmd_buscar_apellido.Size = New System.Drawing.Size(30, 30)
-        Me.cmd_buscar_apellido.TabIndex = 25
-        Me.cmd_buscar_apellido.UseVisualStyleBackColor = True
         '
         'cmd_buscar_id
         '
@@ -143,13 +131,12 @@ Partial Class proc_nadadoresXEspe
         '
         Me.txt_nombre.Location = New System.Drawing.Point(165, 79)
         Me.txt_nombre.Name = "txt_nombre"
-        Me.txt_nombre.ReadOnly = True
         Me.txt_nombre.Size = New System.Drawing.Size(151, 20)
-        Me.txt_nombre.TabIndex = 22
+        Me.txt_nombre.TabIndex = 23
         '
         'txt_apellido
         '
-        Me.txt_apellido.Location = New System.Drawing.Point(165, 51)
+        Me.txt_apellido.Location = New System.Drawing.Point(164, 51)
         Me.txt_apellido.Name = "txt_apellido"
         Me.txt_apellido.Size = New System.Drawing.Size(151, 20)
         Me.txt_apellido.TabIndex = 23
@@ -220,11 +207,10 @@ Partial Class proc_nadadoresXEspe
     Friend WithEvents GroupBox1 As System.Windows.Forms.GroupBox
     Friend WithEvents cmd_buscar_id As System.Windows.Forms.Button
     Friend WithEvents txt_id As System.Windows.Forms.MaskedTextBox
-    Friend WithEvents txt_nombre As System.Windows.Forms.TextBox
     Friend WithEvents txt_apellido As System.Windows.Forms.TextBox
     Friend WithEvents Label5 As System.Windows.Forms.Label
     Friend WithEvents Label4 As System.Windows.Forms.Label
     Friend WithEvents Label1 As System.Windows.Forms.Label
-    Friend WithEvents cmd_buscar_apellido As System.Windows.Forms.Button
     Friend WithEvents cmd_salir As System.Windows.Forms.Button
+    Friend WithEvents txt_nombre As System.Windows.Forms.TextBox
 End Class
