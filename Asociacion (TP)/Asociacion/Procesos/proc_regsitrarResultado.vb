@@ -17,6 +17,8 @@
     End Sub
 
     Private Sub inicio()
+        Me.cmb_cod_nad.Visible = True
+        Me.txt_cod_nad.Visible = False
         Me.cargar_combos()
         Me.cargar_grilla_competencias()
         Me.cargar_grilla_inscripciones()
@@ -226,6 +228,14 @@
         Me.cmb_especialidad.SelectedValue = tabla.Rows(0)("codEspe")
         cmb_torneo.Focus()
         Me.accion = estado.modificar
+
+        consulta = "SELECT DISTINCT Inscripciones.codNad FROM Inscripciones INNER JOIN Torneos ON Inscripciones.codTorneo = Torneos.codTorneo"
+        consulta &= " INNER JOIN Especialidades ON Inscripciones.codEspe = Especialidades.codEspe"
+        consulta &= " WHERE Torneos.descripcion = '" & torneoSeleccionado & "' AND Inscripciones.año = " & añoSeleccionado
+        consulta &= " AND Especialidades.descripcion = '" & espeSeleccionada & "'"
+        Dim tabla2 As Data.DataTable
+        tabla2 = acceso.ejecutar(consulta)
+        cargar_combo(cmb_cod_nad, tabla2, "codNad", "codNad")
     End Sub
 
 
@@ -287,5 +297,12 @@
         'End If
     End Sub
 
+    Private Sub cmd_guardar_resultado_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmd_guardar_resultado
+        If validarCampos() = True Then
+            Me.modificar()
+            MessageBox.Show("Competencia modificada con éxito", "Operación completa")
+            End If
+            Me.inicio()
+    End Sub
 
 End Class

@@ -36,8 +36,12 @@ Partial Class frm_Menu
         Me.CompetenciasToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.VerToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.RealizacionDeTorneoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.RegistrarCompetenciaATorneoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.InscripcionACompetenciaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.RegistrarResultadosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.AsignarClubesAProfesorToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.AsignarEspecialidadesANadadorToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.AsignarEspecialidadesAProfesorToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ConsultasToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.PosicionesDeCompetenciaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ProfeToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -63,10 +67,6 @@ Partial Class frm_Menu
         Me.ToolStripStatusLabel3 = New System.Windows.Forms.ToolStripStatusLabel()
         Me.lbl_hora = New System.Windows.Forms.ToolStripStatusLabel()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
-        Me.AsignarClubesAProfesorToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.AsignarEspecialidadesANadadorToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.RegistrarCompetenciaATorneoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.AsignarEspecialidadesAProfesorToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip1.SuspendLayout()
         Me.StatusStrip1.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -156,10 +156,16 @@ Partial Class frm_Menu
         Me.RealizacionDeTorneoToolStripMenuItem.Size = New System.Drawing.Size(251, 22)
         Me.RealizacionDeTorneoToolStripMenuItem.Text = "Registrar Realizacion de Torneo"
         '
+        'RegistrarCompetenciaATorneoToolStripMenuItem
+        '
+        Me.RegistrarCompetenciaATorneoToolStripMenuItem.Name = "RegistrarCompetenciaATorneoToolStripMenuItem"
+        Me.RegistrarCompetenciaATorneoToolStripMenuItem.Size = New System.Drawing.Size(251, 22)
+        Me.RegistrarCompetenciaATorneoToolStripMenuItem.Text = "Registrar Competencia a Torneo"
+        '
         'InscripcionACompetenciaToolStripMenuItem
         '
         Me.InscripcionACompetenciaToolStripMenuItem.Name = "InscripcionACompetenciaToolStripMenuItem"
-        Me.InscripcionACompetenciaToolStripMenuItem.Size = New System.Drawing.Size(249, 22)
+        Me.InscripcionACompetenciaToolStripMenuItem.Size = New System.Drawing.Size(251, 22)
         Me.InscripcionACompetenciaToolStripMenuItem.Text = "Inscripcion a Competencia"
         '
         'RegistrarResultadosToolStripMenuItem
@@ -167,6 +173,24 @@ Partial Class frm_Menu
         Me.RegistrarResultadosToolStripMenuItem.Name = "RegistrarResultadosToolStripMenuItem"
         Me.RegistrarResultadosToolStripMenuItem.Size = New System.Drawing.Size(251, 22)
         Me.RegistrarResultadosToolStripMenuItem.Text = "Registrar Resultado Competencia"
+        '
+        'AsignarClubesAProfesorToolStripMenuItem
+        '
+        Me.AsignarClubesAProfesorToolStripMenuItem.Name = "AsignarClubesAProfesorToolStripMenuItem"
+        Me.AsignarClubesAProfesorToolStripMenuItem.Size = New System.Drawing.Size(251, 22)
+        Me.AsignarClubesAProfesorToolStripMenuItem.Text = "Asignar Clubes a Profesor"
+        '
+        'AsignarEspecialidadesANadadorToolStripMenuItem
+        '
+        Me.AsignarEspecialidadesANadadorToolStripMenuItem.Name = "AsignarEspecialidadesANadadorToolStripMenuItem"
+        Me.AsignarEspecialidadesANadadorToolStripMenuItem.Size = New System.Drawing.Size(251, 22)
+        Me.AsignarEspecialidadesANadadorToolStripMenuItem.Text = "Asignar Especialidades a Nadador"
+        '
+        'AsignarEspecialidadesAProfesorToolStripMenuItem
+        '
+        Me.AsignarEspecialidadesAProfesorToolStripMenuItem.Name = "AsignarEspecialidadesAProfesorToolStripMenuItem"
+        Me.AsignarEspecialidadesAProfesorToolStripMenuItem.Size = New System.Drawing.Size(251, 22)
+        Me.AsignarEspecialidadesAProfesorToolStripMenuItem.Text = "Asignar Especialidades a Profesor"
         '
         'ConsultasToolStripMenuItem
         '
@@ -330,30 +354,6 @@ Partial Class frm_Menu
         Me.PictureBox1.Size = New System.Drawing.Size(211, 216)
         Me.PictureBox1.TabIndex = 2
         Me.PictureBox1.TabStop = False
-        '
-        'AsignarClubesAProfesorToolStripMenuItem
-        '
-        Me.AsignarClubesAProfesorToolStripMenuItem.Name = "AsignarClubesAProfesorToolStripMenuItem"
-        Me.AsignarClubesAProfesorToolStripMenuItem.Size = New System.Drawing.Size(249, 22)
-        Me.AsignarClubesAProfesorToolStripMenuItem.Text = "Asignar Clubes a Profesor"
-        '
-        'AsignarEspecialidadesANadadorToolStripMenuItem
-        '
-        Me.AsignarEspecialidadesANadadorToolStripMenuItem.Name = "AsignarEspecialidadesANadadorToolStripMenuItem"
-        Me.AsignarEspecialidadesANadadorToolStripMenuItem.Size = New System.Drawing.Size(251, 22)
-        Me.AsignarEspecialidadesANadadorToolStripMenuItem.Text = "Asignar Especialidades a Nadador"
-        '
-        'RegistrarCompetenciaATorneoToolStripMenuItem
-        '
-        Me.RegistrarCompetenciaATorneoToolStripMenuItem.Name = "RegistrarCompetenciaATorneoToolStripMenuItem"
-        Me.RegistrarCompetenciaATorneoToolStripMenuItem.Size = New System.Drawing.Size(251, 22)
-        Me.RegistrarCompetenciaATorneoToolStripMenuItem.Text = "Registrar Competencia a Torneo"
-        '
-        'AsignarEspecialidadesAProfesorToolStripMenuItem
-        '
-        Me.AsignarEspecialidadesAProfesorToolStripMenuItem.Name = "AsignarEspecialidadesAProfesorToolStripMenuItem"
-        Me.AsignarEspecialidadesAProfesorToolStripMenuItem.Size = New System.Drawing.Size(251, 22)
-        Me.AsignarEspecialidadesAProfesorToolStripMenuItem.Text = "Asignar Especialidades a Profesor"
         '
         'frm_Menu
         '

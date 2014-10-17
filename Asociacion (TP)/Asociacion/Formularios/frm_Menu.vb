@@ -82,8 +82,9 @@
         proc_profeXEspe.Show()
     End Sub
 
-    Private Sub RegistrarResultadosToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles RegistrarResultadosToolStripMenuItem.Click
 
+    Private Sub RegistrarResultadosToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles RegistrarResultadosToolStripMenuItem.Click
+        proc_regsitrarResultado.Show()
     End Sub
 End Class
 
