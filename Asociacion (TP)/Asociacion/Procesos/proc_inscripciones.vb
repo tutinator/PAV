@@ -192,6 +192,7 @@
             Me.inicio()
             Return termino.aprobado
         Else
+            Return termino.rechazado
             Exit Function
         End If
 

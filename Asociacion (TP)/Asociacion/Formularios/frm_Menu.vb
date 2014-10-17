@@ -65,5 +65,25 @@
     Private Sub ProfesoresPorEspecialidadToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ProfesoresPorEspecialidadToolStripMenuItem.Click
         proc_profeXEspe.Show()
     End Sub
+
+    Private Sub AsignarClubesAProfesorToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles AsignarClubesAProfesorToolStripMenuItem.Click
+        proc_profesxclub.Show()
+    End Sub
+
+    Private Sub AsignarEspecialidadesANadadorToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles AsignarEspecialidadesANadadorToolStripMenuItem.Click
+        proc_nadadoresXEspe.Show()
+    End Sub
+
+    Private Sub RegistrarCompetenciaATorneoToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles RegistrarCompetenciaATorneoToolStripMenuItem.Click
+        ABMCompetencias.Show()
+    End Sub
+
+    Private Sub AsignarEspecialidadesAProfesorToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles AsignarEspecialidadesAProfesorToolStripMenuItem.Click
+        proc_profeXEspe.Show()
+    End Sub
+
+    Private Sub RegistrarResultadosToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles RegistrarResultadosToolStripMenuItem.Click
+
+    End Sub
 End Class
 
