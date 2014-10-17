@@ -32,9 +32,9 @@
 
         Dim consulta As String = ""
         consulta = "SELECT Profesores.codProfe AS Codigo, Profesores.nombre AS Nombre, Profesores.apellido AS Apellido, Profesores.calle AS Calle, Profesores.numero AS Numero, Profesores.telefono AS Telefono, Profesores.nroDoc as Documento, "
-        consulta &= "CodPostales.codPos AS [Codigo Postal], CodPostales.nombre AS [Area], "
+        consulta &= "Profesores.codPos AS [Codigo Postal], "
         consulta &= "TiposDoc.tipoDoc AS [Tipo], TiposDoc.nombre AS [Nombre] "
-        consulta &= "FROM Profesores INNER JOIN CodPostales ON Profesores.codPos = CodPostales.codPos INNER JOIN TiposDoc ON Profesores.tipoDoc = TiposDoc.tipoDoc"
+        consulta &= "FROM Profesores  INNER JOIN TiposDoc ON Profesores.tipoDoc = TiposDoc.tipoDoc"
 
         grid_profesores.DataSource = acceso.ejecutar(consulta)
 
