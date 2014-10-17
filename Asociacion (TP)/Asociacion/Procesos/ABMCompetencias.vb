@@ -113,7 +113,7 @@
         cargar_combo(cmb_especialidad, leo_tabla("Especialidades"), "codEspe", "descripcion")
         Dim tabla As Data.DataTable
         Dim consulta As String = ""
-        consulta = "SELECT * FROM TorneosXAño INNER JOIN Torneos ON TorneosXAño.codTorneo = Torneos.codTorneo"
+        consulta = "SELECT DISTINCT TorneosXAño.codTorneo, Torneos.descripcion FROM TorneosXAño INNER JOIN Torneos ON TorneosXAño.codTorneo = Torneos.codTorneo"
         tabla = acceso.ejecutar(consulta)
         cargar_combo(cmb_torneo, tabla, "codTorneo", "descripcion")
 
