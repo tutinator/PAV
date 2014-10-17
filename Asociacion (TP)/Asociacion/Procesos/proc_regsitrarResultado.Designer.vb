@@ -35,9 +35,8 @@ Partial Class proc_regsitrarResultado
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.grid_competencias = New System.Windows.Forms.DataGridView()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.DataGridView1 = New System.Windows.Forms.DataGridView()
+        Me.grid_inscripciones = New System.Windows.Forms.DataGridView()
         Me.cmd_guardar_resultado = New System.Windows.Forms.Button()
-        Me.txt_tiempo = New System.Windows.Forms.MaskedTextBox()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.GroupBox4 = New System.Windows.Forms.GroupBox()
@@ -49,11 +48,12 @@ Partial Class proc_regsitrarResultado
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.cmb_cod_nad = New System.Windows.Forms.ComboBox()
+        Me.txt_tiempo = New Asociacion.TextBoxv01()
         Me.GroupBox3.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         CType(Me.grid_competencias, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.grid_inscripciones, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox4.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -177,47 +177,40 @@ Partial Class proc_regsitrarResultado
         '
         'GroupBox1
         '
-        Me.GroupBox1.Controls.Add(Me.DataGridView1)
-        Me.GroupBox1.Location = New System.Drawing.Point(12, 345)
+        Me.GroupBox1.Controls.Add(Me.grid_inscripciones)
+        Me.GroupBox1.Location = New System.Drawing.Point(12, 367)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Size = New System.Drawing.Size(486, 197)
         Me.GroupBox1.TabIndex = 21
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Resultados"
         '
-        'DataGridView1
+        'grid_inscripciones
         '
-        Me.DataGridView1.AllowUserToAddRows = False
-        Me.DataGridView1.AllowUserToDeleteRows = False
-        Me.DataGridView1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+        Me.grid_inscripciones.AllowUserToAddRows = False
+        Me.grid_inscripciones.AllowUserToDeleteRows = False
+        Me.grid_inscripciones.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
                     Or System.Windows.Forms.AnchorStyles.Left) _
                     Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.DataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells
-        Me.DataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Location = New System.Drawing.Point(12, 19)
-        Me.DataGridView1.Name = "DataGridView1"
-        Me.DataGridView1.ReadOnly = True
-        Me.DataGridView1.RowHeadersVisible = False
-        Me.DataGridView1.Size = New System.Drawing.Size(468, 172)
-        Me.DataGridView1.TabIndex = 2
+        Me.grid_inscripciones.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells
+        Me.grid_inscripciones.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+        Me.grid_inscripciones.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.grid_inscripciones.Location = New System.Drawing.Point(12, 19)
+        Me.grid_inscripciones.Name = "grid_inscripciones"
+        Me.grid_inscripciones.ReadOnly = True
+        Me.grid_inscripciones.RowHeadersVisible = False
+        Me.grid_inscripciones.Size = New System.Drawing.Size(468, 172)
+        Me.grid_inscripciones.TabIndex = 2
         '
         'cmd_guardar_resultado
         '
-        Me.cmd_guardar_resultado.Location = New System.Drawing.Point(405, 41)
+        Me.cmd_guardar_resultado.BackgroundImage = Global.Asociacion.My.Resources.Resources.save
+        Me.cmd_guardar_resultado.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.cmd_guardar_resultado.Location = New System.Drawing.Point(440, 54)
         Me.cmd_guardar_resultado.Name = "cmd_guardar_resultado"
-        Me.cmd_guardar_resultado.Size = New System.Drawing.Size(75, 23)
+        Me.cmd_guardar_resultado.Size = New System.Drawing.Size(40, 38)
         Me.cmd_guardar_resultado.TabIndex = 12
-        Me.cmd_guardar_resultado.Text = "Guardar"
         Me.cmd_guardar_resultado.UseVisualStyleBackColor = True
-        '
-        'txt_tiempo
-        '
-        Me.txt_tiempo.Location = New System.Drawing.Point(414, 15)
-        Me.txt_tiempo.Mask = "00:00:00"
-        Me.txt_tiempo.Name = "txt_tiempo"
-        Me.txt_tiempo.Size = New System.Drawing.Size(55, 20)
-        Me.txt_tiempo.TabIndex = 11
         '
         'Label4
         '
@@ -239,6 +232,7 @@ Partial Class proc_regsitrarResultado
         '
         'GroupBox4
         '
+        Me.GroupBox4.Controls.Add(Me.txt_tiempo)
         Me.GroupBox4.Controls.Add(Me.txt_apellido_nad)
         Me.GroupBox4.Controls.Add(Me.txt_nombre_nad)
         Me.GroupBox4.Controls.Add(Me.txt_cod_nad)
@@ -249,11 +243,10 @@ Partial Class proc_regsitrarResultado
         Me.GroupBox4.Controls.Add(Me.Label1)
         Me.GroupBox4.Controls.Add(Me.cmd_guardar_resultado)
         Me.GroupBox4.Controls.Add(Me.Label4)
-        Me.GroupBox4.Controls.Add(Me.txt_tiempo)
         Me.GroupBox4.Controls.Add(Me.cmb_cod_nad)
         Me.GroupBox4.Location = New System.Drawing.Point(12, 269)
         Me.GroupBox4.Name = "GroupBox4"
-        Me.GroupBox4.Size = New System.Drawing.Size(486, 89)
+        Me.GroupBox4.Size = New System.Drawing.Size(486, 99)
         Me.GroupBox4.TabIndex = 21
         Me.GroupBox4.TabStop = False
         Me.GroupBox4.Text = "Nadador"
@@ -342,11 +335,35 @@ Partial Class proc_regsitrarResultado
         Me.cmb_cod_nad.TabIndex = 35
         Me.cmb_cod_nad.Visible = False
         '
+        'txt_tiempo
+        '
+        Me.txt_tiempo._BDdato = False
+        Me.txt_tiempo._BDnombreCampoTabla = ""
+        Me.txt_tiempo._BDvalor = "  :  :"
+        Me.txt_tiempo._descriptor_del_contenido = ""
+        Me.txt_tiempo._Gest_AnchoTexto = 0
+        Me.txt_tiempo._Gest_decimales = 0
+        Me.txt_tiempo._Gest_enteros = "0"
+        Me.txt_tiempo._Gest_mensajeError = ""
+        Me.txt_tiempo._Gest_mensajetooltips = "cambie el mensaje tip"
+        Me.txt_tiempo._Gest_ReadOnly = False
+        Me.txt_tiempo._Gest_TextoNegrita = False
+        Me.txt_tiempo._Gest_tipo_dato = Asociacion.TextBoxv01.t_dato.texto
+        Me.txt_tiempo._Gest_validar = True
+        Me.txt_tiempo.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!)
+        Me.txt_tiempo.Location = New System.Drawing.Point(412, 15)
+        Me.txt_tiempo.Margin = New System.Windows.Forms.Padding(1)
+        Me.txt_tiempo.Mask = "99:99:99"
+        Me.txt_tiempo.Name = "txt_tiempo"
+        Me.txt_tiempo.Size = New System.Drawing.Size(55, 20)
+        Me.txt_tiempo.TabIndex = 37
+        Me.txt_tiempo.ValidatingType = GetType(String)
+        '
         'proc_regsitrarResultado
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(507, 550)
+        Me.ClientSize = New System.Drawing.Size(505, 576)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.GroupBox4)
         Me.Controls.Add(Me.GroupBox2)
@@ -358,7 +375,7 @@ Partial Class proc_regsitrarResultado
         Me.GroupBox2.ResumeLayout(False)
         CType(Me.grid_competencias, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox1.ResumeLayout(False)
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.grid_inscripciones, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox4.ResumeLayout(False)
         Me.GroupBox4.PerformLayout()
         Me.ResumeLayout(False)
@@ -376,9 +393,8 @@ Partial Class proc_regsitrarResultado
     Friend WithEvents GroupBox2 As System.Windows.Forms.GroupBox
     Friend WithEvents grid_competencias As System.Windows.Forms.DataGridView
     Friend WithEvents GroupBox1 As System.Windows.Forms.GroupBox
-    Friend WithEvents DataGridView1 As System.Windows.Forms.DataGridView
+    Friend WithEvents grid_inscripciones As System.Windows.Forms.DataGridView
     Friend WithEvents cmd_guardar_resultado As System.Windows.Forms.Button
-    Friend WithEvents txt_tiempo As System.Windows.Forms.MaskedTextBox
     Friend WithEvents Label4 As System.Windows.Forms.Label
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents GroupBox4 As System.Windows.Forms.GroupBox
@@ -390,4 +406,5 @@ Partial Class proc_regsitrarResultado
     Friend WithEvents txt_apellido_nad As System.Windows.Forms.TextBox
     Friend WithEvents txt_nombre_nad As System.Windows.Forms.TextBox
     Friend WithEvents cmb_cod_nad As System.Windows.Forms.ComboBox
+    Friend WithEvents txt_tiempo As Asociacion.TextBoxv01
 End Class
