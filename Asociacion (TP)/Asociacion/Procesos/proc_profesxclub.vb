@@ -145,25 +145,6 @@
     End Function
 
 
-    'Private Function validar_existencia() As termino
-
-    '    'REVISAR ESTA CONSULTA SQL TAMBIENNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN
-
-    '    Dim consulta As String = ""
-    '    Dim tabla As Data.DataTable
-    '    ' consulta = "SELECT * FROM TiposDoc where tipoDoc = " & Me.txt_codTipoDoc.Text
-    '    tabla = acceso.ejecutar(consulta)
-    '    If tabla.Rows.Count() = 1 Then
-    '        Return termino.rechazado
-    '    Else
-    '        Return termino.aprobado
-    '    End If
-    'End Function
-
-    'Private Sub cmd_cancelar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
-    '    Me.inicio()
-    'End Sub
-
     Private Sub cmd_buscarProf_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmd_buscarProf.Click
 
         If Me.txt_codProfe.Text <> "" Then
@@ -272,7 +253,4 @@
         Me.inicio()
     End Sub
 
-    Private Sub GroupBox1_Enter(sender As Object, e As EventArgs) Handles GroupBox1.Enter
-
-    End Sub
 End Class

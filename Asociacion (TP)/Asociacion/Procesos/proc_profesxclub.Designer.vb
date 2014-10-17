@@ -23,16 +23,14 @@ Partial Class proc_profesxclub
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.gbo_profesor = New System.Windows.Forms.GroupBox()
-        Me.cmd_cancelar = New System.Windows.Forms.Button()
+        Me.txt_codProfe = New System.Windows.Forms.MaskedTextBox()
         Me.cmd_nuevoprof = New System.Windows.Forms.Button()
-        Me.cmd_buscarProf = New System.Windows.Forms.Button()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.lbl_nombre_profesor = New System.Windows.Forms.Label()
         Me.lbl_codigo_profesor = New System.Windows.Forms.Label()
         Me.txt_apellido = New System.Windows.Forms.TextBox()
         Me.txt_nombre_profe = New System.Windows.Forms.TextBox()
         Me.cmb_codProfe = New System.Windows.Forms.ComboBox()
-        Me.cmd_salir = New System.Windows.Forms.Button()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.cmd_quitar = New System.Windows.Forms.Button()
         Me.cmd_agregar = New System.Windows.Forms.Button()
@@ -40,7 +38,9 @@ Partial Class proc_profesxclub
         Me.Label2 = New System.Windows.Forms.Label()
         Me.lst_clubesTrabajo = New System.Windows.Forms.ListBox()
         Me.lst_clubes = New System.Windows.Forms.ListBox()
-        Me.txt_codProfe = New System.Windows.Forms.MaskedTextBox()
+        Me.cmd_salir = New System.Windows.Forms.Button()
+        Me.cmd_cancelar = New System.Windows.Forms.Button()
+        Me.cmd_buscarProf = New System.Windows.Forms.Button()
         Me.gbo_profesor.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
         Me.SuspendLayout()
@@ -64,15 +64,14 @@ Partial Class proc_profesxclub
         Me.gbo_profesor.TabStop = False
         Me.gbo_profesor.Text = "Profesor"
         '
-        'cmd_cancelar
+        'txt_codProfe
         '
-        Me.cmd_cancelar.BackgroundImage = Global.Asociacion.My.Resources.Resources.cancel
-        Me.cmd_cancelar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.cmd_cancelar.Location = New System.Drawing.Point(196, 17)
-        Me.cmd_cancelar.Name = "cmd_cancelar"
-        Me.cmd_cancelar.Size = New System.Drawing.Size(30, 30)
-        Me.cmd_cancelar.TabIndex = 30
-        Me.cmd_cancelar.UseVisualStyleBackColor = True
+        Me.txt_codProfe.Location = New System.Drawing.Point(81, 23)
+        Me.txt_codProfe.Mask = "99999"
+        Me.txt_codProfe.Name = "txt_codProfe"
+        Me.txt_codProfe.Size = New System.Drawing.Size(58, 20)
+        Me.txt_codProfe.TabIndex = 31
+        Me.txt_codProfe.ValidatingType = GetType(Integer)
         '
         'cmd_nuevoprof
         '
@@ -82,16 +81,6 @@ Partial Class proc_profesxclub
         Me.cmd_nuevoprof.TabIndex = 21
         Me.cmd_nuevoprof.Text = "Nuevo Profesor"
         Me.cmd_nuevoprof.UseVisualStyleBackColor = True
-        '
-        'cmd_buscarProf
-        '
-        Me.cmd_buscarProf.BackgroundImage = Global.Asociacion.My.Resources.Resources.buscar
-        Me.cmd_buscarProf.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.cmd_buscarProf.Location = New System.Drawing.Point(145, 17)
-        Me.cmd_buscarProf.Name = "cmd_buscarProf"
-        Me.cmd_buscarProf.Size = New System.Drawing.Size(30, 30)
-        Me.cmd_buscarProf.TabIndex = 2
-        Me.cmd_buscarProf.UseVisualStyleBackColor = True
         '
         'Label1
         '
@@ -143,15 +132,6 @@ Partial Class proc_profesxclub
         Me.cmb_codProfe.Size = New System.Drawing.Size(58, 21)
         Me.cmb_codProfe.TabIndex = 23
         Me.cmb_codProfe.Visible = False
-        '
-        'cmd_salir
-        '
-        Me.cmd_salir.Image = Global.Asociacion.My.Resources.Resources.salir
-        Me.cmd_salir.Location = New System.Drawing.Point(412, 311)
-        Me.cmd_salir.Name = "cmd_salir"
-        Me.cmd_salir.Size = New System.Drawing.Size(50, 50)
-        Me.cmd_salir.TabIndex = 29
-        Me.cmd_salir.UseVisualStyleBackColor = True
         '
         'GroupBox1
         '
@@ -220,14 +200,34 @@ Partial Class proc_profesxclub
         Me.lst_clubes.Size = New System.Drawing.Size(120, 147)
         Me.lst_clubes.TabIndex = 0
         '
-        'txt_codProfe
+        'cmd_salir
         '
-        Me.txt_codProfe.Location = New System.Drawing.Point(81, 23)
-        Me.txt_codProfe.Mask = "99999"
-        Me.txt_codProfe.Name = "txt_codProfe"
-        Me.txt_codProfe.Size = New System.Drawing.Size(58, 20)
-        Me.txt_codProfe.TabIndex = 31
-        Me.txt_codProfe.ValidatingType = GetType(Integer)
+        Me.cmd_salir.Image = Global.Asociacion.My.Resources.Resources.salir
+        Me.cmd_salir.Location = New System.Drawing.Point(412, 311)
+        Me.cmd_salir.Name = "cmd_salir"
+        Me.cmd_salir.Size = New System.Drawing.Size(50, 50)
+        Me.cmd_salir.TabIndex = 29
+        Me.cmd_salir.UseVisualStyleBackColor = True
+        '
+        'cmd_cancelar
+        '
+        Me.cmd_cancelar.BackgroundImage = Global.Asociacion.My.Resources.Resources.cancel
+        Me.cmd_cancelar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.cmd_cancelar.Location = New System.Drawing.Point(196, 17)
+        Me.cmd_cancelar.Name = "cmd_cancelar"
+        Me.cmd_cancelar.Size = New System.Drawing.Size(30, 30)
+        Me.cmd_cancelar.TabIndex = 30
+        Me.cmd_cancelar.UseVisualStyleBackColor = True
+        '
+        'cmd_buscarProf
+        '
+        Me.cmd_buscarProf.BackgroundImage = Global.Asociacion.My.Resources.Resources.buscar
+        Me.cmd_buscarProf.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.cmd_buscarProf.Location = New System.Drawing.Point(145, 17)
+        Me.cmd_buscarProf.Name = "cmd_buscarProf"
+        Me.cmd_buscarProf.Size = New System.Drawing.Size(30, 30)
+        Me.cmd_buscarProf.TabIndex = 2
+        Me.cmd_buscarProf.UseVisualStyleBackColor = True
         '
         'proc_profesxclub
         '

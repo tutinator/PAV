@@ -64,6 +64,9 @@
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Asociacion, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+      <ExecutableExtension>.exe</ExecutableExtension>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
@@ -138,6 +141,12 @@
       <DependentUpon>frm_ABMClubes.vb</DependentUpon>
     </Compile>
     <Compile Include="Formularios\frm_ABMClubes.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Procesos\proc_regsitrarResultado.Designer.vb">
+      <DependentUpon>proc_regsitrarResultado.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Procesos\proc_regsitrarResultado.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Procesos\ABMCompetencias.designer.vb">
@@ -221,6 +230,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\frm_ABMClubes.resx">
       <DependentUpon>frm_ABMClubes.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Procesos\proc_regsitrarResultado.resx">
+      <DependentUpon>proc_regsitrarResultado.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Procesos\ABMCompetencias.resx">
       <DependentUpon>ABMCompetencias.vb</DependentUpon>

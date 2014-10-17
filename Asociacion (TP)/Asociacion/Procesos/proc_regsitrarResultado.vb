@@ -1,4 +1,4 @@
-﻿Public Class ABMCompetencias
+﻿Public Class proc_regsitrarResultado
     Dim acceso As New accesoBD
     Dim accion As estado = estado.insertar
 
@@ -12,35 +12,28 @@
         rechazado
     End Enum
 
-
-    Private Sub ABMcompetencias_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+    Private Sub proc_regsitrarResultado_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         Me.inicio()
     End Sub
-
-    'Subrutinas
 
     Private Sub inicio()
         cargar_grilla()
         Me.cargar_combos()
         cambiarEntradas(False)
-        cambiarBotones(False)
-        Me.cmd_nuevo.Enabled = True
-        Me.cmd_buscar.Enabled = True
-        Me.cmd_salir.Enabled = True
-        Me.cmd_cancelar.Enabled = True
         Me.cmb_torneo.Enabled = True
         Me.cmb_año.Enabled = True
         Me.cmb_especialidad.Enabled = True
-        'Me.txt_fecha.Enabled = True
         Me.cmb_torneo.Focus()
-        'Me.dtp_fecha.Value = Date.Today
+
     End Sub
 
-    Private Sub limpiarCampos()
+    Private Sub limpiarCampos_competencia()
         Me.cmb_año.Text = ""
         Me.cmb_torneo.Text = ""
         Me.cmb_especialidad.Text = ""
-        ' Me.txt_fecha.Text = ""
+        Me.cmb_torneo.SelectedIndex = -1
+        Me.cmb_especialidad.SelectedIndex = -1
+        Me.cmb_año.SelectedIndex = -1
     End Sub
 
     Private Function validarCampos()
@@ -59,7 +52,13 @@
 
         If cmb_especialidad.Text = "" Then
             MsgBox("La especialidad no puede estar vacía", MsgBoxStyle.Critical, "Importante")
-            cmb_especialidad.Focus()
+            cmb_año.Focus()
+            Return False
+        End If
+
+        If txt_cod_nad.Text = "" Then
+            MsgBox("El código del nadador no puede estar vacío", MsgBoxStyle.Critical, "Importante")
+            txt_cod_nad.Focus()
             Return False
         End If
 
@@ -74,16 +73,6 @@
         'Me.txt_fecha.Enabled = x
     End Sub
 
-    Private Sub cambiarBotones(ByVal x As Boolean)
-        Me.cmd_guardar.Enabled = x
-        Me.cmd_buscar.Enabled = x
-        Me.cmd_eliminar.Enabled = x
-        Me.cmd_nuevo.Enabled = x
-        Me.cmd_salir.Enabled = x
-        Me.cmd_cancelar.Enabled = x
-    End Sub
-
-    'BASE DE DATOS
     Private Function leo_tabla(ByRef _tabla) As DataTable
         Dim consulta As String = ""
         consulta = "SELECT * FROM " & _tabla
@@ -110,13 +99,11 @@
     End Sub
 
     Private Sub cargar_combos()
-        cargar_combo(cmb_especialidad, leo_tabla("Especialidades"), "codEspe", "descripcion")
         Dim tabla As Data.DataTable
         Dim consulta As String = ""
-        consulta = "SELECT * FROM TorneosXAño INNER JOIN Torneos ON TorneosXAño.codTorneo = Torneos.codTorneo"
+        consulta = "SELECT * FROM Competencias INNER JOIN Torneos ON Competencias.codTorneo = Torneos.codTorneo"
         tabla = acceso.ejecutar(consulta)
         cargar_combo(cmb_torneo, tabla, "codTorneo", "descripcion")
-
     End Sub
 
     Private Function modificar() As termino
@@ -164,91 +151,19 @@
 
     '----FIN BD
 
-
-    Private Sub grid_competencias_CellMouseDoubleClick(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellMouseEventArgs) Handles grid_competencias.CellMouseDoubleClick
-
-
-        Dim torneoSeleccionado As String = Me.grid_competencias.CurrentRow.Cells(0).Value
-        Dim añoSeleccionado As Integer = Me.grid_competencias.CurrentRow.Cells(1).Value
-        Dim espeSeleccionada As String = Me.grid_competencias.CurrentRow.Cells(2).Value
-
-        Dim tabla As New Data.DataTable
-
+    '--PARTE COMPETENCIA
+    Private Sub cmb_torneo_SelectedValueChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmb_torneo.SelectedValueChanged
+        Dim tabla As New DataTable
         Dim consulta As String = ""
- 
         consulta = "SELECT * FROM Competencias INNER JOIN Torneos ON Competencias.codTorneo = Torneos.codTorneo"
-        consulta &= " INNER JOIN Especialidades ON Competencias.codEspe = Especialidades.codEspe"
-        consulta &= " WHERE Torneos.descripcion = '" & torneoSeleccionado & "' AND Competencias.año = " & añoSeleccionado
-        consulta &= " AND Especialidades.descripcion = '" & espeSeleccionada & "'"
-
-        cambiarEntradas(True)
+        consulta &= "INNER JOIN Especialidades ON Competencias.codEspe = Especialidades.codEspe WHERE Torneos.descripcion = '" & Me.cmb_torneo.Text & "'"
         tabla = acceso.ejecutar(consulta)
-
-        Me.cmb_torneo.SelectedValue = tabla.Rows(0)("codTorneo")
-        Me.cmb_año.SelectedValue = tabla.Rows(0)("año")
-        Me.cmb_especialidad.SelectedValue = tabla.Rows(0)("codEspe")
-        Me.dtp_fecha.Value = tabla.Rows(0)("fecha")
-
-        cambiarBotones(False)
-        Me.cmd_cancelar.Enabled = True
-        Me.cmd_eliminar.Enabled = True
-        Me.cmd_guardar.Enabled = True
-
-
-        cmb_torneo.Focus()
-
-        Me.accion = estado.modificar
-    End Sub
-
-    Private Sub cmd_nuevo_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmd_nuevo.Click
-        cambiarBotones(False)
-        cambiarEntradas(True)
-        Me.cmd_cancelar.Enabled = True
-        Me.cmd_guardar.Enabled = True
-        cmb_torneo.Focus()
-        Me.accion = estado.insertar
+        cargar_combo(cmb_año, tabla, "año", "año")
+        cargar_combo(cmb_especialidad, tabla, "codEspe", "descripcion")
     End Sub
 
 
-    Private Sub cmd_guardar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmd_guardar.Click
-        If validarCampos() = True Then
-            If Me.accion = estado.insertar Then
-                If validar_existencia() = termino.aprobado Then
-                    Me.insertar()
-                    MessageBox.Show("Nueva competencia cargada con éxito", "Operación completa")
-
-                Else : MessageBox.Show("La competencia que intenta guardar ya está registrada", "Error")
-
-
-
-                End If
-            Else
-                Me.modificar()
-                MessageBox.Show("Competencia modificada con éxito", "Operación completa")
-            End If
-
-            Me.inicio()
-        End If
-    End Sub
-
-    Private Sub cmd_eliminar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmd_eliminar.Click
-        If cmb_torneo.Text = "" Or cmb_especialidad.Text = "" Or cmb_año.Text = "" Then
-            MsgBox("No se ha seleccionado una competencia válida", MsgBoxStyle.Critical, "Error")
-        Else
-            If MessageBox.Show("¿Está seguro que desea eliminar la competencia seleccionada?", "Atención", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1) = Windows.Forms.DialogResult.OK Then
-                If Me.delete() = termino.aprobado Then
-                    MessageBox.Show("Compentencia eliminada", "Operación completada")
-                    Me.inicio()
-                End If
-            End If
-        End If
-    End Sub
-
-    Private Sub cmd_buscar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmd_buscar.Click
-        cambiarBotones(False)
-        Me.cmd_cancelar.Enabled = True
-        Me.cmd_buscar.Enabled = True
-
+    Private Sub cmd_buscarCompetencia_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmd_buscarCompetencia.Click
         Dim cont As Integer = 0
         If cmb_año.Text <> "" Then cont = cont + 1
         If cmb_torneo.Text <> "" Then cont = cont + 1
@@ -259,12 +174,6 @@
             cmb_torneo.Focus()
             Exit Sub
         End If
-
-        'If cont > 1 Then
-        'MsgBox("Ingrese sólo un criterio de búsqueda", MsgBoxStyle.Critical, "Importante")
-        'cmb_torneo.Focus()
-        'Exit Sub
-        'End If
         If cmb_torneo.Text <> "" And cmb_año.Text <> "" Then
             Dim consulta As String = ""
             Dim dt As New Data.DataTable
@@ -284,42 +193,81 @@
             dt = acceso.ejecutar(consulta)
             grid_competencias.DataSource = dt
         End If
-
     End Sub
 
-    Private Sub cmd_cancelar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmd_cancelar.Click
-        Me.inicio()
-    End Sub
-
-    Private Sub cmd_salir_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmd_salir.Click
-        Me.Close()
-    End Sub
-
-    Private Sub cmb_torneo_SelectedValueChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmb_torneo.SelectedValueChanged
-        Dim tabla As New DataTable
+    Private Sub grid_competencias_CellMouseDoubleClick(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellMouseEventArgs) Handles grid_competencias.CellMouseDoubleClick
+        Dim torneoSeleccionado As String = Me.grid_competencias.CurrentRow.Cells(0).Value
+        Dim añoSeleccionado As Integer = Me.grid_competencias.CurrentRow.Cells(1).Value
+        Dim espeSeleccionada As String = Me.grid_competencias.CurrentRow.Cells(2).Value
+        Dim tabla As New Data.DataTable
         Dim consulta As String = ""
-        consulta = "SELECT * FROM TorneosXAño INNER JOIN Torneos ON TorneosXAño.codTorneo = Torneos.codTorneo WHERE Torneos.descripcion = '" & Me.cmb_torneo.Text & "'"
+        consulta = "SELECT * FROM Competencias INNER JOIN Torneos ON Competencias.codTorneo = Torneos.codTorneo"
+        consulta &= " INNER JOIN Especialidades ON Competencias.codEspe = Especialidades.codEspe"
+        consulta &= " WHERE Torneos.descripcion = '" & torneoSeleccionado & "' AND Competencias.año = " & añoSeleccionado
+        consulta &= " AND Especialidades.descripcion = '" & espeSeleccionada & "'"
         tabla = acceso.ejecutar(consulta)
-        cargar_combo(cmb_año, tabla, "año", "año")
+        Me.cmb_torneo.SelectedValue = tabla.Rows(0)("codTorneo")
+        Me.cmb_año.SelectedValue = tabla.Rows(0)("año")
+        Me.cmb_especialidad.SelectedValue = tabla.Rows(0)("codEspe")
+        cmb_torneo.Focus()
+        Me.accion = estado.modificar
     End Sub
 
-    Private Sub cmb_año_SelectionChangeCommitted(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmb_año.SelectionChangeCommitted
-        'Dim año = cmb_año.Text.Cast(Of Int32)()
-        'cmb_año.Text.Cast(Of Int32
-        'año = cmb_año.Text
-        'año.Cast(Of Int32)()
-        'If (cmb_año.Text <> "") Then
-        dtp_fecha.MaxDate = "31/12/3000"
-        dtp_fecha.MinDate = "1/1/1754"
-        Dim fechaMin As Date = "01/01/" & cmb_año.Text
-        Dim fechaMax As Date = "31/12/" & cmb_año.Text
-        dtp_fecha.MinDate = fechaMin
-        dtp_fecha.MaxDate = fechaMax
 
-        ' Else : dtp_fecha.MaxDate = ""
-        '    dtp_fecha.MinDate = ""
-        ' End If
-
+    Private Sub cmd_cancelar_competencia_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmd_cancelar_competencia.Click
+        Me.cargar_combos()
+        Me.limpiarCampos_competencia()
     End Sub
+    '------FIN PARTE COMPETENCIA
 
+    '------PARTE NADADOR
+
+    Private Sub cmd_buscar_nad_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmd_buscar_nad.Click
+
+        If Me.txt_cod_nad.Text <> "" Then
+            Dim consulta As String = ""
+            Dim dt As New Data.DataTable
+            consulta = "SELECT Nadadores.codNad Nadadores.nombre, Nadadores.apellido, Nadadores.codNad, Inscripciones.codEspe, Inscripciones.año, Inscripciones.codTorneo"
+            consulta &= " Inscripciones INNER JOIN Nadadores ON Inscripciones.codNad = Nadadores.codNad"
+            consulta &= " WHERE codTorneo = " & Me.cmb_torneo.SelectedValue & "AND codEspe = " & Me.cmb_especialidad.SelectedValue
+            consulta &= " AND año = " & Me.cmb_año.SelectedValue & " AND codNad = " & Me.txt_cod_nad.Text
+            dt = acceso.ejecutar(consulta)
+
+            If dt.Rows.Count = 0 Then
+                MsgBox("No hay nadadores registrado a esa competencia", MsgBoxStyle.Critical, "Importante")
+            ElseIf dt.Rows.Count = 1 Then
+                cambiarEntradas(True)
+                Me.txt_cod_nad.Text = dt.Rows(0)("codNad")
+                Me.txt_nombre_nad.Text = dt.Rows(0)("nombre")
+                Me.txt_apellido_nad.Text = dt.Rows(0)("apellido")
+            End If
+            Return
+        End If
+
+        If txt_apellido_nad.Text <> "" Then
+            Dim consulta As String = ""
+            Dim dt As New Data.DataTable
+            consulta = "SELECT Nadadores.nombre, Nadadores.apellido, Nadadores.codNad, Inscripciones.codEspe, Inscripciones.año, Inscripciones.codTorneo"
+            consulta &= " Inscripciones INNER JOIN Nadadores ON Inscripciones.codNad = Nadadores.codNad"
+            consulta &= " WHERE codTorneo = " & Me.cmb_torneo.SelectedValue & "AND codEspe = " & Me.cmb_especialidad.SelectedValue
+            consulta &= " AND año = " & Me.cmb_año.SelectedValue & " AND apellido LIKE '" & Me.txt_apellido_nad.Text & "'"
+            dt = acceso.ejecutar(consulta)
+            If dt.Rows.Count = 0 Then
+                MsgBox("No hay nadadores registrado a esa competencia con ese apellido", MsgBoxStyle.Critical, "Importante")
+                Me.txt_cod_nad.Focus()
+            ElseIf dt.Rows.Count = 1 Then
+                Me.txt_cod_nad.Text = dt.Rows(0)("codNad")
+                Me.txt_nombre_nad.Text = dt.Rows(0)("nombre")
+                Me.txt_apellido_nad.Text = dt.Rows(0)("apellido")
+            Else
+                Me.txt_cod_nad.Visible = False
+                Me.cmb_cod_nad.Visible = True
+                cargar_combo(cmb_cod_nad, dt, "codNad", "codNad")
+            End If
+        End If
+
+        'If Me.txt_codProfe.Text <> "" And Me.txt_apellido.Text <> "" And Me.txt_nombre_profe.Text <> "" Then
+        '    cargar_listas()
+        'End If
+    End Sub
 End Class
