@@ -93,6 +93,29 @@
 
     End Sub
 
+
+    Private Sub cargar_listas()
+
+        Dim tabla As New Data.DataTable
+        Dim consulta As String = ""
+        consulta = "SELECT * FROM Especialidades INNER JOIN NadadoresXEspe ON Especialidades.codEspe = NadadoresXEspe.codEspe"
+        consulta &= " WHERE codNad = " & Me.txt_id.Text
+        tabla = acceso.ejecutar(consulta)
+        cargar_lista(lista_esp_nadador, tabla, "codEspe", "descripcion")
+        consulta = "SELECT codEspe, descripcion FROM Especialidades WHERE codEspe NOT IN "
+        consulta &= "(SELECT codEspe FROM NadadoresXEspe WHERE codNad = " & Me.txt_id.Text & ")"
+        tabla = acceso.ejecutar(consulta)
+        cargar_lista(lista_especialidades, tabla, "codEspe", "descripcion")
+
+    End Sub
+
+
+
+
+
+
+
+
     'En caso d cambiar por un combo el id de nadador
     'Private Sub cargar_combos()
     '    cargar_combo(cmb_id, leo_tabla("Nadadores"), "codNad", "codNad")
@@ -133,12 +156,18 @@
         consulta = "SELECT * FROM Nadadores WHERE Nadadores.codNad = " & pk
         Return acceso.ejecutar(consulta)
 
+    End Function
+
+    Private Function leo_tabla_Nad2(ByVal ape) As DataTable
+
+        Dim consulta As String = ""
+        consulta = "SELECT * FROM Nadadores WHERE apellido LIKE '" & ape & "'"
+        Return acceso.ejecutar(consulta)
 
     End Function
 
 
 
-    'REVISAR ESTE METODO NO SE QUE ONDA
     Private Sub cmd_buscar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmd_buscar_id.Click
 
         cambiarBotones(True)
@@ -166,7 +195,6 @@
         If txt_id.Text <> "" Then
 
             Dim tabla As New Data.DataTable
-
             tabla = Me.leo_tabla_Nad(Me.txt_id.Text)
 
             If tabla.Rows.Count > 0 Then
@@ -174,20 +202,62 @@
                 Me.txt_id.Text = tabla.Rows(0)("codNad")
                 Me.txt_apellido.Text = tabla.Rows(0)("apellido")
                 Me.txt_nombre.Text = tabla.Rows(0)("nombre")
+                Me.cargar_listas()
 
             Else
                 MsgBox("No existe ese nadador", MsgBoxStyle.Critical, "Importante")
                 Me.limpiarCampos()
-
             End If
 
         End If
-
     End Sub
 
     Private Sub cmd_salir_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmd_salir.Click
         Me.Close()
     End Sub
+
+
+    Private Sub cmd_agregar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmd_agregar.Click
+        Dim consulta As String
+        Dim tabla As New Data.DataTable
+
+        consulta = "SELECT codEspe, descripcion FROM Especialidades WHERE codEspe NOT IN (SELECT CodEspe"
+        consulta &= " FROM NadadoresXEspe WHERE codNad = " & Me.txt_id.Text & ")"
+        tabla = acceso.ejecutar(consulta)
+
+        If tabla.Rows.Count > 0 Then
+            consulta = "INSERT INTO NadadoresXEspe (codNad, codEspe) "
+            consulta &= "VALUES (" & Me.txt_id.Text & ", " & Me.lista_especialidades.SelectedValue & ")"
+            tabla = acceso.ejecutar(consulta)
+            Me.cargar_listas()
+        End If
+
+    End Sub
+
+    Private Sub cmd_desagregar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmd_desagregar.Click
+        Dim consulta As String
+        Dim tabla As New Data.DataTable
+
+        consulta = "SELECT * FROM NadadoresXEspe WHERE codNad = " & Me.txt_id.Text
+        tabla = acceso.ejecutar(consulta)
+
+        If tabla.Rows.Count > 0 Then
+            consulta = "DELETE FROM NadadoresXEspe WHERE codEspe = " & Me.lista_esp_nadador.SelectedValue & " AND codNad = " & Me.txt_id.Text & ""
+            tabla = acceso.ejecutar(consulta)
+            Me.cargar_listas()
+        End If
+    End Sub
+
+
+
+
+
+
+
+
+
+
+
 
 
 
