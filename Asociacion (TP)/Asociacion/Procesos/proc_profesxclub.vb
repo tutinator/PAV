@@ -16,28 +16,29 @@
     'Subrutinas
 
     Private Sub inicio()
-        'DESCOMENTAR ALGUNOS (LOS COMENTE PARA QUE COMPILE)
-
+        
         'cargar_listas()
-        'cambiarEntradas(False)
-        'cambiarBotones(False)
+        cambiarEntradas(False)
+        cambiarBotones(False)
         Me.cmd_buscarProf.Enabled = True
-        'Me.cmd_nuevo.Enabled = True
         Me.cmd_salir.Enabled = True
-        Me.txt_codProfesor.Enabled = True
-        Me.cmb_apellido_profe.Enabled = True
+        Me.txt_codProfe.Enabled = True
+        'Me.cmb_apellido_profe.Enabled = True
+        Me.txt_apellido.Enabled = True
+        Me.txt_codProfe.Visible = True
         Me.txt_codProfe.Enabled = True
         Me.txt_nombre_profe.Enabled = True
-        Me.txt_codProfesor.Focus()
+        Me.cmb_codProfe.Visible = False
+        Me.txt_codProfe.Focus()
+        Me.cmd_nuevoprof.Enabled = True
 
     End Sub
 
     Private Sub limpiarCampos()
-        Me.txt_codProfesor.Text = ""
-        Me.cmb_apellido_profe.Text = ""
-        Me.cmb_apellido_profe.SelectedIndex = -1
+        Me.txt_codProfe.Text = ""
+        Me.txt_apellido.Text = ""
         Me.txt_nombre_profe.Text = ""
-        Me.txt_codProfesor.Text = ""
+        Me.txt_codProfe.Text = ""
     End Sub
 
     Private Sub txt_codProfe_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txt_codProfe.KeyPress
@@ -55,6 +56,7 @@
         Else
             validarSoloNumeros = KeyAscii
         End If
+        If KeyAscii = 8 Then validarSoloNumeros = KeyAscii ' Backspace
     End Function
 
     Private Sub cargar_lista(ByRef lista As ListBox, ByVal nombre_tabla As DataTable, ByVal pk As String, ByVal descrip As String)
@@ -64,6 +66,11 @@
 
     End Sub
 
+    'Private Sub cargar_listas()
+    '    cargar_lista(lst_clubes, leo_tabla("Clubes"), "codClub", "nombre")
+
+    '    cargar_lista(lst_clubes, leo_tabla("Clubes"), "codClub", "nombre")
+    'End Sub
 
     Private Sub cargar_combo(ByRef combo As ComboBox, ByVal nombre_tabla As DataTable, ByVal pk As String, ByVal descrip As String)
 
@@ -75,53 +82,60 @@
     End Sub
 
     Private Sub cargar_combos()
-        cargar_combo(cmb_apellido_profe, leo_tabla("Profesores"), "codProfe", "apellido")
+        'cargar_combo(cmb_apellido_profe, leo_tabla("Profesores"), "codProfe", "apellido")
 
     End Sub
 
-    Private Sub cargarListas()
-        cargar_lista(lst_clubes, leo_tabla("Clubes"), "codClub", "nombre")
+    Private Sub cargar_listas()
+
+        Dim tabla As New Data.DataTable
+        Dim consulta As String = ""
+        consulta = "SELECT * FROM Clubes INNER JOIN ProfeXClub ON Clubes.codClub = ProfeXClub.codClub"
+        consulta &= " WHERE codProfe = " & Me.txt_codProfe.Text
+        tabla = acceso.ejecutar(consulta)
+        cargar_lista(lst_clubesTrabajo, tabla, "codClub", "nombre")
+        consulta = "SELECT codClub, nombre FROM Clubes WHERE codClub NOT IN "
+        consulta &= "(SELECT codClub FROM ProfeXClub WHERE codProfe = " & Me.txt_codProfe.Text & ")"
+        tabla = acceso.ejecutar(consulta)
+        cargar_lista(lst_clubes, tabla, "codClub", "nombre")
+
     End Sub
 
-    'HASTA ACA LLEGUE A HACER, EL RESTO ES LO QUE QUEDÓ DEL ANTERIOR
+    Private Function validarCampos()
 
-    'Private Function validarCampos()
+        If txt_codProfe.Text = "" Then
+            MsgBox("Código de profesor no puede estar vacío", MsgBoxStyle.Critical, "Importante")
+            Me.txt_codProfe.Focus()
+            Return False
+        End If
 
-    '    If txt_codProfesor.Text = "" Then
-    '        MsgBox("Código de profesor no puede estar vacío", MsgBoxStyle.Critical, "Importante")
-    '        Me.txt_codProfesor.Focus()
-    '        Return False
-    '    End If
+        'If cmb_club.SelectedText = "" Then
+        '    MsgBox("Debe seleccionar un club", MsgBoxStyle.Critical, "Importante")
+        '    Me.cmb_club.Focus()
+        '    Return False
+        'End If
 
-    '    'If cmb_club.SelectedText = "" Then
-    '    '    MsgBox("Debe seleccionar un club", MsgBoxStyle.Critical, "Importante")
-    '    '    Me.cmb_club.Focus()
-    '    '    Return False
-    '    'End If
+        Return True
+    End Function
 
-    '    Return True
-    'End Function
+    Private Sub cambiarEntradas(ByVal x As Boolean)
+        limpiarCampos()
+        Me.txt_codProfe.Enabled = x
+        Me.txt_nombre_profe.Enabled = x
+        Me.txt_apellido.Enabled = x
+        'Me.cmb_club.Enabled = x
+    End Sub
 
-    'Private Sub cambiarEntradas(ByVal x As Boolean)
-    '    limpiarCampos()
-    '    Me.txt_apellido_profesor.Enabled = x
-    '    Me.txt_nombre_profe.Enabled = x
-    '    Me.txt_codProfesor.Enabled = x
-    '    Me.cmb_club.Enabled = x
-    'End Sub
-
-    'Private Sub cambiarBotones(ByVal x As Boolean)
-    '    Me.cmd_guardar.Enabled = x
-    '    Me.cmd_eliminar.Enabled = x
-    '    Me.cmd_nuevo.Enabled = x
-    '    Me.cmd_salir.Enabled = x
-    '    Me.cmd_cancelar.Enabled = x
-    '    Me.cmd_buscarProf.Enabled = x
-    '    Me.cmd_nuevoClub.Enabled = x
-    '    Me.cmd_nuevoprof.Enabled = x
-    'End Sub
-
-
+    Private Sub cambiarBotones(ByVal x As Boolean)
+        'Me.cmd_guardar.Enabled = x
+        ' Me.cmd_eliminar.Enabled = x
+        ' Me.cmd_nuevo.Enabled = x
+        Me.cmd_salir.Enabled = x
+        'Me.cmd_cancelar.Enabled = x
+        Me.cmd_buscarProf.Enabled = x
+        'Me.cmd_nuevoClub.Enabled = x
+        Me.cmd_nuevoprof.Enabled = x
+    End Sub
 
     ''BASE DE DATOS
     Private Function leo_tabla(ByRef _tabla) As DataTable
@@ -130,42 +144,6 @@
         Return acceso.ejecutar(consulta)
     End Function
 
-    'Private Sub cargar_grilla()
-
-    '    'REVISAR ESTA CONSULTA, SE DEBE HACER UN JOIN ENTRE VARIOS ASI SE MUESTRA EN LA GRILLA 
-    '    'JOIN ENTRE PROFESOR Y CLUB
-
-    '    'Dim consulta As String = ""
-    '    'consulta = "SELECT TiposDoc.tipoDoc AS Codigo, TiposDoc.nombre AS Nombre "
-    '    'consulta &= "FROM ProfeXClub"
-
-    '    'grid_profxclub.DataSource = acceso.ejecutar(consulta)
-
-    'End Sub
-
-    'Private Function modificar() As termino
-
-    '    'REVISAR ESTA CONSULTA SQL TAMBIENNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN
-
-    '    Dim consulta As String = ""
-    '    ' consulta = "UPDATE TiposDoc SET nombre = '" & Me.txt_nombre.Text & "' "
-    '    'consulta &= "WHERE codEspe = " & Me.txt_codTipoDoc.Text
-    '    'acceso.ejecutarNonConsulta(consulta)
-    '    Return termino.aprobado
-
-    'End Function
-
-    'Private Function insertar() As termino
-
-    '    'REVISAR ESTA CONSULTA SQL TAMBIENNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN
-
-    '    '        Dim consulta As String = ""
-    '    '       consulta = "INSERT into TiposDoc "
-    '    '      consulta &= "values ('" & Me.txt_codTipoDoc.Text & "', '" & Me.txt_nombre.Text & "')"
-    '    '     acceso.ejecutarNonConsulta(consulta)
-    '    Return termino.aprobado
-
-    'End Function
 
     'Private Function validar_existencia() As termino
 
@@ -182,131 +160,115 @@
     '    End If
     'End Function
 
-    'Private Function delete() As termino
-
-    '    'REVISAR ESTA CONSULTA SQL TAMBIENNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN
-
-    '    '   Dim consulta As String = "DELETE FROM TiposDoc WHERE tipoDoc = " & Me.txt_codTipoDoc.Text
-    '    'acceso.ejecutarNonConsulta(consulta)
-    '    Return termino.aprobado
-    'End Function
-    ''----FIN BD
-
-
-
-    'Private Sub cmd_nuevo_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
-    '    cambiarBotones(False)
-    '    cambiarEntradas(True)
-    '    cmd_buscarProf.Enabled = True
-    '    cmd_nuevoClub.Enabled = True
-    '    cmd_nuevoprof.Enabled = True
-    '    cmd_guardar.Enabled = True
-
-    'End Sub
-
-    'Private Sub cmd_guardar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
-    '    If validarCampos() = True Then
-    '        If Me.accion = estado.insertar Then
-    '            If validar_existencia() = termino.aprobado Then
-    '                Me.insertar()
-    '                MessageBox.Show("Asignacion de profesor a club realizada con éxito", "Operación completa")
-
-    '            Else : MessageBox.Show("El profesor ya se encuentra asignado al club seleccionado", "Error")
-
-
-
-    '            End If
-    '        Else : Me.modificar()
-    '            MessageBox.Show("Asignación de profesor a club realizada con éxito", "Operación completa")
-    '        End If
-
-    '        Me.inicio()
-    '    End If
-    'End Sub
-
-    'Private Sub cmd_eliminar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
-
-    '    'REVISAR ELIMINACION POR EL TEMA DE TRABAJAR CON VARIAS TABLAS
-
-    '    If txt_codProfesor.Text = "" Then
-    '        MsgBox("No se ha seleccionado ningún profesor", MsgBoxStyle.Critical, "Error")
-    '    Else
-    '        If MessageBox.Show("¿Está seguro que desea eliminar el profesor " & txt_apellido_profesor.Text & ", " _
-    '                           & txt_nombre_profesor.Text & "?", "Atención", MessageBoxButtons.OKCancel, _
-    '                           MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1) = Windows.Forms.DialogResult.OK Then
-    '            If Me.delete() = termino.aprobado Then
-    '                MessageBox.Show("Profesor asignado a club eliminado", "Operación completada")
-    '                Me.inicio()
-    '            End If
-    '        End If
-    '    End If
-    'End Sub
-
     'Private Sub cmd_cancelar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
     '    Me.inicio()
     'End Sub
 
-    'Private Sub cmd_buscar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmd_buscarProf.Click
+    Private Sub cmd_buscarProf_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmd_buscarProf.Click
 
-    '    Me.cmd_cancelar.Enabled = True
+        If Me.txt_codProfe.Text <> "" Then
+            Dim consulta As String = ""
+            Dim dt As New Data.DataTable
+            consulta = "SELECT * FROM Profesores WHERE codProfe = " & Me.txt_codProfe.Text
+            dt = acceso.ejecutar(consulta)
 
-    '    If txt_codProfesor.Text = "" Then
-    '        MsgBox("Ingrese un código de profesor", MsgBoxStyle.Critical, "Importante")
-    '        txt_codProfesor.Focus()
+            If dt.Rows.Count = 0 Then
+                MsgBox("No existe ningún profesor con ese código", MsgBoxStyle.Critical, "Importante")
+                Me.limpiarCampos()
+                txt_codProfe.Focus()
+            ElseIf dt.Rows.Count = 1 Then
+                cambiarEntradas(True)
+                Me.txt_codProfe.Text = dt.Rows(0)("codProfe")
+                Me.txt_nombre_profe.Text = dt.Rows(0)("nombre")
+                Me.txt_apellido.Text = dt.Rows(0)("apellido")
+                cargar_listas()
+            End If
+            Return
+        End If
 
-    '    Else
+        If txt_apellido.Text <> "" Then
+            Dim consulta As String = ""
+            Dim dt As New Data.DataTable
+            consulta = "SELECT * FROM Profesores WHERE apellido LIKE '" & Me.txt_apellido.Text & "'"
+            dt = acceso.ejecutar(consulta)
 
-    '        Dim consulta As String = ""
-    '        Dim dt As New Data.DataTable
-    '        consulta = "SELECT * FROM Profesores WHERE codProfe = " & Me.txt_codProfesor.Text
-    '        dt = acceso.ejecutar(consulta)
+            If dt.Rows.Count = 0 Then
+                MsgBox("No existe ningún profesor con ese apellido", MsgBoxStyle.Critical, "Importante")
+                Me.limpiarCampos()
+                txt_codProfe.Focus()
+            ElseIf dt.Rows.Count = 1 Then
+                cambiarEntradas(True)
+                Me.txt_codProfe.Text = dt.Rows(0)("codProfe")
+                Me.txt_nombre_profe.Text = dt.Rows(0)("nombre")
+                Me.txt_apellido.Text = dt.Rows(0)("apellido")
+            Else
+                Me.txt_codProfe.Visible = False
+                Me.cmb_codProfe.Visible = True
+                cargar_combo(cmb_codProfe, dt, "codProfe", "codProfe")
+            End If
+        End If
 
-    '        If dt.Rows.Count = 0 Then
-    '            MsgBox("No existe ningún profesor con ese código", MsgBoxStyle.Critical, "Importante")
-    '            Me.limpiarCampos()
-    '            txt_codProfesor.Focus()
-    '        Else
-    '            cambiarEntradas(True)
-    '            Me.txt_codProfesor.Text = dt.Rows(0)("codProfe")
-    '            Me.txt_nombre_profe.Text = dt.Rows(0)("nombre")
-    '            Me.txt_apellido_profesor.Text = dt.Rows(0)("apellido")
+        If Me.txt_codProfe.Text <> "" And Me.txt_apellido.Text <> "" And Me.txt_nombre_profe.Text <> "" Then
+            cargar_listas()
+        End If
+    End Sub
 
-    '        End If
-    '    End If
-    'End Sub
 
-    'Private Sub cmd_salir_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmd_salir.Click
-    '    Me.Close()
-    'End Sub
 
-    'Private Sub frm_ABMTipoDocumento_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-    '    Me.inicio()
-    'End Sub
+    Private Sub cmd_salir_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmd_salir.Click
+        Me.Close()
+    End Sub
 
-    'Private Sub grid_tipoDoc_CellMouseDoubleClick(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellMouseEventArgs)
+    Private Sub frm_ABMTipoDocumento_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        Me.inicio()
+    End Sub
 
-    '    'Dim codigoSeleccionado As String = Me.grid_tipoDoc.CurrentRow.Cells(0).Value
+    Private Sub cmb_codProfe_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmb_codProfe.SelectionChangeCommitted
+        Dim consulta As String = ""
+        Dim dt As New Data.DataTable
+        consulta = "SELECT * FROM Profesores WHERE codProfe = " & Me.cmb_codProfe.SelectedValue
+        dt = acceso.ejecutar(consulta)
+        Me.txt_apellido.Text = dt.Rows(0)("apellido")
+        Me.txt_nombre_profe.Text = dt.Rows(0)("nombre")
+        Me.txt_codProfe.Text = cmb_codProfe.Text
+        cargar_listas()
+    End Sub
 
-    '    'Dim tabla As New Data.DataTable
+    Private Sub cmd_agregar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmd_agregar.Click
+        Dim consulta As String
+        Dim tabla As New Data.DataTable
 
-    '    'Dim consulta As String = ""
-    '    'consulta = "SELECT * FROM TiposDoc WHERE tipoDoc = " & codigoSeleccionado
+        consulta = "SELECT codClub, nombre FROM Clubes WHERE codClub NOT IN (SELECT codClub"
+        consulta &= " FROM ProfeXClub WHERE codProfe = " & Me.txt_codProfe.Text & ")"
+        tabla = acceso.ejecutar(consulta)
+        If tabla.Rows.Count > 0 Then
+            consulta = "INSERT INTO ProfeXClub (codProfe, codClub) "
+            consulta &= "VALUES (" & Me.txt_codProfe.Text & ", " & Me.lst_clubes.SelectedValue & ")"
+            tabla = acceso.ejecutar(consulta)
+            Me.cargar_listas()
+        End If
 
-    '    'cambiarEntradas(True)
-    '    'tabla = acceso.ejecutar(consulta)
 
-    '    'Me.txt_codTipoDoc.Text = tabla.Rows(0)("tipoDoc")
-    '    'Me.txt_nombre.Text = tabla.Rows(0)("nombre")
 
-    '    'cambiarBotones(False)
-    '    'Me.cmd_cancelar.Enabled = True
-    '    'Me.cmd_eliminar.Enabled = True
-    '    'Me.cmd_guardar.Enabled = True
+    End Sub
 
-    '    'Me.txt_codTipoDoc.Enabled = False
-    '    'txt_nombre.Focus()
+    Private Sub cmd_quitar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmd_quitar.Click
+        Dim consulta As String
+        Dim tabla As New Data.DataTable
+        consulta = "SELECT * FROM ProfeXClub WHERE codProfe = " & Me.txt_codProfe.Text
+        tabla = acceso.ejecutar(consulta)
+        If tabla.Rows.Count > 0 Then
+            consulta = "DELETE FROM ProfeXClub WHERE codClub = " & Me.lst_clubesTrabajo.SelectedValue & " AND codProfe = " & Me.txt_codProfe.Text & ""
+            tabla = acceso.ejecutar(consulta)
+            Me.cargar_listas()
+        End If
+    End Sub
 
-    '    'Me.accion = estado.modificar
-    'End Sub
+    Private Sub cmd_nuevoprof_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmd_nuevoprof.Click
+        frm_ABMProfesores.Show()
+    End Sub
 
+    Private Sub cmd_cancelar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmd_cancelar.Click
+        Me.inicio()
+    End Sub
 End Class

@@ -22,15 +22,18 @@ Partial Class proc_profesxclub
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(proc_profesxclub))
         Me.gbo_profesor = New System.Windows.Forms.GroupBox()
-        Me.cmb_apellido_profe = New System.Windows.Forms.ComboBox()
+        Me.cmd_cancelar = New System.Windows.Forms.Button()
         Me.cmd_nuevoprof = New System.Windows.Forms.Button()
         Me.cmd_buscarProf = New System.Windows.Forms.Button()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.lbl_nombre_profesor = New System.Windows.Forms.Label()
         Me.lbl_codigo_profesor = New System.Windows.Forms.Label()
         Me.txt_codProfe = New System.Windows.Forms.TextBox()
+        Me.txt_apellido = New System.Windows.Forms.TextBox()
         Me.txt_nombre_profe = New System.Windows.Forms.TextBox()
+        Me.cmb_codProfe = New System.Windows.Forms.ComboBox()
         Me.cmd_salir = New System.Windows.Forms.Button()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.cmd_quitar = New System.Windows.Forms.Button()
@@ -45,14 +48,16 @@ Partial Class proc_profesxclub
         '
         'gbo_profesor
         '
-        Me.gbo_profesor.Controls.Add(Me.cmb_apellido_profe)
+        Me.gbo_profesor.Controls.Add(Me.cmd_cancelar)
         Me.gbo_profesor.Controls.Add(Me.cmd_nuevoprof)
         Me.gbo_profesor.Controls.Add(Me.cmd_buscarProf)
         Me.gbo_profesor.Controls.Add(Me.Label1)
         Me.gbo_profesor.Controls.Add(Me.lbl_nombre_profesor)
         Me.gbo_profesor.Controls.Add(Me.lbl_codigo_profesor)
         Me.gbo_profesor.Controls.Add(Me.txt_codProfe)
+        Me.gbo_profesor.Controls.Add(Me.txt_apellido)
         Me.gbo_profesor.Controls.Add(Me.txt_nombre_profe)
+        Me.gbo_profesor.Controls.Add(Me.cmb_codProfe)
         Me.gbo_profesor.Location = New System.Drawing.Point(12, 12)
         Me.gbo_profesor.Name = "gbo_profesor"
         Me.gbo_profesor.Size = New System.Drawing.Size(487, 93)
@@ -60,13 +65,14 @@ Partial Class proc_profesxclub
         Me.gbo_profesor.TabStop = False
         Me.gbo_profesor.Text = "Profesor"
         '
-        'cmb_apellido_profe
+        'cmd_cancelar
         '
-        Me.cmb_apellido_profe.FormattingEnabled = True
-        Me.cmb_apellido_profe.Location = New System.Drawing.Point(101, 59)
-        Me.cmb_apellido_profe.Name = "cmb_apellido_profe"
-        Me.cmb_apellido_profe.Size = New System.Drawing.Size(154, 21)
-        Me.cmb_apellido_profe.TabIndex = 22
+        Me.cmd_cancelar.Image = CType(resources.GetObject("cmd_cancelar.Image"), System.Drawing.Image)
+        Me.cmd_cancelar.Location = New System.Drawing.Point(252, 18)
+        Me.cmd_cancelar.Name = "cmd_cancelar"
+        Me.cmd_cancelar.Size = New System.Drawing.Size(30, 26)
+        Me.cmd_cancelar.TabIndex = 30
+        Me.cmd_cancelar.UseVisualStyleBackColor = True
         '
         'cmd_nuevoprof
         '
@@ -116,10 +122,17 @@ Partial Class proc_profesxclub
         '
         'txt_codProfe
         '
-        Me.txt_codProfe.Location = New System.Drawing.Point(101, 22)
+        Me.txt_codProfe.Location = New System.Drawing.Point(101, 23)
         Me.txt_codProfe.Name = "txt_codProfe"
         Me.txt_codProfe.Size = New System.Drawing.Size(59, 20)
         Me.txt_codProfe.TabIndex = 2
+        '
+        'txt_apellido
+        '
+        Me.txt_apellido.Location = New System.Drawing.Point(101, 59)
+        Me.txt_apellido.Name = "txt_apellido"
+        Me.txt_apellido.Size = New System.Drawing.Size(145, 20)
+        Me.txt_apellido.TabIndex = 2
         '
         'txt_nombre_profe
         '
@@ -127,6 +140,16 @@ Partial Class proc_profesxclub
         Me.txt_nombre_profe.Name = "txt_nombre_profe"
         Me.txt_nombre_profe.Size = New System.Drawing.Size(145, 20)
         Me.txt_nombre_profe.TabIndex = 2
+        '
+        'cmb_codProfe
+        '
+        Me.cmb_codProfe.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cmb_codProfe.FormattingEnabled = True
+        Me.cmb_codProfe.Location = New System.Drawing.Point(101, 23)
+        Me.cmb_codProfe.Name = "cmb_codProfe"
+        Me.cmb_codProfe.Size = New System.Drawing.Size(58, 21)
+        Me.cmb_codProfe.TabIndex = 23
+        Me.cmb_codProfe.Visible = False
         '
         'cmd_salir
         '
@@ -182,11 +205,11 @@ Partial Class proc_profesxclub
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(54, 32)
+        Me.Label2.Location = New System.Drawing.Point(55, 35)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(98, 13)
+        Me.Label2.Size = New System.Drawing.Size(108, 13)
         Me.Label2.TabIndex = 1
-        Me.Label2.Text = "Clubes Registrados"
+        Me.Label2.Text = "Clubes No Asignados"
         '
         'lst_clubesTrabajo
         '
@@ -230,7 +253,6 @@ Partial Class proc_profesxclub
     Friend WithEvents cmd_nuevoprof As System.Windows.Forms.Button
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents cmd_salir As System.Windows.Forms.Button
-    Friend WithEvents cmb_apellido_profe As System.Windows.Forms.ComboBox
     Friend WithEvents txt_codProfe As System.Windows.Forms.TextBox
     Friend WithEvents GroupBox1 As System.Windows.Forms.GroupBox
     Friend WithEvents cmd_quitar As System.Windows.Forms.Button
@@ -239,4 +261,7 @@ Partial Class proc_profesxclub
     Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents lst_clubesTrabajo As System.Windows.Forms.ListBox
     Friend WithEvents lst_clubes As System.Windows.Forms.ListBox
+    Friend WithEvents cmb_codProfe As System.Windows.Forms.ComboBox
+    Friend WithEvents txt_apellido As System.Windows.Forms.TextBox
+    Friend WithEvents cmd_cancelar As System.Windows.Forms.Button
 End Class
