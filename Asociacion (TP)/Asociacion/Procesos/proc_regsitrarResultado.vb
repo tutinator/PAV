@@ -17,9 +17,10 @@
     End Sub
 
     Private Sub inicio()
-        cargar_grilla()
         Me.cargar_combos()
-        cambiarEntradas(False)
+        Me.cargar_grilla_competencias()
+        Me.cargar_grilla_inscripciones()
+        'cambiarEntradas(False)
         Me.cmb_torneo.Enabled = True
         Me.cmb_año.Enabled = True
         Me.cmb_especialidad.Enabled = True
@@ -66,7 +67,6 @@
     End Function
 
     Private Sub cambiarEntradas(ByVal x As Boolean)
-        limpiarCampos()
         Me.cmb_año.Enabled = x
         Me.cmb_torneo.Enabled = x
         Me.cmb_especialidad.Enabled = x
@@ -79,14 +79,23 @@
         Return acceso.ejecutar(consulta)
     End Function
 
-    Private Sub cargar_grilla()
+    Private Sub cargar_grilla_competencias()
 
         Dim consulta As String = ""
         consulta = "SELECT Torneos.descripcion AS Torneo, Competencias.año AS Año, Especialidades.descripcion AS Especialidad, Competencias.fecha AS Fecha"
         consulta &= " FROM Competencias INNER JOIN Especialidades ON Competencias.codEspe = Especialidades.codEspe INNER JOIN"
         consulta &= " TorneosXAño ON Competencias.codTorneo = TorneosXAño.codTorneo AND Competencias.año = TorneosXAño.año INNER JOIN Torneos ON Competencias.codTorneo = Torneos.codTorneo"
         grid_competencias.DataSource = acceso.ejecutar(consulta)
+    End Sub
 
+    Private Sub cargar_grilla_inscripciones()
+        Dim consulta2 As String = ""
+        consulta2 = "SELECT Nadadores.apellido AS Apellido, Nadadores.nombre AS Nombre, Torneos.descripcion AS Torneo, Inscripciones.año, "
+        consulta2 &= "Especialidades.descripcion AS Especialidad, Inscripciones.tiempo as Tiempo FROM Inscripciones INNER JOIN "
+        consulta2 &= "Torneos ON Inscripciones.codTorneo = Torneos.codTorneo INNER JOIN "
+        consulta2 &= "Especialidades ON Inscripciones.codEspe = Especialidades.codEspe INNER JOIN "
+        consulta2 &= "Nadadores ON Inscripciones.codNad = Nadadores.codNad"
+        grid_inscripciones.DataSource = acceso.ejecutar(consulta2)
     End Sub
 
     Private Sub cargar_combo(ByRef combo As ComboBox, ByVal nombre_tabla As DataTable, ByVal pk As String, ByVal descrip As String)
@@ -101,7 +110,7 @@
     Private Sub cargar_combos()
         Dim tabla As Data.DataTable
         Dim consulta As String = ""
-        consulta = "SELECT * FROM Competencias INNER JOIN Torneos ON Competencias.codTorneo = Torneos.codTorneo"
+        consulta = "SELECT Torneos.codTorneo, Torneos.descripcion FROM Competencias INNER JOIN Torneos ON Competencias.codTorneo = Torneos.codTorneo"
         tabla = acceso.ejecutar(consulta)
         cargar_combo(cmb_torneo, tabla, "codTorneo", "descripcion")
     End Sub
@@ -109,45 +118,51 @@
     Private Function modificar() As termino
 
         Dim consulta As String = ""
-        consulta = "UPDATE Competencias SET fecha = '" & Me.dtp_fecha.Value & "'"
-        consulta &= " WHERE codTorneo = " & Me.cmb_torneo.SelectedValue & " AND año = " & Me.cmb_año.SelectedValue & ""
-        consulta &= " AND codEspe = " & Me.cmb_especialidad.SelectedValue
-        acceso.ejecutarNonConsulta(consulta)
-        Return termino.aprobado
-
-    End Function
-
-    Private Function insertar() As termino
-
-        Dim consulta As String = ""
-        consulta = "INSERT INTO Competencias (codTorneo, año, codEspe, fecha)"
-        consulta &= "VALUES (" & Me.cmb_torneo.SelectedValue & ", " & Me.cmb_año.SelectedValue & ", "
-        consulta &= Me.cmb_especialidad.SelectedValue & ", '" & Me.dtp_fecha.Value & "')"
-        acceso.ejecutarNonConsulta(consulta)
-        Return termino.aprobado
-
-    End Function
-
-    Private Function validar_existencia() As termino
-
-        Dim consulta As String = ""
-        Dim tabla As Data.DataTable
-        consulta = "SELECT * FROM Competencias WHERE codTorneo = " & Me.cmb_torneo.SelectedValue & " AND año = " & Me.cmb_año.SelectedValue
-        consulta &= " AND codEspe = " & Me.cmb_especialidad.SelectedValue
-        tabla = acceso.ejecutar(consulta)
-        If tabla.Rows.Count() = 1 Then
-            Return termino.rechazado
+        consulta = "UPDATE Inscripciones SET tiempo = "
+        If txt_tiempo.Text = "  :  :" Then
+            consulta &= "NULL"
         Else
-            Return termino.aprobado
+            consulta &= "'" & txt_tiempo.Text & "'"
         End If
-    End Function
+        consulta &= " WHERE codTorneo = " & Me.cmb_torneo.SelectedValue & " AND año = " & Me.cmb_año.SelectedValue & ""
+        consulta &= " AND codEspe = " & Me.cmb_especialidad.SelectedValue & " AND codNad = " & Me.txt_cod_nad.Text
 
-    Private Function delete() As termino
-        Dim consulta As String = "DELETE FROM Competencias WHERE codTorneo = " & Me.cmb_torneo.SelectedValue
-        consulta &= " AND año = " & Me.cmb_año.SelectedValue & " AND codEspe = " & Me.cmb_especialidad.SelectedValue
         acceso.ejecutarNonConsulta(consulta)
         Return termino.aprobado
+
     End Function
+
+    'Private Function insertar() As termino
+
+    '    Dim consulta As String = ""
+    '    consulta = "INSERT INTO Competencias (codTorneo, año, codEspe, fecha)"
+    '    consulta &= "VALUES (" & Me.cmb_torneo.SelectedValue & ", " & Me.cmb_año.SelectedValue & ", "
+    '    'consulta &= Me.cmb_especialidad.SelectedValue & ", '" & Me.dtp_fecha.Value & "')"
+    '    acceso.ejecutarNonConsulta(consulta)
+    '    Return termino.aprobado
+
+    'End Function
+
+    'Private Function validar_existencia() As termino
+
+    '    Dim consulta As String = ""
+    '    Dim tabla As Data.DataTable
+    '    consulta = "SELECT * FROM Competencias WHERE codTorneo = " & Me.cmb_torneo.SelectedValue & " AND año = " & Me.cmb_año.SelectedValue
+    '    consulta &= " AND codEspe = " & Me.cmb_especialidad.SelectedValue
+    '    tabla = acceso.ejecutar(consulta)
+    '    If tabla.Rows.Count() = 1 Then
+    '        Return termino.rechazado
+    '    Else
+    '        Return termino.aprobado
+    '    End If
+    'End Function
+
+    'Private Function delete() As termino
+    '    Dim consulta As String = "DELETE FROM Competencias WHERE codTorneo = " & Me.cmb_torneo.SelectedValue
+    '    consulta &= " AND año = " & Me.cmb_año.SelectedValue & " AND codEspe = " & Me.cmb_especialidad.SelectedValue
+    '    acceso.ejecutarNonConsulta(consulta)
+    '    Return termino.aprobado
+    'End Function
 
     '----FIN BD
 
@@ -155,8 +170,8 @@
     Private Sub cmb_torneo_SelectedValueChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmb_torneo.SelectedValueChanged
         Dim tabla As New DataTable
         Dim consulta As String = ""
-        consulta = "SELECT * FROM Competencias INNER JOIN Torneos ON Competencias.codTorneo = Torneos.codTorneo"
-        consulta &= "INNER JOIN Especialidades ON Competencias.codEspe = Especialidades.codEspe WHERE Torneos.descripcion = '" & Me.cmb_torneo.Text & "'"
+        consulta = "SELECT Competencias.año, Especialidades.codEspe, Especialidades.descripcion FROM Competencias INNER JOIN Torneos ON Competencias.codTorneo = Torneos.codTorneo"
+        consulta &= " INNER JOIN Especialidades ON Competencias.codEspe = Especialidades.codEspe WHERE Torneos.descripcion = '" & Me.cmb_torneo.Text & "'"
         tabla = acceso.ejecutar(consulta)
         cargar_combo(cmb_año, tabla, "año", "año")
         cargar_combo(cmb_especialidad, tabla, "codEspe", "descripcion")
@@ -216,6 +231,7 @@
 
     Private Sub cmd_cancelar_competencia_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmd_cancelar_competencia.Click
         Me.cargar_combos()
+        Me.cargar_grilla_competencias()
         Me.limpiarCampos_competencia()
     End Sub
     '------FIN PARTE COMPETENCIA
@@ -227,10 +243,10 @@
         If Me.txt_cod_nad.Text <> "" Then
             Dim consulta As String = ""
             Dim dt As New Data.DataTable
-            consulta = "SELECT Nadadores.codNad Nadadores.nombre, Nadadores.apellido, Nadadores.codNad, Inscripciones.codEspe, Inscripciones.año, Inscripciones.codTorneo"
-            consulta &= " Inscripciones INNER JOIN Nadadores ON Inscripciones.codNad = Nadadores.codNad"
-            consulta &= " WHERE codTorneo = " & Me.cmb_torneo.SelectedValue & "AND codEspe = " & Me.cmb_especialidad.SelectedValue
-            consulta &= " AND año = " & Me.cmb_año.SelectedValue & " AND codNad = " & Me.txt_cod_nad.Text
+            consulta = "SELECT Nadadores.codNad, Nadadores.nombre, Nadadores.apellido, Inscripciones.codEspe, Inscripciones.año, Inscripciones.codTorneo"
+            consulta &= " FROM Inscripciones INNER JOIN Nadadores ON Inscripciones.codNad = Nadadores.codNad"
+            consulta &= " WHERE codTorneo = " & Me.cmb_torneo.SelectedValue & " AND codEspe = " & Me.cmb_especialidad.SelectedValue
+            consulta &= " AND año = " & Me.cmb_año.SelectedValue & " AND Nadadores.codNad = " & Me.txt_cod_nad.Text
             dt = acceso.ejecutar(consulta)
 
             If dt.Rows.Count = 0 Then
@@ -270,4 +286,6 @@
         '    cargar_listas()
         'End If
     End Sub
+
+
 End Class
