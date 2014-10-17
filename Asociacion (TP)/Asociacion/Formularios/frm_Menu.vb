@@ -57,5 +57,9 @@
     Private Sub InscripcionACompetenciaToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles InscripcionACompetenciaToolStripMenuItem.Click
         proc_inscripciones.Show()
     End Sub
+
+    Private Sub RegistrarResultadosToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles RegistrarResultadosToolStripMenuItem.Click
+        Proc_Registro_resultado.Show()
+    End Sub
 End Class
 

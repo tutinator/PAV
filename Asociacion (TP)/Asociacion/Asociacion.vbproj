@@ -184,6 +184,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>natacionDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Procesos\Proc_Registro_resultado.Designer.vb">
+      <DependentUpon>Proc_Registro_resultado.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Procesos\Proc_Registro_resultado.vb">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Formularios\frm_AMBTipoDocumento.resx">
@@ -227,6 +233,9 @@
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Procesos\Proc_Registro_resultado.resx">
+      <DependentUpon>Proc_Registro_resultado.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
