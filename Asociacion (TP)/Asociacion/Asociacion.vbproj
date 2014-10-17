@@ -15,6 +15,7 @@
     <MyType>WindowsForms</MyType>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -27,7 +28,6 @@
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
@@ -152,6 +152,12 @@
     <Compile Include="Procesos\proc_inscripciones.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Procesos\proc_nadadoresXEspe.Designer.vb">
+      <DependentUpon>proc_nadadoresXEspe.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Procesos\proc_nadadoresXEspe.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Procesos\proc_profesxclub.Designer.vb">
       <DependentUpon>proc_profesxclub.vb</DependentUpon>
     </Compile>
@@ -215,6 +221,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Procesos\proc_inscripciones.resx">
       <DependentUpon>proc_inscripciones.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Procesos\proc_nadadoresXEspe.resx">
+      <DependentUpon>proc_nadadoresXEspe.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Procesos\proc_profesxclub.resx">
       <DependentUpon>proc_profesxclub.vb</DependentUpon>
