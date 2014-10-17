@@ -61,5 +61,9 @@
     Private Sub NadadoresPorEspecialidadToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles NadadoresPorEspecialidadToolStripMenuItem.Click
         proc_nadadoresXEspe.Show()
     End Sub
+
+    Private Sub ProfesoresPorEspecialidadToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ProfesoresPorEspecialidadToolStripMenuItem.Click
+        proc_profeXEspe.Show()
+    End Sub
 End Class
 

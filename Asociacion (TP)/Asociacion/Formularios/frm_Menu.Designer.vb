@@ -44,6 +44,7 @@ Partial Class frm_Menu
         Me.ProfesoresPorClubToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.NadadoresPorProfesorToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.NadadoresPorClubToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.NadadoresPorEspecialidadToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ListadoNadadoresPorProfesorToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.TiemposDeUnNadadorToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.InscriptosATorneoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -61,7 +62,7 @@ Partial Class frm_Menu
         Me.ToolStripStatusLabel3 = New System.Windows.Forms.ToolStripStatusLabel()
         Me.lbl_hora = New System.Windows.Forms.ToolStripStatusLabel()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
-        Me.NadadoresPorEspecialidadToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ProfesoresPorEspecialidadToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip1.SuspendLayout()
         Me.StatusStrip1.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -178,7 +179,7 @@ Partial Class frm_Menu
         '
         'ProfeToolStripMenuItem
         '
-        Me.ProfeToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ProfesoresPorClubToolStripMenuItem, Me.NadadoresPorProfesorToolStripMenuItem, Me.NadadoresPorClubToolStripMenuItem, Me.NadadoresPorEspecialidadToolStripMenuItem})
+        Me.ProfeToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ProfesoresPorClubToolStripMenuItem, Me.NadadoresPorProfesorToolStripMenuItem, Me.NadadoresPorClubToolStripMenuItem, Me.NadadoresPorEspecialidadToolStripMenuItem, Me.ProfesoresPorEspecialidadToolStripMenuItem})
         Me.ProfeToolStripMenuItem.Name = "ProfeToolStripMenuItem"
         Me.ProfeToolStripMenuItem.Size = New System.Drawing.Size(220, 22)
         Me.ProfeToolStripMenuItem.Text = "Listados"
@@ -200,6 +201,12 @@ Partial Class frm_Menu
         Me.NadadoresPorClubToolStripMenuItem.Name = "NadadoresPorClubToolStripMenuItem"
         Me.NadadoresPorClubToolStripMenuItem.Size = New System.Drawing.Size(220, 22)
         Me.NadadoresPorClubToolStripMenuItem.Text = "Nadadores por Club"
+        '
+        'NadadoresPorEspecialidadToolStripMenuItem
+        '
+        Me.NadadoresPorEspecialidadToolStripMenuItem.Name = "NadadoresPorEspecialidadToolStripMenuItem"
+        Me.NadadoresPorEspecialidadToolStripMenuItem.Size = New System.Drawing.Size(220, 22)
+        Me.NadadoresPorEspecialidadToolStripMenuItem.Text = "Nadadores por Especialidad"
         '
         'ListadoNadadoresPorProfesorToolStripMenuItem
         '
@@ -314,11 +321,11 @@ Partial Class frm_Menu
         Me.PictureBox1.TabIndex = 2
         Me.PictureBox1.TabStop = False
         '
-        'NadadoresPorEspecialidadToolStripMenuItem
+        'ProfesoresPorEspecialidadToolStripMenuItem
         '
-        Me.NadadoresPorEspecialidadToolStripMenuItem.Name = "NadadoresPorEspecialidadToolStripMenuItem"
-        Me.NadadoresPorEspecialidadToolStripMenuItem.Size = New System.Drawing.Size(220, 22)
-        Me.NadadoresPorEspecialidadToolStripMenuItem.Text = "Nadadores por Especialidad"
+        Me.ProfesoresPorEspecialidadToolStripMenuItem.Name = "ProfesoresPorEspecialidadToolStripMenuItem"
+        Me.ProfesoresPorEspecialidadToolStripMenuItem.Size = New System.Drawing.Size(220, 22)
+        Me.ProfesoresPorEspecialidadToolStripMenuItem.Text = "Profesores por Especialidad"
         '
         'frm_Menu
         '
@@ -382,5 +389,6 @@ Partial Class frm_Menu
     Friend WithEvents PictureBox1 As System.Windows.Forms.PictureBox
     Friend WithEvents CompetenciasToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents NadadoresPorEspecialidadToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents ProfesoresPorEspecialidadToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
 
 End Class

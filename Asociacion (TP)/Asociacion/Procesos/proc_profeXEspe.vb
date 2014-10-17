@@ -1,5 +1,4 @@
-﻿Public Class proc_nadadoresXEspe
-
+﻿Public Class proc_profeXEspe
 
     Dim acceso As New accesoBD
     Dim accion As estado = estado.insertar
@@ -14,12 +13,9 @@
         rechazado
     End Enum
 
-
-    Private Sub proc_nadadoresXEspe_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+    Private Sub ProfeXEspe_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.inicio()
-
     End Sub
-
 
     'Subrutinas
 
@@ -43,7 +39,7 @@
     Private Function validarCampos()
 
         If txt_id.Text = "" Then
-            MsgBox("ID de nadador no puede estar vacío", MsgBoxStyle.Critical, "Importante")
+            MsgBox("ID de profesor no puede estar vacío", MsgBoxStyle.Critical, "Importante")
             txt_id.Focus()
             Return False
         End If
@@ -98,12 +94,12 @@
 
         Dim tabla As New Data.DataTable
         Dim consulta As String = ""
-        consulta = "SELECT * FROM Especialidades INNER JOIN NadadoresXEspe ON Especialidades.codEspe = NadadoresXEspe.codEspe"
-        consulta &= " WHERE codNad = " & Me.txt_id.Text
+        consulta = "SELECT * FROM Especialidades INNER JOIN ProfeXEspe ON Especialidades.codEspe = ProfeXEspe.codEspe"
+        consulta &= " WHERE codProfe = " & Me.txt_id.Text
         tabla = acceso.ejecutar(consulta)
-        cargar_lista(lista_esp_nadador, tabla, "codEspe", "descripcion")
+        cargar_lista(lista_esp_profesor, tabla, "codEspe", "descripcion")
         consulta = "SELECT codEspe, descripcion FROM Especialidades WHERE codEspe NOT IN "
-        consulta &= "(SELECT codEspe FROM NadadoresXEspe WHERE codNad = " & Me.txt_id.Text & ")"
+        consulta &= "(SELECT codEspe FROM ProfeXEspe WHERE codProfe = " & Me.txt_id.Text & ")"
         tabla = acceso.ejecutar(consulta)
         cargar_lista(lista_especialidades, tabla, "codEspe", "descripcion")
 
@@ -136,7 +132,7 @@
     '    End If
     'End Function
 
-   
+
 
     '----FIN BD
 
@@ -147,7 +143,7 @@
     Private Function leo_tabla_Nad(ByVal pk) As DataTable
 
         Dim consulta As String = ""
-        consulta = "SELECT * FROM Nadadores WHERE Nadadores.codNad = " & pk
+        consulta = "SELECT * FROM Profesores WHERE Profesores.codProfe = " & pk
         Return acceso.ejecutar(consulta)
 
     End Function
@@ -155,7 +151,7 @@
     Private Function leo_tabla_Nad2(ByVal ape) As DataTable
 
         Dim consulta As String = ""
-        consulta = "SELECT * FROM Nadadores WHERE apellido LIKE '" & ape & "'"
+        consulta = "SELECT * FROM Profesores WHERE apellido LIKE '" & ape & "'"
         Return acceso.ejecutar(consulta)
 
     End Function
@@ -193,13 +189,13 @@
 
             If tabla.Rows.Count > 0 Then
 
-                Me.txt_id.Text = tabla.Rows(0)("codNad")
+                Me.txt_id.Text = tabla.Rows(0)("codProfe")
                 Me.txt_apellido.Text = tabla.Rows(0)("apellido")
                 Me.txt_nombre.Text = tabla.Rows(0)("nombre")
                 Me.cargar_listas()
 
             Else
-                MsgBox("No existe ese nadador", MsgBoxStyle.Critical, "Importante")
+                MsgBox("No existe ese profesor", MsgBoxStyle.Critical, "Importante")
                 Me.limpiarCampos()
             End If
 
@@ -216,11 +212,11 @@
         Dim tabla As New Data.DataTable
 
         consulta = "SELECT codEspe, descripcion FROM Especialidades WHERE codEspe NOT IN (SELECT CodEspe"
-        consulta &= " FROM NadadoresXEspe WHERE codNad = " & Me.txt_id.Text & ")"
+        consulta &= " FROM ProfeXEspe WHERE codProfe = " & Me.txt_id.Text & ")"
         tabla = acceso.ejecutar(consulta)
 
         If tabla.Rows.Count > 0 Then
-            consulta = "INSERT INTO NadadoresXEspe (codNad, codEspe) "
+            consulta = "INSERT INTO ProfeXEspe (codNad, codEspe) "
             consulta &= "VALUES (" & Me.txt_id.Text & ", " & Me.lista_especialidades.SelectedValue & ")"
             tabla = acceso.ejecutar(consulta)
             Me.cargar_listas()
@@ -232,11 +228,11 @@
         Dim consulta As String
         Dim tabla As New Data.DataTable
 
-        consulta = "SELECT * FROM NadadoresXEspe WHERE codNad = " & Me.txt_id.Text
+        consulta = "SELECT * FROM ProfeXEspe WHERE codProfe = " & Me.txt_id.Text
         tabla = acceso.ejecutar(consulta)
 
         If tabla.Rows.Count > 0 Then
-            consulta = "DELETE FROM NadadoresXEspe WHERE codEspe = " & Me.lista_esp_nadador.SelectedValue & " AND codNad = " & Me.txt_id.Text & ""
+            consulta = "DELETE FROM ProfeXEspe WHERE codEspe = " & Me.lista_esp_profesor.SelectedValue & " AND codProfe = " & Me.txt_id.Text & ""
             tabla = acceso.ejecutar(consulta)
             Me.cargar_listas()
         End If
@@ -245,5 +241,6 @@
     Private Sub cmd_limpiar_Click(sender As Object, e As EventArgs) Handles cmd_limpiar.Click
         limpiarCampos()
     End Sub
+
 
 End Class
