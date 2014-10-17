@@ -53,5 +53,9 @@
     Private Sub CompetenciasToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CompetenciasToolStripMenuItem.Click
         ABMCompetencias.Show()
     End Sub
+
+    Private Sub InscripcionACompetenciaToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles InscripcionACompetenciaToolStripMenuItem.Click
+        proc_inscripciones.Show()
+    End Sub
 End Class
 

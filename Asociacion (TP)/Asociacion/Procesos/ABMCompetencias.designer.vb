@@ -226,7 +226,7 @@ Partial Class ABMCompetencias
         Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.GroupBox3)
         Me.Name = "ABMCompetencias"
-        Me.Text = "proc_competencias"
+        Me.Text = "Gestión de Competencias"
         Me.GroupBox3.ResumeLayout(False)
         Me.GroupBox3.PerformLayout()
         Me.GroupBox2.ResumeLayout(False)

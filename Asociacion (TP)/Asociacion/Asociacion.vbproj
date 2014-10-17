@@ -146,12 +146,6 @@
     <Compile Include="Procesos\ABMCompetencias.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Procesos\proc_inscripcion.designer.vb">
-      <DependentUpon>proc_inscripcion.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Procesos\proc_inscripcion.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="Procesos\proc_inscripciones.Designer.vb">
       <DependentUpon>proc_inscripciones.vb</DependentUpon>
     </Compile>
@@ -218,9 +212,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Procesos\ABMCompetencias.resx">
       <DependentUpon>ABMCompetencias.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Procesos\proc_inscripcion.resx">
-      <DependentUpon>proc_inscripcion.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Procesos\proc_inscripciones.resx">
       <DependentUpon>proc_inscripciones.vb</DependentUpon>

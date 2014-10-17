@@ -33,6 +33,7 @@ Partial Class frm_Menu
         Me.OtrosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.CodigosPostalesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.TiposDeDocumentoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.CompetenciasToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.VerToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.RealizacionDeTorneoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.InscripcionACompetenciaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -60,7 +61,6 @@ Partial Class frm_Menu
         Me.ToolStripStatusLabel3 = New System.Windows.Forms.ToolStripStatusLabel()
         Me.lbl_hora = New System.Windows.Forms.ToolStripStatusLabel()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
-        Me.CompetenciasToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip1.SuspendLayout()
         Me.StatusStrip1.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -130,6 +130,12 @@ Partial Class frm_Menu
         Me.TiposDeDocumentoToolStripMenuItem.Name = "TiposDeDocumentoToolStripMenuItem"
         Me.TiposDeDocumentoToolStripMenuItem.Size = New System.Drawing.Size(185, 22)
         Me.TiposDeDocumentoToolStripMenuItem.Text = "Tipos de Documento"
+        '
+        'CompetenciasToolStripMenuItem
+        '
+        Me.CompetenciasToolStripMenuItem.Name = "CompetenciasToolStripMenuItem"
+        Me.CompetenciasToolStripMenuItem.Size = New System.Drawing.Size(159, 22)
+        Me.CompetenciasToolStripMenuItem.Text = "Competencias"
         '
         'VerToolStripMenuItem
         '
@@ -306,12 +312,6 @@ Partial Class frm_Menu
         Me.PictureBox1.Size = New System.Drawing.Size(211, 216)
         Me.PictureBox1.TabIndex = 2
         Me.PictureBox1.TabStop = False
-        '
-        'CompetenciasToolStripMenuItem
-        '
-        Me.CompetenciasToolStripMenuItem.Name = "CompetenciasToolStripMenuItem"
-        Me.CompetenciasToolStripMenuItem.Size = New System.Drawing.Size(159, 22)
-        Me.CompetenciasToolStripMenuItem.Text = "Competencias"
         '
         'frm_Menu
         '

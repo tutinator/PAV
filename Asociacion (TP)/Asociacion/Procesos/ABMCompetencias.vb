@@ -95,7 +95,7 @@
         Dim consulta As String = ""
         consulta = "SELECT Torneos.descripcion AS Torneo, Competencias.año AS Año, Especialidades.descripcion AS Especialidad, Competencias.fecha AS Fecha"
         consulta &= " FROM Competencias INNER JOIN Especialidades ON Competencias.codEspe = Especialidades.codEspe INNER JOIN"
-        consulta &= " TorneosXAño ON Competencias.codTorneo = TorneosXAño.codTorneo INNER JOIN Torneos ON TorneosXAño.codTorneo = Torneos.codTorneo"
+        consulta &= " TorneosXAño ON Competencias.codTorneo = TorneosXAño.codTorneo AND Competencias.año = TorneosXAño.año INNER JOIN Torneos ON Competencias.codTorneo = Torneos.codTorneo"
         grid_competencias.DataSource = acceso.ejecutar(consulta)
 
     End Sub
@@ -166,6 +166,8 @@
 
 
     Private Sub grid_competencias_CellMouseDoubleClick(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellMouseEventArgs) Handles grid_competencias.CellMouseDoubleClick
+
+
         Dim torneoSeleccionado As String = Me.grid_competencias.CurrentRow.Cells(0).Value
         Dim añoSeleccionado As Integer = Me.grid_competencias.CurrentRow.Cells(1).Value
         Dim espeSeleccionada As String = Me.grid_competencias.CurrentRow.Cells(2).Value
@@ -301,7 +303,6 @@
         cargar_combo(cmb_año, tabla, "año", "año")
     End Sub
 
-
     Private Sub cmb_año_SelectionChangeCommitted(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmb_año.SelectionChangeCommitted
         'Dim año = cmb_año.Text.Cast(Of Int32)()
         'cmb_año.Text.Cast(Of Int32
@@ -320,4 +321,5 @@
         ' End If
 
     End Sub
+
 End Class
