@@ -97,10 +97,18 @@
     <Compile Include="Clases\TextBoxv01.vb">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="DataSet\DS_Clubes.Designer.vb">
+    <Compile Include="DataSet\ds_nadxclub.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>DS_Clubes.xsd</DependentUpon>
+      <DependentUpon>ds_nadxclub.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\ds_nadxclub.vb">
+      <DependentUpon>ds_nadxclub.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ds_nadxclub.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ds_nadxclub.xsd</DependentUpon>
     </Compile>
     <Compile Include="Formularios\frm_AMBTipoDocumento.Designer.vb">
       <DependentUpon>frm_AMBTipoDocumento.vb</DependentUpon>
@@ -151,10 +159,10 @@
     <Compile Include="Formularios\frm_ABMClubes.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Listados\ReportePrueba.Designer.vb">
-      <DependentUpon>ReportePrueba.vb</DependentUpon>
+    <Compile Include="Listados\ListadoNadadoresXClub.Designer.vb">
+      <DependentUpon>ListadoNadadoresXClub.vb</DependentUpon>
     </Compile>
-    <Compile Include="Listados\ReportePrueba.vb">
+    <Compile Include="Listados\ListadoNadadoresXClub.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Procesos\Proc_Registro_resultado.Designer.vb">
@@ -251,11 +259,11 @@
     <EmbeddedResource Include="Formularios\frm_ABMClubes.resx">
       <DependentUpon>frm_ABMClubes.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Listados\Report2.rdlc" />
-    <EmbeddedResource Include="Listados\ReportePrueba.resx">
-      <DependentUpon>ReportePrueba.vb</DependentUpon>
+    <EmbeddedResource Include="Listados\ListadoNadadoresXClub.resx">
+      <DependentUpon>ListadoNadadoresXClub.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Listados\Report1.rdlc" />
+    <EmbeddedResource Include="Listados\Report3.rdlc" />
+    <EmbeddedResource Include="Listados\Report_NadXClub.rdlc" />
     <EmbeddedResource Include="Procesos\Proc_Registro_resultado.resx">
       <DependentUpon>Proc_Registro_resultado.vb</DependentUpon>
     </EmbeddedResource>
@@ -291,16 +299,27 @@
     <None Include="app.config">
       <SubType>Designer</SubType>
     </None>
-    <None Include="DataSet\DS_Clubes.xsc">
-      <DependentUpon>DS_Clubes.xsd</DependentUpon>
+    <None Include="DataSet\ds_nadxclub.xsc">
+      <DependentUpon>ds_nadxclub.xsd</DependentUpon>
     </None>
-    <None Include="DataSet\DS_Clubes.xsd">
+    <None Include="DataSet\ds_nadxclub.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>DS_Clubes.Designer.vb</LastGenOutput>
+      <LastGenOutput>ds_nadxclub.Designer.vb</LastGenOutput>
     </None>
-    <None Include="DataSet\DS_Clubes.xss">
-      <DependentUpon>DS_Clubes.xsd</DependentUpon>
+    <None Include="DataSet\ds_nadxclub.xss">
+      <DependentUpon>ds_nadxclub.xsd</DependentUpon>
+    </None>
+    <None Include="ds_nadxclub.xsc">
+      <DependentUpon>ds_nadxclub.xsd</DependentUpon>
+    </None>
+    <None Include="ds_nadxclub.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ds_nadxclub.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="ds_nadxclub.xss">
+      <DependentUpon>ds_nadxclub.xsd</DependentUpon>
     </None>
     <None Include="Otros\BD\app.config" />
     <None Include="My Project\Application.myapp">
@@ -382,6 +401,7 @@
     <None Include="Resources\cancel.png" />
     <None Include="Resources\add.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
