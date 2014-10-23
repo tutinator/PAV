@@ -156,10 +156,33 @@
     End Function
 
     Private Function delete() As termino
+        'Dim consulta As String = "DELETE FROM TorneosXAño WHERE codTorneo = " & Me.cmb_torneo.SelectedValue
+        'consulta &= " AND año = " & Me.txt_año.Text
+        'acceso.ejecutarNonConsulta(consulta)
+        'Return termino.aprobado
+
+
+        Dim conexion As New Data.SqlClient.SqlConnection
+        Dim cmd As New Data.SqlClient.SqlCommand
+
+
+        conexion.ConnectionString = Me.acceso._StringConexion
+        cmd.Connection = conexion
+        cmd.CommandType = CommandType.Text
+        conexion.Open()
+
         Dim consulta As String = "DELETE FROM TorneosXAño WHERE codTorneo = " & Me.cmb_torneo.SelectedValue
         consulta &= " AND año = " & Me.txt_año.Text
-        acceso.ejecutarNonConsulta(consulta)
-        Return termino.aprobado
+
+        cmd.CommandText = consulta
+
+        Try
+            cmd.ExecuteNonQuery()
+            Return termino.aprobado
+        Catch ex As Exception
+            MessageBox.Show("No se puede eliminar este Torneo ya que está siendo referenciado en otra tabla.", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Return termino.rechazado
+        End Try
     End Function
 
     '----FIN BD

@@ -204,10 +204,31 @@
         Dim codNad As Integer = txt_codNadador.Text
 
 
+        'Dim consulta As String = "DELETE FROM Inscripciones WHERE codTorneo = " & codTorneo
+        'consulta &= " AND año = " & año & " AND codEspe = " & codEspe & " AND codNad = " & codNad
+        'acceso.ejecutarNonConsulta(consulta)
+        'Return termino.aprobado
+
+        Dim conexion As New Data.SqlClient.SqlConnection
+        Dim cmd As New Data.SqlClient.SqlCommand
+
+
+        conexion.ConnectionString = Me.acceso._StringConexion
+        cmd.Connection = conexion
+        cmd.CommandType = CommandType.Text
+        conexion.Open()
+
         Dim consulta As String = "DELETE FROM Inscripciones WHERE codTorneo = " & codTorneo
         consulta &= " AND año = " & año & " AND codEspe = " & codEspe & " AND codNad = " & codNad
-        acceso.ejecutarNonConsulta(consulta)
-        Return termino.aprobado
+        cmd.CommandText = consulta
+
+        Try
+            cmd.ExecuteNonQuery()
+            Return termino.aprobado
+        Catch ex As Exception
+            MessageBox.Show("No se puede eliminar esta Inscripción ya que está siendo referenciada en otra tabla.", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Return termino.rechazado
+        End Try
     End Function
 
     Private Sub cmd_inscribir_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmd_inscribir.Click

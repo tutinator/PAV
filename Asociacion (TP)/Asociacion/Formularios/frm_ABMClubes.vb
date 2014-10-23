@@ -169,9 +169,31 @@ Public Class frm_ABMclubes
     End Function
 
     Private Function delete() As termino
-        Dim consulta As String = "DELETE FROM Clubes WHERE codClub = " & Me.txt_codClub.Text
-        acceso.ejecutarNonConsulta(consulta)
-        Return termino.aprobado
+        'Dim consulta As String = "DELETE FROM Clubes WHERE codClub = " & Me.txt_codClub.Text
+        'acceso.ejecutarNonConsulta(consulta)
+        'Return termino.aprobado
+
+        Dim conexion As New Data.SqlClient.SqlConnection
+        Dim cmd As New Data.SqlClient.SqlCommand
+        Dim consulta As String = ""
+
+        conexion.ConnectionString = Me.acceso._StringConexion
+        cmd.Connection = conexion
+        cmd.CommandType = CommandType.Text
+        conexion.Open()
+
+        consulta = "DELETE FROM Clubes WHERE codClub = " & Me.txt_codClub.Text
+
+        cmd.CommandText = consulta
+
+        Try
+            cmd.ExecuteNonQuery()
+            Me.accion = estado.insertar
+            Return termino.aprobado
+        Catch ex As Exception
+            MessageBox.Show("No se puede eliminar este Club ya que está siendo utilizado.", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Return termino.rechazado
+        End Try
     End Function
 
     Private Sub cmb_codPos_DropDown(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmb_codPos.DropDown

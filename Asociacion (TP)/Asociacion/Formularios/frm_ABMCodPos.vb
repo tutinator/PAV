@@ -136,9 +136,32 @@
     End Function
 
     Private Function delete() As termino
-        Dim consulta As String = "DELETE FROM CodPostales WHERE codPos = " & Me.txt_codPos.Text
-        acceso.ejecutarNonConsulta(consulta)
-        Return termino.aprobado
+        'Dim consulta As String = "DELETE FROM CodPostales WHERE codPos = " & Me.txt_codPos.Text
+        'acceso.ejecutarNonConsulta(consulta)
+        'Return termino.aprobado
+
+
+        Dim conexion As New Data.SqlClient.SqlConnection
+        Dim cmd As New Data.SqlClient.SqlCommand
+        Dim consulta As String = ""
+
+        conexion.ConnectionString = Me.acceso._StringConexion
+        cmd.Connection = conexion
+        cmd.CommandType = CommandType.Text
+        conexion.Open()
+
+        consulta = "DELETE FROM CodPostales WHERE codPos = " & Me.txt_codPos.Text
+
+        cmd.CommandText = consulta
+
+        Try
+            cmd.ExecuteNonQuery()
+            Me.accion = estado.insertar
+            Return termino.aprobado
+        Catch ex As Exception
+            MessageBox.Show("No se puede eliminar este Código Postal ya que está siendo utilizado.", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Return termino.rechazado
+        End Try
     End Function
 
     'Comandos

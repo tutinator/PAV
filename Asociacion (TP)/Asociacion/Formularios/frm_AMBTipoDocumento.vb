@@ -117,9 +117,31 @@
     End Function
 
     Private Function delete() As termino
-        Dim consulta As String = "DELETE FROM TiposDoc WHERE tipoDoc = " & Me.txt_codTipoDoc.Text
-        acceso.ejecutarNonConsulta(consulta)
-        Return termino.aprobado
+        'Dim consulta As String = "DELETE FROM TiposDoc WHERE tipoDoc = " & Me.txt_codTipoDoc.Text
+        'acceso.ejecutarNonConsulta(consulta)
+        'Return termino.aprobado
+
+
+        Dim conexion As New Data.SqlClient.SqlConnection
+        Dim cmd As New Data.SqlClient.SqlCommand
+        Dim consulta As String = ""
+
+        conexion.ConnectionString = Me.acceso._StringConexion
+        cmd.Connection = conexion
+        cmd.CommandType = CommandType.Text
+        conexion.Open()
+
+        consulta = "DELETE FROM TiposDoc WHERE tipoDoc = " & Me.txt_codTipoDoc.Text
+
+        cmd.CommandText = consulta
+
+        Try
+            cmd.ExecuteNonQuery()
+            Return termino.aprobado
+        Catch ex As Exception
+            MessageBox.Show("No se puede eliminar este Tipo de Documento ya que está siendo utilizado.", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Return termino.rechazado
+        End Try
     End Function
     '----FIN BD
 

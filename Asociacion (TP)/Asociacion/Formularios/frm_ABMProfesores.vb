@@ -109,9 +109,32 @@
     End Function
 
     Private Function delete() As termino
-        Dim consulta As String = "DELETE FROM Profesores WHERE codProfe = " & Me.txt_codProfesor.Text
-        acceso.ejecutarNonConsulta(consulta)
-        Return termino.aprobado
+        'Dim consulta As String = "DELETE FROM Profesores WHERE codProfe = " & Me.txt_codProfesor.Text
+        'acceso.ejecutarNonConsulta(consulta)
+        'Return termino.aprobado
+
+
+        Dim conexion As New Data.SqlClient.SqlConnection
+        Dim cmd As New Data.SqlClient.SqlCommand
+        Dim consulta As String = ""
+
+        conexion.ConnectionString = Me.acceso._StringConexion
+        cmd.Connection = conexion
+        cmd.CommandType = CommandType.Text
+        conexion.Open()
+
+        consulta = "DELETE FROM Profesores WHERE codProfe = " & Me.txt_codProfesor.Text
+
+        cmd.CommandText = consulta
+
+        Try
+            cmd.ExecuteNonQuery()
+            Me.accion = estado.insertar
+            Return termino.aprobado
+        Catch ex As Exception
+            MessageBox.Show("No se puede eliminar este Profesor ya que está siendo referenciado en otra tabla.", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Return termino.rechazado
+        End Try
     End Function
 
     Private Sub cmb_codPos_DropDown(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmb_codPos_profesor.DropDown

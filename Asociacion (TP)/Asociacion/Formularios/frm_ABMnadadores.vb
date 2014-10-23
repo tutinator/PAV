@@ -217,9 +217,32 @@
     End Function
 
     Private Function delete() As termino
-        Dim consulta As String = "DELETE FROM Nadadores WHERE codNad = " & Me.txt_codNadador.Text
-        acceso.ejecutarNonConsulta(consulta)
-        Return termino.aprobado
+        'Dim consulta As String = "DELETE FROM Nadadores WHERE codNad = " & Me.txt_codNadador.Text
+        'acceso.ejecutarNonConsulta(consulta)
+        'Return termino.aprobado
+
+
+        Dim conexion As New Data.SqlClient.SqlConnection
+        Dim cmd As New Data.SqlClient.SqlCommand
+        Dim consulta As String = ""
+
+        conexion.ConnectionString = Me.acceso._StringConexion
+        cmd.Connection = conexion
+        cmd.CommandType = CommandType.Text
+        conexion.Open()
+
+        consulta = "DELETE FROM Nadadores WHERE codNad = " & Me.txt_codNadador.Text
+
+        cmd.CommandText = consulta
+
+        Try
+            cmd.ExecuteNonQuery()
+            Me.accion = estado.insertar
+            Return termino.aprobado
+        Catch ex As Exception
+            MessageBox.Show("No se puede eliminar este Nadador ya que está siendo referenciado en otra tabla.", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Return termino.rechazado
+        End Try
     End Function
 
     'Comandos
