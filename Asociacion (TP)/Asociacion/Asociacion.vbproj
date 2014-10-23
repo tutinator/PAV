@@ -67,10 +67,13 @@
     <Reference Include="Asociacion, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
       <ExecutableExtension>.exe</ExecutableExtension>
     </Reference>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.Services" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
@@ -93,6 +96,11 @@
     <Compile Include="Clases\accesoBD.vb" />
     <Compile Include="Clases\TextBoxv01.vb">
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="DataSet\DS_Clubes.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DS_Clubes.xsd</DependentUpon>
     </Compile>
     <Compile Include="Formularios\frm_AMBTipoDocumento.Designer.vb">
       <DependentUpon>frm_AMBTipoDocumento.vb</DependentUpon>
@@ -141,6 +149,12 @@
       <DependentUpon>frm_ABMClubes.vb</DependentUpon>
     </Compile>
     <Compile Include="Formularios\frm_ABMClubes.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Listados\ReportePrueba.Designer.vb">
+      <DependentUpon>ReportePrueba.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Listados\ReportePrueba.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Procesos\Proc_Registro_resultado.Designer.vb">
@@ -237,6 +251,11 @@
     <EmbeddedResource Include="Formularios\frm_ABMClubes.resx">
       <DependentUpon>frm_ABMClubes.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Listados\Report2.rdlc" />
+    <EmbeddedResource Include="Listados\ReportePrueba.resx">
+      <DependentUpon>ReportePrueba.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Listados\Report1.rdlc" />
     <EmbeddedResource Include="Procesos\Proc_Registro_resultado.resx">
       <DependentUpon>Proc_Registro_resultado.vb</DependentUpon>
     </EmbeddedResource>
@@ -271,6 +290,17 @@
   <ItemGroup>
     <None Include="app.config">
       <SubType>Designer</SubType>
+    </None>
+    <None Include="DataSet\DS_Clubes.xsc">
+      <DependentUpon>DS_Clubes.xsd</DependentUpon>
+    </None>
+    <None Include="DataSet\DS_Clubes.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DS_Clubes.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="DataSet\DS_Clubes.xss">
+      <DependentUpon>DS_Clubes.xsd</DependentUpon>
     </None>
     <None Include="Otros\BD\app.config" />
     <None Include="My Project\Application.myapp">

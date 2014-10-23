@@ -86,5 +86,10 @@
     Private Sub RegistrarResultadosToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles RegistrarResultadosToolStripMenuItem.Click
         proc_regsitrarResultado.Show()
     End Sub
+
+    Private Sub PruebaToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PruebaToolStripMenuItem.Click
+        ReportePrueba.Show()
+
+    End Sub
 End Class
 

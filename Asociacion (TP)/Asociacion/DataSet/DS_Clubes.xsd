@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DataSet2" targetNamespace="http://tempuri.org/DataSet2.xsd" xmlns:mstns="http://tempuri.org/DataSet2.xsd" xmlns="http://tempuri.org/DataSet2.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="MySettings" AppSettingsPropertyName="natacionConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="natacionConnectionString (MySettings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.Asociacion.My.MySettings.GlobalReference.Default.natacionConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DataSet2" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DataSet2" msprop:Generator_UserDSName="DataSet2">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Clubes" msprop:Generator_TableClassName="ClubesDataTable" msprop:Generator_TableVarName="tableClubes" msprop:Generator_TablePropName="Clubes" msprop:Generator_RowDeletingName="ClubesRowDeleting" msprop:Generator_RowChangingName="ClubesRowChanging" msprop:Generator_RowEvHandlerName="ClubesRowChangeEventHandler" msprop:Generator_RowDeletedName="ClubesRowDeleted" msprop:Generator_UserTableName="Clubes" msprop:Generator_RowChangedName="ClubesRowChanged" msprop:Generator_RowEvArgName="ClubesRowChangeEvent" msprop:Generator_RowClassName="ClubesRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="codClub" msprop:Generator_ColumnVarNameInTable="columncodClub" msprop:Generator_ColumnPropNameInRow="codClub" msprop:Generator_ColumnPropNameInTable="codClubColumn" msprop:Generator_UserColumnName="codClub" type="xs:int" />
+              <xs:element name="nombre" msprop:Generator_ColumnVarNameInTable="columnnombre" msprop:Generator_ColumnPropNameInRow="nombre" msprop:Generator_ColumnPropNameInTable="nombreColumn" msprop:Generator_UserColumnName="nombre">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:Clubes" />
+      <xs:field xpath="mstns:codClub" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

@@ -67,6 +67,7 @@ Partial Class frm_Menu
         Me.ToolStripStatusLabel3 = New System.Windows.Forms.ToolStripStatusLabel()
         Me.lbl_hora = New System.Windows.Forms.ToolStripStatusLabel()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        Me.PruebaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip1.SuspendLayout()
         Me.StatusStrip1.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -262,7 +263,7 @@ Partial Class frm_Menu
         '
         'EstadisticasReportesToolStripMenuItem
         '
-        Me.EstadisticasReportesToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.GenerarPerfilDeNadadorToolStripMenuItem, Me.TiemposPromediosToolStripMenuItem, Me.GráficoDeInscripcionesToolStripMenuItem, Me.RankingsToolStripMenuItem})
+        Me.EstadisticasReportesToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.GenerarPerfilDeNadadorToolStripMenuItem, Me.TiemposPromediosToolStripMenuItem, Me.GráficoDeInscripcionesToolStripMenuItem, Me.RankingsToolStripMenuItem, Me.PruebaToolStripMenuItem})
         Me.EstadisticasReportesToolStripMenuItem.Name = "EstadisticasReportesToolStripMenuItem"
         Me.EstadisticasReportesToolStripMenuItem.Size = New System.Drawing.Size(130, 20)
         Me.EstadisticasReportesToolStripMenuItem.Text = "Estadisticas/Reportes"
@@ -355,6 +356,12 @@ Partial Class frm_Menu
         Me.PictureBox1.TabIndex = 2
         Me.PictureBox1.TabStop = False
         '
+        'PruebaToolStripMenuItem
+        '
+        Me.PruebaToolStripMenuItem.Name = "PruebaToolStripMenuItem"
+        Me.PruebaToolStripMenuItem.Size = New System.Drawing.Size(210, 22)
+        Me.PruebaToolStripMenuItem.Text = "Prueba"
+        '
         'frm_Menu
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -422,5 +429,6 @@ Partial Class frm_Menu
     Friend WithEvents AsignarEspecialidadesANadadorToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents RegistrarCompetenciaATorneoToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents AsignarEspecialidadesAProfesorToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents PruebaToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
 
 End Class
