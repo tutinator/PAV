@@ -67,8 +67,9 @@
     <Reference Include="Asociacion, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
       <ExecutableExtension>.exe</ExecutableExtension>
     </Reference>
-    <Reference Include="Microsoft.ReportViewer.Common, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
-    <Reference Include="Microsoft.ReportViewer.WinForms, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.ReportViewer.Common, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.VisualBasic.PowerPacks.Vs, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
@@ -97,6 +98,19 @@
     <Compile Include="Clases\TextBoxv01.vb">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="DataSet\ds_inscriptosCompetencia.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ds_inscriptosCompetencia.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\ds_inscriptosCompetencia.vb">
+      <DependentUpon>ds_inscriptosCompetencia.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\ds_listadoClubes.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ds_listadoClubes.xsd</DependentUpon>
+    </Compile>
     <Compile Include="DataSet\ds_nadxclub.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -105,10 +119,29 @@
     <Compile Include="DataSet\ds_nadxclub.vb">
       <DependentUpon>ds_nadxclub.xsd</DependentUpon>
     </Compile>
+    <Compile Include="ds_inscriptos.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ds_inscriptos.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ds_inscriptos.vb">
+      <DependentUpon>ds_inscriptos.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ds_lstClubes.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ds_lstClubes.xsd</DependentUpon>
+    </Compile>
     <Compile Include="ds_nadxclub.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ds_nadxclub.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Listados\listado_clubes.Designer.vb">
+      <DependentUpon>listado_clubes.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Listados\listado_clubes.vb">
+      <SubType>Form</SubType>
     </Compile>
     <Compile Include="Formularios\frm_AMBTipoDocumento.Designer.vb">
       <DependentUpon>frm_AMBTipoDocumento.vb</DependentUpon>
@@ -159,10 +192,10 @@
     <Compile Include="Formularios\frm_ABMClubes.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Listados\ListadoNadadoresXClub.Designer.vb">
-      <DependentUpon>ListadoNadadoresXClub.vb</DependentUpon>
+    <Compile Include="Listados\listado_nadadoresInscriptosACompetencia.Designer.vb">
+      <DependentUpon>listado_nadadoresInscriptosACompetencia.vb</DependentUpon>
     </Compile>
-    <Compile Include="Listados\ListadoNadadoresXClub.vb">
+    <Compile Include="Listados\listado_nadadoresInscriptosACompetencia.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Procesos\Proc_Registro_resultado.Designer.vb">
@@ -235,6 +268,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Listados\listado_clubes.resx">
+      <DependentUpon>listado_clubes.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\frm_AMBTipoDocumento.resx">
       <DependentUpon>frm_AMBTipoDocumento.vb</DependentUpon>
     </EmbeddedResource>
@@ -259,11 +295,11 @@
     <EmbeddedResource Include="Formularios\frm_ABMClubes.resx">
       <DependentUpon>frm_ABMClubes.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Listados\ListadoNadadoresXClub.resx">
-      <DependentUpon>ListadoNadadoresXClub.vb</DependentUpon>
+    <EmbeddedResource Include="Listados\listado_nadadoresInscriptosACompetencia.resx">
+      <DependentUpon>listado_nadadoresInscriptosACompetencia.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Listados\Report3.rdlc" />
-    <EmbeddedResource Include="Listados\Report_NadXClub.rdlc" />
+    <EmbeddedResource Include="Listados\rep_listadoClubes.rdlc" />
+    <EmbeddedResource Include="Listados\rep_nadadoresInscriptosACompetencia.rdlc" />
     <EmbeddedResource Include="Procesos\Proc_Registro_resultado.resx">
       <DependentUpon>Proc_Registro_resultado.vb</DependentUpon>
     </EmbeddedResource>
@@ -299,6 +335,28 @@
     <None Include="app.config">
       <SubType>Designer</SubType>
     </None>
+    <None Include="DataSet\ds_inscriptosCompetencia.xsc">
+      <DependentUpon>ds_inscriptosCompetencia.xsd</DependentUpon>
+    </None>
+    <None Include="DataSet\ds_inscriptosCompetencia.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ds_inscriptosCompetencia.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="DataSet\ds_inscriptosCompetencia.xss">
+      <DependentUpon>ds_inscriptosCompetencia.xsd</DependentUpon>
+    </None>
+    <None Include="DataSet\ds_listadoClubes.xsc">
+      <DependentUpon>ds_listadoClubes.xsd</DependentUpon>
+    </None>
+    <None Include="DataSet\ds_listadoClubes.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ds_listadoClubes.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="DataSet\ds_listadoClubes.xss">
+      <DependentUpon>ds_listadoClubes.xsd</DependentUpon>
+    </None>
     <None Include="DataSet\ds_nadxclub.xsc">
       <DependentUpon>ds_nadxclub.xsd</DependentUpon>
     </None>
@@ -309,6 +367,28 @@
     </None>
     <None Include="DataSet\ds_nadxclub.xss">
       <DependentUpon>ds_nadxclub.xsd</DependentUpon>
+    </None>
+    <None Include="ds_inscriptos.xsc">
+      <DependentUpon>ds_inscriptos.xsd</DependentUpon>
+    </None>
+    <None Include="ds_inscriptos.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ds_inscriptos.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="ds_inscriptos.xss">
+      <DependentUpon>ds_inscriptos.xsd</DependentUpon>
+    </None>
+    <None Include="ds_lstClubes.xsc">
+      <DependentUpon>ds_lstClubes.xsd</DependentUpon>
+    </None>
+    <None Include="ds_lstClubes.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ds_lstClubes.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="ds_lstClubes.xss">
+      <DependentUpon>ds_lstClubes.xsd</DependentUpon>
     </None>
     <None Include="ds_nadxclub.xsc">
       <DependentUpon>ds_nadxclub.xsd</DependentUpon>

@@ -88,7 +88,7 @@
     End Sub
 
     Private Sub PruebaToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PruebaToolStripMenuItem.Click
-        ReportePrueba.Show()
+        'ReportePrueba.Show()
 
     End Sub
 End Class
